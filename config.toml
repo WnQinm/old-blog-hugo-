@@ -877,7 +877,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
           social = true
           disclaimer = ""
       [languages.zh-cn.params.social]
-        GitHub = "https://github.com/WnQinm"
+        GitHub = "WnQinm"
         #Twitter = "xxxx"
         #Instagram = "xxxx"
         #Facebook = "xxxx"
