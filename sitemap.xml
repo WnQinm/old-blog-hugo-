@@ -1,18 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
-  <sitemap>
-    <loc>https://WnQinm.github.io/en/sitemap.xml</loc>
-    
-      <lastmod>2022-08-22T01:54:08+08:00</lastmod>
-    
-  </sitemap>
-  
-  <sitemap>
-    <loc>https://WnQinm.github.io/zh-cn/sitemap.xml</loc>
-    
-      <lastmod>2022-08-22T16:36:02+08:00</lastmod>
-    
-  </sitemap>
-  
-</sitemapindex>
+<urlset
+    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+    xmlns:xhtml="http://www.w3.org/1999/xhtml"
+    ><url>
+            <loc>https://WnQinm.github.io/categories/</loc><lastmod>2022-08-22T20:52:53&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://WnQinm.github.io/categories/markdown/</loc><lastmod>2022-08-22T20:52:53&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://WnQinm.github.io/tags/markdown/</loc><lastmod>2022-08-22T20:52:53&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://WnQinm.github.io/2022/08/markdown_help/</loc><lastmod>2022-08-22T20:52:53&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://WnQinm.github.io/posts/</loc><lastmod>2022-08-22T20:52:53&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://WnQinm.github.io/</loc><lastmod>2022-08-22T20:52:53&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://WnQinm.github.io/tags/</loc><lastmod>2022-08-22T20:52:53&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://WnQinm.github.io/tags/latex/</loc><lastmod>2022-08-22T20:16:49&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://WnQinm.github.io/2022/08/latex%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/</loc><lastmod>2022-08-22T20:16:49&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://WnQinm.github.io/tags/math/</loc><lastmod>2022-08-22T20:16:49&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://WnQinm.github.io/about/</loc><lastmod>2019-08-02T11:04:49&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://WnQinm.github.io/categories/documentation/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://WnQinm.github.io/tags/content/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://WnQinm.github.io/tags/installation/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://WnQinm.github.io/tags/configuration/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url></urlset>

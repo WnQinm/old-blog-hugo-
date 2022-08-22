@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Markdown语法简介 - Qinm&#39;s blog</title><meta name="Description" content="Qinm&#39;s blog, hugo-loveit"><meta property="og:title" content="Markdown语法简介" />
+<meta property="og:description" content="==目录== [TOC] 一级标题 （# 空格） 二级标题 三级标题 四级标题 五级标题 六级标题 ctrl &#43;1/2/3/4/5/6 快速设置六级标题 CTRL &#43;/- 提升标题等级 倾斜 或者ctrl&#43;i 加粗 或者ct" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://WnQinm.github.io/2022/08/markdown_help/" /><meta property="og:image" content="https://WnQinm.github.io/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-08-22T20:52:53+08:00" />
+<meta property="article:modified_time" content="2022-08-22T20:52:53+08:00" /><meta property="og:site_name" content="blog" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://WnQinm.github.io/logo.png"/>
+
+<meta name="twitter:title" content="Markdown语法简介"/>
+<meta name="twitter:description" content="==目录== [TOC] 一级标题 （# 空格） 二级标题 三级标题 四级标题 五级标题 六级标题 ctrl &#43;1/2/3/4/5/6 快速设置六级标题 CTRL &#43;/- 提升标题等级 倾斜 或者ctrl&#43;i 加粗 或者ct"/>
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://WnQinm.github.io/2022/08/markdown_help/" /><link rel="prev" href="https://WnQinm.github.io/2022/08/latex%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Markdown语法简介",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/WnQinm.github.io\/2022\/08\/markdown_help\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/WnQinm.github.io\/images\/Apple-Devices-Preview.png",
+                            "width":  3200 ,
+                            "height":  2048 
+                        }],"genre": "posts","keywords": "markdown","wordcount":  660 ,
+        "url": "https:\/\/WnQinm.github.io\/2022\/08\/markdown_help\/","datePublished": "2022-08-22T20:52:53+08:00","dateModified": "2022-08-22T20:52:53+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": "https:\/\/WnQinm.github.io\/images\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "清梦"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Qinm&#39;s blog"><span class="header-title-pre"><i class='fa-solid fa-cloud' aria-hidden='true'></i></span>Qinm&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/categories/documentation/"> 文档 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Qinm&#39;s blog"><span class="header-title-pre"><i class='fa-solid fa-cloud' aria-hidden='true'></i></span>Qinm&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/categories/documentation/" title="">文档</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Markdown语法简介</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>清梦</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/markdown/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Markdown</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-08-22">2022-08-22</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 660 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ol>
+    <li><a href="#一级标题---空格">一级标题  （# 空格）</a>
+      <ol>
+        <li><a href="#二级标题">二级标题</a>
+          <ol>
+            <li><a href="#三级标题">三级标题</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+  </ol>
+</nav></div>
+            </div><div class="content" id="content"><p>==目录==</p>
+<p>[TOC]</p>
+<h1 id="一级标题---空格">一级标题  （# 空格）</h1>
+<h2 id="二级标题">二级标题</h2>
+<h3 id="三级标题">三级标题</h3>
+<h4 id="四级标题">四级标题</h4>
+<h5 id="五级标题">五级标题</h5>
+<h6 id="六级标题">六级标题</h6>
+<p>ctrl +1/2/3/4/5/6 快速设置六级标题
+CTRL +/- 提升标题等级</p>
+<p><em>倾斜</em>   或者ctrl+i
+<strong>加粗</strong>   或者ctrl+b
+<em><strong>斜体加粗</strong></em>
+<del>删除线</del> （两个波浪号）</p>
+<p>==高亮==</p>
+<p>^上标^</p>
+<p>~下标~  (一个波浪)</p>
+<p>==无序列表==
++123
++123
++123
++123</p>
+<ol>
+<li>123  （1 句点 空格）</li>
+<li>123</li>
+<li>123</li>
+</ol>
+<ul>
+<li>123   （减号 空格）</li>
+<li>123          ==升降级别==  ctrl+左中括号/右中括号  降级别也可敲tab</li>
+<li>123</li>
+</ul>
+<ul>
+<li>123   （乘 空格）</li>
+<li>123</li>
+<li>123</li>
+</ul>
+<p>==表格==（段落&ndash;表格/ctrl+t）</p>
+<table>
+<thead>
+<tr>
+<th>mon</th>
+<th>tue</th>
+<th>wed</th>
+<th>thu</th>
+<th>fri</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>123</td>
+<td>123</td>
+<td>123</td>
+<td>123</td>
+<td>123</td>
+</tr>
+</tbody>
+</table>
+<p>第二行要有横线打几个也行，重要的是要有竖杠和第二行横线</p>
+<p>事实上把标题那几个竖杠一打，再敲enter就出来表格</p>
+<p>再按左上角那个标志设置表格大小和对其方式即可，右上角还可进行更多表格操作</p>
+<p>==引用==</p>
+<blockquote>
+<p>123</p>
+<blockquote>
+<p>123
+123</p>
+<blockquote>
+<p>123（最后一行得空出来不然会加一个同级，空出来不会显示）</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>大于号加空格</p>
+<p>==分割线==</p>
+<hr>
+<p>英文下划线（随便打一些就行）</p>
+<p><u>下划线</u>   或者CTRL+u</p>
+<p>==代码==
+<code>单行代码</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">多行代码框
+右下角可以选择语言
+快捷键ctrl+shift+k
+</code></pre></td></tr></table>
+</div>
+</div><p>(注意是英文状态下波浪线处的点)</p>
+<p>待办事项<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<ul>
+<li><i class="far fa-check-square fa-fw" aria-hidden="true"></i> 段落&ndash;任务列表</li>
+<li><i class="far fa-square fa-fw" aria-hidden="true"></i> 777</li>
+</ul>
+<p>行内公式  $sin 2x = 2sinxcosx$
+公式块：段落&ndash;公式块 或者开头结尾两个$
+公式用LaTeX代码编写</p>
+<p><a href="#%e6%a0%87%e9%a2%98%e5%90%8d%e7%a7%b0%e6%88%96%e8%80%85%e9%93%be%e6%8e%a5" rel="">超链接</a>  链接位置为本文文档标题时，必须有井号，其他不需要
+按ctrl同时点击即可打开，快捷键ctrl+k</p>
+<p><a href="#%e5%85%ad%e7%ba%a7%e6%a0%87%e9%a2%98" rel="">六级标题</a></p>
+<p><a href="http://www.bilibili.com" target="_blank" rel="noopener noreffer ">bilibili</a></p>
+<p>文件&ndash;偏好设置&ndash;导出，可以导出为pdfword等多种格式</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>这里是注释，方括号+尖角+序号（其实啥也行匹配就可），下面写注释时同理后面再加个冒号&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-08-22</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/2022/08/markdown_help/index.md" target="_blank">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://WnQinm.github.io/2022/08/markdown_help/" data-title="Markdown语法简介" data-hashtags="markdown"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Reddit" data-sharer="reddit" data-url="https://WnQinm.github.io/2022/08/markdown_help/"><i class="fab fa-reddit fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://WnQinm.github.io/2022/08/markdown_help/" data-title="Markdown语法简介"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://WnQinm.github.io/2022/08/markdown_help/" data-title="Markdown语法简介"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/baidu.svg" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/markdown/">markdown</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2022/08/latex%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/" class="prev" rel="prev" title="Latex数学公式"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Latex数学公式</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">River flies, sky lies.</div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">清梦</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":25},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

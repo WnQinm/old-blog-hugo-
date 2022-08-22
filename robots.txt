@@ -61,4 +61,4 @@ Disallow: /
 User-agent: ZoominfoBot
 Disallow: /
 
-Sitemap: https://WnQinm.github.io/en/sitemap.xml
+Sitemap: https://WnQinm.github.io/sitemap.xml
