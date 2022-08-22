@@ -755,13 +755,6 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
         name = "分类"
         url = "/categories/"
         title = ""
-      [[languages.zh-cn.menu.main]]
-        weight = 4
-        identifier = "documentation"
-        pre = ""
-        name = "文档"
-        url = "/categories/documentation/"
-        title = ""
       #[[languages.zh-cn.menu.main]]
       #  weight = 5
       #  identifier = "about"
