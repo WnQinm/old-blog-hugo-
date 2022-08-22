@@ -1,7 +1,8 @@
 baseURL = "https://WnQinm.github.io"
+
 # theme
 # 主题
-theme = "loveit"
+theme = ["hugo-search-fuse-js", "loveit"]
 
 # website title
 # 网站标题
@@ -83,6 +84,12 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     name = "Categories"
     url = "/categories/"
     title = ""
+  [[menu.main]]
+    pre = "<i class='fas fa-fw fa-search'></i>"
+    name = "搜索"
+    weight = 7
+    identifier = "search"
+    url = "/search/"
 
 [params]
   # site default theme ["auto", "light", "dark"]
@@ -90,7 +97,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
   defaultTheme = "auto"
   # public git repo url only then enableGitInfo is true
   # 公共 git 仓库路径，仅在 enableGitInfo 设为 true 时有效
-  gitRepo = "https://github.com/dillonzq/LoveIt"
+  gitRepo = "https://github.com/WnQinm"
   # which hash function used for SRI, when empty, no SRI is used
   # ["sha256", "sha384", "sha512", "md5"]
   # 哪种哈希函数用来 SRI, 为空时表示不使用 SRI
@@ -214,7 +221,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
   # Search config
   # 搜索配置
   [params.search]
-    enable = true
+    enable = false
     # type of search engine ["lunr", "algolia"]
     # 搜索引擎的类型 ["lunr", "algolia"]
     type = "algolia"
@@ -766,6 +773,13 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
         name = "About"
         url = "/about/"
         title = ""
+      [[languages.en.menu.main]]
+	pre = "<i class='fas fa-fw fa-search'></i>"
+	name = ""
+	weight = 7
+	identifier = "search"
+	url = "/search/"
+	title = "Search"
     [languages.en.params]
       [languages.en.params.search]
         enable = false
@@ -851,6 +865,13 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
         name = "关于"
         url = "/about/"
         title = ""
+      [[languages.zh-cn.menu.main]]
+        pre = "<i class='fas fa-fw fa-search'></i>"
+        name = ""
+        weight = 7
+        identifier = "search"
+        url = "/search/"
+        title = "搜索"
     [languages.zh-cn.params]
       [languages.zh-cn.params.search]
         enable = false

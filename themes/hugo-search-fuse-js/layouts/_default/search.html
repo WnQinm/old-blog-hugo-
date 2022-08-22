@@ -1,0 +1,64 @@
+{{ define "main" }} <!-- https://gist.github.com/eddiewebb/735feb48f50f0ddd65ae5606a1cb41ae -->
+
+<div class="search">
+    <header>
+        <h1>{{ .Title }}</h1>
+        {{/* partial "debugprint.html" (site.GetPage "/search") */}}
+    </header>
+
+    <form action="{{ .Permalink }}">
+        <input id="search-query" name="q" placeholder="search phrase"/>
+    </form>
+
+    <div id="search-results"></div>
+</div>
+
+<template id="search-result-template"><div class="search_summary">
+    <h2 class="post-title no-text-decoration"><a class="search_link search_title" href=""></a></h2>
+    <p><em class="search_snippet"></em></p>
+    <small>
+        <table>
+            <tr class="search_iftags"><td><strong>Tags</strong></td><td class="search_tags"></td></tr>
+            <tr class="search_ifcategories"><td><strong>Categories</strong></td><td class="search_categories"></td></tr>
+        </table>
+    </small>
+</div></template>
+{{ end }}
+
+{{ define "footer" }}
+
+{{ $iecompat_scripts := "" }}
+{{ range $i, $e := resources.Match "js/iecompat/*.js" }}
+    {{ if $i }}
+        {{ $iecompat_scripts = (printf "%s," $iecompat_scripts) }}
+    {{ end }}
+    {{ $iecompat_scripts = (printf "%s%#v" $iecompat_scripts $e.RelPermalink) }}
+{{ end }}
+
+<!-- If you don't need IE 11 support you can remove this next script block -->
+<script>
+ // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
+ if (window.navigator.userAgent.indexOf('Trident/') > 0) {
+     let urls = [ {{- $iecompat_scripts | safeJS -}} ];
+     let head = document.getElementsByTagName("head")[0];
+     urls.forEach(function(url) {
+         let script = document.createElement("script");
+         script.src = url;
+         head.appendChild(script);
+     });
+ }
+ // @license-end
+</script>
+
+<!--
+if(window.navigator.userAgent.indexOf("Trident/")>0){let e=["/js/iecompat/fetch.min.js","/js/iecompat/promises.min.js","/js/iecompat/remove.min.js","/js/iecompat/template.min.js"],t=document.getElementsByTagName("head")[0];e.forEach(function(n){let e=document.createElement("script");e.src=n,t.appendChild(e)})}
+
+https://report-uri.com/home/hash/ CSP Hash: 'sha256-wFmBttOvPvtTo5Dz9baqkFwDhIwWdpS2ap0mauKBz40='
+-->
+<!-- These are the two libraries needed for current browsers. -->
+
+<script src={{ printf "%s" (resources.Get "js/libs/fuse.min.js" | fingerprint).RelPermalink }}></script>
+<script src={{ printf "%s" (resources.Get "js/libs/mark.min.js" | fingerprint).RelPermalink }}></script>
+
+<script src={{ printf "%s" (resources.Get "js/search.js" | fingerprint).RelPermalink }}></script>
+{{ end }}
