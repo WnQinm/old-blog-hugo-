@@ -3,7 +3,6 @@ title: "Latex数学公式"
 date: 2022-08-22T20:16:49+08:00
 draft: false
 tags: ["latex", "math"]
-categories: ["Markdown"]
 ---
 
 + 由于本人技术原因，latex在html界面的渲染做的很差，有的可以正常显示有的则不行，本篇主要是帮助回忆latex数学公式相关语法，故而就此作罢
