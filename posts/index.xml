@@ -3,13 +3,21 @@
         <title>所有文章 - Qinm&#39;s blog</title>
         <link>https://WnQinm.github.io/posts/</link>
         <description>所有文章 | Qinm&#39;s blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 22 Aug 2022 20:52:53 &#43;0800</lastBuildDate><atom:link href="https://WnQinm.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 22 Aug 2022 21:14:53 &#43;0800</lastBuildDate><atom:link href="https://WnQinm.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Git 简单入门</title>
+    <link>https://WnQinm.github.io/2022/08/git_help/</link>
+    <pubDate>Mon, 22 Aug 2022 21:14:53 &#43;0800</pubDate>
+    <author>清梦</author>
+    <guid>https://WnQinm.github.io/2022/08/git_help/</guid>
+    <description><![CDATA[基本技术 git config --global user.name （user name) git config --global user.email (email) 设置本地仓库用户名和邮箱 git init初始化本地仓库 git status查看：当前所处分支，准备commit的c]]></description>
+</item>
+<item>
     <title>Markdown语法简介</title>
     <link>https://WnQinm.github.io/2022/08/markdown_help/</link>
     <pubDate>Mon, 22 Aug 2022 20:52:53 &#43;0800</pubDate>
     <author>清梦</author>
     <guid>https://WnQinm.github.io/2022/08/markdown_help/</guid>
-    <description><![CDATA[==目录== [TOC] 一级标题 （# 空格） 二级标题 三级标题 四级标题 五级标题 六级标题 ctrl +1/2/3/4/5/6 快速设置六级标题 CTRL +/- 提升标题等级 倾斜 或者ctrl+i 加粗 或者ct]]></description>
+    <description><![CDATA[==目录== 一级标题 （# 空格） 二级标题 三级标题 四级标题 五级标题 六级标题 ctrl +1/2/3/4/5/6 快速设置六级标题 CTRL +/- 提升标题等级 倾斜 或者ctrl+i 加粗 或者ctr]]></description>
 </item>
 <item>
     <title>Latex数学公式</title>

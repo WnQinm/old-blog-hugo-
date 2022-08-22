@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Git 简单入门 - Qinm&#39;s blog</title><meta name="Description" content="Qinm&#39;s blog, hugo-loveit"><meta property="og:title" content="Git 简单入门" />
+<meta property="og:description" content="基本技术 git config --global user.name （user name) git config --global user.email (email) 设置本地仓库用户名和邮箱 git init初始化本地仓库 git status查看：当前所处分支，准备commit的c" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://WnQinm.github.io/2022/08/git_help/" /><meta property="og:image" content="https://WnQinm.github.io/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-08-22T21:14:53+08:00" />
+<meta property="article:modified_time" content="2022-08-22T21:14:53+08:00" /><meta property="og:site_name" content="blog" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://WnQinm.github.io/logo.png"/>
+
+<meta name="twitter:title" content="Git 简单入门"/>
+<meta name="twitter:description" content="基本技术 git config --global user.name （user name) git config --global user.email (email) 设置本地仓库用户名和邮箱 git init初始化本地仓库 git status查看：当前所处分支，准备commit的c"/>
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://WnQinm.github.io/2022/08/git_help/" /><link rel="prev" href="https://WnQinm.github.io/2022/08/markdown_help/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Git 简单入门",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/WnQinm.github.io\/2022\/08\/git_help\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/WnQinm.github.io\/images\/Apple-Devices-Preview.png",
+                            "width":  3200 ,
+                            "height":  2048 
+                        }],"genre": "posts","keywords": "git","wordcount":  1103 ,
+        "url": "https:\/\/WnQinm.github.io\/2022\/08\/git_help\/","datePublished": "2022-08-22T21:14:53+08:00","dateModified": "2022-08-22T21:14:53+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": "https:\/\/WnQinm.github.io\/images\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "清梦"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Qinm&#39;s blog"><span class="header-title-pre"><i class='fa-solid fa-cloud' aria-hidden='true'></i></span>Qinm&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Qinm&#39;s blog"><span class="header-title-pre"><i class='fa-solid fa-cloud' aria-hidden='true'></i></span>Qinm&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Git 简单入门</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>清梦</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-08-22">2022-08-22</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 1103 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ol>
+    <li>
+      <ol>
+        <li><a href="#基本技术">基本技术</a></li>
+        <li><a href="#其他">其他</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="基本技术">基本技术</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img-blog.csdnimg.cn/fe7554cf09cd482dada374feec7ac3b1.png"
+        data-srcset="https://img-blog.csdnimg.cn/fe7554cf09cd482dada374feec7ac3b1.png, https://img-blog.csdnimg.cn/fe7554cf09cd482dada374feec7ac3b1.png 1.5x, https://img-blog.csdnimg.cn/fe7554cf09cd482dada374feec7ac3b1.png 2x"
+        data-sizes="auto"
+        alt="https://img-blog.csdnimg.cn/fe7554cf09cd482dada374feec7ac3b1.png"
+        title="image-20220820004659891" /></p>
+<p><code>git config --global user.name （user name)</code></p>
+<p><code>git config --global user.email (email)</code></p>
+<p>设置本地仓库用户名和邮箱</p>
+<p><code>git init</code>初始化本地仓库</p>
+<p><code>git status</code>查看：当前所处分支，准备commit的changes，untracked files</p>
+<p><code>git add</code>添加untracked file进缓存区</p>
+<p><code>git commit</code>提交，会进入编辑器提示添加commit message，可以通过<code>git config core.editor vim</code>将编辑器修改为vim</p>
+<p><code>git log</code>查看前面的版本</p>
+<p><code>source .gitignore</code>新建文件，里面放不想推送的仓库（不想被git追踪）的文件名，坏处是一旦删除本地文件就没办法找回</p>
+<p><code>git branch (branch name)</code>创建分支</p>
+<p><code>git branch</code>查看所有分支</p>
+<p><code>git checkout (branch name)</code>切换分支</p>
+<p><code>git commit -a -m (commit message)</code>或<code>git commit -am (commit message)</code>同时完成add和commit操作</p>
+<p><code>git branch -d (branch name)</code>删除分支，删除还未合并(merge)的分支会删除失败</p>
+<p><code>git branch -D (branch name)</code>强制删除还未合并(merge)的分支</p>
+<p><code>git checkout -b (branch name)</code>创建新分支并马上转到新分支</p>
+<p><code>git merge (branch name)</code>把别的分支(branch name)合并到当前的分支</p>
+<p>当merge时可能出现修改冲突，就需要手动处理（文件上会显示）</p>
+<p><code>git clone (url)</code>拷贝远程仓库到本地</p>
+<p><code>git remote -v</code>查看本地仓库和哪些远程仓库有联系</p>
+<p><code>git push</code>在push时需要输入用户名和密码，用户名就是随便起的别名，标识身份用，密码时github上developer setting中的token(注意一旦设置一个新的token记得保存，不然就找不到了，就得删了token再设置新的【悲】)</p>
+<p><code>git fetch []</code>将远程仓库拉到本地，可以指定某个仓库(上一条命令查看已链接的仓库)（如果链接的仓库多的话）也可以不指定</p>
+<p><code>git diff (远程仓库名)/(分支名)</code>查看区别</p>
+<p>fetch完之后会形成一个类似独立的分支一样的版本库，用<code>git merge <sup>origin</sup>/<sub>master</sub></code>将版本库拉进某个分支，origin可以是其他名字（<code>git remote -v</code>查看名字），master可以是其他分支名</p>
+<p><code>git log</code>也可以查看这种方式修改本地的版本历史</p>
+<h2 id="其他">其他</h2>
+<ul>
+<li>remote相关
+<ul>
+<li><code>git remote add [shortname] [url]</code>添加远程版本库</li>
+<li><code>git remote rm name</code>删除远程仓库</li>
+<li><code>git remote rename old_name new_name</code>修改仓库名</li>
+</ul>
+</li>
+<li>push相关
+<ul>
+<li><code>git push (远程主机名) (本地分支名):(远程分支名)</code>（这个顺序也很有意思，从本地推远）</li>
+<li>如果本地分支名和远程分支名相同则可以省略冒号：<code>git push (远程主机名) (本地分支名)</code></li>
+</ul>
+</li>
+<li>pull相关
+<ul>
+<li>pull就是fetch和merge的结合</li>
+<li><code>git pull (远程主机名) (远程分支名):(本地分支名)</code>（从远程拉到本地）</li>
+<li>如果本地分支名和远程分支名相同则可以省略冒号：<code>git pull (远程主机名) (远程分支名)</code></li>
+</ul>
+</li>
+</ul>
+<p>血泪教训，最好先git clone一下再push、pull之类的，不然会有奇奇怪怪的问题</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-08-22</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/2022/08/git_help/index.md" target="_blank">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://WnQinm.github.io/2022/08/git_help/" data-title="Git 简单入门" data-hashtags="git"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Reddit" data-sharer="reddit" data-url="https://WnQinm.github.io/2022/08/git_help/"><i class="fab fa-reddit fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://WnQinm.github.io/2022/08/git_help/" data-title="Git 简单入门"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://WnQinm.github.io/2022/08/git_help/" data-title="Git 简单入门"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/baidu.svg" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/git/">git</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2022/08/markdown_help/" class="prev" rel="prev" title="Markdown语法简介"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Markdown语法简介</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">River flies, sky lies.</div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">清梦</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":25},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
