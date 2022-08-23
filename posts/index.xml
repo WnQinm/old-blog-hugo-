@@ -3,7 +3,15 @@
         <title>所有文章 - Qinm&#39;s blog</title>
         <link>https://WnQinm.github.io/posts/</link>
         <description>所有文章 | Qinm&#39;s blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 22 Aug 2022 21:14:53 &#43;0800</lastBuildDate><atom:link href="https://WnQinm.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 23 Aug 2022 17:31:30 &#43;0800</lastBuildDate><atom:link href="https://WnQinm.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Google高级搜索</title>
+    <link>https://WnQinm.github.io/2022/08/google_search/</link>
+    <pubDate>Tue, 23 Aug 2022 17:31:30 &#43;0800</pubDate>
+    <author>清梦</author>
+    <guid>https://WnQinm.github.io/2022/08/google_search/</guid>
+    <description><![CDATA[类似于百度搜索，Google搜索引擎同样有高级搜索语法来提高搜素效率！ 完全匹配搜索 将搜索短语包在引号中，且支持完全不完全匹配混搭： can have me &ldquo;must have]]></description>
+</item>
+<item>
     <title>Git 简单入门</title>
     <link>https://WnQinm.github.io/2022/08/git_help/</link>
     <pubDate>Mon, 22 Aug 2022 21:14:53 &#43;0800</pubDate>
