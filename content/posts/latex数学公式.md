@@ -64,15 +64,15 @@ $$
 # 普通运算符
 
 $$
-+- \\
-\times,\cdot,\div \\
-\pm,\mp \\
++-\\
+\times,\cdot,\div\\
+\pm,\mp\\
 \>,\<,\ge,\le,\gg,\ll,\ne,\approx,\equiv\\
 \cap,\cup,\in,\notin,\subseteq,\subseteqq,\varnothing\\
 \forall,\exists,\nexists\\
 \because,\therefore\\
 \mathbb R,\R,\Q,\N,\Z_+\\
-\mathcal F,\mathscr F
+\mathcal F,\mathscr F\\
 $$
 
 $$
@@ -216,7 +216,6 @@ $$
 $$
 
 # 练习
-
 $$
 f(x) = \frac 1 {\sqrt{2\pi} \sigma} {\rm e}^{-\frac {(x-\mu)^2}{2\sigma^2}}\\
 f(x) = \frac 1 {\sqrt{2\pi} \sigma} \exp \left[{-\frac {(x-\mu)^2}{2\sigma^2}}\right]
