@@ -60,9 +60,7 @@ $$
 \sqrt[3]x
 $$
 
-
 # 普通运算符
-
 $$
 +-\\
 \times,\cdot,\div\\
@@ -72,9 +70,8 @@ $$
 \forall,\exists,\nexists\\
 \because,\therefore\\
 \mathbb R,\R,\Q,\N,\Z_+\\
-\mathcal F,\mathscr F\\
+\mathcal F,\mathscr F
 $$
-
 $$
 \cdots,\vdots,\ddots
 $$
@@ -157,7 +154,6 @@ a&=b+c+d\\
 
 \end{align}
 $$
-
 两处&将自动对齐
 
 # 大括号
@@ -217,7 +213,7 @@ $$
 
 # 练习
 $$
-f(x) = \frac 1 {\sqrt{2\pi} \sigma} {\rm e}^{-\frac {(x-\mu)^2}{2\sigma^2}}\\
+f(x) = \frac 1 {\sqrt{2\pi} \sigma} {\rm e}^{-\frac {(x-\mu)^2}{2\sigma^2}}\\\\
 f(x) = \frac 1 {\sqrt{2\pi} \sigma} \exp \left[{-\frac {(x-\mu)^2}{2\sigma^2}}\right]
 $$
 
@@ -227,9 +223,9 @@ $$
 
 $$
 \begin{align}
-&\lim\limits_{x \to 1}(2 - x)^{\sec \frac{\pi x}{2}}\\
-=&exp \left[\lim\limits_{x \to 1}\frac{\ln (2-x)}{\cos \frac{\pi x}{2}} \right]\\
-=&exp \left[\lim\limits_{x \to 1}\frac{-\frac{1}{(2-x)}}{-\sin \frac{\pi x}{2}} \cdot \frac 2 \pi \right]\\
+&\lim\limits_{x \to 1}(2 - x)^{\sec \frac{\pi x}{2}}\\\\
+=&exp \left[\lim\limits_{x \to 1}\frac{\ln (2-x)}{\cos \frac{\pi x}{2}} \right]\\\\
+=&exp \left[\lim\limits_{x \to 1}\frac{-\frac{1}{(2-x)}}{-\sin \frac{\pi x}{2}} \cdot \frac 2 \pi \right]\\\\
 =&{\rm e}^\frac 2 \pi 
 \end{align}
 $$
