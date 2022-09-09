@@ -3,9 +3,17 @@
         <title>Qinm&#39;s blog</title>
         <link>https://WnQinm.github.io/</link>
         <description>Qinm&#39;s blog, hugo-loveit</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 30 Aug 2022 15:30:33 &#43;0800</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 09 Sep 2022 09:02:37 &#43;0800</lastBuildDate>
             <atom:link href="https://WnQinm.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Taylor</title>
+    <link>https://WnQinm.github.io/2022/09/taylor/</link>
+    <pubDate>Fri, 09 Sep 2022 09:02:37 &#43;0800</pubDate>
+    <author>清梦</author>
+    <guid>https://WnQinm.github.io/2022/09/taylor/</guid>
+    <description><![CDATA[记录大一所学的泰勒助记: $$ \begin{align*} 四个泰勒：\\ &amp;e^x=1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\cdots\\ &amp;\sin x=x-\frac{x^3}{3!}+\frac{x^5}{5!}-\cdots\\ &amp;\cos x=1-\frac{x^2}{2!}+\frac{x^4}{4!}-\cdots\\ &amp;\frac 1{1-x}=1+x+x^2+x^3+\cdots\qquad①\\ \end{align*}\\ \begin{align*} then：\\]]></description>
+</item>
+<item>
     <title>鲸鱼安慰了大海</title>
     <link>https://WnQinm.github.io/2022/08/jyawldh/</link>
     <pubDate>Tue, 30 Aug 2022 15:30:33 &#43;0800</pubDate>
