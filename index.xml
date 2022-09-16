@@ -6,6 +6,14 @@
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 02 Aug 2019 11:04:49 &#43;0800</lastBuildDate>
             <atom:link href="https://WnQinm.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Docker help</title>
+    <link>https://WnQinm.github.io/2022/09/docker_init/</link>
+    <pubDate>Fri, 16 Sep 2022 14:03:10 &#43;0800</pubDate>
+    <author>清梦</author>
+    <guid>https://WnQinm.github.io/2022/09/docker_init/</guid>
+    <description><![CDATA[intro Docker是基于Go语言开发的开源项目 官网：https://www.docker.com/ 文档：https://docs.docker.]]></description>
+</item>
+<item>
     <title>Clash for linux</title>
     <link>https://WnQinm.github.io/2022/09/clash_linux/</link>
     <pubDate>Fri, 16 Sep 2022 13:27:13 &#43;0800</pubDate>
