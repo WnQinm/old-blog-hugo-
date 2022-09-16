@@ -3,9 +3,17 @@
         <title>Qinm&#39;s blog</title>
         <link>https://WnQinm.github.io/</link>
         <description>Qinm&#39;s blog, hugo-loveit</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 09 Sep 2022 09:02:37 &#43;0800</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 02 Aug 2019 11:04:49 &#43;0800</lastBuildDate>
             <atom:link href="https://WnQinm.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Clash for linux</title>
+    <link>https://WnQinm.github.io/2022/09/clash_linux/</link>
+    <pubDate>Fri, 16 Sep 2022 13:27:13 &#43;0800</pubDate>
+    <author>清梦</author>
+    <guid>https://WnQinm.github.io/2022/09/clash_linux/</guid>
+    <description><![CDATA[花费六十多大洋在腾讯云利用学生和新人身份租了一年云服务器，结果git clone发现无法正常使用GitHub，无奈学习了在服务器部署clash]]></description>
+</item>
+<item>
     <title>Taylor</title>
     <link>https://WnQinm.github.io/2022/09/taylor/</link>
     <pubDate>Fri, 09 Sep 2022 09:02:37 &#43;0800</pubDate>

@@ -7,10 +7,10 @@
         <title>Latex数学公式 - Qinm&#39;s blog</title><meta name="Description" content="Qinm&#39;s blog, hugo-loveit"><meta property="og:title" content="Latex数学公式" />
 <meta property="og:description" content="由于本人技术原因，latex在html界面的渲染做的很差，有的可以正常显示有的则不行，本篇主要是帮助回忆latex数学公式相关语法，故而就此" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://WnQinm.github.io/2022/08/latex%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/" /><meta property="og:image" content="https://WnQinm.github.io/logo.png"/><meta property="article:section" content="posts" />
+<meta property="og:url" content="https://WnQinm.github.io/2022/08/latex%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/" />
+<meta property="og:image" content="https://WnQinm.github.io/logo.png"/>
 <meta property="article:published_time" content="2022-08-22T20:16:49+08:00" />
 <meta property="article:modified_time" content="2022-08-22T20:16:49+08:00" /><meta property="og:site_name" content="blog" />
-
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://WnQinm.github.io/logo.png"/>
 
@@ -82,11 +82,11 @@
 <p>==双反斜杠换行==</p>
 <h1 id="希腊字母">希腊字母</h1>
 <p>$$
-\delta,\lambda\
-\Delta,\Lambda\
-\Alpha,\Beta\
-\phi,\varphi\
-\epsilon,\varepsilon\
+\delta,\lambda\<br>
+\Delta,\Lambda\<br>
+\Alpha,\Beta\<br>
+\phi,\varphi\<br>
+\epsilon,\varepsilon\<br>
 \partial
 $$</p>
 <p><img
@@ -99,16 +99,16 @@ $$</p>
         title="屏幕截图 2021-10-14 165750" /></p>
 <h1 id="上下标">上下标</h1>
 <p>$$
-a^2,a_1\
-x^{y+z},p_{ij}\
+a^2,a_1\<br>
+x^{y+z},p_{ij}\<br>
 x^(y+z),p_ij
 $$
 上下标内容多于一个字符就需要用大括号包裹</p>
 <p>$$
-x_i,x_{\rm i},x_{\text i}\
-\text{A B},\rm{A B}\
-\text A B,\rm A B\
-{\rm A} B\
+x_i,x_{\rm i},x_{\text i}\<br>
+\text{A B},\rm{A B}\<br>
+\text A B,\rm A B\<br>
+{\rm A} B\<br>
 自然对数{\text e},虚数单位{\text i}
 $$
 text支持空格，rm不支持但其后所有都会变成罗马体，line4是解决方法
@@ -117,26 +117,26 @@ rm : roman
 <h1 id="分式与根式">分式与根式</h1>
 <p>==分式==
 $$
-\frac {1}{2},\frac 1 2\
-\frac 1 {x+y}\
-\frac {\frac 1 x + 1}{y+1}\
+\frac {1}{2},\frac 1 2\<br>
+\frac 1 {x+y}\<br>
+\frac {\frac 1 x + 1}{y+1}\<br>
 分子x分之1改大一些：\frac {\dfrac 1 x + 1}{y+1}
 $$</p>
 <p>==根式==
 $$
-\sqrt 2,\sqrt {x+y}\
+\sqrt 2,\sqrt {x+y}\<br>
 \sqrt[3]x
 $$</p>
 <h1 id="普通运算符">普通运算符</h1>
 <p>$$
-+-\
-\times,\cdot,\div\
-\pm,\mp\
-&gt;,&lt;,\ge,\le,\gg,\ll,\ne,\approx,\equiv\
-\cap,\cup,\in,\notin,\subseteq,\subseteqq,\varnothing\
-\forall,\exists,\nexists\
-\because,\therefore\
-\mathbb R,\R,\Q,\N,\Z_+\
++-\<br>
+\times,\cdot,\div\<br>
+\pm,\mp\<br>
+\&gt;,&lt;,\ge,\le,\gg,\ll,\ne,\approx,\equiv\<br>
+\cap,\cup,\in,\notin,\subseteq,\subseteqq,\varnothing\<br>
+\forall,\exists,\nexists\<br>
+\because,\therefore\<br>
+\mathbb R,\R,\Q,\N,\Z_+\<br>
 \mathcal F,\mathscr F
 $$
 $$
@@ -146,9 +146,9 @@ $$</p>
 \infty,\partial,\nabla,\propto,\degree
 $$</p>
 <p>$$
-\sin x,\sec x,\cosh x\
-\log_2 x,\ln x,\lg x\
-\lim_{x \to 0}\
+\sin x,\sec x,\cosh x\<br>
+\log_2 x,\ln x,\lg x\<br>
+\lim_{x \to 0}\<br>
 \lim\limits_{x \to 0} \frac{x}{\sin x}
 \max x
 $$</p>
@@ -157,25 +157,25 @@ $$</p>
 ==运算符英文字母要用直体==</p>
 <h1 id="大型运算符">大型运算符</h1>
 <p>$$
-\sum,\prod\
-\sum_i,\sum_{i=0}^N\
+\sum,\prod\<br>
+\sum_i,\sum_{i=0}^N\<br>
 \frac{\sum\limits_{i=1}^n x_i}{\prod\limits_{i=1}^n x_i}
 $$
 ==注意下划线==</p>
 <p>$$
-\int,\iint,\iiint,\oint,\oiint\
+\int,\iint,\iiint,\oint,\oiint\<br>
 \int_{-\infty}^0 f(x),\text d x
 $$</p>
 <p>标准微积分d要直立体，且dx要和被积函数拉开一个小距离（,）</p>
 <p>$$
-a, a\
-a\ a\
-a\quad a\
+a, a\<br>
+a\ a\<br>
+a\quad a\<br>
 a\qquad a
 $$</p>
 <h1 id="标注符号">标注符号</h1>
 <p>$$
-\vec x,\overrightarrow AB\
+\vec x,\overrightarrow AB\<br>
 \bar x,\overline{AB}
 $$</p>
 <p><img
@@ -200,9 +200,9 @@ $$
         title="屏幕截图 2021-10-14 175451" /></p>
 <h1 id="括号与定界符">括号与定界符</h1>
 <p>$$
-([]),{ }\
-\lceil,\rceil,\lfloor,\rfloor,||\
-\left(0,\frac 1 a\right]\
+([]),{ }\<br>
+\lceil,\rceil,\lfloor,\rfloor,||\<br>
+\left(0,\frac 1 a\right]\<br>
 \left.\frac {\partial f}{\partial x}\right|_{x=0}
 $$
 括号前加\left\right实现括号大小自适应
@@ -210,7 +210,7 @@ $$
 <h1 id="多行公式">多行公式</h1>
 <p>$$
 \begin{align}</p>
-<p>a&amp;=b+c+d\
+<p>a&amp;=b+c+d\<br>
 &amp;=e+f</p>
 <p>\end{align}
 $$
@@ -219,32 +219,32 @@ $$
 <p>$$
 f(x)=</p>
 <p>\begin{cases}</p>
-<p>\sin x,&amp;-\pi\le x \le \pi\
+<p>\sin x,&amp;-\pi\le x \le \pi\<br>
 0,&amp;\text{其他}
 \end{cases}
 $$</p>
 <h1 id="矩阵">矩阵</h1>
 <p>$$
 \begin{matrix}</p>
-<p>a &amp; b &amp; \cdots &amp; c\
-\vdots&amp; \vdots &amp; \ddots &amp; \vdots\
+<p>a &amp; b &amp; \cdots &amp; c\<br>
+\vdots&amp; \vdots &amp; \ddots &amp; \vdots\<br>
 e &amp; f &amp; \cdots &amp; g</p>
 <p>\end{matrix}
 $$</p>
 <p>$$
 \begin{bmatrix}</p>
-<p>a &amp; b &amp; \cdots &amp; c\
-\vdots&amp; \vdots &amp; \ddots &amp; \vdots\
+<p>a &amp; b &amp; \cdots &amp; c\<br>
+\vdots&amp; \vdots &amp; \ddots &amp; \vdots\<br>
 e &amp; f &amp; \cdots &amp; g</p>
 <p>\end{bmatrix}</p>
 <p>\begin{pmatrix}</p>
-<p>a &amp; b &amp; \cdots &amp; c\
-\vdots&amp; \vdots &amp; \ddots &amp; \vdots\
+<p>a &amp; b &amp; \cdots &amp; c\<br>
+\vdots&amp; \vdots &amp; \ddots &amp; \vdots\<br>
 e &amp; f &amp; \cdots &amp; g</p>
 <p>\end{pmatrix}</p>
 <p>\begin{vmatrix}</p>
-<p>a &amp; b &amp; \cdots &amp; c\
-\vdots&amp; \vdots &amp; \ddots &amp; \vdots\
+<p>a &amp; b &amp; \cdots &amp; c\<br>
+\vdots&amp; \vdots &amp; \ddots &amp; \vdots\<br>
 e &amp; f &amp; \cdots &amp; g</p>
 <p>\end{vmatrix}
 $$</p>
@@ -254,7 +254,7 @@ $$
 $$</p>
 <h1 id="练习">练习</h1>
 <p>$$
-f(x) = \frac 1 {\sqrt{2\pi} \sigma} {\rm e}^{-\frac {(x-\mu)^2}{2\sigma^2}}\\
+f(x) = \frac 1 {\sqrt{2\pi} \sigma} {\rm e}^{-\frac {(x-\mu)^2}{2\sigma^2}}\\<br>
 f(x) = \frac 1 {\sqrt{2\pi} \sigma} \exp \left[{-\frac {(x-\mu)^2}{2\sigma^2}}\right]
 $$</p>
 <p>$$
@@ -262,9 +262,9 @@ $$</p>
 $$</p>
 <p>$$
 \begin{align}
-&amp;\lim\limits_{x \to 1}(2 - x)^{\sec \frac{\pi x}{2}}\\
-=&amp;exp \left[\lim\limits_{x \to 1}\frac{\ln (2-x)}{\cos \frac{\pi x}{2}} \right]\\
-=&amp;exp \left[\lim\limits_{x \to 1}\frac{-\frac{1}{(2-x)}}{-\sin \frac{\pi x}{2}} \cdot \frac 2 \pi \right]\\
+&amp;\lim\limits_{x \to 1}(2 - x)^{\sec \frac{\pi x}{2}}\\<br>
+=&amp;exp \left[\lim\limits_{x \to 1}\frac{\ln (2-x)}{\cos \frac{\pi x}{2}} \right]\\<br>
+=&amp;exp \left[\lim\limits_{x \to 1}\frac{-\frac{1}{(2-x)}}{-\sin \frac{\pi x}{2}} \cdot \frac 2 \pi \right]\\<br>
 =&amp;{\rm e}^\frac 2 \pi
 \end{align}
 $$</p>
