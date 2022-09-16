@@ -711,4 +711,6 @@ lighthouse  test.md  ubuntu
 
 # 拷贝是一个手动过程，可以使用 -v 卷的技术，实现自动同步，即连同内外两个目录
 ```
+## 小结
 
+![summary](https://img-blog.csdnimg.cn/383865dd59f64bd88cbe6b4a56f1315c.png)
