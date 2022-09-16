@@ -35,7 +35,7 @@
                             "url": "https:\/\/WnQinm.github.io\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "net","wordcount":  1452 ,
+                        }],"genre": "posts","keywords": "net","wordcount":  4139 ,
         "url": "https:\/\/WnQinm.github.io\/2022\/09\/docker_init\/","datePublished": "2022-09-16T14:03:10+08:00","dateModified": "2022-09-16T14:03:10+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/WnQinm.github.io\/images\/avatar.png"},"author": {
@@ -74,8 +74,8 @@
 </header><main class="main">
                 <div class="container"><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Docker help</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>清梦</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-09-16">2022-09-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 1452 字&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-09-16">2022-09-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 4139 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 9 分钟&nbsp;</div>
         </div><div class="content" id="content"><h1 id="intro">intro</h1>
 <p>Docker是基于Go语言开发的开源项目
 官网：https://www.docker.com/
@@ -409,6 +409,970 @@ hello-world   latest    feb5d9fea6a5   <span class="m">11</span> months ago   13
 <td class="lntd">
 <pre class="chroma"><code class="language-shell" data-lang="shell">sudo rm -rf /var/lib/docker
 sudo rm -rf /var/lib/containerd
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="docker的常用命令">Docker的常用命令</h1>
+<p>ps.后面一定位置开始，我嫌麻烦，所以将<code>sudo docker</code>简写为<code>sdr</code></p>
+<h2 id="帮助命令">帮助命令</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">docker version   <span class="c1"># 显示docker的版本信息</span>
+docker info      <span class="c1"># 显示docker的系统信息，包括镜像和容器的数量</span>
+docker &lt;command&gt; --help  <span class="c1"># 帮助命令</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>帮助文档的地址：https://docs.docker.com/reference/</p>
+<h2 id="镜像命令">镜像命令</h2>
+<p><strong>docker images</strong>查看所有本地主机上的镜像</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ sudo docker images
+REPOSITORY    TAG       IMAGE ID       CREATED         SIZE
+hello-world   latest    feb5d9fea6a5   <span class="m">11</span> months ago   13.3kB
+
+<span class="c1"># 解释</span>
+REPOSITORY  镜像的仓库源
+TAG         镜像的标签
+IMAGE ID    镜像的id
+CREATED     镜像的创建时间
+SIZE        镜像的大小
+
+<span class="c1"># 可选项</span>
+	-a, --all     <span class="c1"># 列出所有镜像</span>
+	-q, --quiet   <span class="c1"># 只显示镜像的id</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>docker search</strong>搜索镜像</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ sudo docker search mysql
+NAME                            DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED
+mysql                           MySQL is a widely used, open-source relation…   <span class="m">13187</span>     <span class="o">[</span>OK<span class="o">]</span>
+mariadb                         MariaDB Server is a high performing open sou…   <span class="m">5040</span>      <span class="o">[</span>OK<span class="o">]</span>
+
+$ sudo docker search mysql --filter<span class="o">=</span><span class="nv">STARS</span><span class="o">=</span><span class="m">3000</span>  <span class="c1">#搜索stars不少于3000的镜像</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>docker pull</strong>下载镜像</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 下载镜像 docker pull 镜像名[:tag]</span>
+$ sudo docker pull mysql
+Using default tag: latest	<span class="c1"># 如果不写 tag，默认就是 latest</span>
+latest: Pulling from library/mysql
+051f419db9dd: Pull <span class="nb">complete</span>	<span class="c1"># 分层下载，docker image的核心 联合文件系统</span>
+7627573fa82a: Pull <span class="nb">complete</span>
+a44b358d7796: Pull <span class="nb">complete</span>
+95753aff4b95: Pull <span class="nb">complete</span>
+a1fa3bee53f4: Pull <span class="nb">complete</span>
+f5227e0d612c: Pull <span class="nb">complete</span>
+b4b4368b1983: Pull <span class="nb">complete</span>
+f26212810c32: Pull <span class="nb">complete</span>
+d803d4215f95: Pull <span class="nb">complete</span>
+d5358a7f7d07: Pull <span class="nb">complete</span>
+435e8908cd69: Pull <span class="nb">complete</span>
+Digest: sha256:b9532b1edea72b6cee12d9f5a78547bd3812ea5db842566e17f8b33291ed2921	<span class="c1"># 签名（防伪标志）</span>
+Status: Downloaded newer image <span class="k">for</span> mysql:latest
+docker.io/library/mysql:latest	<span class="c1"># 真实地址</span>
+
+<span class="c1"># 二者等价：</span>
+docker pull mysql
+docker pull docker.io/library/mysql:latest
+
+<span class="c1"># 指定版本下载</span>
+$ sudo docker pull mysql:5.7
+5.7: Pulling from library/mysql
+9815334b7810: Pull <span class="nb">complete</span>		<span class="c1"># 如果之前下载过某些层，就会显示&#34;Already exists 直接拿过来用而不重新下载</span>
+f85cb6fccbfd: Pull <span class="nb">complete</span>
+b63612353671: Pull <span class="nb">complete</span>
+447901201612: Pull <span class="nb">complete</span>
+9b6bc806cc29: Pull <span class="nb">complete</span>
+24ec1f4b3b0d: Pull <span class="nb">complete</span>
+207ed1eb2fd4: Pull <span class="nb">complete</span>
+27cbde3edd97: Pull <span class="nb">complete</span>
+0a5aa35cc154: Pull <span class="nb">complete</span>
+e6c92bf6471b: Pull <span class="nb">complete</span>
+07b80de0d1af: Pull <span class="nb">complete</span>
+Digest: sha256:c1bda6ecdbc63d3b0d3a3a3ce195de3dd755c4a0658ed782a16a0682216b9a48
+Status: Downloaded newer image <span class="k">for</span> mysql:5.7
+docker.io/library/mysql:5.7
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>docker rmi</strong>删除镜像
+docker rmi -f 镜像id [镜像id] [镜像id] &hellip;</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ sudo docker images
+REPOSITORY    TAG       IMAGE ID       CREATED         SIZE
+mysql         latest    43fcfca0776d   <span class="m">35</span> hours ago    449MB
+mysql         5.7       daff57b7d2d1   <span class="m">3</span> weeks ago     430MB
+hello-world   latest    feb5d9fea6a5   <span class="m">11</span> months ago   13.3kB
+$ sudo docker rmi -f daff57b7d2d1	<span class="c1"># 根据id删除镜像</span>
+Untagged: mysql:5.7
+Untagged: mysql@sha256:c1bda6ecdbc63d3b0d3a3a3ce195de3dd755c4a0658ed782a16a0682216b9a48
+Deleted: sha256:daff57b7d2d1e009d0b271972f62dbf4de64b8cdb9cd646442aeda961e615f44
+Deleted: sha256:a2b6de0d8fad38b5d19b0207decce5994598e15ae6aaf974733924dcbd8f04de
+Deleted: sha256:f3bd23ad30ca816481c810885546988744e444e8b4f52c196c29d5e3f667157f
+Deleted: sha256:7789a0eac346070602d9fae747fb5d81952454c6e11d5381cbc12a4825198d6e
+Deleted: sha256:2cdfa876efe3302b715dad6bfd13cee0c512c58843200920953efe3355f5931c
+Deleted: sha256:8d4cf9ffb69b960e2a2ebb157660b37a15ea645a71791aefc2b1600f1f603ebb
+Deleted: sha256:d98069632a6bb3b2ba690a11cff2481a9b954aba58a7c3388484dd65ef8e1580
+Deleted: sha256:0295feed0657a087e23700dcf0e41069bf8c565a092eea9426be99d8de5a45dc
+Deleted: sha256:c9a9086bbafa8383c2002a50cce49e22bd060897dc121c18b41a9893b83816f5
+Deleted: sha256:ed4bd9721438e36a8667ddcb461b958473d7b5f155df32155e08764648486087
+Deleted: sha256:018f336482437233f5c9e135a18f5ba391448340d3ef2ec99fd88ab599906463
+Deleted: sha256:bcf2a1ad6472a891de95b5132d013c064a07ec9995cb61b0cc0f8d4a4ea855fb
+
+$ sudo docker rmi -f <span class="k">$(</span>sudo docker images -aq<span class="k">)</span> <span class="c1"># $()传入多个参数，这里传入所有镜像的id然后删除</span>
+Untagged: mysql:latest
+Untagged: mysql@sha256:b9532b1edea72b6cee12d9f5a78547bd3812ea5db842566e17f8b33291ed2921
+Deleted: sha256:43fcfca0776df8e192d1647da2866237fbd9f8e875fb496e4ca887369b2dd995
+Deleted: sha256:45d11760ca3e62bb36a589002b413a42c60c9b917b7a089b116c1ab69155aa4d
+Deleted: sha256:af1876abdf5bbbef0ac13e24068669d600bf7de8aa74f31a43ae5f56b83331c2
+Deleted: sha256:e1668f1334215580aa7a19beef5d1ee6c6ba121c305154f1ddd7253e21bf65e8
+Deleted: sha256:91d92a76bd6a29d88aa511715731ac59d1df33c8e4f5b393dbc16c16b9c08b1c
+Deleted: sha256:8608eb76a683654e96af6087a19f416c4498e46f1121e15d63d2ce983750a3a2
+Deleted: sha256:fd95c084aad87623a6db2c76480f0765e16ae2ba6de68ce1aefdb7ea4e8fe120
+Deleted: sha256:968e68a28e13606ce58651654f554c342f51d5f3ea7e792cdcb21809fefe1a4f
+Deleted: sha256:15628dda9c1556632ae3577f5dd8ff16c6456fb95da60284783e8c1f89c588ae
+Deleted: sha256:49904d4d7d64ce4a3b64466e4d9bdc624fa8acc760c6a622dcbde03a0ada9fed
+Deleted: sha256:df0e3d67e1ecb153c572e3110d36a8bbc46ded2dc376395384c6171732241d90
+Deleted: sha256:05dc728e5e49b5db657ec403b875f757afdd8d31f624eea76d706d6eee6395b2
+Untagged: hello-world:latest
+Untagged: hello-world@sha256:62af9efd515a25f84961b70f973a798d2eca956b1b2b026d0a4a63a3b0b6a3f2
+Deleted: sha256:feb5d9fea6a5e9606aa995e879d862b825965ba48de054caab5ef356dc6b3412
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="容器命令">容器命令</h2>
+<ul>
+<li>有了镜像才可以创建容器，linux，下载一个centos镜像:<code>docker pull centos</code></li>
+</ul>
+<p><strong>新建容器并启动</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">docker run <span class="o">[</span>可选参数<span class="o">]</span> image
+
+<span class="c1"># 参数说明</span>
+--name<span class="o">=</span><span class="s2">&#34;Name&#34;</span>		<span class="c1"># 容器名字 区分容器</span>
+-d					<span class="c1"># 后台方式运行（linux本身是nohup）</span>
+-it					<span class="c1"># 使用交互方式运行，进入容器查看内容</span>
+-p					<span class="c1"># 指定容器的端口 -p 8080:8080</span>
+	-p ip:主机端口:容器端口
+	-p 主机端口:容器端口
+	-p 容器端口
+	容器端口
+-P					<span class="c1"># 随机指定端口</span>
+
+<span class="c1"># 测试，启动并进入容器</span>
+$ sudo docker run -it centos /bin/bash
+<span class="o">[</span>root@f4373afebe37 /<span class="o">]</span><span class="c1"># ls	# 查看容器内的centos，基础版本，很多命令不完善</span>
+bin  etc   lib    lost+found  mnt  proc  run   srv  tmp  var
+dev  home  lib64  media       opt  root  sbin  sys  usr
+
+<span class="c1"># 从容器中退回主机</span>
+<span class="o">[</span>root@f4373afebe37 /<span class="o">]</span><span class="c1"># exit</span>
+<span class="nb">exit</span>
+$ ls
+blog  clash
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>列出所有运行中容器</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># docker ps 命令</span>
+		<span class="c1"># 列出当前正在运行的容器</span>
+-a 		<span class="c1"># 列出当前正在运行的容器+带出历史运行过的容器</span>
+-n<span class="o">=</span>?	<span class="c1"># 显示最近创建的容器</span>
+-q		<span class="c1"># 只显示容器的编号</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>退出容器</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">exit</span>	<span class="c1"># 直接容器停止并退出</span>
+CTRL + P + Q 	<span class="c1"># 容器不停止退出</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>删除容器</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">docker rm 容器id					<span class="c1"># 删除指定容器，不能删除正在运行的容器</span>
+docker rm -f <span class="k">$(</span>docker ps -aq<span class="k">)</span>	<span class="c1"># 删除所有容器</span>
+docker ps -aq <span class="p">|</span> xargs docker rm <span class="c1"># 删除所有容器</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>启动和停止容器</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">docker start 容器id		<span class="c1"># 启动容器</span>
+docker restart 容器id		<span class="c1"># 重启容器</span>
+docker stop 容器id		<span class="c1"># 停止当前正在运行的容器</span>
+docker <span class="nb">kill</span> 容器id		<span class="c1"># 强制停止容器</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="常用其他命令">常用其他命令</h2>
+<p><strong>后台启动容器</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 命令 docker run -d 镜像名</span>
+$ sudo docker run -d centos
+
+<span class="c1"># docker ps 发现centos停止了</span>
+
+<span class="c1"># 常见的坑，docker 容器使用后台运行，就必须要有一个前台进程，docker发现没有应用，就会自动停止</span>
+<span class="c1"># nginx，容器启动后，发现自己没有提供服务，就会立刻停止，就是没有程序了</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>查看日志</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">docker logs -f -t --tail &lt;num&gt; 容器id
+<span class="c1"># 空挂容器会导致关机或者logs为空</span>
+<span class="c1"># 后台开启一个容器并运行一个脚本</span>
+$ sudo docker run -d centos /bin/sh -c <span class="s2">&#34;while true;do echo hello;sleep 1;done&#34;</span>
+
+<span class="c1"># 显示日志</span>
+-tf			<span class="c1"># 显示所有日志，t时间戳，f持续输出</span>
+-tail number# 要显示的日志条数
+$ sudo docker logs -ft --tail <span class="m">10</span> 2cb886ae2fa9	<span class="c1"># 10为日志条数，由于加了参数f，会持续输出日志</span>
+2022-09-16T10:33:50.928401034Z hello
+2022-09-16T10:33:51.930308966Z hello
+2022-09-16T10:33:52.932148793Z hello
+2022-09-16T10:33:53.933995843Z hello
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>查看容器中的进程信息</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 命令 docker top 容器id</span>
+$ sudo docker top 2cb886ae2fa9
+UID                 PID                 PPID                C                   STIME               TTY                 TIME                CMD
+root                <span class="m">162268</span>              <span class="m">162248</span>              <span class="m">0</span>                   18:32               ? 
+root                <span class="m">164167</span>              <span class="m">162268</span>              <span class="m">0</span>                   18:40               ? 
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>查看镜像的元数据</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span><span class="lnt">148
+</span><span class="lnt">149
+</span><span class="lnt">150
+</span><span class="lnt">151
+</span><span class="lnt">152
+</span><span class="lnt">153
+</span><span class="lnt">154
+</span><span class="lnt">155
+</span><span class="lnt">156
+</span><span class="lnt">157
+</span><span class="lnt">158
+</span><span class="lnt">159
+</span><span class="lnt">160
+</span><span class="lnt">161
+</span><span class="lnt">162
+</span><span class="lnt">163
+</span><span class="lnt">164
+</span><span class="lnt">165
+</span><span class="lnt">166
+</span><span class="lnt">167
+</span><span class="lnt">168
+</span><span class="lnt">169
+</span><span class="lnt">170
+</span><span class="lnt">171
+</span><span class="lnt">172
+</span><span class="lnt">173
+</span><span class="lnt">174
+</span><span class="lnt">175
+</span><span class="lnt">176
+</span><span class="lnt">177
+</span><span class="lnt">178
+</span><span class="lnt">179
+</span><span class="lnt">180
+</span><span class="lnt">181
+</span><span class="lnt">182
+</span><span class="lnt">183
+</span><span class="lnt">184
+</span><span class="lnt">185
+</span><span class="lnt">186
+</span><span class="lnt">187
+</span><span class="lnt">188
+</span><span class="lnt">189
+</span><span class="lnt">190
+</span><span class="lnt">191
+</span><span class="lnt">192
+</span><span class="lnt">193
+</span><span class="lnt">194
+</span><span class="lnt">195
+</span><span class="lnt">196
+</span><span class="lnt">197
+</span><span class="lnt">198
+</span><span class="lnt">199
+</span><span class="lnt">200
+</span><span class="lnt">201
+</span><span class="lnt">202
+</span><span class="lnt">203
+</span><span class="lnt">204
+</span><span class="lnt">205
+</span><span class="lnt">206
+</span><span class="lnt">207
+</span><span class="lnt">208
+</span><span class="lnt">209
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 命令 docker inspect 容器id</span>
+
+$ sudo docker inspect 2cb886ae2fa9
+<span class="o">[</span>
+    <span class="o">{</span>
+        <span class="s2">&#34;Id&#34;</span>: <span class="s2">&#34;2cb886ae2fa927bc1bca61010b04a97f3aadf0a5e0d830c98dca6a920278017e&#34;</span>,
+        <span class="s2">&#34;Created&#34;</span>: <span class="s2">&#34;2022-09-16T10:32:21.383810621Z&#34;</span>,
+        <span class="s2">&#34;Path&#34;</span>: <span class="s2">&#34;/bin/sh&#34;</span>,
+        <span class="s2">&#34;Args&#34;</span>: <span class="o">[</span>
+            <span class="s2">&#34;-c&#34;</span>,
+            <span class="s2">&#34;while true;do echo hello;sleep 1;done&#34;</span>
+        <span class="o">]</span>,
+        <span class="s2">&#34;State&#34;</span>: <span class="o">{</span>
+            <span class="s2">&#34;Status&#34;</span>: <span class="s2">&#34;running&#34;</span>,
+            <span class="s2">&#34;Running&#34;</span>: true,
+            <span class="s2">&#34;Paused&#34;</span>: false,
+            <span class="s2">&#34;Restarting&#34;</span>: false,
+            <span class="s2">&#34;OOMKilled&#34;</span>: false,
+            <span class="s2">&#34;Dead&#34;</span>: false,
+            <span class="s2">&#34;Pid&#34;</span>: 162268,
+            <span class="s2">&#34;ExitCode&#34;</span>: 0,
+            <span class="s2">&#34;Error&#34;</span>: <span class="s2">&#34;&#34;</span>,
+            <span class="s2">&#34;StartedAt&#34;</span>: <span class="s2">&#34;2022-09-16T10:32:21.762354014Z&#34;</span>,
+            <span class="s2">&#34;FinishedAt&#34;</span>: <span class="s2">&#34;0001-01-01T00:00:00Z&#34;</span>
+        <span class="o">}</span>,
+        <span class="s2">&#34;Image&#34;</span>: <span class="s2">&#34;sha256:5d0da3dc976460b72c77d94c8a1ad043720b0416bfc16c52c45d4847e53fadb6&#34;</span>,
+        <span class="s2">&#34;ResolvConfPath&#34;</span>: <span class="s2">&#34;/var/lib/docker/containers/2cb886ae2fa927bc1bca61010b04a97f3aadf0a5e0d830c98dca6a920278017e/resolv.conf&#34;</span>,        <span class="s2">&#34;HostnamePath&#34;</span>: <span class="s2">&#34;/var/lib/docker/containers/2cb886ae2fa927bc1bca61010b04a97f3aadf0a5e0d830c98dca6a920278017e/hostname&#34;</span>,
+        <span class="s2">&#34;HostsPath&#34;</span>: <span class="s2">&#34;/var/lib/docker/containers/2cb886ae2fa927bc1bca61010b04a97f3aadf0a5e0d830c98dca6a920278017e/hosts&#34;</span>,
+        <span class="s2">&#34;LogPath&#34;</span>: <span class="s2">&#34;/var/lib/docker/containers/2cb886ae2fa927bc1bca61010b04a97f3aadf0a5e0d830c98dca6a920278017e/2cb886ae2fa927bc1bca61010b04a97f3aadf0a5e0d830c98dca6a920278017e-json.log&#34;</span>,
+        <span class="s2">&#34;Name&#34;</span>: <span class="s2">&#34;/festive_mclaren&#34;</span>,
+        <span class="s2">&#34;RestartCount&#34;</span>: 0,
+        <span class="s2">&#34;Driver&#34;</span>: <span class="s2">&#34;overlay2&#34;</span>,
+        <span class="s2">&#34;Platform&#34;</span>: <span class="s2">&#34;linux&#34;</span>,
+        <span class="s2">&#34;MountLabel&#34;</span>: <span class="s2">&#34;&#34;</span>,
+        <span class="s2">&#34;ProcessLabel&#34;</span>: <span class="s2">&#34;&#34;</span>,
+        <span class="s2">&#34;AppArmorProfile&#34;</span>: <span class="s2">&#34;docker-default&#34;</span>,
+        <span class="s2">&#34;ExecIDs&#34;</span>: null,
+        <span class="s2">&#34;HostConfig&#34;</span>: <span class="o">{</span>
+            <span class="s2">&#34;Binds&#34;</span>: null,
+            <span class="s2">&#34;ContainerIDFile&#34;</span>: <span class="s2">&#34;&#34;</span>,
+            <span class="s2">&#34;LogConfig&#34;</span>: <span class="o">{</span>
+                <span class="s2">&#34;Type&#34;</span>: <span class="s2">&#34;json-file&#34;</span>,
+                <span class="s2">&#34;Config&#34;</span>: <span class="o">{}</span>
+            <span class="o">}</span>,
+            <span class="s2">&#34;NetworkMode&#34;</span>: <span class="s2">&#34;default&#34;</span>,
+            <span class="s2">&#34;PortBindings&#34;</span>: <span class="o">{}</span>,
+            <span class="s2">&#34;RestartPolicy&#34;</span>: <span class="o">{</span>
+                <span class="s2">&#34;Name&#34;</span>: <span class="s2">&#34;no&#34;</span>,
+                <span class="s2">&#34;MaximumRetryCount&#34;</span>: <span class="m">0</span>
+            <span class="o">}</span>,
+            <span class="s2">&#34;AutoRemove&#34;</span>: false,
+            <span class="s2">&#34;VolumeDriver&#34;</span>: <span class="s2">&#34;&#34;</span>,
+            <span class="s2">&#34;VolumesFrom&#34;</span>: null,
+            <span class="s2">&#34;CapAdd&#34;</span>: null,
+            <span class="s2">&#34;CapDrop&#34;</span>: null,
+            <span class="s2">&#34;CgroupnsMode&#34;</span>: <span class="s2">&#34;host&#34;</span>,
+            <span class="s2">&#34;Dns&#34;</span>: <span class="o">[]</span>,
+            <span class="s2">&#34;DnsOptions&#34;</span>: <span class="o">[]</span>,
+            <span class="s2">&#34;DnsSearch&#34;</span>: <span class="o">[]</span>,
+            <span class="s2">&#34;ExtraHosts&#34;</span>: null,
+            <span class="s2">&#34;GroupAdd&#34;</span>: null,
+            <span class="s2">&#34;IpcMode&#34;</span>: <span class="s2">&#34;private&#34;</span>,
+            <span class="s2">&#34;Cgroup&#34;</span>: <span class="s2">&#34;&#34;</span>,
+            <span class="s2">&#34;Links&#34;</span>: null,
+            <span class="s2">&#34;OomScoreAdj&#34;</span>: 0,
+            <span class="s2">&#34;PidMode&#34;</span>: <span class="s2">&#34;&#34;</span>,
+            <span class="s2">&#34;Privileged&#34;</span>: false,
+            <span class="s2">&#34;PublishAllPorts&#34;</span>: false,
+            <span class="s2">&#34;ReadonlyRootfs&#34;</span>: false,
+            <span class="s2">&#34;SecurityOpt&#34;</span>: null,
+            <span class="s2">&#34;UTSMode&#34;</span>: <span class="s2">&#34;&#34;</span>,
+            <span class="s2">&#34;UsernsMode&#34;</span>: <span class="s2">&#34;&#34;</span>,
+            <span class="s2">&#34;ShmSize&#34;</span>: 67108864,
+            <span class="s2">&#34;Runtime&#34;</span>: <span class="s2">&#34;runc&#34;</span>,
+            <span class="s2">&#34;ConsoleSize&#34;</span>: <span class="o">[</span>
+                0,
+                <span class="m">0</span>
+            <span class="o">]</span>,
+            <span class="s2">&#34;Isolation&#34;</span>: <span class="s2">&#34;&#34;</span>,
+            <span class="s2">&#34;CpuShares&#34;</span>: 0,
+            <span class="s2">&#34;Memory&#34;</span>: 0,
+            <span class="s2">&#34;NanoCpus&#34;</span>: 0,
+            <span class="s2">&#34;CgroupParent&#34;</span>: <span class="s2">&#34;&#34;</span>,
+            <span class="s2">&#34;BlkioWeight&#34;</span>: 0,
+            <span class="s2">&#34;BlkioWeightDevice&#34;</span>: <span class="o">[]</span>,
+            <span class="s2">&#34;BlkioDeviceReadBps&#34;</span>: null,
+            <span class="s2">&#34;BlkioDeviceWriteBps&#34;</span>: null,
+            <span class="s2">&#34;BlkioDeviceReadIOps&#34;</span>: null,
+            <span class="s2">&#34;BlkioDeviceWriteIOps&#34;</span>: null,
+            <span class="s2">&#34;CpuPeriod&#34;</span>: 0,
+            <span class="s2">&#34;CpuQuota&#34;</span>: 0,
+            <span class="s2">&#34;CpuRealtimePeriod&#34;</span>: 0,
+            <span class="s2">&#34;CpuRealtimeRuntime&#34;</span>: 0,
+            <span class="s2">&#34;CpusetCpus&#34;</span>: <span class="s2">&#34;&#34;</span>,
+            <span class="s2">&#34;CpusetMems&#34;</span>: <span class="s2">&#34;&#34;</span>,
+            <span class="s2">&#34;Devices&#34;</span>: <span class="o">[]</span>,
+            <span class="s2">&#34;DeviceCgroupRules&#34;</span>: null,
+            <span class="s2">&#34;DeviceRequests&#34;</span>: null,
+            <span class="s2">&#34;KernelMemory&#34;</span>: 0,
+            <span class="s2">&#34;KernelMemoryTCP&#34;</span>: 0,
+            <span class="s2">&#34;MemoryReservation&#34;</span>: 0,
+            <span class="s2">&#34;MemorySwap&#34;</span>: 0,
+            <span class="s2">&#34;MemorySwappiness&#34;</span>: null,
+            <span class="s2">&#34;OomKillDisable&#34;</span>: false,
+            <span class="s2">&#34;PidsLimit&#34;</span>: null,
+            <span class="s2">&#34;Ulimits&#34;</span>: null,
+            <span class="s2">&#34;CpuCount&#34;</span>: 0,
+            <span class="s2">&#34;CpuPercent&#34;</span>: 0,
+            <span class="s2">&#34;IOMaximumIOps&#34;</span>: 0,
+            <span class="s2">&#34;IOMaximumBandwidth&#34;</span>: 0,
+            <span class="s2">&#34;MaskedPaths&#34;</span>: <span class="o">[</span>
+                <span class="s2">&#34;/proc/asound&#34;</span>,
+                <span class="s2">&#34;/proc/acpi&#34;</span>,
+                <span class="s2">&#34;/proc/kcore&#34;</span>,
+                <span class="s2">&#34;/proc/keys&#34;</span>,
+                <span class="s2">&#34;/proc/latency_stats&#34;</span>,
+                <span class="s2">&#34;/proc/timer_list&#34;</span>,
+                <span class="s2">&#34;/proc/timer_stats&#34;</span>,
+                <span class="s2">&#34;/proc/sched_debug&#34;</span>,
+                <span class="s2">&#34;/proc/scsi&#34;</span>,
+                <span class="s2">&#34;/sys/firmware&#34;</span>
+            <span class="o">]</span>,
+            <span class="s2">&#34;ReadonlyPaths&#34;</span>: <span class="o">[</span>
+                <span class="s2">&#34;/proc/bus&#34;</span>,
+                <span class="s2">&#34;/proc/fs&#34;</span>,
+                <span class="s2">&#34;/proc/irq&#34;</span>,
+                <span class="s2">&#34;/proc/sys&#34;</span>,
+                <span class="s2">&#34;/proc/sysrq-trigger&#34;</span>
+            <span class="o">]</span>
+        <span class="o">}</span>,
+        <span class="s2">&#34;GraphDriver&#34;</span>: <span class="o">{</span>
+            <span class="s2">&#34;Data&#34;</span>: <span class="o">{</span>
+                <span class="s2">&#34;LowerDir&#34;</span>: <span class="s2">&#34;/var/lib/docker/overlay2/5e5a494c7a50b728f7118cdcf59378061bfc825810cc1cdda3a61900898f31d3-init/diff:/var/lib/docker/overlay2/67c73992368fc175a0d2849bc97620a48f90ed375eabe859da0816b8eb4b25cd/diff&#34;</span>,
+                <span class="s2">&#34;MergedDir&#34;</span>: <span class="s2">&#34;/var/lib/docker/overlay2/5e5a494c7a50b728f7118cdcf59378061bfc825810cc1cdda3a61900898f31d3/merged&#34;</span>,
+                <span class="s2">&#34;UpperDir&#34;</span>: <span class="s2">&#34;/var/lib/docker/overlay2/5e5a494c7a50b728f7118cdcf59378061bfc825810cc1cdda3a61900898f31d3/diff&#34;</span>,
+                <span class="s2">&#34;WorkDir&#34;</span>: <span class="s2">&#34;/var/lib/docker/overlay2/5e5a494c7a50b728f7118cdcf59378061bfc825810cc1cdda3a61900898f31d3/work&#34;</span>
+            <span class="o">}</span>,
+            <span class="s2">&#34;Name&#34;</span>: <span class="s2">&#34;overlay2&#34;</span>
+        <span class="o">}</span>,
+        <span class="s2">&#34;Mounts&#34;</span>: <span class="o">[]</span>,
+        <span class="s2">&#34;Config&#34;</span>: <span class="o">{</span>
+            <span class="s2">&#34;Hostname&#34;</span>: <span class="s2">&#34;2cb886ae2fa9&#34;</span>,
+            <span class="s2">&#34;Domainname&#34;</span>: <span class="s2">&#34;&#34;</span>,
+            <span class="s2">&#34;User&#34;</span>: <span class="s2">&#34;&#34;</span>,
+            <span class="s2">&#34;AttachStdin&#34;</span>: false,
+            <span class="s2">&#34;AttachStdout&#34;</span>: false,
+            <span class="s2">&#34;AttachStderr&#34;</span>: false,
+            <span class="s2">&#34;Tty&#34;</span>: false,
+            <span class="s2">&#34;OpenStdin&#34;</span>: false,
+            <span class="s2">&#34;StdinOnce&#34;</span>: false,
+            <span class="s2">&#34;Env&#34;</span>: <span class="o">[</span>
+                <span class="s2">&#34;PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin&#34;</span>
+            <span class="o">]</span>,
+            <span class="s2">&#34;Cmd&#34;</span>: <span class="o">[</span>
+                <span class="s2">&#34;/bin/sh&#34;</span>,
+                <span class="s2">&#34;-c&#34;</span>,
+                <span class="s2">&#34;while true;do echo hello;sleep 1;done&#34;</span>
+            <span class="o">]</span>,
+            <span class="s2">&#34;Image&#34;</span>: <span class="s2">&#34;centos&#34;</span>,
+            <span class="s2">&#34;Volumes&#34;</span>: null,
+            <span class="s2">&#34;WorkingDir&#34;</span>: <span class="s2">&#34;&#34;</span>,
+            <span class="s2">&#34;Entrypoint&#34;</span>: null,
+            <span class="s2">&#34;OnBuild&#34;</span>: null,
+            <span class="s2">&#34;Labels&#34;</span>: <span class="o">{</span>
+                <span class="s2">&#34;org.label-schema.build-date&#34;</span>: <span class="s2">&#34;20210915&#34;</span>,
+                <span class="s2">&#34;org.label-schema.license&#34;</span>: <span class="s2">&#34;GPLv2&#34;</span>,
+                <span class="s2">&#34;org.label-schema.name&#34;</span>: <span class="s2">&#34;CentOS Base Image&#34;</span>,
+                <span class="s2">&#34;org.label-schema.schema-version&#34;</span>: <span class="s2">&#34;1.0&#34;</span>,
+                <span class="s2">&#34;org.label-schema.vendor&#34;</span>: <span class="s2">&#34;CentOS&#34;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>,
+        <span class="s2">&#34;NetworkSettings&#34;</span>: <span class="o">{</span>
+            <span class="s2">&#34;Bridge&#34;</span>: <span class="s2">&#34;&#34;</span>,
+            <span class="s2">&#34;SandboxID&#34;</span>: <span class="s2">&#34;09f57f62adb9fc11d121a70bd0484a6e49284692ad39d86ba58d6bd52ffac681&#34;</span>,
+            <span class="s2">&#34;HairpinMode&#34;</span>: false,
+            <span class="s2">&#34;LinkLocalIPv6Address&#34;</span>: <span class="s2">&#34;&#34;</span>,
+            <span class="s2">&#34;LinkLocalIPv6PrefixLen&#34;</span>: 0,
+            <span class="s2">&#34;Ports&#34;</span>: <span class="o">{}</span>,
+            <span class="s2">&#34;SandboxKey&#34;</span>: <span class="s2">&#34;/var/run/docker/netns/09f57f62adb9&#34;</span>,
+            <span class="s2">&#34;SecondaryIPAddresses&#34;</span>: null,
+            <span class="s2">&#34;SecondaryIPv6Addresses&#34;</span>: null,
+            <span class="s2">&#34;EndpointID&#34;</span>: <span class="s2">&#34;4ac1492efb6c8d55fcc381116917dbb3abcfb5bcde25de84f8efd084ccd018cf&#34;</span>,
+            <span class="s2">&#34;Gateway&#34;</span>: <span class="s2">&#34;172.17.0.1&#34;</span>,
+            <span class="s2">&#34;GlobalIPv6Address&#34;</span>: <span class="s2">&#34;&#34;</span>,
+            <span class="s2">&#34;GlobalIPv6PrefixLen&#34;</span>: 0,
+            <span class="s2">&#34;IPAddress&#34;</span>: <span class="s2">&#34;172.17.0.2&#34;</span>,
+            <span class="s2">&#34;IPPrefixLen&#34;</span>: 16,
+            <span class="s2">&#34;IPv6Gateway&#34;</span>: <span class="s2">&#34;&#34;</span>,
+            <span class="s2">&#34;MacAddress&#34;</span>: <span class="s2">&#34;02:42:ac:11:00:02&#34;</span>,
+            <span class="s2">&#34;Networks&#34;</span>: <span class="o">{</span>
+                <span class="s2">&#34;bridge&#34;</span>: <span class="o">{</span>
+                    <span class="s2">&#34;IPAMConfig&#34;</span>: null,
+                    <span class="s2">&#34;Links&#34;</span>: null,
+                    <span class="s2">&#34;Aliases&#34;</span>: null,
+                    <span class="s2">&#34;NetworkID&#34;</span>: <span class="s2">&#34;4171a585caf462e0363f1976199c44032198de483e6ec43c17962f490b730c95&#34;</span>,
+                    <span class="s2">&#34;EndpointID&#34;</span>: <span class="s2">&#34;4ac1492efb6c8d55fcc381116917dbb3abcfb5bcde25de84f8efd084ccd018cf&#34;</span>,
+                    <span class="s2">&#34;Gateway&#34;</span>: <span class="s2">&#34;172.17.0.1&#34;</span>,
+                    <span class="s2">&#34;IPAddress&#34;</span>: <span class="s2">&#34;172.17.0.2&#34;</span>,
+                    <span class="s2">&#34;IPPrefixLen&#34;</span>: 16,
+                    <span class="s2">&#34;IPv6Gateway&#34;</span>: <span class="s2">&#34;&#34;</span>,
+                    <span class="s2">&#34;GlobalIPv6Address&#34;</span>: <span class="s2">&#34;&#34;</span>,
+                    <span class="s2">&#34;GlobalIPv6PrefixLen&#34;</span>: 0,
+                    <span class="s2">&#34;MacAddress&#34;</span>: <span class="s2">&#34;02:42:ac:11:00:02&#34;</span>,
+                    <span class="s2">&#34;DriverOpts&#34;</span>: null
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">]</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>进入当前正在运行的容器</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 通常容器都是使用后台方式运行的，需要进入容器，修改一些配置</span>
+
+<span class="c1"># 命令</span>
+docker <span class="nb">exec</span> -it 容器id bashshell
+
+$ sdr <span class="nb">exec</span> -it 2cb886ae2fa9 /bin/bash
+<span class="o">[</span>root@2cb886ae2fa9 /<span class="o">]</span><span class="c1"># ls</span>
+bin  etc   lib    lost+found  mnt  proc  run   srv  tmp  var
+dev  home  lib64  media       opt  root  sbin  sys  usr
+<span class="o">[</span>root@2cb886ae2fa9 /<span class="o">]</span><span class="c1"># ps -ef</span>
+UID          PID    PPID  C STIME TTY          TIME CMD
+root           <span class="m">1</span>       <span class="m">0</span>  <span class="m">0</span> 10:32 ?        00:00:00 /bin/sh -c <span class="k">while</span> true<span class="p">;</span><span class="k">do</span>
+root        <span class="m">1487</span>       <span class="m">0</span>  <span class="m">0</span> 10:57 pts/0    00:00:00 /bin/bash
+root        <span class="m">1519</span>       <span class="m">1</span>  <span class="m">0</span> 10:57 ?        00:00:00 /usr/bin/coreutils --cor
+root        <span class="m">1520</span>    <span class="m">1487</span>  <span class="m">0</span> 10:57 pts/0    00:00:00 ps -ef
+
+<span class="c1"># 方式二</span>
+docker attach 容器id
+$ sudo docker attach thisisanid
+
+<span class="c1"># 区别：</span>
+<span class="c1"># exec进入容器后打开了一个新的命令行</span>
+<span class="c1"># attach进入容器当前正在执行的终端，不会启动新的进程</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>从容器内拷贝文件到主机上</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">docker cp 容器id:容器内路径 目的主机路径
+
+<span class="c1"># 在容器内新建文件</span>
+<span class="o">[</span>root@78e4d3ef944f /<span class="o">]</span><span class="c1"># cd /home</span>
+<span class="o">[</span>root@78e4d3ef944f home<span class="o">]</span><span class="c1"># ls</span>
+<span class="o">[</span>root@78e4d3ef944f home<span class="o">]</span><span class="c1"># la</span>
+bash: la: <span class="nb">command</span> not found
+<span class="o">[</span>root@78e4d3ef944f home<span class="o">]</span><span class="c1"># ls -al</span>
+total <span class="m">8</span>
+drwxr-xr-x <span class="m">2</span> root root <span class="m">4096</span> Nov  <span class="m">3</span>  <span class="m">2020</span> .
+drwxr-xr-x <span class="m">1</span> root root <span class="m">4096</span> Sep <span class="m">16</span> 11:09 ..
+<span class="o">[</span>root@78e4d3ef944f home<span class="o">]</span><span class="c1"># touch test.md</span>
+
+<span class="c1"># 回到主机，拷贝文件到主机</span>
+<span class="o">[</span>root@78e4d3ef944f home<span class="o">]</span><span class="c1"># exit</span>
+<span class="nb">exit</span>
+$ sdr cp 78e4d3ef944f:/home/test.md /home
+$ <span class="nb">cd</span> /home
+
+<span class="c1"># 成功拷贝</span>
+$ ls
+lighthouse  test.md  ubuntu
+
+<span class="c1"># 拷贝是一个手动过程，可以使用 -v 卷的技术，实现自动同步，即连同内外两个目录</span>
 </code></pre></td></tr></table>
 </div>
 </div></div><div class="post-footer" id="post-footer">
