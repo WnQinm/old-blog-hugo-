@@ -7,18 +7,25 @@ tags: ["net"]
 
 # intro
 Docker是基于Go语言开发的开源项目
+
 官网：https://www.docker.com/
+
 文档：https://docs.docker.com/ 超级详细
+
 仓库：https://hub.docker.com/
 
 # Docker能做什么
-一般，电脑有内核（Kernel），库/环境（Lib），以及各种应用app
+一般来说，电脑有内核（Kernel），库/环境（Lib），以及各种应用app
 
 ## 虚拟机技术
 模拟了绝大部分组成，导致一些缺点：
-1、资源占用多
-2、冗余步骤多
-3、启动慢
+
+1. 资源占用多
+
+2. 冗余步骤多
+
+3. 启动慢
+
 ![virtual-machine-tech](https://tva4.sinaimg.cn/large/007Z9xVHgy1h68cf4f1x0j30x60p5mzw.jpg)
 ## 容器化技术
 没有模拟一个完整的操作系统，只打包了Lib和各种apps，这些docker共用一个内核，可以最大化压榨内核潜力，同时各个docker互不干扰，避免某个docker环境等配置失败导致机器不能正常使用
@@ -43,15 +50,18 @@ Docker是内核级别的虚拟化，可以在一个物理机上运行很多的�
 
 **镜像（image）**：
 docker镜像类似于一个模板，可以通过这个模板来创建容器服务，xxx镜像->run->xxx01容器（提供服务器），通过这个镜像可以创建多个容器（最终服务运行或者项目运行就是在容器中的）
+
 **容器（container）**：
 Docker利用容器技术，独立运行一个或者一组应用，通过镜像来创建的
 启动，停止，删除（基本命令）
+
 **仓库（repository）**：
 类似于github，国外有dockerhub，国内阿里云等需要配置镜像加速
 
 # install Docker
 
 我这里是将docker安装到云服务器上，相关下载帮助文档如图所示
+
 ![docker-doc](https://tva3.sinaimg.cn/large/007Z9xVHgy1h68d0unaraj30hk11hqdx.jpg)
 
 网速堪忧，最好提前在服务器部署clash
@@ -297,6 +307,7 @@ docker.io/library/mysql:5.7
 ```
 
 **docker rmi**删除镜像
+
 docker rmi -f 镜像id [镜像id] [镜像id] ...
 ```shell
 $ sudo docker images
