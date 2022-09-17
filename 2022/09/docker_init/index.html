@@ -35,7 +35,7 @@
                             "url": "https:\/\/WnQinm.github.io\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "net","wordcount":  4141 ,
+                        }],"genre": "posts","keywords": "net","wordcount":  4137 ,
         "url": "https:\/\/WnQinm.github.io\/2022\/09\/docker_init\/","datePublished": "2022-09-16T14:03:10+08:00","dateModified": "2022-09-16T14:03:10+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/WnQinm.github.io\/images\/avatar.png"},"author": {
@@ -74,21 +74,29 @@
 </header><main class="main">
                 <div class="container"><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Docker help</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>清梦</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-09-16">2022-09-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 4141 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-09-16">2022-09-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 4137 字&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 9 分钟&nbsp;</div>
         </div><div class="content" id="content"><h1 id="intro">intro</h1>
-<p>Docker是基于Go语言开发的开源项目
-官网：https://www.docker.com/
-文档：https://docs.docker.com/ 超级详细
-仓库：https://hub.docker.com/</p>
+<p>Docker是基于Go语言开发的开源项目</p>
+<p>官网：https://www.docker.com/</p>
+<p>文档：https://docs.docker.com/ 超级详细</p>
+<p>仓库：https://hub.docker.com/</p>
 <h1 id="docker能做什么">Docker能做什么</h1>
-<p>一般，电脑有内核（Kernel），库/环境（Lib），以及各种应用app</p>
+<p>一般来说，电脑有内核（Kernel），库/环境（Lib），以及各种应用app</p>
 <h2 id="虚拟机技术">虚拟机技术</h2>
-<p>模拟了绝大部分组成，导致一些缺点：
-1、资源占用多
-2、冗余步骤多
-3、启动慢
-<img
+<p>模拟了绝大部分组成，导致一些缺点：</p>
+<ol>
+<li>
+<p>资源占用多</p>
+</li>
+<li>
+<p>冗余步骤多</p>
+</li>
+<li>
+<p>启动慢</p>
+</li>
+</ol>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="https://tva4.sinaimg.cn/large/007Z9xVHgy1h68cf4f1x0j30x60p5mzw.jpg"
@@ -126,15 +134,15 @@ Docker是内核级别的虚拟化，可以在一个物理机上运行很多的�
         alt="http://blog.kevinyang.net/2020/07/30/docker-101-note-1/screen-shot-2020-03-19-at-9.01.25-am.png"
         title="docker-image1" /></p>
 <p><strong>镜像（image）</strong>：
-docker镜像类似于一个模板，可以通过这个模板来创建容器服务，xxx镜像-&gt;run-&gt;xxx01容器（提供服务器），通过这个镜像可以创建多个容器（最终服务运行或者项目运行就是在容器中的）
-<strong>容器（container）</strong>：
+docker镜像类似于一个模板，可以通过这个模板来创建容器服务，xxx镜像-&gt;run-&gt;xxx01容器（提供服务器），通过这个镜像可以创建多个容器（最终服务运行或者项目运行就是在容器中的）</p>
+<p><strong>容器（container）</strong>：
 Docker利用容器技术，独立运行一个或者一组应用，通过镜像来创建的
-启动，停止，删除（基本命令）
-<strong>仓库（repository）</strong>：
+启动，停止，删除（基本命令）</p>
+<p><strong>仓库（repository）</strong>：
 类似于github，国外有dockerhub，国内阿里云等需要配置镜像加速</p>
 <h1 id="install-docker">install Docker</h1>
-<p>我这里是将docker安装到云服务器上，相关下载帮助文档如图所示
-<img
+<p>我这里是将docker安装到云服务器上，相关下载帮助文档如图所示</p>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="https://tva3.sinaimg.cn/large/007Z9xVHgy1h68d0unaraj30hk11hqdx.jpg"
@@ -569,8 +577,8 @@ Status: Downloaded newer image <span class="k">for</span> mysql:5.7
 docker.io/library/mysql:5.7
 </code></pre></td></tr></table>
 </div>
-</div><p><strong>docker rmi</strong>删除镜像
-docker rmi -f 镜像id [镜像id] [镜像id] &hellip;</p>
+</div><p><strong>docker rmi</strong>删除镜像</p>
+<p>docker rmi -f 镜像id [镜像id] [镜像id] &hellip;</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
