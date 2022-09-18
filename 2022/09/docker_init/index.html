@@ -4,17 +4,17 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>Docker help - Qinm&#39;s blog</title><meta name="Description" content="Qinm&#39;s blog"><meta property="og:title" content="Docker help" />
+        <title>Docker - Qinm&#39;s blog</title><meta name="Description" content="Qinm&#39;s blog"><meta property="og:title" content="Docker" />
 <meta property="og:description" content="intro Docker是基于Go语言开发的开源项目 官网：https://www.docker.com/ 文档：https://docs.docker." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://WnQinm.github.io/2022/09/docker_init/" />
 <meta property="og:image" content="https://WnQinm.github.io/logo.png"/>
-<meta property="article:published_time" content="2022-09-16T14:03:10+08:00" />
-<meta property="article:modified_time" content="2022-09-16T14:03:10+08:00" /><meta property="og:site_name" content="blog" />
+<meta property="article:published_time" content="2022-09-18T01:32:42+08:00" />
+<meta property="article:modified_time" content="2022-09-18T01:32:42+08:00" /><meta property="og:site_name" content="blog" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://WnQinm.github.io/logo.png"/>
 
-<meta name="twitter:title" content="Docker help"/>
+<meta name="twitter:title" content="Docker"/>
 <meta name="twitter:description" content="intro Docker是基于Go语言开发的开源项目 官网：https://www.docker.com/ 文档：https://docs.docker."/>
 <meta name="application-name" content="LoveIt">
 <meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
@@ -25,7 +25,7 @@
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "Docker help",
+        "headline": "Docker",
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
@@ -35,8 +35,8 @@
                             "url": "https:\/\/WnQinm.github.io\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "net","wordcount":  4137 ,
-        "url": "https:\/\/WnQinm.github.io\/2022\/09\/docker_init\/","datePublished": "2022-09-16T14:03:10+08:00","dateModified": "2022-09-16T14:03:10+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                        }],"genre": "posts","keywords": "net","wordcount":  5982 ,
+        "url": "https:\/\/WnQinm.github.io\/2022\/09\/docker_init\/","datePublished": "2022-09-18T01:32:42+08:00","dateModified": "2022-09-18T01:32:42+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/WnQinm.github.io\/images\/avatar.png"},"author": {
                 "@type": "Person",
@@ -72,49 +72,89 @@
             </a></div>
     </div>
 </header><main class="main">
-                <div class="container"><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Docker help</h1><div class="post-meta">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Docker</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>清梦</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-09-16">2022-09-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 4137 字&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 9 分钟&nbsp;</div>
-        </div><div class="content" id="content"><h1 id="intro">intro</h1>
-<p>Docker是基于Go语言开发的开源项目</p>
-<p>官网：https://www.docker.com/</p>
-<p>文档：https://docs.docker.com/ 超级详细</p>
-<p>仓库：https://hub.docker.com/</p>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-09-18">2022-09-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 5982 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 12 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ol>
+    <li><a href="#intro">intro</a></li>
+    <li><a href="#docker能做什么">Docker能做什么</a>
+      <ol>
+        <li><a href="#虚拟机技术">虚拟机技术</a></li>
+        <li><a href="#容器化技术">容器化技术</a></li>
+      </ol>
+    </li>
+    <li><a href="#docker基本组成">Docker基本组成</a></li>
+    <li><a href="#install-docker">install Docker</a>
+      <ol>
+        <li><a href="#系统版本">系统版本</a></li>
+        <li><a href="#帮助文档ubuntu">帮助文档（ubuntu）：</a></li>
+        <li><a href="#install-using-the-repository">install using the repository</a></li>
+        <li><a href="#设置阿里云镜像软件源">设置阿里云镜像软件源</a></li>
+        <li><a href="#install-docker-engine">install Docker Engine</a></li>
+        <li><a href="#启动docker">启动docker</a></li>
+        <li><a href="#测试hello-world">测试hello-world</a></li>
+        <li><a href="#查看已有镜像列表">查看已有镜像列表</a></li>
+      </ol>
+    </li>
+    <li><a href="#卸载docker">卸载Docker</a></li>
+    <li><a href="#docker的常用命令">Docker的常用命令</a>
+      <ol>
+        <li><a href="#帮助命令">帮助命令</a></li>
+        <li><a href="#镜像命令">镜像命令</a></li>
+        <li><a href="#容器命令">容器命令</a></li>
+        <li><a href="#常用其他命令">常用其他命令</a></li>
+        <li><a href="#小结">小结</a></li>
+      </ol>
+    </li>
+    <li><a href="#docker镜像讲解">Docker镜像讲解</a>
+      <ol>
+        <li><a href="#镜像是什么">镜像是什么</a></li>
+        <li><a href="#docker镜像加载原理">Docker镜像加载原理</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="intro">intro</h1>
+<p>Docker是基于Go语言开发的开源项目
+官网：https://www.docker.com/
+文档：https://docs.docker.com/ 超级详细
+仓库：https://hub.docker.com/</p>
 <h1 id="docker能做什么">Docker能做什么</h1>
 <p>一般来说，电脑有内核（Kernel），库/环境（Lib），以及各种应用app</p>
 <h2 id="虚拟机技术">虚拟机技术</h2>
-<p>模拟了绝大部分组成，导致一些缺点：</p>
-<ol>
-<li>
-<p>资源占用多</p>
-</li>
-<li>
-<p>冗余步骤多</p>
-</li>
-<li>
-<p>启动慢</p>
-</li>
-</ol>
-<p><img
+<p>模拟了绝大部分组成，导致一些缺点：
+1、资源占用多
+2、冗余步骤多
+3、启动慢
+<img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="https://tva4.sinaimg.cn/large/007Z9xVHgy1h68cf4f1x0j30x60p5mzw.jpg"
         data-srcset="https://tva4.sinaimg.cn/large/007Z9xVHgy1h68cf4f1x0j30x60p5mzw.jpg, https://tva4.sinaimg.cn/large/007Z9xVHgy1h68cf4f1x0j30x60p5mzw.jpg 1.5x, https://tva4.sinaimg.cn/large/007Z9xVHgy1h68cf4f1x0j30x60p5mzw.jpg 2x"
         data-sizes="auto"
         alt="https://tva4.sinaimg.cn/large/007Z9xVHgy1h68cf4f1x0j30x60p5mzw.jpg"
-        title="virtual-machine-tech" /></p>
+        title="virtual machine tech" /></p>
 <h2 id="容器化技术">容器化技术</h2>
-<p>没有模拟一个完整的操作系统，只打包了Lib和各种apps，这些docker共用一个内核，可以最大化压榨内核潜力，同时各个docker互不干扰，避免某个docker环境等配置失败导致机器不能正常使用
-<img
+<p>没有模拟一个完整的操作系统，只打包了Lib和各种apps，这些docker共用一个内核，可以最大化压榨内核潜力，同时各个docker互不干扰，避免某个docker环境等配置失败导致机器不能正常使用</p>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="https://tva2.sinaimg.cn/large/007Z9xVHgy1h68cic0sykj30xp0p8gos.jpg"
         data-srcset="https://tva2.sinaimg.cn/large/007Z9xVHgy1h68cic0sykj30xp0p8gos.jpg, https://tva2.sinaimg.cn/large/007Z9xVHgy1h68cic0sykj30xp0p8gos.jpg 1.5x, https://tva2.sinaimg.cn/large/007Z9xVHgy1h68cic0sykj30xp0p8gos.jpg 2x"
         data-sizes="auto"
         alt="https://tva2.sinaimg.cn/large/007Z9xVHgy1h68cic0sykj30xp0p8gos.jpg"
-        title="docker-tech" />
-由于容器没有内核，也没有虚拟其他硬件，使得容器十分轻便，我们可以安装多个docker</p>
+        title="docker tech" /></p>
+<p>由于容器没有内核，也没有虚拟其他硬件，使得容器十分轻便，我们可以安装多个docker</p>
 <p><strong>应用更快速的交付和部署</strong>
 传统：一堆帮助文档，安装程序
 Docker：打包镜像发布测试，一键运行</p>
@@ -132,7 +172,7 @@ Docker是内核级别的虚拟化，可以在一个物理机上运行很多的�
         data-srcset="http://blog.kevinyang.net/2020/07/30/docker-101-note-1/screen-shot-2020-03-19-at-9.01.25-am.png, http://blog.kevinyang.net/2020/07/30/docker-101-note-1/screen-shot-2020-03-19-at-9.01.25-am.png 1.5x, http://blog.kevinyang.net/2020/07/30/docker-101-note-1/screen-shot-2020-03-19-at-9.01.25-am.png 2x"
         data-sizes="auto"
         alt="http://blog.kevinyang.net/2020/07/30/docker-101-note-1/screen-shot-2020-03-19-at-9.01.25-am.png"
-        title="docker-image1" /></p>
+        title="docker image1" /></p>
 <p><strong>镜像（image）</strong>：
 docker镜像类似于一个模板，可以通过这个模板来创建容器服务，xxx镜像-&gt;run-&gt;xxx01容器（提供服务器），通过这个镜像可以创建多个容器（最终服务运行或者项目运行就是在容器中的）</p>
 <p><strong>容器（container）</strong>：
@@ -149,7 +189,7 @@ Docker利用容器技术，独立运行一个或者一组应用，通过镜像�
         data-srcset="https://tva3.sinaimg.cn/large/007Z9xVHgy1h68d0unaraj30hk11hqdx.jpg, https://tva3.sinaimg.cn/large/007Z9xVHgy1h68d0unaraj30hk11hqdx.jpg 1.5x, https://tva3.sinaimg.cn/large/007Z9xVHgy1h68d0unaraj30hk11hqdx.jpg 2x"
         data-sizes="auto"
         alt="https://tva3.sinaimg.cn/large/007Z9xVHgy1h68d0unaraj30hk11hqdx.jpg"
-        title="docker-doc" /></p>
+        title="docker doc" /></p>
 <p>网速堪忧，最好提前在服务器部署clash</p>
 <h2 id="系统版本">系统版本</h2>
 <div class="highlight"><div class="chroma">
@@ -184,7 +224,8 @@ Docker利用容器技术，独立运行一个或者一组应用，通过镜像�
 <span class="nv">UBUNTU_CODENAME</span><span class="o">=</span>focal
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="帮助文档ubuntuhttpsdocsdockercomengineinstallubuntu">帮助文档（ubuntu）：https://docs.docker.com/engine/install/ubuntu/</h2>
+</div><h2 id="帮助文档ubuntu">帮助文档（ubuntu）：</h2>
+<p><a href="https://docs.docker.com/engine/install/ubuntu/">https://docs.docker.com/engine/install/ubuntu/</a></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -214,6 +255,10 @@ sudo apt-get remove docker docker-engine docker.io containerd runc
 </span><span class="lnt">14
 </span><span class="lnt">15
 </span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># set up the repository</span>
@@ -222,16 +267,20 @@ sudo apt-get remove docker docker-engine docker.io containerd runc
 sudo apt-get update
 sudo apt-get install <span class="se">\
 </span><span class="se"></span>    ca-certificates <span class="se">\
-</span><span class="se"></span>    curl <span class="se">\
-</span><span class="se"></span>    gnupg <span class="se">\
-</span><span class="se"></span>    lsb-release
-<span class="c1"># add Docker&#39;s official GPG key</span>
-sudo mkdir -p /etc/apt/keyrings
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg <span class="p">|</span> sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-<span class="c1"># set up the repository</span>
-<span class="nb">echo</span> <span class="se">\
-</span><span class="se"></span>  <span class="s2">&#34;deb [arch=</span><span class="k">$(</span>dpkg --print-architecture<span class="k">)</span><span class="s2"> signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
-</span><span class="s2">  </span><span class="k">$(</span>lsb_release -cs<span class="k">)</span><span class="s2"> stable&#34;</span> <span class="p">|</span> sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null
+</span><span class="se"></span>        curl <span class="se">\
+</span><span class="se"></span>            gnupg <span class="se">\
+</span><span class="se"></span>                lsb-release
+                <span class="c1"># add Docker&#39;s official GPG key</span>
+                sudo mkdir -p /etc/apt/keyrings
+                curl -fsSL https://download.docker.com/linux/ubuntu/gpg <span class="p">|</span> sudo
+                gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+                <span class="c1"># set up the repository</span>
+                <span class="nb">echo</span> <span class="se">\
+</span><span class="se"></span>                  <span class="s2">&#34;deb [arch=</span><span class="k">$(</span>dpkg --print-architecture<span class="k">)</span><span class="s2">
+</span><span class="s2">                  signed-by=/etc/apt/keyrings/docker.gpg]
+</span><span class="s2">                  https://download.docker.com/linux/ubuntu \
+</span><span class="s2">                    </span><span class="k">$(</span>lsb_release -cs<span class="k">)</span><span class="s2"> stable&#34;</span> <span class="p">|</span> sudo tee
+                    /etc/apt/sources.list.d/docker.list &gt; /dev/null
 </code></pre></td></tr></table>
 </div>
 </div><p>只要没有报错就成功</p>
@@ -239,9 +288,13 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg <span class="p">|</span>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">sudo add-apt-repository <span class="s2">&#34;deb [arch=amd64] http://mirrors.aliyun.com/docker-ce/linux/ubuntu </span><span class="k">$(</span>lsb_release -cs<span class="k">)</span><span class="s2"> stable&#34;</span>
+<pre class="chroma"><code class="language-shell" data-lang="shell">sudo add-apt-repository <span class="s2">&#34;deb [arch=amd64]
+</span><span class="s2">http://mirrors.aliyun.com/docker-ce/linux/ubuntu
+</span><span class="s2"></span><span class="k">$(</span>lsb_release -cs<span class="k">)</span><span class="s2"> stable&#34;</span>
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="install-docker-engine">install Docker Engine</h2>
@@ -420,7 +473,7 @@ sudo rm -rf /var/lib/containerd
 </code></pre></td></tr></table>
 </div>
 </div><h1 id="docker的常用命令">Docker的常用命令</h1>
-<p>ps.后面一定位置开始，我嫌麻烦，所以将<code>sudo docker</code>简写为<code>sdr</code></p>
+<p>ps.后面一定位置开始我嫌麻烦，所以将<code>sudo docker</code>简写为<code>sdr</code></p>
 <h2 id="帮助命令">帮助命令</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -467,8 +520,8 @@ CREATED     镜像的创建时间
 SIZE        镜像的大小
 
 <span class="c1"># 可选项</span>
-	-a, --all     <span class="c1"># 列出所有镜像</span>
-	-q, --quiet   <span class="c1"># 只显示镜像的id</span>
+  -a, --all     <span class="c1"># 列出所有镜像</span>
+  -q, --quiet   <span class="c1"># 只显示镜像的id</span>
 </code></pre></td></tr></table>
 </div>
 </div><p><strong>docker search</strong>搜索镜像</p>
@@ -537,9 +590,9 @@ $ sudo docker search mysql --filter<span class="o">=</span><span class="nv">STAR
 <td class="lntd">
 <pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 下载镜像 docker pull 镜像名[:tag]</span>
 $ sudo docker pull mysql
-Using default tag: latest	<span class="c1"># 如果不写 tag，默认就是 latest</span>
+Using default tag: latest <span class="c1"># 如果不写 tag，默认就是 latest</span>
 latest: Pulling from library/mysql
-051f419db9dd: Pull <span class="nb">complete</span>	<span class="c1"># 分层下载，docker image的核心 联合文件系统</span>
+051f419db9dd: Pull <span class="nb">complete</span> <span class="c1"># 分层下载，docker image的核心 联合文件系统</span>
 7627573fa82a: Pull <span class="nb">complete</span>
 a44b358d7796: Pull <span class="nb">complete</span>
 95753aff4b95: Pull <span class="nb">complete</span>
@@ -550,9 +603,9 @@ f26212810c32: Pull <span class="nb">complete</span>
 d803d4215f95: Pull <span class="nb">complete</span>
 d5358a7f7d07: Pull <span class="nb">complete</span>
 435e8908cd69: Pull <span class="nb">complete</span>
-Digest: sha256:b9532b1edea72b6cee12d9f5a78547bd3812ea5db842566e17f8b33291ed2921	<span class="c1"># 签名（防伪标志）</span>
+Digest: sha256:b9532b1edea72b6cee12d9f5a78547bd3812ea5db842566e17f8b33291ed2921 <span class="c1"># 签名（防伪标志）</span>
 Status: Downloaded newer image <span class="k">for</span> mysql:latest
-docker.io/library/mysql:latest	<span class="c1"># 真实地址</span>
+docker.io/library/mysql:latest  <span class="c1"># 真实地址</span>
 
 <span class="c1"># 二者等价：</span>
 docker pull mysql
@@ -561,7 +614,7 @@ docker pull docker.io/library/mysql:latest
 <span class="c1"># 指定版本下载</span>
 $ sudo docker pull mysql:5.7
 5.7: Pulling from library/mysql
-9815334b7810: Pull <span class="nb">complete</span>		<span class="c1"># 如果之前下载过某些层，就会显示&#34;Already exists 直接拿过来用而不重新下载</span>
+9815334b7810: Pull <span class="nb">complete</span>   <span class="c1"># 如果之前下载过某些层，就会显示&#34;Already exists 直接拿过来用而不重新下载</span>
 f85cb6fccbfd: Pull <span class="nb">complete</span>
 b63612353671: Pull <span class="nb">complete</span>
 447901201612: Pull <span class="nb">complete</span>
@@ -577,8 +630,8 @@ Status: Downloaded newer image <span class="k">for</span> mysql:5.7
 docker.io/library/mysql:5.7
 </code></pre></td></tr></table>
 </div>
-</div><p><strong>docker rmi</strong>删除镜像</p>
-<p>docker rmi -f 镜像id [镜像id] [镜像id] &hellip;</p>
+</div><p><strong>docker rmi</strong>删除镜像
+docker rmi -f 镜像id [镜像id] [镜像id] &hellip;</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -627,7 +680,7 @@ REPOSITORY    TAG       IMAGE ID       CREATED         SIZE
 mysql         latest    43fcfca0776d   <span class="m">35</span> hours ago    449MB
 mysql         5.7       daff57b7d2d1   <span class="m">3</span> weeks ago     430MB
 hello-world   latest    feb5d9fea6a5   <span class="m">11</span> months ago   13.3kB
-$ sudo docker rmi -f daff57b7d2d1	<span class="c1"># 根据id删除镜像</span>
+$ sudo docker rmi -f daff57b7d2d1 <span class="c1"># 根据id删除镜像</span>
 Untagged: mysql:5.7
 Untagged: mysql@sha256:c1bda6ecdbc63d3b0d3a3a3ce195de3dd755c4a0658ed782a16a0682216b9a48
 Deleted: sha256:daff57b7d2d1e009d0b271972f62dbf4de64b8cdb9cd646442aeda961e615f44
@@ -699,19 +752,19 @@ Deleted: sha256:feb5d9fea6a5e9606aa995e879d862b825965ba48de054caab5ef356dc6b3412
 <pre class="chroma"><code class="language-shell" data-lang="shell">docker run <span class="o">[</span>可选参数<span class="o">]</span> image
 
 <span class="c1"># 参数说明</span>
---name<span class="o">=</span><span class="s2">&#34;Name&#34;</span>		<span class="c1"># 容器名字 区分容器</span>
--d					<span class="c1"># 后台方式运行（linux本身是nohup）</span>
--it					<span class="c1"># 使用交互方式运行，进入容器查看内容</span>
--p					<span class="c1"># 指定容器的端口 -p 8080:8080</span>
-	-p ip:主机端口:容器端口
-	-p 主机端口:容器端口
-	-p 容器端口
-	容器端口
--P					<span class="c1"># 随机指定端口</span>
+--name<span class="o">=</span><span class="s2">&#34;Name&#34;</span>   <span class="c1"># 容器名字 区分容器</span>
+-d          <span class="c1"># 后台方式运行（linux本身是nohup）</span>
+-it         <span class="c1"># 使用交互方式运行，进入容器查看内容</span>
+-p          <span class="c1"># 指定容器的端口 -p 8080:8080</span>
+  -p ip:主机端口:容器端口
+  -p 主机端口:容器端口
+  -p 容器端口
+  容器端口
+-P          <span class="c1"># 随机指定端口</span>
 
 <span class="c1"># 测试，启动并进入容器</span>
 $ sudo docker run -it centos /bin/bash
-<span class="o">[</span>root@f4373afebe37 /<span class="o">]</span><span class="c1"># ls	# 查看容器内的centos，基础版本，很多命令不完善</span>
+<span class="o">[</span>root@f4373afebe37 /<span class="o">]</span><span class="c1"># ls # 查看容器内的centos，基础版本，很多命令不完善</span>
 bin  etc   lib    lost+found  mnt  proc  run   srv  tmp  var
 dev  home  lib64  media       opt  root  sbin  sys  usr
 
@@ -733,10 +786,10 @@ blog  clash
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># docker ps 命令</span>
-		<span class="c1"># 列出当前正在运行的容器</span>
--a 		<span class="c1"># 列出当前正在运行的容器+带出历史运行过的容器</span>
--n<span class="o">=</span>?	<span class="c1"># 显示最近创建的容器</span>
--q		<span class="c1"># 只显示容器的编号</span>
+    <span class="c1"># 列出当前正在运行的容器</span>
+-a    <span class="c1"># 列出当前正在运行的容器+带出历史运行过的容器</span>
+-n<span class="o">=</span>?  <span class="c1"># 显示最近创建的容器</span>
+-q    <span class="c1"># 只显示容器的编号</span>
 </code></pre></td></tr></table>
 </div>
 </div><p><strong>退出容器</strong></p>
@@ -746,8 +799,8 @@ blog  clash
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">exit</span>	<span class="c1"># 直接容器停止并退出</span>
-CTRL + P + Q 	<span class="c1"># 容器不停止退出</span>
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">exit</span>  <span class="c1"># 直接容器停止并退出</span>
+CTRL + P + Q  <span class="c1"># 容器不停止退出</span>
 </code></pre></td></tr></table>
 </div>
 </div><p><strong>删除容器</strong></p>
@@ -758,8 +811,8 @@ CTRL + P + Q 	<span class="c1"># 容器不停止退出</span>
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">docker rm 容器id					<span class="c1"># 删除指定容器，不能删除正在运行的容器</span>
-docker rm -f <span class="k">$(</span>docker ps -aq<span class="k">)</span>	<span class="c1"># 删除所有容器</span>
+<pre class="chroma"><code class="language-shell" data-lang="shell">docker rm 容器id          <span class="c1"># 删除指定容器，不能删除正在运行的容器</span>
+docker rm -f <span class="k">$(</span>docker ps -aq<span class="k">)</span> <span class="c1"># 删除所有容器</span>
 docker ps -aq <span class="p">|</span> xargs docker rm <span class="c1"># 删除所有容器</span>
 </code></pre></td></tr></table>
 </div>
@@ -772,10 +825,10 @@ docker ps -aq <span class="p">|</span> xargs docker rm <span class="c1"># 删除
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">docker start 容器id		<span class="c1"># 启动容器</span>
-docker restart 容器id		<span class="c1"># 重启容器</span>
-docker stop 容器id		<span class="c1"># 停止当前正在运行的容器</span>
-docker <span class="nb">kill</span> 容器id		<span class="c1"># 强制停止容器</span>
+<pre class="chroma"><code class="language-shell" data-lang="shell">docker start 容器id   <span class="c1"># 启动容器</span>
+docker restart 容器id   <span class="c1"># 重启容器</span>
+docker stop 容器id    <span class="c1"># 停止当前正在运行的容器</span>
+docker <span class="nb">kill</span> 容器id    <span class="c1"># 强制停止容器</span>
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="常用其他命令">常用其他命令</h2>
@@ -824,9 +877,9 @@ $ sudo docker run -d centos
 $ sudo docker run -d centos /bin/sh -c <span class="s2">&#34;while true;do echo hello;sleep 1;done&#34;</span>
 
 <span class="c1"># 显示日志</span>
--tf			<span class="c1"># 显示所有日志，t时间戳，f持续输出</span>
+-tf     <span class="c1"># 显示所有日志，t时间戳，f持续输出</span>
 -tail number# 要显示的日志条数
-$ sudo docker logs -ft --tail <span class="m">10</span> 2cb886ae2fa9	<span class="c1"># 10为日志条数，由于加了参数f，会持续输出日志</span>
+$ sudo docker logs -ft --tail <span class="m">10</span> 2cb886ae2fa9 <span class="c1"># 10为日志条数，由于加了参数f，会持续输出日志</span>
 2022-09-16T10:33:50.928401034Z hello
 2022-09-16T10:33:51.930308966Z hello
 2022-09-16T10:33:52.932148793Z hello
@@ -1392,18 +1445,149 @@ lighthouse  test.md  ubuntu
         data-sizes="auto"
         alt="https://img-blog.csdnimg.cn/383865dd59f64bd88cbe6b4a56f1315c.png"
         title="summary" /></p>
+<h1 id="docker镜像讲解">Docker镜像讲解</h1>
+<h2 id="镜像是什么">镜像是什么</h2>
+<p>镜像是一种轻量级、可执行的独立软件包，用来打包软件运行环境和基于运行环境开发的软件，它包含运行某个软件所需的所有内容，包括代码、运行时的库、环境变量和配置文件。</p>
+<p>所有的应用，直接打包docker镜像，就可以直接跑起来</p>
+<p>如何得到镜像：</p>
+<ul>
+<li>从远程仓库下载</li>
+<li>手动拷贝</li>
+<li>自己制作一个镜像DockerFile</li>
+</ul>
+<h2 id="docker镜像加载原理">Docker镜像加载原理</h2>
+<blockquote>
+<p>UnionFS（联合文件系统）</p>
+</blockquote>
+<p>下载的时候看到的一层层的就是这个</p>
+<p>UnionFS（联合文件系统）：Union文件系统是一种分层、轻量级并且高性能的文件系统，它支持对文件系统的修改作为一次提交来一层层的叠加，同时可以将不同目录挂载到同一个虚拟文件系统下(unite several directories into a single virtual filesystem)。Union文件系统时Docker镜像的基础。镜像可以通过分层来进行集成，基于基础镜像（没有父镜像），可以制作各种具体的应用镜像。</p>
+<p>特性：一次同时加载多个文件系统，但从外面看起来，智能看到一个文件系统，联合加载会把各层文件系统叠加起来，这样最终的文件系统会包含所有底层的文件和目录</p>
+<blockquote>
+<p>Docker镜像加载原理</p>
+</blockquote>
+<p>docker的镜像实际上由一层一层的文件系统组成，这种层级的文件系统UnionFS</p>
+<p>bootfs(boot file system)主要包含bootloader和kernel，bootloader主要是引导加载kernel，linux刚启动时会加载bootfs文件系统，在Docker镜像的最底层时bootfs。这一层与我们典型的Linux/Unix系统时一样的，包含boot加载器和内核。当boot加载完成之后整个内核就都在内存中了，此时内存的使用权已由bootfs转交给内核，此时系统也会卸载bootfs</p>
+<p>rootfs(root file system)，在bootfs之上，包含的就是典型的Linux系统中的/dev,/proc,/bin,/etc等标准目录和文件。rootfs就是各种不同的操作系统发行版，比如Ubuntu，Centos等等。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://tvax2.sinaimg.cn/large/007Z9xVHgy1h6a4yadmmmj30pw07zwj2.jpg"
+        data-srcset="https://tvax2.sinaimg.cn/large/007Z9xVHgy1h6a4yadmmmj30pw07zwj2.jpg, https://tvax2.sinaimg.cn/large/007Z9xVHgy1h6a4yadmmmj30pw07zwj2.jpg 1.5x, https://tvax2.sinaimg.cn/large/007Z9xVHgy1h6a4yadmmmj30pw07zwj2.jpg 2x"
+        data-sizes="auto"
+        alt="https://tvax2.sinaimg.cn/large/007Z9xVHgy1h6a4yadmmmj30pw07zwj2.jpg"
+        title="UnionFS" /></p>
+<p>平时虚拟机的CentOS有几个G，但是centos镜像只有二百多兆</p>
+<p>对于一个精简的OS，rootfs可以很小，只需要包含最基本的命令，工具和程序库就可以，因为底层直接用Host的kernel，自己只需要提供rootfs就可以了。由此可见对于不同的linux发行版，bootfs基本都是一致的，rootfs会有差别，因此不同的发行版可以公用bootfs</p>
+<blockquote>
+<p>分层的镜像</p>
+</blockquote>
+<p>下载镜像时，观察下载的日志输出，发现是一层一层的下载</p>
+<p><strong>原因</strong>：</p>
+<p>资源共享。比如多个镜像都从相同的base镜像构建而来，那么宿主机只需在磁盘上保留一份base镜像，同时内存中也只需要加载一份base镜像，这样就可以为所有的容器服务了，而且镜像的每一层都可以被共享。</p>
+<p>查看镜像分层的方式可以通过 docker image inspect 命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ sdr image inspect 22afbacf753d
+...
+<span class="s2">&#34;RootFS&#34;</span>: <span class="o">{</span>
+            <span class="s2">&#34;Type&#34;</span>: <span class="s2">&#34;layers&#34;</span>,
+            <span class="s2">&#34;Layers&#34;</span>: <span class="o">[</span>
+                <span class="s2">&#34;sha256:7ac795f5ab480bb362e19552cce3cd9780aba31de91aca50606e381f2b5fdc04&#34;</span>,
+                <span class="s2">&#34;sha256:24c3f9ffc7df0db8b16e98211592d96583c39ff5c8ea586350e4bfbb11663bce&#34;</span>,
+                <span class="s2">&#34;sha256:ca9d5bcb66762cb171518b1d28b1a2296ba0bd09bc5de8f5eff644a1b8f64043&#34;</span>,
+                <span class="s2">&#34;sha256:44dd6b099cde96414b9275866c1a43bbc8e69a29348e0e3501e0e30b4fb73213&#34;</span>,
+                <span class="s2">&#34;sha256:b8c503d0b5359439591163e5322340cf600d1eeb9c73214ed6d561b0e4586c58&#34;</span>,
+                <span class="s2">&#34;sha256:a4c678688c9ae89a07c707072edf5a8194a5a24e89a298ab0282d587b35aa90a&#34;</span>
+            <span class="o">]</span>
+        <span class="o">}</span>,
+        <span class="s2">&#34;Metadata&#34;</span>: <span class="o">{</span>
+            <span class="s2">&#34;LastTagTime&#34;</span>: <span class="s2">&#34;0001-01-01T00:00:00Z&#34;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">]</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>理解</strong>：</p>
+<p>所有的Docker镜像都起始于一个基础镜像层，当进行修改或增加新内容时，就会在当前镜像层之上，创建新的镜像层。</p>
+<p>eg. 加入基于 Ubuntu Liux 16.04 创建一个新的镜像，这就是新镜像的第一层；如果在该镜像中添加Python包，就会在基础镜像层之上创建第二个镜像层；如果继续添加一个安全补丁，就会创建第三个镜像层。</p>
+<p>该镜像当前已经包含3个镜像层，如下图所示：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://tva2.sinaimg.cn/large/007Z9xVHgy1h6a32ci1itj30nl0evn0i.jpg"
+        data-srcset="https://tva2.sinaimg.cn/large/007Z9xVHgy1h6a32ci1itj30nl0evn0i.jpg, https://tva2.sinaimg.cn/large/007Z9xVHgy1h6a32ci1itj30nl0evn0i.jpg 1.5x, https://tva2.sinaimg.cn/large/007Z9xVHgy1h6a32ci1itj30nl0evn0i.jpg 2x"
+        data-sizes="auto"
+        alt="https://tva2.sinaimg.cn/large/007Z9xVHgy1h6a32ci1itj30nl0evn0i.jpg"
+        title="image0" /></p>
+<p>在添加额外的镜像层的同时，镜像始终保持时当前所有镜像的组合。下图中每个镜像时包含3个文件，而镜像包含了来自两个镜像层的6个文件</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://tvax1.sinaimg.cn/large/007Z9xVHgy1h6a3g1kzrgj30nm0cbq5g.jpg"
+        data-srcset="https://tvax1.sinaimg.cn/large/007Z9xVHgy1h6a3g1kzrgj30nm0cbq5g.jpg, https://tvax1.sinaimg.cn/large/007Z9xVHgy1h6a3g1kzrgj30nm0cbq5g.jpg 1.5x, https://tvax1.sinaimg.cn/large/007Z9xVHgy1h6a3g1kzrgj30nm0cbq5g.jpg 2x"
+        data-sizes="auto"
+        alt="https://tvax1.sinaimg.cn/large/007Z9xVHgy1h6a3g1kzrgj30nm0cbq5g.jpg"
+        title="image1" /></p>
+<p>上图的镜像层跟之前图中的稍有区别，主要目的是便于展示文件。</p>
+<p>下图中展示了一个稍微复杂的三层镜像，在外部看来整个镜像只有6个文件，这是因为最上层中的文件7是文件5的一个更新版本</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://tva2.sinaimg.cn/large/007Z9xVHgy1h6a3iugb44j30mu0gbn0q.jpg"
+        data-srcset="https://tva2.sinaimg.cn/large/007Z9xVHgy1h6a3iugb44j30mu0gbn0q.jpg, https://tva2.sinaimg.cn/large/007Z9xVHgy1h6a3iugb44j30mu0gbn0q.jpg 1.5x, https://tva2.sinaimg.cn/large/007Z9xVHgy1h6a3iugb44j30mu0gbn0q.jpg 2x"
+        data-sizes="auto"
+        alt="https://tva2.sinaimg.cn/large/007Z9xVHgy1h6a3iugb44j30mu0gbn0q.jpg"
+        title="image2" /></p>
+<p>这种情况下，上层镜像层中的文件覆盖了底层镜像层中的文件。这样就使得文件的更新版本作为一个新镜像层添加到镜像当中。</p>
+<p>Docker通过存储引擎（新版本采用快照机制）的方式来实现镜像层堆栈，并保证多镜像层对外展示为统一的文件系统。</p>
+<p>Linux上可用的存储引擎有AUFS、Overlay2、Device Mapper、Btrfs以及ZFS。顾名思义，每种存储引擎都基于Linux中对应的文件系统或者设备技术，并且每种存储引擎都有其独有的性能特点。</p>
+<p>Docker在Windows上仅支持windowsfilter一种存储引擎，该引擎基于NTFS文件系统之上实现了分层和CoW[1]。</p>
+<p>下图展示了与系统显示相同的三层镜像。所有镜像层堆叠并合并，对外提供统一的视图。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://tva3.sinaimg.cn/large/007Z9xVHgy1h6a3r5kggfj30s408nwgl.jpg"
+        data-srcset="https://tva3.sinaimg.cn/large/007Z9xVHgy1h6a3r5kggfj30s408nwgl.jpg, https://tva3.sinaimg.cn/large/007Z9xVHgy1h6a3r5kggfj30s408nwgl.jpg 1.5x, https://tva3.sinaimg.cn/large/007Z9xVHgy1h6a3r5kggfj30s408nwgl.jpg 2x"
+        data-sizes="auto"
+        alt="https://tva3.sinaimg.cn/large/007Z9xVHgy1h6a3r5kggfj30s408nwgl.jpg"
+        title="image3" /></p>
+<blockquote>
+<p>特点</p>
+</blockquote>
+<p>Docker镜像都是只读的，当容器启动时，一个新的可写层被加载到镜像的顶部
+这一层就是通常说的容器层，容器之下的都叫镜像层</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-09-16</span>
+                <span>更新于 2022-09-18</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
                             <a class="link-to-markdown" href="/2022/09/docker_init/index.md" target="_blank">阅读原始文档</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://WnQinm.github.io/2022/09/docker_init/" data-title="Docker help" data-hashtags="net"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Reddit" data-sharer="reddit" data-url="https://WnQinm.github.io/2022/09/docker_init/"><i class="fab fa-reddit fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://WnQinm.github.io/2022/09/docker_init/" data-title="Docker help"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://WnQinm.github.io/2022/09/docker_init/" data-title="Docker help"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/baidu.svg" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://WnQinm.github.io/2022/09/docker_init/" data-title="Docker" data-hashtags="net"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Reddit" data-sharer="reddit" data-url="https://WnQinm.github.io/2022/09/docker_init/"><i class="fab fa-reddit fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://WnQinm.github.io/2022/09/docker_init/" data-title="Docker"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://WnQinm.github.io/2022/09/docker_init/" data-title="Docker"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/baidu.svg" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>

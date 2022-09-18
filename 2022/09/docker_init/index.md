@@ -1,13 +1,10 @@
-# Docker help
+# Docker
 
 
 # intro
 Docker是基于Go语言开发的开源项目
-
 官网：https://www.docker.com/
-
 文档：https://docs.docker.com/ 超级详细
-
 仓库：https://hub.docker.com/
 
 # Docker能做什么
@@ -15,17 +12,16 @@ Docker是基于Go语言开发的开源项目
 
 ## 虚拟机技术
 模拟了绝大部分组成，导致一些缺点：
+1、资源占用多
+2、冗余步骤多
+3、启动慢
+![virtual machine tech](https://tva4.sinaimg.cn/large/007Z9xVHgy1h68cf4f1x0j30x60p5mzw.jpg)
 
-1. 资源占用多
-
-2. 冗余步骤多
-
-3. 启动慢
-
-![virtual-machine-tech](https://tva4.sinaimg.cn/large/007Z9xVHgy1h68cf4f1x0j30x60p5mzw.jpg)
 ## 容器化技术
 没有模拟一个完整的操作系统，只打包了Lib和各种apps，这些docker共用一个内核，可以最大化压榨内核潜力，同时各个docker互不干扰，避免某个docker环境等配置失败导致机器不能正常使用
-![docker-tech](https://tva2.sinaimg.cn/large/007Z9xVHgy1h68cic0sykj30xp0p8gos.jpg)
+
+![docker tech](https://tva2.sinaimg.cn/large/007Z9xVHgy1h68cic0sykj30xp0p8gos.jpg)
+
 由于容器没有内核，也没有虚拟其他硬件，使得容器十分轻便，我们可以安装多个docker
 
 **应用更快速的交付和部署**
@@ -42,7 +38,8 @@ Docker：打包镜像发布测试，一键运行
 Docker是内核级别的虚拟化，可以在一个物理机上运行很多的容器实例。服务器的性能可以被压榨到极致
 
 # Docker基本组成
-![docker-image1](http://blog.kevinyang.net/2020/07/30/docker-101-note-1/screen-shot-2020-03-19-at-9.01.25-am.png)
+
+![docker image1](http://blog.kevinyang.net/2020/07/30/docker-101-note-1/screen-shot-2020-03-19-at-9.01.25-am.png)
 
 **镜像（image）**：
 docker镜像类似于一个模板，可以通过这个模板来创建容器服务，xxx镜像->run->xxx01容器（提供服务器），通过这个镜像可以创建多个容器（最终服务运行或者项目运行就是在容器中的）
@@ -58,7 +55,7 @@ Docker利用容器技术，独立运行一个或者一组应用，通过镜像�
 
 我这里是将docker安装到云服务器上，相关下载帮助文档如图所示
 
-![docker-doc](https://tva3.sinaimg.cn/large/007Z9xVHgy1h68d0unaraj30hk11hqdx.jpg)
+![docker doc](https://tva3.sinaimg.cn/large/007Z9xVHgy1h68d0unaraj30hk11hqdx.jpg)
 
 网速堪忧，最好提前在服务器部署clash
 
@@ -80,12 +77,15 @@ VERSION_CODENAME=focal
 UBUNTU_CODENAME=focal
 ```
 
-## 帮助文档（ubuntu）：https://docs.docker.com/engine/install/ubuntu/
+## 帮助文档（ubuntu）：
+
+https://docs.docker.com/engine/install/ubuntu/
 
 ```shell
 # uninstall old versions
 sudo apt-get remove docker docker-engine docker.io containerd runc
 ```
+
 ## install using the repository
 
 ```shell
@@ -95,23 +95,30 @@ sudo apt-get remove docker docker-engine docker.io containerd runc
 sudo apt-get update
 sudo apt-get install \
     ca-certificates \
-    curl \
-    gnupg \
-    lsb-release
-# add Docker's official GPG key
-sudo mkdir -p /etc/apt/keyrings
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-# set up the repository
-echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
-  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+        curl \
+            gnupg \
+                lsb-release
+                # add Docker's official GPG key
+                sudo mkdir -p /etc/apt/keyrings
+                curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo
+                gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+                # set up the repository
+                echo \
+                  "deb [arch=$(dpkg --print-architecture)
+                  signed-by=/etc/apt/keyrings/docker.gpg]
+                  https://download.docker.com/linux/ubuntu \
+                    $(lsb_release -cs) stable" | sudo tee
+                    /etc/apt/sources.list.d/docker.list > /dev/null
 ```
+
 只要没有报错就成功
 
 ## 设置阿里云镜像软件源
 
 ```shell
-sudo add-apt-repository "deb [arch=amd64] http://mirrors.aliyun.com/docker-ce/linux/ubuntu $(lsb_release -cs) stable"
+sudo add-apt-repository "deb [arch=amd64]
+http://mirrors.aliyun.com/docker-ce/linux/ubuntu
+$(lsb_release -cs) stable"
 ```
 
 ## install Docker Engine
@@ -214,9 +221,10 @@ sudo apt-get purge docker-ce docker-ce-cli containerd.io docker-compose-plugin
 sudo rm -rf /var/lib/docker
 sudo rm -rf /var/lib/containerd
 ```
+
 # Docker的常用命令
 
-ps.后面一定位置开始，我嫌麻烦，所以将`sudo docker`简写为`sdr`
+ps.后面一定位置开始我嫌麻烦，所以将`sudo docker`简写为`sdr`
 
 ## 帮助命令
 
@@ -244,8 +252,8 @@ CREATED     镜像的创建时间
 SIZE        镜像的大小
 
 # 可选项
-	-a, --all     # 列出所有镜像
-	-q, --quiet   # 只显示镜像的id
+  -a, --all     # 列出所有镜像
+  -q, --quiet   # 只显示镜像的id
 ```
 
 **docker search**搜索镜像
@@ -262,9 +270,9 @@ $ sudo docker search mysql --filter=STARS=3000  #搜索stars不少于3000的镜�
 ```shell
 # 下载镜像 docker pull 镜像名[:tag]
 $ sudo docker pull mysql
-Using default tag: latest	# 如果不写 tag，默认就是 latest
+Using default tag: latest # 如果不写 tag，默认就是 latest
 latest: Pulling from library/mysql
-051f419db9dd: Pull complete	# 分层下载，docker image的核心 联合文件系统
+051f419db9dd: Pull complete # 分层下载，docker image的核心 联合文件系统
 7627573fa82a: Pull complete
 a44b358d7796: Pull complete
 95753aff4b95: Pull complete
@@ -275,9 +283,9 @@ f26212810c32: Pull complete
 d803d4215f95: Pull complete
 d5358a7f7d07: Pull complete
 435e8908cd69: Pull complete
-Digest: sha256:b9532b1edea72b6cee12d9f5a78547bd3812ea5db842566e17f8b33291ed2921	# 签名（防伪标志）
+Digest: sha256:b9532b1edea72b6cee12d9f5a78547bd3812ea5db842566e17f8b33291ed2921 # 签名（防伪标志）
 Status: Downloaded newer image for mysql:latest
-docker.io/library/mysql:latest	# 真实地址
+docker.io/library/mysql:latest  # 真实地址
 
 # 二者等价：
 docker pull mysql
@@ -286,7 +294,7 @@ docker pull docker.io/library/mysql:latest
 # 指定版本下载
 $ sudo docker pull mysql:5.7
 5.7: Pulling from library/mysql
-9815334b7810: Pull complete		# 如果之前下载过某些层，就会显示"Already exists 直接拿过来用而不重新下载
+9815334b7810: Pull complete   # 如果之前下载过某些层，就会显示"Already exists 直接拿过来用而不重新下载
 f85cb6fccbfd: Pull complete
 b63612353671: Pull complete
 447901201612: Pull complete
@@ -303,7 +311,6 @@ docker.io/library/mysql:5.7
 ```
 
 **docker rmi**删除镜像
-
 docker rmi -f 镜像id [镜像id] [镜像id] ...
 ```shell
 $ sudo docker images
@@ -311,7 +318,7 @@ REPOSITORY    TAG       IMAGE ID       CREATED         SIZE
 mysql         latest    43fcfca0776d   35 hours ago    449MB
 mysql         5.7       daff57b7d2d1   3 weeks ago     430MB
 hello-world   latest    feb5d9fea6a5   11 months ago   13.3kB
-$ sudo docker rmi -f daff57b7d2d1	# 根据id删除镜像
+$ sudo docker rmi -f daff57b7d2d1 # 根据id删除镜像
 Untagged: mysql:5.7
 Untagged: mysql@sha256:c1bda6ecdbc63d3b0d3a3a3ce195de3dd755c4a0658ed782a16a0682216b9a48
 Deleted: sha256:daff57b7d2d1e009d0b271972f62dbf4de64b8cdb9cd646442aeda961e615f44
@@ -356,19 +363,19 @@ Deleted: sha256:feb5d9fea6a5e9606aa995e879d862b825965ba48de054caab5ef356dc6b3412
 docker run [可选参数] image
 
 # 参数说明
---name="Name"		# 容器名字 区分容器
--d					# 后台方式运行（linux本身是nohup）
--it					# 使用交互方式运行，进入容器查看内容
--p					# 指定容器的端口 -p 8080:8080
-	-p ip:主机端口:容器端口
-	-p 主机端口:容器端口
-	-p 容器端口
-	容器端口
--P					# 随机指定端口
+--name="Name"   # 容器名字 区分容器
+-d          # 后台方式运行（linux本身是nohup）
+-it         # 使用交互方式运行，进入容器查看内容
+-p          # 指定容器的端口 -p 8080:8080
+  -p ip:主机端口:容器端口
+  -p 主机端口:容器端口
+  -p 容器端口
+  容器端口
+-P          # 随机指定端口
 
 # 测试，启动并进入容器
 $ sudo docker run -it centos /bin/bash
-[root@f4373afebe37 /]# ls	# 查看容器内的centos，基础版本，很多命令不完善
+[root@f4373afebe37 /]# ls # 查看容器内的centos，基础版本，很多命令不完善
 bin  etc   lib    lost+found  mnt  proc  run   srv  tmp  var
 dev  home  lib64  media       opt  root  sbin  sys  usr
 
@@ -382,31 +389,31 @@ blog  clash
 **列出所有运行中容器**
 ```shell
 # docker ps 命令
-		# 列出当前正在运行的容器
--a 		# 列出当前正在运行的容器+带出历史运行过的容器
--n=?	# 显示最近创建的容器
--q		# 只显示容器的编号
+    # 列出当前正在运行的容器
+-a    # 列出当前正在运行的容器+带出历史运行过的容器
+-n=?  # 显示最近创建的容器
+-q    # 只显示容器的编号
 ```
 
 **退出容器**
 ```shell
-exit	# 直接容器停止并退出
-CTRL + P + Q 	# 容器不停止退出
+exit  # 直接容器停止并退出
+CTRL + P + Q  # 容器不停止退出
 ```
 
 **删除容器**
 ```shell
-docker rm 容器id					# 删除指定容器，不能删除正在运行的容器
-docker rm -f $(docker ps -aq)	# 删除所有容器
+docker rm 容器id          # 删除指定容器，不能删除正在运行的容器
+docker rm -f $(docker ps -aq) # 删除所有容器
 docker ps -aq | xargs docker rm # 删除所有容器
 ```
 
 **启动和停止容器**
 ```shell
-docker start 容器id		# 启动容器
-docker restart 容器id		# 重启容器
-docker stop 容器id		# 停止当前正在运行的容器
-docker kill 容器id		# 强制停止容器
+docker start 容器id   # 启动容器
+docker restart 容器id   # 重启容器
+docker stop 容器id    # 停止当前正在运行的容器
+docker kill 容器id    # 强制停止容器
 ```
 
 ## 常用其他命令
@@ -430,9 +437,9 @@ docker logs -f -t --tail <num> 容器id
 $ sudo docker run -d centos /bin/sh -c "while true;do echo hello;sleep 1;done"
 
 # 显示日志
--tf			# 显示所有日志，t时间戳，f持续输出
+-tf     # 显示所有日志，t时间戳，f持续输出
 -tail number# 要显示的日志条数
-$ sudo docker logs -ft --tail 10 2cb886ae2fa9	# 10为日志条数，由于加了参数f，会持续输出日志
+$ sudo docker logs -ft --tail 10 2cb886ae2fa9 # 10为日志条数，由于加了参数f，会持续输出日志
 2022-09-16T10:33:50.928401034Z hello
 2022-09-16T10:33:51.930308966Z hello
 2022-09-16T10:33:52.932148793Z hello
@@ -718,7 +725,120 @@ lighthouse  test.md  ubuntu
 
 # 拷贝是一个手动过程，可以使用 -v 卷的技术，实现自动同步，即连同内外两个目录
 ```
+
 ## 小结
 
 ![summary](https://img-blog.csdnimg.cn/383865dd59f64bd88cbe6b4a56f1315c.png)
+
+# Docker镜像讲解
+
+## 镜像是什么
+
+镜像是一种轻量级、可执行的独立软件包，用来打包软件运行环境和基于运行环境开发的软件，它包含运行某个软件所需的所有内容，包括代码、运行时的库、环境变量和配置文件。
+
+所有的应用，直接打包docker镜像，就可以直接跑起来
+
+如何得到镜像：
+
++ 从远程仓库下载
++ 手动拷贝
++ 自己制作一个镜像DockerFile
+
+## Docker镜像加载原理
+
+> UnionFS（联合文件系统）
+> 
+
+下载的时候看到的一层层的就是这个
+
+UnionFS（联合文件系统）：Union文件系统是一种分层、轻量级并且高性能的文件系统，它支持对文件系统的修改作为一次提交来一层层的叠加，同时可以将不同目录挂载到同一个虚拟文件系统下(unite several directories into a single virtual filesystem)。Union文件系统时Docker镜像的基础。镜像可以通过分层来进行集成，基于基础镜像（没有父镜像），可以制作各种具体的应用镜像。
+
+特性：一次同时加载多个文件系统，但从外面看起来，智能看到一个文件系统，联合加载会把各层文件系统叠加起来，这样最终的文件系统会包含所有底层的文件和目录
+
+> Docker镜像加载原理
+> 
+
+docker的镜像实际上由一层一层的文件系统组成，这种层级的文件系统UnionFS
+
+bootfs(boot file system)主要包含bootloader和kernel，bootloader主要是引导加载kernel，linux刚启动时会加载bootfs文件系统，在Docker镜像的最底层时bootfs。这一层与我们典型的Linux/Unix系统时一样的，包含boot加载器和内核。当boot加载完成之后整个内核就都在内存中了，此时内存的使用权已由bootfs转交给内核，此时系统也会卸载bootfs
+
+rootfs(root file system)，在bootfs之上，包含的就是典型的Linux系统中的/dev,/proc,/bin,/etc等标准目录和文件。rootfs就是各种不同的操作系统发行版，比如Ubuntu，Centos等等。
+
+![UnionFS](https://tvax2.sinaimg.cn/large/007Z9xVHgy1h6a4yadmmmj30pw07zwj2.jpg)
+
+平时虚拟机的CentOS有几个G，但是centos镜像只有二百多兆
+
+对于一个精简的OS，rootfs可以很小，只需要包含最基本的命令，工具和程序库就可以，因为底层直接用Host的kernel，自己只需要提供rootfs就可以了。由此可见对于不同的linux发行版，bootfs基本都是一致的，rootfs会有差别，因此不同的发行版可以公用bootfs
+
+> 分层的镜像
+> 
+
+下载镜像时，观察下载的日志输出，发现是一层一层的下载
+
+**原因**：
+
+资源共享。比如多个镜像都从相同的base镜像构建而来，那么宿主机只需在磁盘上保留一份base镜像，同时内存中也只需要加载一份base镜像，这样就可以为所有的容器服务了，而且镜像的每一层都可以被共享。
+
+查看镜像分层的方式可以通过 docker image inspect 命令
+
+```shell
+$ sdr image inspect 22afbacf753d
+...
+"RootFS": {
+            "Type": "layers",
+            "Layers": [
+                "sha256:7ac795f5ab480bb362e19552cce3cd9780aba31de91aca50606e381f2b5fdc04",
+                "sha256:24c3f9ffc7df0db8b16e98211592d96583c39ff5c8ea586350e4bfbb11663bce",
+                "sha256:ca9d5bcb66762cb171518b1d28b1a2296ba0bd09bc5de8f5eff644a1b8f64043",
+                "sha256:44dd6b099cde96414b9275866c1a43bbc8e69a29348e0e3501e0e30b4fb73213",
+                "sha256:b8c503d0b5359439591163e5322340cf600d1eeb9c73214ed6d561b0e4586c58",
+                "sha256:a4c678688c9ae89a07c707072edf5a8194a5a24e89a298ab0282d587b35aa90a"
+            ]
+        },
+        "Metadata": {
+            "LastTagTime": "0001-01-01T00:00:00Z"
+        }
+    }
+]
+```
+
+**理解**：
+
+所有的Docker镜像都起始于一个基础镜像层，当进行修改或增加新内容时，就会在当前镜像层之上，创建新的镜像层。
+
+eg. 加入基于 Ubuntu Liux 16.04 创建一个新的镜像，这就是新镜像的第一层；如果在该镜像中添加Python包，就会在基础镜像层之上创建第二个镜像层；如果继续添加一个安全补丁，就会创建第三个镜像层。
+
+该镜像当前已经包含3个镜像层，如下图所示：
+
+![image0](https://tva2.sinaimg.cn/large/007Z9xVHgy1h6a32ci1itj30nl0evn0i.jpg)
+
+在添加额外的镜像层的同时，镜像始终保持时当前所有镜像的组合。下图中每个镜像时包含3个文件，而镜像包含了来自两个镜像层的6个文件
+
+![image1](https://tvax1.sinaimg.cn/large/007Z9xVHgy1h6a3g1kzrgj30nm0cbq5g.jpg)
+
+上图的镜像层跟之前图中的稍有区别，主要目的是便于展示文件。
+
+下图中展示了一个稍微复杂的三层镜像，在外部看来整个镜像只有6个文件，这是因为最上层中的文件7是文件5的一个更新版本
+
+![image2](https://tva2.sinaimg.cn/large/007Z9xVHgy1h6a3iugb44j30mu0gbn0q.jpg)
+
+这种情况下，上层镜像层中的文件覆盖了底层镜像层中的文件。这样就使得文件的更新版本作为一个新镜像层添加到镜像当中。
+
+Docker通过存储引擎（新版本采用快照机制）的方式来实现镜像层堆栈，并保证多镜像层对外展示为统一的文件系统。
+
+Linux上可用的存储引擎有AUFS、Overlay2、Device Mapper、Btrfs以及ZFS。顾名思义，每种存储引擎都基于Linux中对应的文件系统或者设备技术，并且每种存储引擎都有其独有的性能特点。
+
+Docker在Windows上仅支持windowsfilter一种存储引擎，该引擎基于NTFS文件系统之上实现了分层和CoW[1]。
+
+下图展示了与系统显示相同的三层镜像。所有镜像层堆叠并合并，对外提供统一的视图。
+
+![image3](https://tva3.sinaimg.cn/large/007Z9xVHgy1h6a3r5kggfj30s408nwgl.jpg)
+
+> 特点
+> 
+
+Docker镜像都是只读的，当容器启动时，一个新的可写层被加载到镜像的顶部
+这一层就是通常说的容器层，容器之下的都叫镜像层
+
+
 
