@@ -2,7 +2,7 @@
 title: "ssh基础配置"
 date: 2022-09-24T13:24:23+08:00
 draft: false
-tag: ["net"]
+tags: ["net"]
 ---
 
 `systemctl status sshd`查看ssh服务是否启动

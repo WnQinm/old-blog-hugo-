@@ -2,7 +2,7 @@
 title: "Docker"
 date: 2022-09-18T01:32:42+08:00
 draft: false
-tags: ["net"]
+tags: ["net","docker"]
 ---
 
 # intro

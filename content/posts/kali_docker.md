@@ -2,7 +2,7 @@
 title: "Kali(docker)"
 date: 2022-09-24T13:26:40+08:00
 draft: false
-tag: ["net"]
+tags: ["net","docker","hack"]
 ---
 
 # 配置kali的apt在线安装包源

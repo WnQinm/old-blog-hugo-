@@ -2,7 +2,7 @@
 title: "html初识"
 date: 2022-09-24T13:15:46+08:00
 draft: false
-tag: ["net"]
+tags: ["net"]
 ---
 
 # 网页基本信息
