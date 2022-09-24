@@ -3,7 +3,31 @@
         <title>所有文章 - Qinm&#39;s blog</title>
         <link>https://WnQinm.github.io/posts/</link>
         <description>所有文章 | Qinm&#39;s blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 18 Sep 2022 01:32:42 &#43;0800</lastBuildDate><atom:link href="https://WnQinm.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 24 Sep 2022 13:26:40 &#43;0800</lastBuildDate><atom:link href="https://WnQinm.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Kali(docker)</title>
+    <link>https://WnQinm.github.io/2022/09/kali_docker/</link>
+    <pubDate>Sat, 24 Sep 2022 13:26:40 &#43;0800</pubDate>
+    <author>清梦</author>
+    <guid>https://WnQinm.github.io/2022/09/kali_docker/</guid>
+    <description><![CDATA[配置kali的apt在线安装包源 vim /etc/apt/sources.list 把原先的deb注释掉，然后添加： 1 2 deb http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib deb-src http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib 然后apt update 其次通过下面的代码安装必要的工具]]></description>
+</item>
+<item>
+    <title>ssh基础配置</title>
+    <link>https://WnQinm.github.io/2022/09/ssh_help/</link>
+    <pubDate>Sat, 24 Sep 2022 13:24:23 &#43;0800</pubDate>
+    <author>清梦</author>
+    <guid>https://WnQinm.github.io/2022/09/ssh_help/</guid>
+    <description><![CDATA[systemctl status sshd查看ssh服务是否启动 systemctl start sshd启动ssh服务 通过ssh 用户名@ip地址登录服务器 首次登录时需要确认密钥，必须输入完整的yes]]></description>
+</item>
+<item>
+    <title>html初识</title>
+    <link>https://WnQinm.github.io/2022/09/html_init/</link>
+    <pubDate>Sat, 24 Sep 2022 13:15:46 &#43;0800</pubDate>
+    <author>清梦</author>
+    <guid>https://WnQinm.github.io/2022/09/html_init/</guid>
+    <description><![CDATA[网页基本信息 DOCTYPE 告诉浏览器我们要使用什么规范 html 所有内容必须包含在html这个总标签里 head 代表网页头部 body 代表网页主体 title 表示网页标题，显示在标签选项]]></description>
+</item>
+<item>
     <title>Docker</title>
     <link>https://WnQinm.github.io/2022/09/docker_init/</link>
     <pubDate>Sun, 18 Sep 2022 01:32:42 &#43;0800</pubDate>
@@ -17,7 +41,7 @@
     <pubDate>Fri, 16 Sep 2022 13:27:13 &#43;0800</pubDate>
     <author>清梦</author>
     <guid>https://WnQinm.github.io/2022/09/clash_linux/</guid>
-    <description><![CDATA[花费六十多大洋在腾讯云利用学生和新人身份租了一年云服务器，结果git clone发现无法正常使用GitHub，无奈学习了在服务器部署clash]]></description>
+    <description><![CDATA[第一次租云服务器，结果git clone时发现无法正常使用GitHub，无奈学习了在服务器部署clash 安装 首先在本地下载clash本体：ht]]></description>
 </item>
 <item>
     <title>Taylor</title>
@@ -33,7 +57,7 @@
     <pubDate>Tue, 30 Aug 2022 15:30:33 &#43;0800</pubDate>
     <author>清梦</author>
     <guid>https://WnQinm.github.io/2022/08/jyawldh/</guid>
-    <description><![CDATA[b刷到了高盛元老师的语文课，讲解燕七的鲸鱼安慰了大海 鲸鱼安慰了大海 不是所有的树 都能在自己的家乡终老 不是所有的轨道 都通往春暖花开的方向 不是所有]]></description>
+    <description><![CDATA[在b站刷到了高盛元老师的语文课，讲解燕七的鲸鱼安慰了大海 鲸鱼安慰了大海 不是所有的树 都能在自己的家乡终老 不是所有的轨道 都通往春暖花开的方向 不是]]></description>
 </item>
 <item>
     <title>Google高级搜索</title>
@@ -58,14 +82,6 @@
     <author>清梦</author>
     <guid>https://WnQinm.github.io/2022/08/markdown_help/</guid>
     <description><![CDATA[==目录== 一级标题 （# 空格） 二级标题 三级标题 四级标题 五级标题 六级标题 ctrl +1/2/3/4/5/6 快速设置六级标题 CTRL +/- 提升标题等级 倾斜 或者ctrl+i 加粗 或者ctr]]></description>
-</item>
-<item>
-    <title>Latex数学公式</title>
-    <link>https://WnQinm.github.io/2022/08/latex%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/</link>
-    <pubDate>Mon, 22 Aug 2022 20:16:49 &#43;0800</pubDate>
-    <author>清梦</author>
-    <guid>https://WnQinm.github.io/2022/08/latex%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/</guid>
-    <description><![CDATA[由于本人技术原因，latex在html界面的渲染做的很差，有的可以正常显示有的则不行，本篇主要是帮助回忆latex数学公式相关语法，故而就此]]></description>
 </item>
 </channel>
 </rss>

@@ -17,7 +17,7 @@
     <pubDate>Fri, 16 Sep 2022 13:27:13 &#43;0800</pubDate>
     <author>清梦</author>
     <guid>https://WnQinm.github.io/2022/09/clash_linux/</guid>
-    <description><![CDATA[花费六十多大洋在腾讯云利用学生和新人身份租了一年云服务器，结果git clone发现无法正常使用GitHub，无奈学习了在服务器部署clash]]></description>
+    <description><![CDATA[第一次租云服务器，结果git clone时发现无法正常使用GitHub，无奈学习了在服务器部署clash 安装 首先在本地下载clash本体：ht]]></description>
 </item>
 </channel>
 </rss>

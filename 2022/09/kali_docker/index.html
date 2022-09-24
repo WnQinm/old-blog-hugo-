@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Kali(docker) - Qinm&#39;s blog</title><meta name="Description" content="Qinm&#39;s blog"><meta property="og:title" content="Kali(docker)" />
+<meta property="og:description" content="配置kali的apt在线安装包源 vim /etc/apt/sources.list 把原先的deb注释掉，然后添加： 1 2 deb http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib deb-src http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib 然后apt update 其次通过下面的代码安装必要的工具" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://WnQinm.github.io/2022/09/kali_docker/" />
+<meta property="og:image" content="https://WnQinm.github.io/logo.png"/>
+<meta property="article:published_time" content="2022-09-24T13:26:40+08:00" />
+<meta property="article:modified_time" content="2022-09-24T13:26:40+08:00" /><meta property="og:site_name" content="blog" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://WnQinm.github.io/logo.png"/>
+
+<meta name="twitter:title" content="Kali(docker)"/>
+<meta name="twitter:description" content="配置kali的apt在线安装包源 vim /etc/apt/sources.list 把原先的deb注释掉，然后添加： 1 2 deb http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib deb-src http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib 然后apt update 其次通过下面的代码安装必要的工具"/>
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://WnQinm.github.io/2022/09/kali_docker/" /><link rel="prev" href="https://WnQinm.github.io/2022/09/ssh_help/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Kali(docker)",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/WnQinm.github.io\/2022\/09\/kali_docker\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/WnQinm.github.io\/images\/Apple-Devices-Preview.png",
+                            "width":  3200 ,
+                            "height":  2048 
+                        }],"genre": "posts","wordcount":  1216 ,
+        "url": "https:\/\/WnQinm.github.io\/2022\/09\/kali_docker\/","datePublished": "2022-09-24T13:26:40+08:00","dateModified": "2022-09-24T13:26:40+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": "https:\/\/WnQinm.github.io\/images\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "清梦"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Qinm&#39;s blog"><span class="header-title-pre"><i class='fa-solid fa-cloud' aria-hidden='true'></i></span>Qinm&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Qinm&#39;s blog"><span class="header-title-pre"><i class='fa-solid fa-cloud' aria-hidden='true'></i></span>Qinm&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Kali(docker)</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>清梦</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-09-24">2022-09-24</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 1216 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ol>
+    <li><a href="#配置kali的apt在线安装包源">配置kali的apt在线安装包源</a></li>
+    <li><a href="#利用第三方服务对目标进行被动信息收集防止被发现">利用第三方服务对目标进行被动信息收集防止被发现</a>
+      <ol>
+        <li><a href="#被动信息收集">被动信息收集</a>
+          <ol>
+            <li><a href="#被动信息收集概述和目的">被动信息收集概述和目的</a></li>
+            <li><a href="#信息收集的内容">信息收集的内容</a></li>
+            <li><a href="#信息用途">信息用途</a></li>
+          </ol>
+        </li>
+        <li><a href="#信息收集-dns">信息收集-DNS</a>
+          <ol>
+            <li><a href="#域名解析原理">域名解析原理</a></li>
+            <li><a href="#dns信息收集-nslookup">DNS信息收集-NSLOOKUP</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+  </ol>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="配置kali的apt在线安装包源">配置kali的apt在线安装包源</h1>
+<p><code>vim /etc/apt/sources.list</code></p>
+<p>把原先的deb注释掉，然后添加：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">deb http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib
+deb-src http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib
+</code></pre></td></tr></table>
+</div>
+</div><p>然后<code>apt update</code>
+其次通过下面的代码安装必要的工具</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 安装本体（只是一个空壳）</span>
+docker pull kalilinux/kali-rolling
+
+<span class="c1"># 这里面啥也无，先安装基本包</span>
+apt install kali-linux-core
+<span class="c1"># 二百多兆，常见的简单工具</span>
+
+<span class="c1"># 常用工具都在这里，好几个G</span>
+apt install kali-linux-headless
+
+<span class="c1"># 越来越大的包...</span>
+kali-linux-large
+kali-linux-everything
+
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="利用第三方服务对目标进行被动信息收集防止被发现">利用第三方服务对目标进行被动信息收集防止被发现</h1>
+<h2 id="被动信息收集">被动信息收集</h2>
+<h3 id="被动信息收集概述和目的">被动信息收集概述和目的</h3>
+<p>信息收集的方式可以分为两种：被动和主动</p>
+<p>被动信息收集方式是指利用第三方服务对目标进行访问了解，例如google</p>
+<p>主动的信息收集方式：通过直接访问、扫描网站，这种将流量流经网站的行为。比如nmap扫描端口</p>
+<p>被动信息收集的目的：通过公开渠道去获得目标主机的信息，从而不与目标系统直接交互，避免留下痕迹</p>
+<h3 id="信息收集的内容">信息收集的内容</h3>
+<ol>
+<li>ip地址段</li>
+<li>域名信息</li>
+<li>邮件地址</li>
+<li>文档图片数据</li>
+<li>公司地址</li>
+<li>公司组织架构</li>
+<li>联系电话/传真号码</li>
+<li>人员姓名/职务</li>
+<li>目标系统使用的技术架构</li>
+<li>公开的商业信息</li>
+</ol>
+<h3 id="信息用途">信息用途</h3>
+<ol>
+<li>信息描述目标</li>
+<li>发现目标</li>
+<li>社会工程学攻击</li>
+<li>物理缺口</li>
+</ol>
+<h2 id="信息收集-dns">信息收集-DNS</h2>
+<h3 id="域名解析原理">域名解析原理</h3>
+<p><strong>DNS服务器概述</strong>：</p>
+<p>运行DNS服务器程序的计算机，储存DNS数据库信息。</p>
+<p>DNS服务器分为根域DNS服务器、顶级域名DNS服务器。根域DNS服务器有13个，都存储了全部的顶级域名服务器的所在地址；顶级域名服务器存储了每位客户所注册的主机地址，这里对应到 163.com. 这个级别。</p>
+<p><strong>域名记录：A,Cname,NS,MX,PTR</strong></p>
+<p>(1) A记录（Address）正向解析:
+A记录是将一个主机名（全程域名FQDN）和一个IP地址关联起来。这也是大多数客户端程序默认的查询类型。例：wnqinm.cn-&gt;6.6.6.6</p>
+<p>(2) PTR记录（Pointer）反向解析:
+PTR记录将一个ip地址对应到主机名（全程域名FQDN）。这些记录保存在in-addr.arpa域中。</p>
+<p>(3) CNAME记录（Canonical Name）别名：
+别名记录，也成为规范名字（Canonical Name）。这种记录允许将多个名字映射到同一台计算机。例如：www.wnqinm.cn 对应 IP6.6.6.6，web.wnqinm.cn 对应IP 6.6.6.6</p>
+<p>(4) MX记录（Mail eXchange）
+MX记录是邮件交换记录，它指向一个邮件服务器，用于电子邮件系统发邮件时根据收信人的地址后缀来定位服务器。@163.com
+当有多个MX记录（即有多个邮件服务器）时，则需要设置数值来确定其优先级。通过设置优先级数字来指明首选服务器，数字越小表示优先级越高。</p>
+<p>(5) NS记录（Name Server）
+NS记录时域名服务器记录，也成为授权服务器，用来指定该域名由哪个DNS服务器来进行解析</p>
+<p><strong>DNS缓存服务器</strong></p>
+<p>不负责解析域，只是缓存域名解析结果</p>
+<p>DNS查询方式：递归查询和迭代查询</p>
+<p>一个DNS查询过程，通过8个步骤的解析过程就使得客户端可以顺利访问 <a href="http://www.163.com">www.163.com</a> 这个域名，但实际应用中，通常这个过程时非常迅速的，如图所示：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://tvax4.sinaimg.cn/large/007Z9xVHgy1h6bux7kwytj30sl0jt40e.jpg"
+        data-srcset="https://tvax4.sinaimg.cn/large/007Z9xVHgy1h6bux7kwytj30sl0jt40e.jpg, https://tvax4.sinaimg.cn/large/007Z9xVHgy1h6bux7kwytj30sl0jt40e.jpg 1.5x, https://tvax4.sinaimg.cn/large/007Z9xVHgy1h6bux7kwytj30sl0jt40e.jpg 2x"
+        data-sizes="auto"
+        alt="https://tvax4.sinaimg.cn/large/007Z9xVHgy1h6bux7kwytj30sl0jt40e.jpg"
+        title="dns" /></p>
+<h3 id="dns信息收集-nslookup">DNS信息收集-NSLOOKUP</h3>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-09-24</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/2022/09/kali_docker/index.md" target="_blank">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://WnQinm.github.io/2022/09/kali_docker/" data-title="Kali(docker)"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Reddit" data-sharer="reddit" data-url="https://WnQinm.github.io/2022/09/kali_docker/"><i class="fab fa-reddit fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://WnQinm.github.io/2022/09/kali_docker/" data-title="Kali(docker)"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://WnQinm.github.io/2022/09/kali_docker/" data-title="Kali(docker)"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/baidu.svg" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2022/09/ssh_help/" class="prev" rel="prev" title="ssh基础配置"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>ssh基础配置</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">River flies, sky lies.</div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">清梦</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
