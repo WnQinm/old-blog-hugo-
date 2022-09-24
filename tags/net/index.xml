@@ -3,7 +3,31 @@
         <title>net - 标签 - Qinm&#39;s blog</title>
         <link>https://WnQinm.github.io/tags/net/</link>
         <description>net - 标签 - Qinm&#39;s blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 18 Sep 2022 01:32:42 &#43;0800</lastBuildDate><atom:link href="https://WnQinm.github.io/tags/net/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 24 Sep 2022 13:26:40 &#43;0800</lastBuildDate><atom:link href="https://WnQinm.github.io/tags/net/" rel="self" type="application/rss+xml" /><item>
+    <title>Kali(docker)</title>
+    <link>https://WnQinm.github.io/2022/09/kali_docker/</link>
+    <pubDate>Sat, 24 Sep 2022 13:26:40 &#43;0800</pubDate>
+    <author>清梦</author>
+    <guid>https://WnQinm.github.io/2022/09/kali_docker/</guid>
+    <description><![CDATA[配置kali的apt在线安装包源 vim /etc/apt/sources.list 把原先的deb注释掉，然后添加： 1 2 deb http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib deb-src http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib 然后apt update 其次通过下面的代码安装必要的工具]]></description>
+</item>
+<item>
+    <title>ssh基础配置</title>
+    <link>https://WnQinm.github.io/2022/09/ssh_help/</link>
+    <pubDate>Sat, 24 Sep 2022 13:24:23 &#43;0800</pubDate>
+    <author>清梦</author>
+    <guid>https://WnQinm.github.io/2022/09/ssh_help/</guid>
+    <description><![CDATA[systemctl status sshd查看ssh服务是否启动 systemctl start sshd启动ssh服务 通过ssh 用户名@ip地址登录服务器 首次登录时需要确认密钥，必须输入完整的yes]]></description>
+</item>
+<item>
+    <title>html初识</title>
+    <link>https://WnQinm.github.io/2022/09/html_init/</link>
+    <pubDate>Sat, 24 Sep 2022 13:15:46 &#43;0800</pubDate>
+    <author>清梦</author>
+    <guid>https://WnQinm.github.io/2022/09/html_init/</guid>
+    <description><![CDATA[网页基本信息 DOCTYPE 告诉浏览器我们要使用什么规范 html 所有内容必须包含在html这个总标签里 head 代表网页头部 body 代表网页主体 title 表示网页标题，显示在标签选项]]></description>
+</item>
+<item>
     <title>Docker</title>
     <link>https://WnQinm.github.io/2022/09/docker_init/</link>
     <pubDate>Sun, 18 Sep 2022 01:32:42 &#43;0800</pubDate>
