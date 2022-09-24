@@ -730,6 +730,62 @@ lighthouse  test.md  ubuntu
 
 ![summary](https://img-blog.csdnimg.cn/383865dd59f64bd88cbe6b4a56f1315c.png)
 
+## 练习
+
+### nginx
+
+```shell
+sdr pull nginx
+sdr run -d --name nginx-test -p 7788:80 nginx
+curl localhost:7788
+```
+
+pull nginx镜像
+启动一个容器
+curl本地7788端口
+
+```html
+<!--返回以下网页-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+html { color-scheme: light dark; }
+body { width: 35em; margin: 0 auto;
+font-family: Tahoma, Verdana, Arial, sans-serif; }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.</p>
+
+<p>For online documentation and support please refer to
+<a href="http://nginx.org/">nginx.org</a>.<br/>
+Commercial support is available at
+<a href="http://nginx.com/">nginx.com</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
+```
+外网通过7788端口访问到Linux，然后通过`-p 7788:80`将7788端口接入容器80端口，从而访问nginx
+
+### tomcat
+
+```shell
+sdr pull tomcat
+sdr run -d -p 6677:8080 --name tomcat-test tomcat
+```
+通过公网ip访问发现404（还是能访问的，只不过是404）
+
+`sdr exec -it tomcat-test /bin/bash`进入容器，发现webapps为空
+
+`cp -r webapps.dist/* webapps`把实例文档拷贝进去
+
+再次访问公网ip:6677发现成功显示页面
+
 # Docker镜像讲解
 
 ## 镜像是什么
@@ -840,5 +896,832 @@ Docker在Windows上仅支持windowsfilter一种存储引擎，该引擎基于NTF
 Docker镜像都是只读的，当容器启动时，一个新的可写层被加载到镜像的顶部
 这一层就是通常说的容器层，容器之下的都叫镜像层
 
+## commit镜像
+
+```shell
+# 和git差不多
+docker commit -m="提交的描述信息" -a="作者" 容器id 目标镜像名:TAG 
+```
+
+# 容器数据卷
+
+## 什么是容器数据卷
+
+docker理念：将应用和环境打包成一个镜像
+
+but：如果数据都在容器中，那么容器一删除，数据就会丢失。
+
+–->需求：数据可以持久化
+
+容器之间可以有一个数据共享技术：Docker容器中产生的数据同步到本地
+
+即卷技术，目录的挂载，将容器内的目录挂载到Linux上
+
+**容器的持久化和同步操作，同时容器间也可以数据共享**
+
+## 使用数据卷
+
+```shell
+# docker run -it -v 主机目录:容器内目录
+
+sdr run -it -v /home/ubuntu/test:/home centos /bin/bash
+
+```
+
+无论容器是否开启，无论正向操作还是反向操作，指定通道文件均正常共享
+
+优点：本地修改，容器自动同步
+
+## 安装MySQL
+
+详情查看dockerhub解释，其中`-e`是环境配置，配置root密码之类的
+
+## 具名和匿名挂载
+
+```shell
+# 匿名挂载
+-v 容器内路径 # 自动生成主机目录
+$ sdr run -d -P --name nginx-test -v /etc/nginx nginx
+# -P是随机映射端口
+
+# 卷相关操作
+sdr volume [参数]
+$ sdr volume ls
+DRIVER    VOLUME NAME
+local     e971a7e87e336058a1b2466da64c75d2938c5c6b3b70f07ccc8ea6fbfd005673
+# 匿名卷挂载
+
+# 具名挂载
+# -v 卷名:容器内路径
+$ sdr run -d -P --name nginx02 -v juming-nginx:/etc/nginx nginx
+$ sdr volume ls
+DRIVER    VOLUME NAME
+local     e971a7e87e336058a1b2466da64c75d2938c5c6b3b70f07ccc8ea6fbfd005673
+local     juming-nginx
+```
+
+查看具体位置
+
+```shell
+$ sdr volume inspect juming-nginx
+[
+    {
+        "CreatedAt": "2022-09-20T01:09:40+08:00",
+        "Driver": "local",
+        "Labels": null,
+        "Mountpoint": "/var/lib/docker/volumes/juming-nginx/_data",
+        "Name": "juming-nginx",
+        "Options": null,
+        "Scope": "local"
+    }
+]
+# mountpoint就是具体挂载地址
+```
+
+所有docker容器内的卷，在没有指定目录的情况下都是在`/var/lib/docker/volumes/xxxx/_data`
+
+```shell
+cd /var/lib/docker/volumes
+root@VM-4-3-ubuntu:/var/lib/docker/volumes# ls
+backingFsBlockDev                                                 juming-nginx
+e971a7e87e336058a1b2466da64c75d2938c5c6b3b70f07ccc8ea6fbfd005673  metadata.db
+```
+
+一般都是具名挂载，方便找到卷，或者自定主机路径
+
+**拓展：**
+
+```shell
+# 有时会在容器后再加参数ro rw
+ro：readonly
+rw：readwrite
+
+# 参数是对容器生效，ro指该文件只能从外部改变
+sdr run -d -P --name nginx02 -v juming-nginx:/etc/nginx:ro nginx
+sdr run -d -P --name nginx02 -v juming-nginx:/etc/nginx:rw nginx
+
+```
+
+## Dockerfile初识
+
+Dockerfile是用来构建docker镜像的构建文件，是命令脚本
+
+通过这个脚本可以生成镜像，镜像一层一层的，脚本一个一个的命令，每个命令都是一层
+
+```shell
+$ mkdir docker-test-volume
+$ cd docker-test-volume
+$ vim dockerfile1
+# 这里的每个命令,就是镜像的一层
+FROM centos
+# 挂载数据卷目录
+# 通过docker inspect中的mounts查看挂载的目录
+VOLUME ["/volume01","/volume02"]
+
+CMD echo "---end---"
+
+CMD /bin/bash
+
+$ docker build -f dockerfile1 -t qinm/centos:latest .
+# -f 设置地址
+# -t tag,设置标签
+Sending build context to Docker daemon  2.048kB
+Step 1/4 : FROM centos
+ ---> 5d0da3dc9764
+Step 2/4 : VOLUME ["volume01","volume02"]
+ ---> Running in 502845653bb0
+Removing intermediate container 502845653bb0
+ ---> cc7399fde6c6
+Step 3/4 : CMD echo "---end---"
+ ---> Running in 1c6e2ad7f22b
+Removing intermediate container 1c6e2ad7f22b
+ ---> 02c44d547986
+Step 4/4 : CMD /bin/bash
+ ---> Running in 9fa10a85fe26
+Removing intermediate container 9fa10a85fe26
+ ---> 3f4f6e063605
+Successfully built 3f4f6e063605
+Successfully tagged qinm/centos:latest
+```
+
+## 数据卷容器
+
+docker run 时,通过添加参数`\--volumes-from docker名`挂载其他容器的数据卷
+
+似乎可以通过 -v 指定要挂载的容器
+
+# Dockerfile
+
+dockerfile 是用来构建docker镜像的文件,就是一个命令参数脚本
+
+官方镜像都是一些基础镜像,我们需要构建自己的镜像
+
+## DockerFile构建过程
+
+**基础知识:**
+
+1. 每个保留关键字(指令)都最好是大写字母
+2. 执行从上到下顺序执行
+3. \# 表示注释
+4. 每一个指令都会创建提交一个新的镜像层,并提交
+
+dockerfile –>dockerimages –>docker容器
+
+## dockerfile指令
+
+```shell
+FROM			# 指定基础镜像
+MAINTAINER		# 镜像是谁写的, 姓名+邮箱
+RUN				# 镜像构建的时候需要运行的命令
+ADD				# 步骤,添加其他东西(比如tomcat镜像之类的)
+WORKDIR			# 镜像的工作目录
+VOLUME			# 挂载的目录
+EXPOSE			# 指定暴露的端口
+CMD				# 指定这个容器要启动时候要运行的命令,只有最后一个会生效,可被替代
+ENTRYPOINT		# 指定这个容器要启动时候要运行的命令,可以追加命令
+ONBUILD			# 当构建一个被继承 Dockerfile 这个时候会运行该指令,是一个触发指令
+COPY			# 类似add,将我们的文件拷贝到镜像中
+ENV				# 构建的时候设置环境变量
+```
+
+**CMD和ENTRYPOINT区别:**
+
+```SHELL
+CMD ls -a
+docker run -l时会将-l替换ls -a
+
+ENTRYPOINT ls -a
+docker run -l时会将-l追加到之后,变为ls -a -l
+```
+
+## 实操
+
+```shell
+# 编写dockerfile
+$ vim mydockerfile-centos
+FROM centos:7 # 需要指定centos:7不然yum会报错
+MAINTAINER wnqinm<flidwala@gmail.com>
+
+ENV MYPATH /usr/local
+WORKDIR $MYPATH
+
+RUN yum -y install vim
+RUN yum -y install net-tools
+
+EXPOSE 80
+
+CMD /bin/bash
+$ sdr build -f mydockerfile-centos -t mycentos:latest .
+```
+之后会输出以下信息:
+
+```shell
+Sending build context to Docker daemon  2.048kB
+Step 1/8 : FROM centos:7
+7: Pulling from library/centos
+2d473b07cdd5: Pull complete
+Digest: sha256:c73f515d06b0fa07bb18d8202035e739a494ce760aa73129f60f4bf2bd22b407
+Status: Downloaded newer image for centos:7
+ ---> eeb6ee3f44bd
+Step 2/8 : MAINTAINER wnqinm<flidwala@gmail.com>
+ ---> Running in 3f3163ef6fc6
+Removing intermediate container 3f3163ef6fc6
+ ---> 7cc6b3b953d1
+Step 3/8 : ENV MYPATH /usr/local
+ ---> Running in 91d3be697355
+Removing intermediate container 91d3be697355
+ ---> 3c456a5a6c70
+Step 4/8 : WORKDIR $MYPATH
+ ---> Running in 34d1a3844471
+Removing intermediate container 34d1a3844471
+ ---> 0aed096774e0
+Step 5/8 : RUN yum -y install vim
+ ---> Running in 8ff92ad9ec1e
+Loaded plugins: fastestmirror, ovl
+Determining fastest mirrors
+ * base: mirrors.nju.edu.cn
+ * extras: ftp.sjtu.edu.cn
+ * updates: ftp.sjtu.edu.cn
+Resolving Dependencies
+--> Running transaction check
+---> Package vim-enhanced.x86_64 2:7.4.629-8.el7_9 will be installed
+--> Processing Dependency: vim-common = 2:7.4.629-8.el7_9 for package: 2:vim-enhanced-7.4.629-8.el7_9.x86_64
+--> Processing Dependency: which for package: 2:vim-enhanced-7.4.629-8.el7_9.x86_64
+--> Processing Dependency: perl(:MODULE_COMPAT_5.16.3) for package: 2:vim-enhanced-7.4.629-8.el7_9.x86_64
+--> Processing Dependency: libperl.so()(64bit) for package: 2:vim-enhanced-7.4.629-8.el7_9.x86_64
+--> Processing Dependency: libgpm.so.2()(64bit) for package: 2:vim-enhanced-7.4.629-8.el7_9.x86_64
+--> Running transaction check
+---> Package gpm-libs.x86_64 0:1.20.7-6.el7 will be installed
+---> Package perl.x86_64 4:5.16.3-299.el7_9 will be installed
+--> Processing Dependency: perl(Socket) >= 1.3 for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Scalar::Util) >= 1.10 for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl-macros for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(threads::shared) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(threads) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(constant) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Time::Local) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Time::HiRes) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Storable) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Socket) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Scalar::Util) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Pod::Simple::XHTML) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Pod::Simple::Search) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Getopt::Long) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Filter::Util::Call) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(File::Temp) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(File::Spec::Unix) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(File::Spec::Functions) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(File::Spec) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(File::Path) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Exporter) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Cwd) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Carp) for package: 4:perl-5.16.3-299.el7_9.x86_64
+---> Package perl-libs.x86_64 4:5.16.3-299.el7_9 will be installed
+---> Package vim-common.x86_64 2:7.4.629-8.el7_9 will be installed
+--> Processing Dependency: vim-filesystem for package: 2:vim-common-7.4.629-8.el7_9.x86_64
+---> Package which.x86_64 0:2.20-7.el7 will be installed
+--> Running transaction check
+---> Package perl-Carp.noarch 0:1.26-244.el7 will be installed
+---> Package perl-Exporter.noarch 0:5.68-3.el7 will be installed
+---> Package perl-File-Path.noarch 0:2.09-2.el7 will be installed
+---> Package perl-File-Temp.noarch 0:0.23.01-3.el7 will be installed
+---> Package perl-Filter.x86_64 0:1.49-3.el7 will be installed
+---> Package perl-Getopt-Long.noarch 0:2.40-3.el7 will be installed
+--> Processing Dependency: perl(Pod::Usage) >= 1.14 for package: perl-Getopt-Long-2.40-3.el7.noarch
+--> Processing Dependency: perl(Text::ParseWords) for package: perl-Getopt-Long-2.40-3.el7.noarch
+---> Package perl-PathTools.x86_64 0:3.40-5.el7 will be installed
+---> Package perl-Pod-Simple.noarch 1:3.28-4.el7 will be installed
+--> Processing Dependency: perl(Pod::Escapes) >= 1.04 for package: 1:perl-Pod-Simple-3.28-4.el7.noarch
+--> Processing Dependency: perl(Encode) for package: 1:perl-Pod-Simple-3.28-4.el7.noarch
+---> Package perl-Scalar-List-Utils.x86_64 0:1.27-248.el7 will be installed
+---> Package perl-Socket.x86_64 0:2.010-5.el7 will be installed
+---> Package perl-Storable.x86_64 0:2.45-3.el7 will be installed
+---> Package perl-Time-HiRes.x86_64 4:1.9725-3.el7 will be installed
+---> Package perl-Time-Local.noarch 0:1.2300-2.el7 will be installed
+---> Package perl-constant.noarch 0:1.27-2.el7 will be installed
+---> Package perl-macros.x86_64 4:5.16.3-299.el7_9 will be installed
+---> Package perl-threads.x86_64 0:1.87-4.el7 will be installed
+---> Package perl-threads-shared.x86_64 0:1.43-6.el7 will be installed
+---> Package vim-filesystem.x86_64 2:7.4.629-8.el7_9 will be installed
+--> Running transaction check
+---> Package perl-Encode.x86_64 0:2.51-7.el7 will be installed
+---> Package perl-Pod-Escapes.noarch 1:1.04-299.el7_9 will be installed
+---> Package perl-Pod-Usage.noarch 0:1.63-3.el7 will be installed
+--> Processing Dependency: perl(Pod::Text) >= 3.15 for package: perl-Pod-Usage-1.63-3.el7.noarch
+--> Processing Dependency: perl-Pod-Perldoc for package: perl-Pod-Usage-1.63-3.el7.noarch
+---> Package perl-Text-ParseWords.noarch 0:3.29-4.el7 will be installed
+--> Running transaction check
+---> Package perl-Pod-Perldoc.noarch 0:3.20-4.el7 will be installed
+--> Processing Dependency: perl(parent) for package: perl-Pod-Perldoc-3.20-4.el7.noarch
+--> Processing Dependency: perl(HTTP::Tiny) for package: perl-Pod-Perldoc-3.20-4.el7.noarch
+--> Processing Dependency: groff-base for package: perl-Pod-Perldoc-3.20-4.el7.noarch
+---> Package perl-podlators.noarch 0:2.5.1-3.el7 will be installed
+--> Running transaction check
+---> Package groff-base.x86_64 0:1.22.2-8.el7 will be installed
+---> Package perl-HTTP-Tiny.noarch 0:0.033-3.el7 will be installed
+---> Package perl-parent.noarch 1:0.225-244.el7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package                    Arch       Version                Repository   Size
+================================================================================
+Installing:
+ vim-enhanced               x86_64     2:7.4.629-8.el7_9      updates     1.1 M
+Installing for dependencies:
+ gpm-libs                   x86_64     1.20.7-6.el7           base         32 k
+ groff-base                 x86_64     1.22.2-8.el7           base        942 k
+ perl                       x86_64     4:5.16.3-299.el7_9     updates     8.0 M
+ perl-Carp                  noarch     1.26-244.el7           base         19 k
+ perl-Encode                x86_64     2.51-7.el7             base        1.5 M
+ perl-Exporter              noarch     5.68-3.el7             base         28 k
+ perl-File-Path             noarch     2.09-2.el7             base         26 k
+ perl-File-Temp             noarch     0.23.01-3.el7          base         56 k
+ perl-Filter                x86_64     1.49-3.el7             base         76 k
+ perl-Getopt-Long           noarch     2.40-3.el7             base         56 k
+ perl-HTTP-Tiny             noarch     0.033-3.el7            base         38 k
+ perl-PathTools             x86_64     3.40-5.el7             base         82 k
+ perl-Pod-Escapes           noarch     1:1.04-299.el7_9       updates      52 k
+ perl-Pod-Perldoc           noarch     3.20-4.el7             base         87 k
+ perl-Pod-Simple            noarch     1:3.28-4.el7           base        216 k
+ perl-Pod-Usage             noarch     1.63-3.el7             base         27 k
+ perl-Scalar-List-Utils     x86_64     1.27-248.el7           base         36 k
+ perl-Socket                x86_64     2.010-5.el7            base         49 k
+ perl-Storable              x86_64     2.45-3.el7             base         77 k
+ perl-Text-ParseWords       noarch     3.29-4.el7             base         14 k
+ perl-Time-HiRes            x86_64     4:1.9725-3.el7         base         45 k
+ perl-Time-Local            noarch     1.2300-2.el7           base         24 k
+ perl-constant              noarch     1.27-2.el7             base         19 k
+ perl-libs                  x86_64     4:5.16.3-299.el7_9     updates     690 k
+ perl-macros                x86_64     4:5.16.3-299.el7_9     updates      44 k
+ perl-parent                noarch     1:0.225-244.el7        base         12 k
+ perl-podlators             noarch     2.5.1-3.el7            base        112 k
+ perl-threads               x86_64     1.87-4.el7             base         49 k
+ perl-threads-shared        x86_64     1.43-6.el7             base         39 k
+ vim-common                 x86_64     2:7.4.629-8.el7_9      updates     5.9 M
+ vim-filesystem             x86_64     2:7.4.629-8.el7_9      updates      11 k
+ which                      x86_64     2.20-7.el7             base         41 k
+
+Transaction Summary
+================================================================================
+Install  1 Package (+32 Dependent packages)
+
+Total download size: 19 M
+Installed size: 63 M
+Downloading packages:
+warning: /var/cache/yum/x86_64/7/base/packages/gpm-libs-1.20.7-6.el7.x86_64.rpm: Header V3 RSA/SHA256 Signature, key ID f4a80eb5: NOKEY
+Public key for gpm-libs-1.20.7-6.el7.x86_64.rpm is not installed
+Public key for perl-Pod-Escapes-1.04-299.el7_9.noarch.rpm is not installed
+--------------------------------------------------------------------------------
+Total                                              1.3 MB/s |  19 MB  00:15
+Retrieving key from file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+Importing GPG key 0xF4A80EB5:
+ Userid     : "CentOS-7 Key (CentOS 7 Official Signing Key) <security@centos.org>"
+ Fingerprint: 6341 ab27 53d7 8a78 a7c2 7bb1 24c6 a8a7 f4a8 0eb5
+ Package    : centos-release-7-9.2009.0.el7.centos.x86_64 (@CentOS)
+ From       : /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : gpm-libs-1.20.7-6.el7.x86_64                                1/33
+  Installing : 2:vim-filesystem-7.4.629-8.el7_9.x86_64                     2/33
+  Installing : 2:vim-common-7.4.629-8.el7_9.x86_64                         3/33
+  Installing : which-2.20-7.el7.x86_64                                     4/33
+install-info: No such file or directory for /usr/share/info/which.info.gz
+  Installing : groff-base-1.22.2-8.el7.x86_64                              5/33
+  Installing : 1:perl-parent-0.225-244.el7.noarch                          6/33
+  Installing : perl-HTTP-Tiny-0.033-3.el7.noarch                           7/33
+  Installing : perl-podlators-2.5.1-3.el7.noarch                           8/33
+  Installing : perl-Pod-Perldoc-3.20-4.el7.noarch                          9/33
+  Installing : 1:perl-Pod-Escapes-1.04-299.el7_9.noarch                   10/33
+  Installing : perl-Encode-2.51-7.el7.x86_64                              11/33
+  Installing : perl-Text-ParseWords-3.29-4.el7.noarch                     12/33
+  Installing : perl-Pod-Usage-1.63-3.el7.noarch                           13/33
+  Installing : 4:perl-macros-5.16.3-299.el7_9.x86_64                      14/33
+  Installing : perl-Storable-2.45-3.el7.x86_64                            15/33
+  Installing : perl-Exporter-5.68-3.el7.noarch                            16/33
+  Installing : perl-constant-1.27-2.el7.noarch                            17/33
+  Installing : perl-Socket-2.010-5.el7.x86_64                             18/33
+  Installing : perl-Time-Local-1.2300-2.el7.noarch                        19/33
+  Installing : perl-Carp-1.26-244.el7.noarch                              20/33
+  Installing : perl-PathTools-3.40-5.el7.x86_64                           21/33
+  Installing : perl-Scalar-List-Utils-1.27-248.el7.x86_64                 22/33
+  Installing : 1:perl-Pod-Simple-3.28-4.el7.noarch                        23/33
+  Installing : perl-File-Temp-0.23.01-3.el7.noarch                        24/33
+  Installing : perl-File-Path-2.09-2.el7.noarch                           25/33
+  Installing : perl-threads-shared-1.43-6.el7.x86_64                      26/33
+  Installing : perl-threads-1.87-4.el7.x86_64                             27/33
+  Installing : 4:perl-Time-HiRes-1.9725-3.el7.x86_64                      28/33
+  Installing : perl-Filter-1.49-3.el7.x86_64                              29/33
+  Installing : 4:perl-libs-5.16.3-299.el7_9.x86_64                        30/33
+  Installing : perl-Getopt-Long-2.40-3.el7.noarch                         31/33
+  Installing : 4:perl-5.16.3-299.el7_9.x86_64                             32/33
+  Installing : 2:vim-enhanced-7.4.629-8.el7_9.x86_64                      33/33
+  Verifying  : perl-HTTP-Tiny-0.033-3.el7.noarch                           1/33
+  Verifying  : perl-threads-shared-1.43-6.el7.x86_64                       2/33
+  Verifying  : perl-Storable-2.45-3.el7.x86_64                             3/33
+  Verifying  : groff-base-1.22.2-8.el7.x86_64                              4/33
+  Verifying  : perl-Exporter-5.68-3.el7.noarch                             5/33
+  Verifying  : perl-constant-1.27-2.el7.noarch                             6/33
+  Verifying  : perl-PathTools-3.40-5.el7.x86_64                            7/33
+  Verifying  : 4:perl-macros-5.16.3-299.el7_9.x86_64                       8/33
+  Verifying  : 2:vim-enhanced-7.4.629-8.el7_9.x86_64                       9/33
+  Verifying  : 1:perl-parent-0.225-244.el7.noarch                         10/33
+  Verifying  : perl-Socket-2.010-5.el7.x86_64                             11/33
+  Verifying  : which-2.20-7.el7.x86_64                                    12/33
+  Verifying  : 2:vim-filesystem-7.4.629-8.el7_9.x86_64                    13/33
+  Verifying  : perl-File-Temp-0.23.01-3.el7.noarch                        14/33
+  Verifying  : 1:perl-Pod-Simple-3.28-4.el7.noarch                        15/33
+  Verifying  : perl-Time-Local-1.2300-2.el7.noarch                        16/33
+  Verifying  : 1:perl-Pod-Escapes-1.04-299.el7_9.noarch                   17/33
+  Verifying  : perl-Carp-1.26-244.el7.noarch                              18/33
+  Verifying  : 2:vim-common-7.4.629-8.el7_9.x86_64                        19/33
+  Verifying  : perl-Scalar-List-Utils-1.27-248.el7.x86_64                 20/33
+  Verifying  : perl-Pod-Usage-1.63-3.el7.noarch                           21/33
+  Verifying  : perl-Encode-2.51-7.el7.x86_64                              22/33
+  Verifying  : perl-Pod-Perldoc-3.20-4.el7.noarch                         23/33
+  Verifying  : perl-podlators-2.5.1-3.el7.noarch                          24/33
+  Verifying  : 4:perl-5.16.3-299.el7_9.x86_64                             25/33
+  Verifying  : perl-File-Path-2.09-2.el7.noarch                           26/33
+  Verifying  : perl-threads-1.87-4.el7.x86_64                             27/33
+  Verifying  : 4:perl-Time-HiRes-1.9725-3.el7.x86_64                      28/33
+  Verifying  : gpm-libs-1.20.7-6.el7.x86_64                               29/33
+  Verifying  : perl-Filter-1.49-3.el7.x86_64                              30/33
+  Verifying  : perl-Getopt-Long-2.40-3.el7.noarch                         31/33
+  Verifying  : perl-Text-ParseWords-3.29-4.el7.noarch                     32/33
+  Verifying  : 4:perl-libs-5.16.3-299.el7_9.x86_64                        33/33
+
+Installed:
+  vim-enhanced.x86_64 2:7.4.629-8.el7_9
+
+Dependency Installed:
+  gpm-libs.x86_64 0:1.20.7-6.el7
+  groff-base.x86_64 0:1.22.2-8.el7
+  perl.x86_64 4:5.16.3-299.el7_9
+  perl-Carp.noarch 0:1.26-244.el7
+  perl-Encode.x86_64 0:2.51-7.el7
+  perl-Exporter.noarch 0:5.68-3.el7
+  perl-File-Path.noarch 0:2.09-2.el7
+  perl-File-Temp.noarch 0:0.23.01-3.el7
+  perl-Filter.x86_64 0:1.49-3.el7
+  perl-Getopt-Long.noarch 0:2.40-3.el7
+  perl-HTTP-Tiny.noarch 0:0.033-3.el7
+  perl-PathTools.x86_64 0:3.40-5.el7
+  perl-Pod-Escapes.noarch 1:1.04-299.el7_9
+  perl-Pod-Perldoc.noarch 0:3.20-4.el7
+  perl-Pod-Simple.noarch 1:3.28-4.el7
+  perl-Pod-Usage.noarch 0:1.63-3.el7
+  perl-Scalar-List-Utils.x86_64 0:1.27-248.el7
+  perl-Socket.x86_64 0:2.010-5.el7
+  perl-Storable.x86_64 0:2.45-3.el7
+  perl-Text-ParseWords.noarch 0:3.29-4.el7
+  perl-Time-HiRes.x86_64 4:1.9725-3.el7
+  perl-Time-Local.noarch 0:1.2300-2.el7
+  perl-constant.noarch 0:1.27-2.el7
+  perl-libs.x86_64 4:5.16.3-299.el7_9
+  perl-macros.x86_64 4:5.16.3-299.el7_9
+  perl-parent.noarch 1:0.225-244.el7
+  perl-podlators.noarch 0:2.5.1-3.el7
+  perl-threads.x86_64 0:1.87-4.el7
+  perl-threads-shared.x86_64 0:1.43-6.el7
+  vim-common.x86_64 2:7.4.629-8.el7_9
+  vim-filesystem.x86_64 2:7.4.629-8.el7_9
+  which.x86_64 0:2.20-7.el7
+
+Complete!
+Removing intermediate container 8ff92ad9ec1e
+ ---> 8454f6fab960
+Step 6/8 : RUN yum -y install net-tools
+ ---> Running in 173fc318f351
+Loaded plugins: fastestmirror, ovl
+Loading mirror speeds from cached hostfile
+ * base: mirrors.nju.edu.cn
+ * extras: ftp.sjtu.edu.cn
+ * updates: ftp.sjtu.edu.cn
+Resolving Dependencies
+--> Running transaction check
+---> Package net-tools.x86_64 0:2.0-0.25.20131004git.el7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package         Arch         Version                          Repository  Size
+================================================================================
+Installing:
+ net-tools       x86_64       2.0-0.25.20131004git.el7         base       306 k
+
+Transaction Summary
+================================================================================
+Install  1 Package
+
+Total download size: 306 k
+Installed size: 917 k
+Downloading packages:
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : net-tools-2.0-0.25.20131004git.el7.x86_64                    1/1
+  Verifying  : net-tools-2.0-0.25.20131004git.el7.x86_64                    1/1
+
+Installed:
+  net-tools.x86_64 0:2.0-0.25.20131004git.el7
+
+Complete!
+Removing intermediate container 173fc318f351
+ ---> 6a1de638647d
+Step 7/8 : EXPOSE 80
+ ---> Running in b307ec95e208
+Removing intermediate container b307ec95e208
+ ---> 23b8c33b96c8
+Step 8/8 : CMD /bin/bash
+ ---> Running in 46eb85a62efa
+Removing intermediate container 46eb85a62efa
+ ---> 847c2b869d18
+Successfully built 847c2b869d18
+Successfully tagged mycentos:latest
+```
+
+发现images列表已经有了mycentos镜像
+
+```shell
+$ sdr images
+REPOSITORY   TAG       IMAGE ID       CREATED         SIZE
+mycentos     latest    847c2b869d18   2 minutes ago   624MB
+```
+
+通过docker history查看镜像构建历史
+
+```shell
+$ sdr history 847
+IMAGE          CREATED         CREATED BY                                      SIZE      COMMENT
+847c2b869d18   5 minutes ago   /bin/sh -c #(nop)  CMD ["/bin/sh" "-c" "/bin…   0B
+23b8c33b96c8   5 minutes ago   /bin/sh -c #(nop)  EXPOSE 80                    0B
+6a1de638647d   5 minutes ago   /bin/sh -c yum -y install net-tools             182MB
+8454f6fab960   5 minutes ago   /bin/sh -c yum -y install vim                   237MB
+0aed096774e0   6 minutes ago   /bin/sh -c #(nop) WORKDIR /usr/local            0B
+3c456a5a6c70   6 minutes ago   /bin/sh -c #(nop)  ENV MYPATH=/usr/local        0B
+7cc6b3b953d1   6 minutes ago   /bin/sh -c #(nop)  MAINTAINER wnqinm<flidwal…   0B
+eeb6ee3f44bd   12 months ago   /bin/sh -c #(nop)  CMD ["/bin/bash"]            0B
+<missing>      12 months ago   /bin/sh -c #(nop)  LABEL org.label-schema.sc…   0B
+<missing>      12 months ago   /bin/sh -c #(nop) ADD file:b3ebbe8bd304723d4…   204MB
+```
+
+可以通过此命令查看各种官方镜像的构建过程
+
+## 发布镜像到dockerhub
+
+docker login -u 用户名
+
+docker push 镜像
+
+注意:镜像必须是 用户名/镜像名:tag   (eg. wnqinm/nginx:latest)
+
+# docker 网络
+
+```shell
+$ ip addr
+# 本机回环地址
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+       valid_lft forever preferred_lft forever
+# 服务器提供商(这里是腾讯云)内网地址
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
+    link/ether 52:54:00:a8:6e:ca brd ff:ff:ff:ff:ff:ff
+    inet 10.0.4.3/22 brd 10.0.7.255 scope global eth0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::5054:ff:fea8:6eca/64 scope link
+       valid_lft forever preferred_lft forever
+# docker0地址
+3: docker0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default
+    link/ether 02:42:6c:11:67:c5 brd ff:ff:ff:ff:ff:ff
+    inet 172.17.0.1/16 brd 172.17.255.255 scope global docker0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::42:6cff:fe11:67c5/64 scope link
+       valid_lft forever preferred_lft forever
+```
+
+查看一下容器内部地址
+
+```shell
+$ sdr ps -a
+CONTAINER ID   IMAGE          COMMAND       CREATED      STATUS
+9293afcf31a6   3d1465         "/bin/bash"   4 days ago   Up 2 seconds
+
+# 可以在exec后直接加命令,不进入容器直接执行
+$ sdr exec -it 9293 ip addr
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+92: eth0@if93: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default
+    link/ether 02:42:ac:11:00:02 brd ff:ff:ff:ff:ff:ff link-netnsid 0
+    inet 172.17.0.2/16 brd 172.17.255.255 scope global eth0
+       valid_lft forever preferred_lft forever
+# 每一个容器都会有一个类似上面的eth0@if93的网卡对应的ip地址172.17.0.2/16,这是docker分配的
+
+# ping一下
+$ ping 172.17.0.2
+PING 172.17.0.2 (172.17.0.2) 56(84) bytes of data.
+64 bytes from 172.17.0.2: icmp_seq=1 ttl=64 time=0.094 ms
+64 bytes from 172.17.0.2: icmp_seq=2 ttl=64 time=0.049 ms
+64 bytes from 172.17.0.2: icmp_seq=3 ttl=64 time=0.044 ms
+64 bytes from 172.17.0.2: icmp_seq=4 ttl=64 time=0.046 ms
+^C
+--- 172.17.0.2 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3079ms
+# 可以ping通
+
+# 容器反过来ping主机
+$ sdr exec -it 9293 ping 172.17.0.1
+PING 172.17.0.1 (172.17.0.1) 56(84) bytes of data.
+64 bytes from 172.17.0.1: icmp_seq=1 ttl=64 time=0.055 ms
+64 bytes from 172.17.0.1: icmp_seq=2 ttl=64 time=0.050 ms
+64 bytes from 172.17.0.1: icmp_seq=3 ttl=64 time=0.053 ms
+64 bytes from 172.17.0.1: icmp_seq=4 ttl=64 time=0.062 ms
+^C
+--- 172.17.0.1 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3059ms
+# 也能ping通
+```
+
+> 原理
+
+首先,docker0的ip:172.17.0.1,容器9293的ip:172.17.0.2,是在同一网段下的
+
+1. 每次运行一个容器,docker就会分配一个ip,我们只要安装了docker,就会有一个网卡docker0
+
+桥接模式,使用的是 evth-pair 技术
+
+2. 再次测试ip addr:
+
+```shell
+$ ip addr
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
+    link/ether 52:54:00:a8:6e:ca brd ff:ff:ff:ff:ff:ff
+    inet 10.0.4.3/22 brd 10.0.7.255 scope global eth0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::5054:ff:fea8:6eca/64 scope link
+       valid_lft forever preferred_lft forever
+3: docker0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default
+    link/ether 02:42:6c:11:67:c5 brd ff:ff:ff:ff:ff:ff
+    inet 172.17.0.1/16 brd 172.17.255.255 scope global docker0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::42:6cff:fe11:67c5/64 scope link
+       valid_lft forever preferred_lft forever
+93: veth8b8785a@if92: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master docker0 state UP group default
+    link/ether 6a:fc:42:63:d2:cf brd ff:ff:ff:ff:ff:ff link-netnsid 1
+    inet6 fe80::68fc:42ff:fe63:d2cf/64 scope link
+       valid_lft forever preferred_lft forever
+```
+
+发现多了一个网卡
+
+可以明白容器带来的网卡，都是一对对的
+
+evth-pair就是一对虚拟设备接口，都是成对出现的，一端连着协议，一端彼此相连
+
+所以evth-pair被用来充当桥梁
+
+![evth-pair](https://tvax3.sinaimg.cn/large/007Z9xVHgy1h6gfgwgbtgj30xy0d6t9u.jpg)
+
+主机上显示93: veth8b8785a@if92，93号，指向92号。而容器内显示92: eth0@if93，92号，指向93号，说明这两块网卡是互相绑定的
+
+3. 容器间ping
+
+```shell
+$ sdr exec -it 9293 ping 172.20.0.2
+PING 172.20.0.2 (172.20.0.2) 56(84) bytes of data.
+^C
+--- 172.20.0.2 ping statistics ---
+8 packets transmitted, 0 received, 100% packet loss, time 7170ms
+```
+
+这里ping不通的原因是两个容器的ip字段不同，即不在一个网桥下
+
+如果ping同一网桥下的容器：
+
+```shell
+$ sdr exec -it 9293 ping 172.17.0.3
+```
+
+此时就能ping通，我这里就不试了
+
+网络模型图如下：
+
+![docker0](https://tva2.sinaimg.cn/large/007Z9xVHgy1h6gfyu20jej30z20mmjut.jpg)
+
+所有容器在不指定网络的情况下，都是docker0路由的，docker会给容器分配一个默认的可用ip
+
+ip数目：255.255.255.255/16表示前16位是域，后16位是可分配的ip，此时255.255.0.1到255.255.255.254可用ip；255.255.255.255/24表示前24位是域，后8位是可分配的ip，此时255.255.255.1到255.255.255.254是可用ip
+
+**可以通过修改/etc/hosts添加容器名实现通过容器名ping通网络**
+
+## 自定义网络
+
+```shell
+# 查看所有的docker网络
+$ sdr network ls
+NETWORK ID     NAME                  DRIVER    SCOPE
+4171a585caf4   bridge                bridge    local
+3c8399a3e6b0   code-server_default   bridge    local
+bf9782f177ef   host                  host      local
+8c71ba624052   none                  null      local
+```
+
+**网络模式**
+
+bridge：桥接 docker(默认)
+
+none：不配置网络
+
+host：和宿主机共享网络
+
+container：容器内网络连通（用的少，局限性很大）
+
+**测试**
+
+```shell
+# 启动容器时可以指定网络
+docker run -d -P --name tomcat01 --net bridge tomcat
+# 这里的bridge就是前面network ls的第一个网络
+# docker0特点:默认,域名不能访问
+```
+
+**自定义网络**
+
+```shell
+# --driver bridge  设置网络模式
+# --subnet 192.168.0.0/16   设置子网地址
+# --gateway 192.168.0.1   网关
+$ sdr network create --driver bridge --subnet 192.168.0.0/16 --gateway 192.168.0.1 mynet
+41eac8b4e2753f31116056357cabae0efc0f34259010c2b5b9244acceac34387
+$ sdr network ls
+NETWORK ID     NAME                  DRIVER    SCOPE
+41eac8b4e275   mynet                 bridge    local
+$ sdr network inspect mynet
+[
+    {
+        "Name": "mynet",
+        "Id": "41eac8b4e2753f31116056357cabae0efc0f34259010c2b5b9244acceac34387",
+        "Created": "2022-09-23T15:43:55.370425457+08:00",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": {},
+            "Config": [
+                {
+                    "Subnet": "192.168.0.0/16",
+                    "Gateway": "192.168.0.1"
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": false,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Containers": {},
+        "Options": {},
+        "Labels": {}
+    }
+]
+```
+
+## 网络连通
+
+```shell
+$ sdr network connect --help
+
+Usage:  docker network connect [OPTIONS] NETWORK CONTAINER
+
+Connect a container to a network
+
+Options:
+      --alias strings           Add network-scoped alias for the container
+      --driver-opt strings      driver options for the network
+      --ip string               IPv4 address (e.g., 172.30.100.104)
+      --ip6 string              IPv6 address (e.g., 2001:db8::33)
+      --link list               Add link to another container
+      --link-local-ip strings   Add a link-local address for the container
+```
+
+原理是再给容器分配一个ip地址，干脆利落直接将容器添加到其他网络中。
 
 

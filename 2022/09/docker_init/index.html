@@ -35,7 +35,7 @@
                             "url": "https:\/\/WnQinm.github.io\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "net","wordcount":  5982 ,
+                        }],"genre": "posts","keywords": "net","wordcount":  11841 ,
         "url": "https:\/\/WnQinm.github.io\/2022\/09\/docker_init\/","datePublished": "2022-09-18T01:32:42+08:00","dateModified": "2022-09-18T01:32:42+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/WnQinm.github.io\/images\/avatar.png"},"author": {
@@ -77,8 +77,8 @@
             <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Docker</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>清梦</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-09-18">2022-09-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 5982 字&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 12 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-09-18">2022-09-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 11841 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 24 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -114,12 +114,43 @@
         <li><a href="#容器命令">容器命令</a></li>
         <li><a href="#常用其他命令">常用其他命令</a></li>
         <li><a href="#小结">小结</a></li>
+        <li><a href="#练习">练习</a>
+          <ol>
+            <li><a href="#nginx">nginx</a></li>
+            <li><a href="#tomcat">tomcat</a></li>
+          </ol>
+        </li>
       </ol>
     </li>
     <li><a href="#docker镜像讲解">Docker镜像讲解</a>
       <ol>
         <li><a href="#镜像是什么">镜像是什么</a></li>
         <li><a href="#docker镜像加载原理">Docker镜像加载原理</a></li>
+        <li><a href="#commit镜像">commit镜像</a></li>
+      </ol>
+    </li>
+    <li><a href="#容器数据卷">容器数据卷</a>
+      <ol>
+        <li><a href="#什么是容器数据卷">什么是容器数据卷</a></li>
+        <li><a href="#使用数据卷">使用数据卷</a></li>
+        <li><a href="#安装mysql">安装MySQL</a></li>
+        <li><a href="#具名和匿名挂载">具名和匿名挂载</a></li>
+        <li><a href="#dockerfile初识">Dockerfile初识</a></li>
+        <li><a href="#数据卷容器">数据卷容器</a></li>
+      </ol>
+    </li>
+    <li><a href="#dockerfile">Dockerfile</a>
+      <ol>
+        <li><a href="#dockerfile构建过程">DockerFile构建过程</a></li>
+        <li><a href="#dockerfile指令">dockerfile指令</a></li>
+        <li><a href="#实操">实操</a></li>
+        <li><a href="#发布镜像到dockerhub">发布镜像到dockerhub</a></li>
+      </ol>
+    </li>
+    <li><a href="#docker-网络">docker 网络</a>
+      <ol>
+        <li><a href="#自定义网络">自定义网络</a></li>
+        <li><a href="#网络连通">网络连通</a></li>
       </ol>
     </li>
   </ol>
@@ -1445,6 +1476,93 @@ lighthouse  test.md  ubuntu
         data-sizes="auto"
         alt="https://img-blog.csdnimg.cn/383865dd59f64bd88cbe6b4a56f1315c.png"
         title="summary" /></p>
+<h2 id="练习">练习</h2>
+<h3 id="nginx">nginx</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">sdr pull nginx
+sdr run -d --name nginx-test -p 7788:80 nginx
+curl localhost:7788
+</code></pre></td></tr></table>
+</div>
+</div><p>pull nginx镜像
+启动一个容器
+curl本地7788端口</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-html" data-lang="html"><span class="c">&lt;!--返回以下网页--&gt;</span>
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Welcome to nginx!<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="nt">html</span> <span class="p">{</span> <span class="n">color-scheme</span><span class="p">:</span> <span class="n">light</span> <span class="n">dark</span><span class="p">;</span> <span class="p">}</span>
+<span class="nt">body</span> <span class="p">{</span> <span class="k">width</span><span class="p">:</span> <span class="mi">35</span><span class="kt">em</span><span class="p">;</span> <span class="k">margin</span><span class="p">:</span> <span class="mi">0</span> <span class="kc">auto</span><span class="p">;</span>
+<span class="k">font-family</span><span class="p">:</span> <span class="n">Tahoma</span><span class="p">,</span> <span class="n">Verdana</span><span class="p">,</span> <span class="n">Arial</span><span class="p">,</span> <span class="kc">sans-serif</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Welcome to nginx!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>For online documentation and support please refer to
+<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;http://nginx.org/&#34;</span><span class="p">&gt;</span>nginx.org<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>.<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
+Commercial support is available at
+<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;http://nginx.com/&#34;</span><span class="p">&gt;</span>nginx.com<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">em</span><span class="p">&gt;</span>Thank you for using nginx.<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>外网通过7788端口访问到Linux，然后通过<code>-p 7788:80</code>将7788端口接入容器80端口，从而访问nginx</p>
+<h3 id="tomcat">tomcat</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">sdr pull tomcat
+sdr run -d -p 6677:8080 --name tomcat-test tomcat
+</code></pre></td></tr></table>
+</div>
+</div><p>通过公网ip访问发现404（还是能访问的，只不过是404）</p>
+<p><code>sdr exec -it tomcat-test /bin/bash</code>进入容器，发现webapps为空</p>
+<p><code>cp -r webapps.dist/* webapps</code>把实例文档拷贝进去</p>
+<p>再次访问公网ip:6677发现成功显示页面</p>
 <h1 id="docker镜像讲解">Docker镜像讲解</h1>
 <h2 id="镜像是什么">镜像是什么</h2>
 <p>镜像是一种轻量级、可执行的独立软件包，用来打包软件运行环境和基于运行环境开发的软件，它包含运行某个软件所需的所有内容，包括代码、运行时的库、环境变量和配置文件。</p>
@@ -1576,6 +1694,1460 @@ lighthouse  test.md  ubuntu
 </blockquote>
 <p>Docker镜像都是只读的，当容器启动时，一个新的可写层被加载到镜像的顶部
 这一层就是通常说的容器层，容器之下的都叫镜像层</p>
+<h2 id="commit镜像">commit镜像</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 和git差不多</span>
+docker commit -m<span class="o">=</span><span class="s2">&#34;提交的描述信息&#34;</span> -a<span class="o">=</span><span class="s2">&#34;作者&#34;</span> 容器id 目标镜像名:TAG 
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="容器数据卷">容器数据卷</h1>
+<h2 id="什么是容器数据卷">什么是容器数据卷</h2>
+<p>docker理念：将应用和环境打包成一个镜像</p>
+<p>but：如果数据都在容器中，那么容器一删除，数据就会丢失。</p>
+<p>–-&gt;需求：数据可以持久化</p>
+<p>容器之间可以有一个数据共享技术：Docker容器中产生的数据同步到本地</p>
+<p>即卷技术，目录的挂载，将容器内的目录挂载到Linux上</p>
+<p><strong>容器的持久化和同步操作，同时容器间也可以数据共享</strong></p>
+<h2 id="使用数据卷">使用数据卷</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># docker run -it -v 主机目录:容器内目录</span>
+
+sdr run -it -v /home/ubuntu/test:/home centos /bin/bash
+
+</code></pre></td></tr></table>
+</div>
+</div><p>无论容器是否开启，无论正向操作还是反向操作，指定通道文件均正常共享</p>
+<p>优点：本地修改，容器自动同步</p>
+<h2 id="安装mysql">安装MySQL</h2>
+<p>详情查看dockerhub解释，其中<code>-e</code>是环境配置，配置root密码之类的</p>
+<h2 id="具名和匿名挂载">具名和匿名挂载</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 匿名挂载</span>
+-v 容器内路径 <span class="c1"># 自动生成主机目录</span>
+$ sdr run -d -P --name nginx-test -v /etc/nginx nginx
+<span class="c1"># -P是随机映射端口</span>
+
+<span class="c1"># 卷相关操作</span>
+sdr volume <span class="o">[</span>参数<span class="o">]</span>
+$ sdr volume ls
+DRIVER    VOLUME NAME
+<span class="nb">local</span>     e971a7e87e336058a1b2466da64c75d2938c5c6b3b70f07ccc8ea6fbfd005673
+<span class="c1"># 匿名卷挂载</span>
+
+<span class="c1"># 具名挂载</span>
+<span class="c1"># -v 卷名:容器内路径</span>
+$ sdr run -d -P --name nginx02 -v juming-nginx:/etc/nginx nginx
+$ sdr volume ls
+DRIVER    VOLUME NAME
+<span class="nb">local</span>     e971a7e87e336058a1b2466da64c75d2938c5c6b3b70f07ccc8ea6fbfd005673
+<span class="nb">local</span>     juming-nginx
+</code></pre></td></tr></table>
+</div>
+</div><p>查看具体位置</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ sdr volume inspect juming-nginx
+<span class="o">[</span>
+    <span class="o">{</span>
+        <span class="s2">&#34;CreatedAt&#34;</span>: <span class="s2">&#34;2022-09-20T01:09:40+08:00&#34;</span>,
+        <span class="s2">&#34;Driver&#34;</span>: <span class="s2">&#34;local&#34;</span>,
+        <span class="s2">&#34;Labels&#34;</span>: null,
+        <span class="s2">&#34;Mountpoint&#34;</span>: <span class="s2">&#34;/var/lib/docker/volumes/juming-nginx/_data&#34;</span>,
+        <span class="s2">&#34;Name&#34;</span>: <span class="s2">&#34;juming-nginx&#34;</span>,
+        <span class="s2">&#34;Options&#34;</span>: null,
+        <span class="s2">&#34;Scope&#34;</span>: <span class="s2">&#34;local&#34;</span>
+    <span class="o">}</span>
+<span class="o">]</span>
+<span class="c1"># mountpoint就是具体挂载地址</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>所有docker容器内的卷，在没有指定目录的情况下都是在<code>/var/lib/docker/volumes/xxxx/_data</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">cd</span> /var/lib/docker/volumes
+root@VM-4-3-ubuntu:/var/lib/docker/volumes# ls
+backingFsBlockDev                                                 juming-nginx
+e971a7e87e336058a1b2466da64c75d2938c5c6b3b70f07ccc8ea6fbfd005673  metadata.db
+</code></pre></td></tr></table>
+</div>
+</div><p>一般都是具名挂载，方便找到卷，或者自定主机路径</p>
+<p><strong>拓展：</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 有时会在容器后再加参数ro rw</span>
+ro：readonly
+rw：readwrite
+
+<span class="c1"># 参数是对容器生效，ro指该文件只能从外部改变</span>
+sdr run -d -P --name nginx02 -v juming-nginx:/etc/nginx:ro nginx
+sdr run -d -P --name nginx02 -v juming-nginx:/etc/nginx:rw nginx
+
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="dockerfile初识">Dockerfile初识</h2>
+<p>Dockerfile是用来构建docker镜像的构建文件，是命令脚本</p>
+<p>通过这个脚本可以生成镜像，镜像一层一层的，脚本一个一个的命令，每个命令都是一层</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ mkdir docker-test-volume
+$ <span class="nb">cd</span> docker-test-volume
+$ vim dockerfile1
+<span class="c1"># 这里的每个命令,就是镜像的一层</span>
+FROM centos
+<span class="c1"># 挂载数据卷目录</span>
+<span class="c1"># 通过docker inspect中的mounts查看挂载的目录</span>
+VOLUME <span class="o">[</span><span class="s2">&#34;/volume01&#34;</span>,<span class="s2">&#34;/volume02&#34;</span><span class="o">]</span>
+
+CMD <span class="nb">echo</span> <span class="s2">&#34;---end---&#34;</span>
+
+CMD /bin/bash
+
+$ docker build -f dockerfile1 -t qinm/centos:latest .
+<span class="c1"># -f 设置地址</span>
+<span class="c1"># -t tag,设置标签</span>
+Sending build context to Docker daemon  2.048kB
+Step 1/4 : FROM centos
+ ---&gt; 5d0da3dc9764
+Step 2/4 : VOLUME <span class="o">[</span><span class="s2">&#34;volume01&#34;</span>,<span class="s2">&#34;volume02&#34;</span><span class="o">]</span>
+ ---&gt; Running in 502845653bb0
+Removing intermediate container 502845653bb0
+ ---&gt; cc7399fde6c6
+Step 3/4 : CMD <span class="nb">echo</span> <span class="s2">&#34;---end---&#34;</span>
+ ---&gt; Running in 1c6e2ad7f22b
+Removing intermediate container 1c6e2ad7f22b
+ ---&gt; 02c44d547986
+Step 4/4 : CMD /bin/bash
+ ---&gt; Running in 9fa10a85fe26
+Removing intermediate container 9fa10a85fe26
+ ---&gt; 3f4f6e063605
+Successfully built 3f4f6e063605
+Successfully tagged qinm/centos:latest
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="数据卷容器">数据卷容器</h2>
+<p>docker run 时,通过添加参数<code>\--volumes-from docker名</code>挂载其他容器的数据卷</p>
+<p>似乎可以通过 -v 指定要挂载的容器</p>
+<h1 id="dockerfile">Dockerfile</h1>
+<p>dockerfile 是用来构建docker镜像的文件,就是一个命令参数脚本</p>
+<p>官方镜像都是一些基础镜像,我们需要构建自己的镜像</p>
+<h2 id="dockerfile构建过程">DockerFile构建过程</h2>
+<p><strong>基础知识:</strong></p>
+<ol>
+<li>每个保留关键字(指令)都最好是大写字母</li>
+<li>执行从上到下顺序执行</li>
+<li># 表示注释</li>
+<li>每一个指令都会创建提交一个新的镜像层,并提交</li>
+</ol>
+<p>dockerfile –&gt;dockerimages –&gt;docker容器</p>
+<h2 id="dockerfile指令">dockerfile指令</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">FROM			<span class="c1"># 指定基础镜像</span>
+MAINTAINER		<span class="c1"># 镜像是谁写的, 姓名+邮箱</span>
+RUN				<span class="c1"># 镜像构建的时候需要运行的命令</span>
+ADD				<span class="c1"># 步骤,添加其他东西(比如tomcat镜像之类的)</span>
+WORKDIR			<span class="c1"># 镜像的工作目录</span>
+VOLUME			<span class="c1"># 挂载的目录</span>
+EXPOSE			<span class="c1"># 指定暴露的端口</span>
+CMD				<span class="c1"># 指定这个容器要启动时候要运行的命令,只有最后一个会生效,可被替代</span>
+ENTRYPOINT		<span class="c1"># 指定这个容器要启动时候要运行的命令,可以追加命令</span>
+ONBUILD			<span class="c1"># 当构建一个被继承 Dockerfile 这个时候会运行该指令,是一个触发指令</span>
+COPY			<span class="c1"># 类似add,将我们的文件拷贝到镜像中</span>
+ENV				<span class="c1"># 构建的时候设置环境变量</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>CMD和ENTRYPOINT区别:</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-SHELL" data-lang="SHELL">CMD ls -a
+docker run -l时会将-l替换ls -a
+
+ENTRYPOINT ls -a
+docker run -l时会将-l追加到之后,变为ls -a -l
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="实操">实操</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 编写dockerfile</span>
+$ vim mydockerfile-centos
+FROM centos:7 <span class="c1"># 需要指定centos:7不然yum会报错</span>
+MAINTAINER wnqinm&lt;flidwala@gmail.com&gt;
+
+ENV MYPATH /usr/local
+WORKDIR <span class="nv">$MYPATH</span>
+
+RUN yum -y install vim
+RUN yum -y install net-tools
+
+EXPOSE <span class="m">80</span>
+
+CMD /bin/bash
+$ sdr build -f mydockerfile-centos -t mycentos:latest .
+</code></pre></td></tr></table>
+</div>
+</div><p>之后会输出以下信息:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span><span class="lnt">148
+</span><span class="lnt">149
+</span><span class="lnt">150
+</span><span class="lnt">151
+</span><span class="lnt">152
+</span><span class="lnt">153
+</span><span class="lnt">154
+</span><span class="lnt">155
+</span><span class="lnt">156
+</span><span class="lnt">157
+</span><span class="lnt">158
+</span><span class="lnt">159
+</span><span class="lnt">160
+</span><span class="lnt">161
+</span><span class="lnt">162
+</span><span class="lnt">163
+</span><span class="lnt">164
+</span><span class="lnt">165
+</span><span class="lnt">166
+</span><span class="lnt">167
+</span><span class="lnt">168
+</span><span class="lnt">169
+</span><span class="lnt">170
+</span><span class="lnt">171
+</span><span class="lnt">172
+</span><span class="lnt">173
+</span><span class="lnt">174
+</span><span class="lnt">175
+</span><span class="lnt">176
+</span><span class="lnt">177
+</span><span class="lnt">178
+</span><span class="lnt">179
+</span><span class="lnt">180
+</span><span class="lnt">181
+</span><span class="lnt">182
+</span><span class="lnt">183
+</span><span class="lnt">184
+</span><span class="lnt">185
+</span><span class="lnt">186
+</span><span class="lnt">187
+</span><span class="lnt">188
+</span><span class="lnt">189
+</span><span class="lnt">190
+</span><span class="lnt">191
+</span><span class="lnt">192
+</span><span class="lnt">193
+</span><span class="lnt">194
+</span><span class="lnt">195
+</span><span class="lnt">196
+</span><span class="lnt">197
+</span><span class="lnt">198
+</span><span class="lnt">199
+</span><span class="lnt">200
+</span><span class="lnt">201
+</span><span class="lnt">202
+</span><span class="lnt">203
+</span><span class="lnt">204
+</span><span class="lnt">205
+</span><span class="lnt">206
+</span><span class="lnt">207
+</span><span class="lnt">208
+</span><span class="lnt">209
+</span><span class="lnt">210
+</span><span class="lnt">211
+</span><span class="lnt">212
+</span><span class="lnt">213
+</span><span class="lnt">214
+</span><span class="lnt">215
+</span><span class="lnt">216
+</span><span class="lnt">217
+</span><span class="lnt">218
+</span><span class="lnt">219
+</span><span class="lnt">220
+</span><span class="lnt">221
+</span><span class="lnt">222
+</span><span class="lnt">223
+</span><span class="lnt">224
+</span><span class="lnt">225
+</span><span class="lnt">226
+</span><span class="lnt">227
+</span><span class="lnt">228
+</span><span class="lnt">229
+</span><span class="lnt">230
+</span><span class="lnt">231
+</span><span class="lnt">232
+</span><span class="lnt">233
+</span><span class="lnt">234
+</span><span class="lnt">235
+</span><span class="lnt">236
+</span><span class="lnt">237
+</span><span class="lnt">238
+</span><span class="lnt">239
+</span><span class="lnt">240
+</span><span class="lnt">241
+</span><span class="lnt">242
+</span><span class="lnt">243
+</span><span class="lnt">244
+</span><span class="lnt">245
+</span><span class="lnt">246
+</span><span class="lnt">247
+</span><span class="lnt">248
+</span><span class="lnt">249
+</span><span class="lnt">250
+</span><span class="lnt">251
+</span><span class="lnt">252
+</span><span class="lnt">253
+</span><span class="lnt">254
+</span><span class="lnt">255
+</span><span class="lnt">256
+</span><span class="lnt">257
+</span><span class="lnt">258
+</span><span class="lnt">259
+</span><span class="lnt">260
+</span><span class="lnt">261
+</span><span class="lnt">262
+</span><span class="lnt">263
+</span><span class="lnt">264
+</span><span class="lnt">265
+</span><span class="lnt">266
+</span><span class="lnt">267
+</span><span class="lnt">268
+</span><span class="lnt">269
+</span><span class="lnt">270
+</span><span class="lnt">271
+</span><span class="lnt">272
+</span><span class="lnt">273
+</span><span class="lnt">274
+</span><span class="lnt">275
+</span><span class="lnt">276
+</span><span class="lnt">277
+</span><span class="lnt">278
+</span><span class="lnt">279
+</span><span class="lnt">280
+</span><span class="lnt">281
+</span><span class="lnt">282
+</span><span class="lnt">283
+</span><span class="lnt">284
+</span><span class="lnt">285
+</span><span class="lnt">286
+</span><span class="lnt">287
+</span><span class="lnt">288
+</span><span class="lnt">289
+</span><span class="lnt">290
+</span><span class="lnt">291
+</span><span class="lnt">292
+</span><span class="lnt">293
+</span><span class="lnt">294
+</span><span class="lnt">295
+</span><span class="lnt">296
+</span><span class="lnt">297
+</span><span class="lnt">298
+</span><span class="lnt">299
+</span><span class="lnt">300
+</span><span class="lnt">301
+</span><span class="lnt">302
+</span><span class="lnt">303
+</span><span class="lnt">304
+</span><span class="lnt">305
+</span><span class="lnt">306
+</span><span class="lnt">307
+</span><span class="lnt">308
+</span><span class="lnt">309
+</span><span class="lnt">310
+</span><span class="lnt">311
+</span><span class="lnt">312
+</span><span class="lnt">313
+</span><span class="lnt">314
+</span><span class="lnt">315
+</span><span class="lnt">316
+</span><span class="lnt">317
+</span><span class="lnt">318
+</span><span class="lnt">319
+</span><span class="lnt">320
+</span><span class="lnt">321
+</span><span class="lnt">322
+</span><span class="lnt">323
+</span><span class="lnt">324
+</span><span class="lnt">325
+</span><span class="lnt">326
+</span><span class="lnt">327
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">Sending build context to Docker daemon  2.048kB
+Step 1/8 : FROM centos:7
+7: Pulling from library/centos
+2d473b07cdd5: Pull <span class="nb">complete</span>
+Digest: sha256:c73f515d06b0fa07bb18d8202035e739a494ce760aa73129f60f4bf2bd22b407
+Status: Downloaded newer image <span class="k">for</span> centos:7
+ ---&gt; eeb6ee3f44bd
+Step 2/8 : MAINTAINER wnqinm&lt;flidwala@gmail.com&gt;
+ ---&gt; Running in 3f3163ef6fc6
+Removing intermediate container 3f3163ef6fc6
+ ---&gt; 7cc6b3b953d1
+Step 3/8 : ENV MYPATH /usr/local
+ ---&gt; Running in 91d3be697355
+Removing intermediate container 91d3be697355
+ ---&gt; 3c456a5a6c70
+Step 4/8 : WORKDIR <span class="nv">$MYPATH</span>
+ ---&gt; Running in 34d1a3844471
+Removing intermediate container 34d1a3844471
+ ---&gt; 0aed096774e0
+Step 5/8 : RUN yum -y install vim
+ ---&gt; Running in 8ff92ad9ec1e
+Loaded plugins: fastestmirror, ovl
+Determining fastest mirrors
+ * base: mirrors.nju.edu.cn
+ * extras: ftp.sjtu.edu.cn
+ * updates: ftp.sjtu.edu.cn
+Resolving Dependencies
+--&gt; Running transaction check
+---&gt; Package vim-enhanced.x86_64 2:7.4.629-8.el7_9 will be installed
+--&gt; Processing Dependency: vim-common <span class="o">=</span> 2:7.4.629-8.el7_9 <span class="k">for</span> package: 2:vim-enhanced-7.4.629-8.el7_9.x86_64
+--&gt; Processing Dependency: which <span class="k">for</span> package: 2:vim-enhanced-7.4.629-8.el7_9.x86_64
+--&gt; Processing Dependency: perl<span class="o">(</span>:MODULE_COMPAT_5.16.3<span class="o">)</span> <span class="k">for</span> package: 2:vim-enhanced-7.4.629-8.el7_9.x86_64
+--&gt; Processing Dependency: libperl.so<span class="o">()(</span>64bit<span class="o">)</span> <span class="k">for</span> package: 2:vim-enhanced-7.4.629-8.el7_9.x86_64
+--&gt; Processing Dependency: libgpm.so.2<span class="o">()(</span>64bit<span class="o">)</span> <span class="k">for</span> package: 2:vim-enhanced-7.4.629-8.el7_9.x86_64
+--&gt; Running transaction check
+---&gt; Package gpm-libs.x86_64 0:1.20.7-6.el7 will be installed
+---&gt; Package perl.x86_64 4:5.16.3-299.el7_9 will be installed
+--&gt; Processing Dependency: perl<span class="o">(</span>Socket<span class="o">)</span> &gt;<span class="o">=</span> 1.3 <span class="k">for</span> package: 4:perl-5.16.3-299.el7_9.x86_64
+--&gt; Processing Dependency: perl<span class="o">(</span>Scalar::Util<span class="o">)</span> &gt;<span class="o">=</span> 1.10 <span class="k">for</span> package: 4:perl-5.16.3-299.el7_9.x86_64
+--&gt; Processing Dependency: perl-macros <span class="k">for</span> package: 4:perl-5.16.3-299.el7_9.x86_64
+--&gt; Processing Dependency: perl<span class="o">(</span>threads::shared<span class="o">)</span> <span class="k">for</span> package: 4:perl-5.16.3-299.el7_9.x86_64
+--&gt; Processing Dependency: perl<span class="o">(</span>threads<span class="o">)</span> <span class="k">for</span> package: 4:perl-5.16.3-299.el7_9.x86_64
+--&gt; Processing Dependency: perl<span class="o">(</span>constant<span class="o">)</span> <span class="k">for</span> package: 4:perl-5.16.3-299.el7_9.x86_64
+--&gt; Processing Dependency: perl<span class="o">(</span>Time::Local<span class="o">)</span> <span class="k">for</span> package: 4:perl-5.16.3-299.el7_9.x86_64
+--&gt; Processing Dependency: perl<span class="o">(</span>Time::HiRes<span class="o">)</span> <span class="k">for</span> package: 4:perl-5.16.3-299.el7_9.x86_64
+--&gt; Processing Dependency: perl<span class="o">(</span>Storable<span class="o">)</span> <span class="k">for</span> package: 4:perl-5.16.3-299.el7_9.x86_64
+--&gt; Processing Dependency: perl<span class="o">(</span>Socket<span class="o">)</span> <span class="k">for</span> package: 4:perl-5.16.3-299.el7_9.x86_64
+--&gt; Processing Dependency: perl<span class="o">(</span>Scalar::Util<span class="o">)</span> <span class="k">for</span> package: 4:perl-5.16.3-299.el7_9.x86_64
+--&gt; Processing Dependency: perl<span class="o">(</span>Pod::Simple::XHTML<span class="o">)</span> <span class="k">for</span> package: 4:perl-5.16.3-299.el7_9.x86_64
+--&gt; Processing Dependency: perl<span class="o">(</span>Pod::Simple::Search<span class="o">)</span> <span class="k">for</span> package: 4:perl-5.16.3-299.el7_9.x86_64
+--&gt; Processing Dependency: perl<span class="o">(</span>Getopt::Long<span class="o">)</span> <span class="k">for</span> package: 4:perl-5.16.3-299.el7_9.x86_64
+--&gt; Processing Dependency: perl<span class="o">(</span>Filter::Util::Call<span class="o">)</span> <span class="k">for</span> package: 4:perl-5.16.3-299.el7_9.x86_64
+--&gt; Processing Dependency: perl<span class="o">(</span>File::Temp<span class="o">)</span> <span class="k">for</span> package: 4:perl-5.16.3-299.el7_9.x86_64
+--&gt; Processing Dependency: perl<span class="o">(</span>File::Spec::Unix<span class="o">)</span> <span class="k">for</span> package: 4:perl-5.16.3-299.el7_9.x86_64
+--&gt; Processing Dependency: perl<span class="o">(</span>File::Spec::Functions<span class="o">)</span> <span class="k">for</span> package: 4:perl-5.16.3-299.el7_9.x86_64
+--&gt; Processing Dependency: perl<span class="o">(</span>File::Spec<span class="o">)</span> <span class="k">for</span> package: 4:perl-5.16.3-299.el7_9.x86_64
+--&gt; Processing Dependency: perl<span class="o">(</span>File::Path<span class="o">)</span> <span class="k">for</span> package: 4:perl-5.16.3-299.el7_9.x86_64
+--&gt; Processing Dependency: perl<span class="o">(</span>Exporter<span class="o">)</span> <span class="k">for</span> package: 4:perl-5.16.3-299.el7_9.x86_64
+--&gt; Processing Dependency: perl<span class="o">(</span>Cwd<span class="o">)</span> <span class="k">for</span> package: 4:perl-5.16.3-299.el7_9.x86_64
+--&gt; Processing Dependency: perl<span class="o">(</span>Carp<span class="o">)</span> <span class="k">for</span> package: 4:perl-5.16.3-299.el7_9.x86_64
+---&gt; Package perl-libs.x86_64 4:5.16.3-299.el7_9 will be installed
+---&gt; Package vim-common.x86_64 2:7.4.629-8.el7_9 will be installed
+--&gt; Processing Dependency: vim-filesystem <span class="k">for</span> package: 2:vim-common-7.4.629-8.el7_9.x86_64
+---&gt; Package which.x86_64 0:2.20-7.el7 will be installed
+--&gt; Running transaction check
+---&gt; Package perl-Carp.noarch 0:1.26-244.el7 will be installed
+---&gt; Package perl-Exporter.noarch 0:5.68-3.el7 will be installed
+---&gt; Package perl-File-Path.noarch 0:2.09-2.el7 will be installed
+---&gt; Package perl-File-Temp.noarch 0:0.23.01-3.el7 will be installed
+---&gt; Package perl-Filter.x86_64 0:1.49-3.el7 will be installed
+---&gt; Package perl-Getopt-Long.noarch 0:2.40-3.el7 will be installed
+--&gt; Processing Dependency: perl<span class="o">(</span>Pod::Usage<span class="o">)</span> &gt;<span class="o">=</span> 1.14 <span class="k">for</span> package: perl-Getopt-Long-2.40-3.el7.noarch
+--&gt; Processing Dependency: perl<span class="o">(</span>Text::ParseWords<span class="o">)</span> <span class="k">for</span> package: perl-Getopt-Long-2.40-3.el7.noarch
+---&gt; Package perl-PathTools.x86_64 0:3.40-5.el7 will be installed
+---&gt; Package perl-Pod-Simple.noarch 1:3.28-4.el7 will be installed
+--&gt; Processing Dependency: perl<span class="o">(</span>Pod::Escapes<span class="o">)</span> &gt;<span class="o">=</span> 1.04 <span class="k">for</span> package: 1:perl-Pod-Simple-3.28-4.el7.noarch
+--&gt; Processing Dependency: perl<span class="o">(</span>Encode<span class="o">)</span> <span class="k">for</span> package: 1:perl-Pod-Simple-3.28-4.el7.noarch
+---&gt; Package perl-Scalar-List-Utils.x86_64 0:1.27-248.el7 will be installed
+---&gt; Package perl-Socket.x86_64 0:2.010-5.el7 will be installed
+---&gt; Package perl-Storable.x86_64 0:2.45-3.el7 will be installed
+---&gt; Package perl-Time-HiRes.x86_64 4:1.9725-3.el7 will be installed
+---&gt; Package perl-Time-Local.noarch 0:1.2300-2.el7 will be installed
+---&gt; Package perl-constant.noarch 0:1.27-2.el7 will be installed
+---&gt; Package perl-macros.x86_64 4:5.16.3-299.el7_9 will be installed
+---&gt; Package perl-threads.x86_64 0:1.87-4.el7 will be installed
+---&gt; Package perl-threads-shared.x86_64 0:1.43-6.el7 will be installed
+---&gt; Package vim-filesystem.x86_64 2:7.4.629-8.el7_9 will be installed
+--&gt; Running transaction check
+---&gt; Package perl-Encode.x86_64 0:2.51-7.el7 will be installed
+---&gt; Package perl-Pod-Escapes.noarch 1:1.04-299.el7_9 will be installed
+---&gt; Package perl-Pod-Usage.noarch 0:1.63-3.el7 will be installed
+--&gt; Processing Dependency: perl<span class="o">(</span>Pod::Text<span class="o">)</span> &gt;<span class="o">=</span> 3.15 <span class="k">for</span> package: perl-Pod-Usage-1.63-3.el7.noarch
+--&gt; Processing Dependency: perl-Pod-Perldoc <span class="k">for</span> package: perl-Pod-Usage-1.63-3.el7.noarch
+---&gt; Package perl-Text-ParseWords.noarch 0:3.29-4.el7 will be installed
+--&gt; Running transaction check
+---&gt; Package perl-Pod-Perldoc.noarch 0:3.20-4.el7 will be installed
+--&gt; Processing Dependency: perl<span class="o">(</span>parent<span class="o">)</span> <span class="k">for</span> package: perl-Pod-Perldoc-3.20-4.el7.noarch
+--&gt; Processing Dependency: perl<span class="o">(</span>HTTP::Tiny<span class="o">)</span> <span class="k">for</span> package: perl-Pod-Perldoc-3.20-4.el7.noarch
+--&gt; Processing Dependency: groff-base <span class="k">for</span> package: perl-Pod-Perldoc-3.20-4.el7.noarch
+---&gt; Package perl-podlators.noarch 0:2.5.1-3.el7 will be installed
+--&gt; Running transaction check
+---&gt; Package groff-base.x86_64 0:1.22.2-8.el7 will be installed
+---&gt; Package perl-HTTP-Tiny.noarch 0:0.033-3.el7 will be installed
+---&gt; Package perl-parent.noarch 1:0.225-244.el7 will be installed
+--&gt; Finished Dependency Resolution
+
+Dependencies <span class="nv">Resolved</span>
+
+<span class="o">================================================================================</span>
+ Package                    Arch       Version                Repository   <span class="nv">Size</span>
+<span class="o">================================================================================</span>
+Installing:
+ vim-enhanced               x86_64     2:7.4.629-8.el7_9      updates     1.1 M
+Installing <span class="k">for</span> dependencies:
+ gpm-libs                   x86_64     1.20.7-6.el7           base         <span class="m">32</span> k
+ groff-base                 x86_64     1.22.2-8.el7           base        <span class="m">942</span> k
+ perl                       x86_64     4:5.16.3-299.el7_9     updates     8.0 M
+ perl-Carp                  noarch     1.26-244.el7           base         <span class="m">19</span> k
+ perl-Encode                x86_64     2.51-7.el7             base        1.5 M
+ perl-Exporter              noarch     5.68-3.el7             base         <span class="m">28</span> k
+ perl-File-Path             noarch     2.09-2.el7             base         <span class="m">26</span> k
+ perl-File-Temp             noarch     0.23.01-3.el7          base         <span class="m">56</span> k
+ perl-Filter                x86_64     1.49-3.el7             base         <span class="m">76</span> k
+ perl-Getopt-Long           noarch     2.40-3.el7             base         <span class="m">56</span> k
+ perl-HTTP-Tiny             noarch     0.033-3.el7            base         <span class="m">38</span> k
+ perl-PathTools             x86_64     3.40-5.el7             base         <span class="m">82</span> k
+ perl-Pod-Escapes           noarch     1:1.04-299.el7_9       updates      <span class="m">52</span> k
+ perl-Pod-Perldoc           noarch     3.20-4.el7             base         <span class="m">87</span> k
+ perl-Pod-Simple            noarch     1:3.28-4.el7           base        <span class="m">216</span> k
+ perl-Pod-Usage             noarch     1.63-3.el7             base         <span class="m">27</span> k
+ perl-Scalar-List-Utils     x86_64     1.27-248.el7           base         <span class="m">36</span> k
+ perl-Socket                x86_64     2.010-5.el7            base         <span class="m">49</span> k
+ perl-Storable              x86_64     2.45-3.el7             base         <span class="m">77</span> k
+ perl-Text-ParseWords       noarch     3.29-4.el7             base         <span class="m">14</span> k
+ perl-Time-HiRes            x86_64     4:1.9725-3.el7         base         <span class="m">45</span> k
+ perl-Time-Local            noarch     1.2300-2.el7           base         <span class="m">24</span> k
+ perl-constant              noarch     1.27-2.el7             base         <span class="m">19</span> k
+ perl-libs                  x86_64     4:5.16.3-299.el7_9     updates     <span class="m">690</span> k
+ perl-macros                x86_64     4:5.16.3-299.el7_9     updates      <span class="m">44</span> k
+ perl-parent                noarch     1:0.225-244.el7        base         <span class="m">12</span> k
+ perl-podlators             noarch     2.5.1-3.el7            base        <span class="m">112</span> k
+ perl-threads               x86_64     1.87-4.el7             base         <span class="m">49</span> k
+ perl-threads-shared        x86_64     1.43-6.el7             base         <span class="m">39</span> k
+ vim-common                 x86_64     2:7.4.629-8.el7_9      updates     5.9 M
+ vim-filesystem             x86_64     2:7.4.629-8.el7_9      updates      <span class="m">11</span> k
+ which                      x86_64     2.20-7.el7             base         <span class="m">41</span> k
+
+Transaction <span class="nv">Summary</span>
+<span class="o">================================================================================</span>
+Install  <span class="m">1</span> Package <span class="o">(</span>+32 Dependent packages<span class="o">)</span>
+
+Total download size: <span class="m">19</span> M
+Installed size: <span class="m">63</span> M
+Downloading packages:
+warning: /var/cache/yum/x86_64/7/base/packages/gpm-libs-1.20.7-6.el7.x86_64.rpm: Header V3 RSA/SHA256 Signature, key ID f4a80eb5: NOKEY
+Public key <span class="k">for</span> gpm-libs-1.20.7-6.el7.x86_64.rpm is not installed
+Public key <span class="k">for</span> perl-Pod-Escapes-1.04-299.el7_9.noarch.rpm is not installed
+--------------------------------------------------------------------------------
+Total                                              1.3 MB/s <span class="p">|</span>  <span class="m">19</span> MB  00:15
+Retrieving key from file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+Importing GPG key 0xF4A80EB5:
+ Userid     : <span class="s2">&#34;CentOS-7 Key (CentOS 7 Official Signing Key) &lt;security@centos.org&gt;&#34;</span>
+ Fingerprint: <span class="m">6341</span> ab27 53d7 8a78 a7c2 7bb1 24c6 a8a7 f4a8 0eb5
+ Package    : centos-release-7-9.2009.0.el7.centos.x86_64 <span class="o">(</span>@CentOS<span class="o">)</span>
+ From       : /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+Running transaction check
+Running transaction <span class="nb">test</span>
+Transaction <span class="nb">test</span> succeeded
+Running transaction
+  Installing : gpm-libs-1.20.7-6.el7.x86_64                                1/33
+  Installing : 2:vim-filesystem-7.4.629-8.el7_9.x86_64                     2/33
+  Installing : 2:vim-common-7.4.629-8.el7_9.x86_64                         3/33
+  Installing : which-2.20-7.el7.x86_64                                     4/33
+install-info: No such file or directory <span class="k">for</span> /usr/share/info/which.info.gz
+  Installing : groff-base-1.22.2-8.el7.x86_64                              5/33
+  Installing : 1:perl-parent-0.225-244.el7.noarch                          6/33
+  Installing : perl-HTTP-Tiny-0.033-3.el7.noarch                           7/33
+  Installing : perl-podlators-2.5.1-3.el7.noarch                           8/33
+  Installing : perl-Pod-Perldoc-3.20-4.el7.noarch                          9/33
+  Installing : 1:perl-Pod-Escapes-1.04-299.el7_9.noarch                   10/33
+  Installing : perl-Encode-2.51-7.el7.x86_64                              11/33
+  Installing : perl-Text-ParseWords-3.29-4.el7.noarch                     12/33
+  Installing : perl-Pod-Usage-1.63-3.el7.noarch                           13/33
+  Installing : 4:perl-macros-5.16.3-299.el7_9.x86_64                      14/33
+  Installing : perl-Storable-2.45-3.el7.x86_64                            15/33
+  Installing : perl-Exporter-5.68-3.el7.noarch                            16/33
+  Installing : perl-constant-1.27-2.el7.noarch                            17/33
+  Installing : perl-Socket-2.010-5.el7.x86_64                             18/33
+  Installing : perl-Time-Local-1.2300-2.el7.noarch                        19/33
+  Installing : perl-Carp-1.26-244.el7.noarch                              20/33
+  Installing : perl-PathTools-3.40-5.el7.x86_64                           21/33
+  Installing : perl-Scalar-List-Utils-1.27-248.el7.x86_64                 22/33
+  Installing : 1:perl-Pod-Simple-3.28-4.el7.noarch                        23/33
+  Installing : perl-File-Temp-0.23.01-3.el7.noarch                        24/33
+  Installing : perl-File-Path-2.09-2.el7.noarch                           25/33
+  Installing : perl-threads-shared-1.43-6.el7.x86_64                      26/33
+  Installing : perl-threads-1.87-4.el7.x86_64                             27/33
+  Installing : 4:perl-Time-HiRes-1.9725-3.el7.x86_64                      28/33
+  Installing : perl-Filter-1.49-3.el7.x86_64                              29/33
+  Installing : 4:perl-libs-5.16.3-299.el7_9.x86_64                        30/33
+  Installing : perl-Getopt-Long-2.40-3.el7.noarch                         31/33
+  Installing : 4:perl-5.16.3-299.el7_9.x86_64                             32/33
+  Installing : 2:vim-enhanced-7.4.629-8.el7_9.x86_64                      33/33
+  Verifying  : perl-HTTP-Tiny-0.033-3.el7.noarch                           1/33
+  Verifying  : perl-threads-shared-1.43-6.el7.x86_64                       2/33
+  Verifying  : perl-Storable-2.45-3.el7.x86_64                             3/33
+  Verifying  : groff-base-1.22.2-8.el7.x86_64                              4/33
+  Verifying  : perl-Exporter-5.68-3.el7.noarch                             5/33
+  Verifying  : perl-constant-1.27-2.el7.noarch                             6/33
+  Verifying  : perl-PathTools-3.40-5.el7.x86_64                            7/33
+  Verifying  : 4:perl-macros-5.16.3-299.el7_9.x86_64                       8/33
+  Verifying  : 2:vim-enhanced-7.4.629-8.el7_9.x86_64                       9/33
+  Verifying  : 1:perl-parent-0.225-244.el7.noarch                         10/33
+  Verifying  : perl-Socket-2.010-5.el7.x86_64                             11/33
+  Verifying  : which-2.20-7.el7.x86_64                                    12/33
+  Verifying  : 2:vim-filesystem-7.4.629-8.el7_9.x86_64                    13/33
+  Verifying  : perl-File-Temp-0.23.01-3.el7.noarch                        14/33
+  Verifying  : 1:perl-Pod-Simple-3.28-4.el7.noarch                        15/33
+  Verifying  : perl-Time-Local-1.2300-2.el7.noarch                        16/33
+  Verifying  : 1:perl-Pod-Escapes-1.04-299.el7_9.noarch                   17/33
+  Verifying  : perl-Carp-1.26-244.el7.noarch                              18/33
+  Verifying  : 2:vim-common-7.4.629-8.el7_9.x86_64                        19/33
+  Verifying  : perl-Scalar-List-Utils-1.27-248.el7.x86_64                 20/33
+  Verifying  : perl-Pod-Usage-1.63-3.el7.noarch                           21/33
+  Verifying  : perl-Encode-2.51-7.el7.x86_64                              22/33
+  Verifying  : perl-Pod-Perldoc-3.20-4.el7.noarch                         23/33
+  Verifying  : perl-podlators-2.5.1-3.el7.noarch                          24/33
+  Verifying  : 4:perl-5.16.3-299.el7_9.x86_64                             25/33
+  Verifying  : perl-File-Path-2.09-2.el7.noarch                           26/33
+  Verifying  : perl-threads-1.87-4.el7.x86_64                             27/33
+  Verifying  : 4:perl-Time-HiRes-1.9725-3.el7.x86_64                      28/33
+  Verifying  : gpm-libs-1.20.7-6.el7.x86_64                               29/33
+  Verifying  : perl-Filter-1.49-3.el7.x86_64                              30/33
+  Verifying  : perl-Getopt-Long-2.40-3.el7.noarch                         31/33
+  Verifying  : perl-Text-ParseWords-3.29-4.el7.noarch                     32/33
+  Verifying  : 4:perl-libs-5.16.3-299.el7_9.x86_64                        33/33
+
+Installed:
+  vim-enhanced.x86_64 2:7.4.629-8.el7_9
+
+Dependency Installed:
+  gpm-libs.x86_64 0:1.20.7-6.el7
+  groff-base.x86_64 0:1.22.2-8.el7
+  perl.x86_64 4:5.16.3-299.el7_9
+  perl-Carp.noarch 0:1.26-244.el7
+  perl-Encode.x86_64 0:2.51-7.el7
+  perl-Exporter.noarch 0:5.68-3.el7
+  perl-File-Path.noarch 0:2.09-2.el7
+  perl-File-Temp.noarch 0:0.23.01-3.el7
+  perl-Filter.x86_64 0:1.49-3.el7
+  perl-Getopt-Long.noarch 0:2.40-3.el7
+  perl-HTTP-Tiny.noarch 0:0.033-3.el7
+  perl-PathTools.x86_64 0:3.40-5.el7
+  perl-Pod-Escapes.noarch 1:1.04-299.el7_9
+  perl-Pod-Perldoc.noarch 0:3.20-4.el7
+  perl-Pod-Simple.noarch 1:3.28-4.el7
+  perl-Pod-Usage.noarch 0:1.63-3.el7
+  perl-Scalar-List-Utils.x86_64 0:1.27-248.el7
+  perl-Socket.x86_64 0:2.010-5.el7
+  perl-Storable.x86_64 0:2.45-3.el7
+  perl-Text-ParseWords.noarch 0:3.29-4.el7
+  perl-Time-HiRes.x86_64 4:1.9725-3.el7
+  perl-Time-Local.noarch 0:1.2300-2.el7
+  perl-constant.noarch 0:1.27-2.el7
+  perl-libs.x86_64 4:5.16.3-299.el7_9
+  perl-macros.x86_64 4:5.16.3-299.el7_9
+  perl-parent.noarch 1:0.225-244.el7
+  perl-podlators.noarch 0:2.5.1-3.el7
+  perl-threads.x86_64 0:1.87-4.el7
+  perl-threads-shared.x86_64 0:1.43-6.el7
+  vim-common.x86_64 2:7.4.629-8.el7_9
+  vim-filesystem.x86_64 2:7.4.629-8.el7_9
+  which.x86_64 0:2.20-7.el7
+
+Complete!
+Removing intermediate container 8ff92ad9ec1e
+ ---&gt; 8454f6fab960
+Step 6/8 : RUN yum -y install net-tools
+ ---&gt; Running in 173fc318f351
+Loaded plugins: fastestmirror, ovl
+Loading mirror speeds from cached hostfile
+ * base: mirrors.nju.edu.cn
+ * extras: ftp.sjtu.edu.cn
+ * updates: ftp.sjtu.edu.cn
+Resolving Dependencies
+--&gt; Running transaction check
+---&gt; Package net-tools.x86_64 0:2.0-0.25.20131004git.el7 will be installed
+--&gt; Finished Dependency Resolution
+
+Dependencies <span class="nv">Resolved</span>
+
+<span class="o">================================================================================</span>
+ Package         Arch         Version                          Repository  <span class="nv">Size</span>
+<span class="o">================================================================================</span>
+Installing:
+ net-tools       x86_64       2.0-0.25.20131004git.el7         base       <span class="m">306</span> k
+
+Transaction <span class="nv">Summary</span>
+<span class="o">================================================================================</span>
+Install  <span class="m">1</span> Package
+
+Total download size: <span class="m">306</span> k
+Installed size: <span class="m">917</span> k
+Downloading packages:
+Running transaction check
+Running transaction <span class="nb">test</span>
+Transaction <span class="nb">test</span> succeeded
+Running transaction
+  Installing : net-tools-2.0-0.25.20131004git.el7.x86_64                    1/1
+  Verifying  : net-tools-2.0-0.25.20131004git.el7.x86_64                    1/1
+
+Installed:
+  net-tools.x86_64 0:2.0-0.25.20131004git.el7
+
+Complete!
+Removing intermediate container 173fc318f351
+ ---&gt; 6a1de638647d
+Step 7/8 : EXPOSE <span class="m">80</span>
+ ---&gt; Running in b307ec95e208
+Removing intermediate container b307ec95e208
+ ---&gt; 23b8c33b96c8
+Step 8/8 : CMD /bin/bash
+ ---&gt; Running in 46eb85a62efa
+Removing intermediate container 46eb85a62efa
+ ---&gt; 847c2b869d18
+Successfully built 847c2b869d18
+Successfully tagged mycentos:latest
+</code></pre></td></tr></table>
+</div>
+</div><p>发现images列表已经有了mycentos镜像</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ sdr images
+REPOSITORY   TAG       IMAGE ID       CREATED         SIZE
+mycentos     latest    847c2b869d18   <span class="m">2</span> minutes ago   624MB
+</code></pre></td></tr></table>
+</div>
+</div><p>通过docker history查看镜像构建历史</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ sdr <span class="nb">history</span> <span class="m">847</span>
+IMAGE          CREATED         CREATED BY                                      SIZE      COMMENT
+847c2b869d18   <span class="m">5</span> minutes ago   /bin/sh -c <span class="c1">#(nop)  CMD [&#34;/bin/sh&#34; &#34;-c&#34; &#34;/bin…   0B</span>
+23b8c33b96c8   <span class="m">5</span> minutes ago   /bin/sh -c <span class="c1">#(nop)  EXPOSE 80                    0B</span>
+6a1de638647d   <span class="m">5</span> minutes ago   /bin/sh -c yum -y install net-tools             182MB
+8454f6fab960   <span class="m">5</span> minutes ago   /bin/sh -c yum -y install vim                   237MB
+0aed096774e0   <span class="m">6</span> minutes ago   /bin/sh -c <span class="c1">#(nop) WORKDIR /usr/local            0B</span>
+3c456a5a6c70   <span class="m">6</span> minutes ago   /bin/sh -c <span class="c1">#(nop)  ENV MYPATH=/usr/local        0B</span>
+7cc6b3b953d1   <span class="m">6</span> minutes ago   /bin/sh -c <span class="c1">#(nop)  MAINTAINER wnqinm&lt;flidwal…   0B</span>
+eeb6ee3f44bd   <span class="m">12</span> months ago   /bin/sh -c <span class="c1">#(nop)  CMD [&#34;/bin/bash&#34;]            0B</span>
+&lt;missing&gt;      <span class="m">12</span> months ago   /bin/sh -c <span class="c1">#(nop)  LABEL org.label-schema.sc…   0B</span>
+&lt;missing&gt;      <span class="m">12</span> months ago   /bin/sh -c <span class="c1">#(nop) ADD file:b3ebbe8bd304723d4…   204MB</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>可以通过此命令查看各种官方镜像的构建过程</p>
+<h2 id="发布镜像到dockerhub">发布镜像到dockerhub</h2>
+<p>docker login -u 用户名</p>
+<p>docker push 镜像</p>
+<p>注意:镜像必须是 用户名/镜像名:tag   (eg. wnqinm/nginx:latest)</p>
+<h1 id="docker-网络">docker 网络</h1>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ ip addr
+<span class="c1"># 本机回环地址</span>
+1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu <span class="m">65536</span> qdisc noqueue state UNKNOWN group default qlen <span class="m">1000</span>
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+       valid_lft forever preferred_lft forever
+<span class="c1"># 服务器提供商(这里是腾讯云)内网地址</span>
+2: eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc mq state UP group default qlen <span class="m">1000</span>
+    link/ether 52:54:00:a8:6e:ca brd ff:ff:ff:ff:ff:ff
+    inet 10.0.4.3/22 brd 10.0.7.255 scope global eth0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::5054:ff:fea8:6eca/64 scope link
+       valid_lft forever preferred_lft forever
+<span class="c1"># docker0地址</span>
+3: docker0: &lt;NO-CARRIER,BROADCAST,MULTICAST,UP&gt; mtu <span class="m">1500</span> qdisc noqueue state DOWN group default
+    link/ether 02:42:6c:11:67:c5 brd ff:ff:ff:ff:ff:ff
+    inet 172.17.0.1/16 brd 172.17.255.255 scope global docker0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::42:6cff:fe11:67c5/64 scope link
+       valid_lft forever preferred_lft forever
+</code></pre></td></tr></table>
+</div>
+</div><p>查看一下容器内部地址</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ sdr ps -a
+CONTAINER ID   IMAGE          COMMAND       CREATED      STATUS
+9293afcf31a6   3d1465         <span class="s2">&#34;/bin/bash&#34;</span>   <span class="m">4</span> days ago   Up <span class="m">2</span> seconds
+
+<span class="c1"># 可以在exec后直接加命令,不进入容器直接执行</span>
+$ sdr <span class="nb">exec</span> -it <span class="m">9293</span> ip addr
+1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu <span class="m">65536</span> qdisc noqueue state UNKNOWN group default qlen <span class="m">1000</span>
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+92: eth0@if93: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc noqueue state UP group default
+    link/ether 02:42:ac:11:00:02 brd ff:ff:ff:ff:ff:ff link-netnsid <span class="m">0</span>
+    inet 172.17.0.2/16 brd 172.17.255.255 scope global eth0
+       valid_lft forever preferred_lft forever
+<span class="c1"># 每一个容器都会有一个类似上面的eth0@if93的网卡对应的ip地址172.17.0.2/16,这是docker分配的</span>
+
+<span class="c1"># ping一下</span>
+$ ping 172.17.0.2
+PING 172.17.0.2 <span class="o">(</span>172.17.0.2<span class="o">)</span> 56<span class="o">(</span>84<span class="o">)</span> bytes of data.
+<span class="m">64</span> bytes from 172.17.0.2: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">1</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span>0.094 ms
+<span class="m">64</span> bytes from 172.17.0.2: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">2</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span>0.049 ms
+<span class="m">64</span> bytes from 172.17.0.2: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">3</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span>0.044 ms
+<span class="m">64</span> bytes from 172.17.0.2: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">4</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span>0.046 ms
+^C
+--- 172.17.0.2 ping statistics ---
+<span class="m">4</span> packets transmitted, <span class="m">4</span> received, 0% packet loss, <span class="nb">time</span> 3079ms
+<span class="c1"># 可以ping通</span>
+
+<span class="c1"># 容器反过来ping主机</span>
+$ sdr <span class="nb">exec</span> -it <span class="m">9293</span> ping 172.17.0.1
+PING 172.17.0.1 <span class="o">(</span>172.17.0.1<span class="o">)</span> 56<span class="o">(</span>84<span class="o">)</span> bytes of data.
+<span class="m">64</span> bytes from 172.17.0.1: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">1</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span>0.055 ms
+<span class="m">64</span> bytes from 172.17.0.1: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">2</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span>0.050 ms
+<span class="m">64</span> bytes from 172.17.0.1: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">3</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span>0.053 ms
+<span class="m">64</span> bytes from 172.17.0.1: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">4</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span>0.062 ms
+^C
+--- 172.17.0.1 ping statistics ---
+<span class="m">4</span> packets transmitted, <span class="m">4</span> received, 0% packet loss, <span class="nb">time</span> 3059ms
+<span class="c1"># 也能ping通</span>
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>原理</p>
+</blockquote>
+<p>首先,docker0的ip:172.17.0.1,容器9293的ip:172.17.0.2,是在同一网段下的</p>
+<ol>
+<li>每次运行一个容器,docker就会分配一个ip,我们只要安装了docker,就会有一个网卡docker0</li>
+</ol>
+<p>桥接模式,使用的是 evth-pair 技术</p>
+<ol start="2">
+<li>再次测试ip addr:</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ ip addr
+1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu <span class="m">65536</span> qdisc noqueue state UNKNOWN group default qlen <span class="m">1000</span>
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+       valid_lft forever preferred_lft forever
+2: eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc mq state UP group default qlen <span class="m">1000</span>
+    link/ether 52:54:00:a8:6e:ca brd ff:ff:ff:ff:ff:ff
+    inet 10.0.4.3/22 brd 10.0.7.255 scope global eth0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::5054:ff:fea8:6eca/64 scope link
+       valid_lft forever preferred_lft forever
+3: docker0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc noqueue state UP group default
+    link/ether 02:42:6c:11:67:c5 brd ff:ff:ff:ff:ff:ff
+    inet 172.17.0.1/16 brd 172.17.255.255 scope global docker0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::42:6cff:fe11:67c5/64 scope link
+       valid_lft forever preferred_lft forever
+93: veth8b8785a@if92: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc noqueue master docker0 state UP group default
+    link/ether 6a:fc:42:63:d2:cf brd ff:ff:ff:ff:ff:ff link-netnsid <span class="m">1</span>
+    inet6 fe80::68fc:42ff:fe63:d2cf/64 scope link
+       valid_lft forever preferred_lft forever
+</code></pre></td></tr></table>
+</div>
+</div><p>发现多了一个网卡</p>
+<p>可以明白容器带来的网卡，都是一对对的</p>
+<p>evth-pair就是一对虚拟设备接口，都是成对出现的，一端连着协议，一端彼此相连</p>
+<p>所以evth-pair被用来充当桥梁</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://tvax3.sinaimg.cn/large/007Z9xVHgy1h6gfgwgbtgj30xy0d6t9u.jpg"
+        data-srcset="https://tvax3.sinaimg.cn/large/007Z9xVHgy1h6gfgwgbtgj30xy0d6t9u.jpg, https://tvax3.sinaimg.cn/large/007Z9xVHgy1h6gfgwgbtgj30xy0d6t9u.jpg 1.5x, https://tvax3.sinaimg.cn/large/007Z9xVHgy1h6gfgwgbtgj30xy0d6t9u.jpg 2x"
+        data-sizes="auto"
+        alt="https://tvax3.sinaimg.cn/large/007Z9xVHgy1h6gfgwgbtgj30xy0d6t9u.jpg"
+        title="evth-pair" /></p>
+<p>主机上显示93: veth8b8785a@if92，93号，指向92号。而容器内显示92: eth0@if93，92号，指向93号，说明这两块网卡是互相绑定的</p>
+<ol start="3">
+<li>容器间ping</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ sdr <span class="nb">exec</span> -it <span class="m">9293</span> ping 172.20.0.2
+PING 172.20.0.2 <span class="o">(</span>172.20.0.2<span class="o">)</span> 56<span class="o">(</span>84<span class="o">)</span> bytes of data.
+^C
+--- 172.20.0.2 ping statistics ---
+<span class="m">8</span> packets transmitted, <span class="m">0</span> received, 100% packet loss, <span class="nb">time</span> 7170ms
+</code></pre></td></tr></table>
+</div>
+</div><p>这里ping不通的原因是两个容器的ip字段不同，即不在一个网桥下</p>
+<p>如果ping同一网桥下的容器：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ sdr <span class="nb">exec</span> -it <span class="m">9293</span> ping 172.17.0.3
+</code></pre></td></tr></table>
+</div>
+</div><p>此时就能ping通，我这里就不试了</p>
+<p>网络模型图如下：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://tva2.sinaimg.cn/large/007Z9xVHgy1h6gfyu20jej30z20mmjut.jpg"
+        data-srcset="https://tva2.sinaimg.cn/large/007Z9xVHgy1h6gfyu20jej30z20mmjut.jpg, https://tva2.sinaimg.cn/large/007Z9xVHgy1h6gfyu20jej30z20mmjut.jpg 1.5x, https://tva2.sinaimg.cn/large/007Z9xVHgy1h6gfyu20jej30z20mmjut.jpg 2x"
+        data-sizes="auto"
+        alt="https://tva2.sinaimg.cn/large/007Z9xVHgy1h6gfyu20jej30z20mmjut.jpg"
+        title="docker0" /></p>
+<p>所有容器在不指定网络的情况下，都是docker0路由的，docker会给容器分配一个默认的可用ip</p>
+<p>ip数目：255.255.255.255/16表示前16位是域，后16位是可分配的ip，此时255.255.0.1到255.255.255.254可用ip；255.255.255.255/24表示前24位是域，后8位是可分配的ip，此时255.255.255.1到255.255.255.254是可用ip</p>
+<p><strong>可以通过修改/etc/hosts添加容器名实现通过容器名ping通网络</strong></p>
+<h2 id="自定义网络">自定义网络</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 查看所有的docker网络</span>
+$ sdr network ls
+NETWORK ID     NAME                  DRIVER    SCOPE
+4171a585caf4   bridge                bridge    <span class="nb">local</span>
+3c8399a3e6b0   code-server_default   bridge    <span class="nb">local</span>
+bf9782f177ef   host                  host      <span class="nb">local</span>
+8c71ba624052   none                  null      <span class="nb">local</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>网络模式</strong></p>
+<p>bridge：桥接 docker(默认)</p>
+<p>none：不配置网络</p>
+<p>host：和宿主机共享网络</p>
+<p>container：容器内网络连通（用的少，局限性很大）</p>
+<p><strong>测试</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 启动容器时可以指定网络</span>
+docker run -d -P --name tomcat01 --net bridge tomcat
+<span class="c1"># 这里的bridge就是前面network ls的第一个网络</span>
+<span class="c1"># docker0特点:默认,域名不能访问</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>自定义网络</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># --driver bridge  设置网络模式</span>
+<span class="c1"># --subnet 192.168.0.0/16   设置子网地址</span>
+<span class="c1"># --gateway 192.168.0.1   网关</span>
+$ sdr network create --driver bridge --subnet 192.168.0.0/16 --gateway 192.168.0.1 mynet
+41eac8b4e2753f31116056357cabae0efc0f34259010c2b5b9244acceac34387
+$ sdr network ls
+NETWORK ID     NAME                  DRIVER    SCOPE
+41eac8b4e275   mynet                 bridge    <span class="nb">local</span>
+$ sdr network inspect mynet
+<span class="o">[</span>
+    <span class="o">{</span>
+        <span class="s2">&#34;Name&#34;</span>: <span class="s2">&#34;mynet&#34;</span>,
+        <span class="s2">&#34;Id&#34;</span>: <span class="s2">&#34;41eac8b4e2753f31116056357cabae0efc0f34259010c2b5b9244acceac34387&#34;</span>,
+        <span class="s2">&#34;Created&#34;</span>: <span class="s2">&#34;2022-09-23T15:43:55.370425457+08:00&#34;</span>,
+        <span class="s2">&#34;Scope&#34;</span>: <span class="s2">&#34;local&#34;</span>,
+        <span class="s2">&#34;Driver&#34;</span>: <span class="s2">&#34;bridge&#34;</span>,
+        <span class="s2">&#34;EnableIPv6&#34;</span>: false,
+        <span class="s2">&#34;IPAM&#34;</span>: <span class="o">{</span>
+            <span class="s2">&#34;Driver&#34;</span>: <span class="s2">&#34;default&#34;</span>,
+            <span class="s2">&#34;Options&#34;</span>: <span class="o">{}</span>,
+            <span class="s2">&#34;Config&#34;</span>: <span class="o">[</span>
+                <span class="o">{</span>
+                    <span class="s2">&#34;Subnet&#34;</span>: <span class="s2">&#34;192.168.0.0/16&#34;</span>,
+                    <span class="s2">&#34;Gateway&#34;</span>: <span class="s2">&#34;192.168.0.1&#34;</span>
+                <span class="o">}</span>
+            <span class="o">]</span>
+        <span class="o">}</span>,
+        <span class="s2">&#34;Internal&#34;</span>: false,
+        <span class="s2">&#34;Attachable&#34;</span>: false,
+        <span class="s2">&#34;Ingress&#34;</span>: false,
+        <span class="s2">&#34;ConfigFrom&#34;</span>: <span class="o">{</span>
+            <span class="s2">&#34;Network&#34;</span>: <span class="s2">&#34;&#34;</span>
+        <span class="o">}</span>,
+        <span class="s2">&#34;ConfigOnly&#34;</span>: false,
+        <span class="s2">&#34;Containers&#34;</span>: <span class="o">{}</span>,
+        <span class="s2">&#34;Options&#34;</span>: <span class="o">{}</span>,
+        <span class="s2">&#34;Labels&#34;</span>: <span class="o">{}</span>
+    <span class="o">}</span>
+<span class="o">]</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="网络连通">网络连通</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ sdr network connect --help
+
+Usage:  docker network connect <span class="o">[</span>OPTIONS<span class="o">]</span> NETWORK CONTAINER
+
+Connect a container to a network
+
+Options:
+      --alias strings           Add network-scoped <span class="nb">alias</span> <span class="k">for</span> the container
+      --driver-opt strings      driver options <span class="k">for</span> the network
+      --ip string               IPv4 address <span class="o">(</span>e.g., 172.30.100.104<span class="o">)</span>
+      --ip6 string              IPv6 address <span class="o">(</span>e.g., 2001:db8::33<span class="o">)</span>
+      --link list               Add link to another container
+      --link-local-ip strings   Add a link-local address <span class="k">for</span> the container
+</code></pre></td></tr></table>
+</div>
+</div><p>原理是再给容器分配一个ip地址，干脆利落直接将容器添加到其他网络中。</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
