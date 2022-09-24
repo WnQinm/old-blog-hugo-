@@ -5,7 +5,7 @@ draft: false
 tags: ["net"]
 ---
 
-花费六十多大洋在腾讯云利用学生和新人身份租了一年云服务器，结果git clone发现无法正常使用GitHub，无奈学习了在服务器部署clash
+第一次租云服务器，结果git clone时发现无法正常使用GitHub，无奈学习了在服务器部署clash
 
 # 安装
 
