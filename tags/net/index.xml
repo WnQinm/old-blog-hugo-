@@ -3,7 +3,15 @@
         <title>net - 标签 - Qinm&#39;s blog</title>
         <link>https://WnQinm.github.io/tags/net/</link>
         <description>net - 标签 - Qinm&#39;s blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 24 Sep 2022 13:26:40 &#43;0800</lastBuildDate><atom:link href="https://WnQinm.github.io/tags/net/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 25 Sep 2022 21:15:46 &#43;0800</lastBuildDate><atom:link href="https://WnQinm.github.io/tags/net/" rel="self" type="application/rss+xml" /><item>
+    <title>Github page域名解析设置</title>
+    <link>https://WnQinm.github.io/2022/09/ghpage/</link>
+    <pubDate>Sun, 25 Sep 2022 21:15:46 &#43;0800</pubDate>
+    <author>清梦</author>
+    <guid>https://WnQinm.github.io/2022/09/ghpage/</guid>
+    <description><![CDATA[打开github相应的仓库，我博客仓库结构为master储存页面代码，gh-page分支储存blog的public代码 在本地的master分]]></description>
+</item>
+<item>
     <title>Kali(docker)</title>
     <link>https://WnQinm.github.io/2022/09/kali_docker/</link>
     <pubDate>Sat, 24 Sep 2022 13:26:40 &#43;0800</pubDate>

@@ -19,7 +19,7 @@
 <meta name="application-name" content="LoveIt">
 <meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://WnQinm.github.io/2022/09/kali_docker/" /><link rel="prev" href="https://WnQinm.github.io/2022/09/ssh_help/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://WnQinm.github.io/2022/09/kali_docker/" /><link rel="prev" href="https://WnQinm.github.io/2022/09/ssh_help/" /><link rel="next" href="https://WnQinm.github.io/2022/09/ghpage/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -35,7 +35,7 @@
                             "url": "https:\/\/WnQinm.github.io\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "net, docker, hack","wordcount":  1216 ,
+                        }],"genre": "posts","keywords": "net, docker, hack","wordcount":  4215 ,
         "url": "https:\/\/WnQinm.github.io\/2022\/09\/kali_docker\/","datePublished": "2022-09-24T13:26:40+08:00","dateModified": "2022-09-24T13:26:40+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/WnQinm.github.io\/images\/avatar.png"},"author": {
@@ -77,8 +77,8 @@
             <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Kali(docker)</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>清梦</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-09-24">2022-09-24</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 1216 字&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-09-24">2022-09-24</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 4215 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 9 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -100,6 +100,40 @@
           <ol>
             <li><a href="#域名解析原理">域名解析原理</a></li>
             <li><a href="#dns信息收集-nslookup">DNS信息收集-NSLOOKUP</a></li>
+            <li><a href="#dns信息收集-dig">DNS信息收集-DIG</a></li>
+            <li><a href="#查询网站的域名注册信息和备案信息">查询网站的域名注册信息和备案信息</a></li>
+          </ol>
+        </li>
+        <li><a href="#使用maltego收集子域名信息">使用Maltego收集子域名信息</a>
+          <ol>
+            <li><a href="#子域名介绍">子域名介绍</a></li>
+            <li><a href="#挖掘子域名的重要性">挖掘子域名的重要性</a></li>
+            <li><a href="#使用maltego-ce进行子域名挖掘">使用Maltego CE进行子域名挖掘</a></li>
+          </ol>
+        </li>
+        <li><a href="#shodan信息收集">Shodan信息收集</a>
+          <ol>
+            <li><a href="#shodan介绍">Shodan介绍</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#主动信息收集">主动信息收集</a>
+      <ol>
+        <li><a href="#主动信息收集的原理">主动信息收集的原理</a>
+          <ol>
+            <li><a href="#主动信息收集的特点">主动信息收集的特点</a></li>
+            <li><a href="#发现目标主机的过程">发现目标主机的过程</a></li>
+            <li><a href="#osi七层模型和tcpip五层模型">OSI七层模型和TCP/IP五层模型</a></li>
+            <li><a href="#基于osi模型进行扫描的优缺点">基于OSI模型进行扫描的优缺点</a></li>
+          </ol>
+        </li>
+        <li><a href="#基于ping命令的探测">基于ping命令的探测</a>
+          <ol>
+            <li><a href="#ping">ping</a></li>
+            <li><a href="#arping">ARPING</a></li>
+            <li><a href="#hping3">hping3</a></li>
+            <li><a href="#fping查看局域网中运行了那些机器">fping查看局域网中运行了那些机器</a></li>
           </ol>
         </li>
       </ol>
@@ -212,7 +246,512 @@ NS记录时域名服务器记录，也成为授权服务器，用来指定该域
         alt="https://tvax4.sinaimg.cn/large/007Z9xVHgy1h6bux7kwytj30sl0jt40e.jpg"
         title="dns" /></p>
 <h3 id="dns信息收集-nslookup">DNS信息收集-NSLOOKUP</h3>
-</div><div class="post-footer" id="post-footer">
+<ol>
+<li><strong>将域名解析为ip地址</strong></li>
+</ol>
+<p>通过域名获得ip地址最快速的方式：ping</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># -c [num] 指定发送的数据包个数</span>
+
+$ ping www.baidu.com -c <span class="m">3</span>
+PING www.a.shifen.com <span class="o">(</span>180.101.49.11<span class="o">)</span> 56<span class="o">(</span>84<span class="o">)</span> bytes of data.
+<span class="m">64</span> bytes from 180.101.49.11 <span class="o">(</span>180.101.49.11<span class="o">)</span>: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">1</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">48</span> <span class="nv">time</span><span class="o">=</span>9.92 ms
+<span class="m">64</span> bytes from 180.101.49.11 <span class="o">(</span>180.101.49.11<span class="o">)</span>: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">2</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">48</span> <span class="nv">time</span><span class="o">=</span>9.97 ms
+<span class="m">64</span> bytes from 180.101.49.11: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">3</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">48</span> <span class="nv">time</span><span class="o">=</span>9.91 ms
+
+--- www.a.shifen.com ping statistics ---
+<span class="m">3</span> packets transmitted, <span class="m">3</span> received, 0% packet loss, <span class="nb">time</span> 10168ms
+rtt min/avg/max/mdev <span class="o">=</span> 9.911/9.931/9.969/0.026 ms
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>使用nslookup查看域名</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ nslookup www.baidu.com
+Server:         114.114.114.114
+Address:        114.114.114.114#53
+
+Non-authoritative answer:
+www.baidu.com   canonical <span class="nv">name</span> <span class="o">=</span> www.a.shifen.com.
+Name:   www.a.shifen.com
+Address: 180.101.49.12
+Name:   www.a.shifen.com
+Address: 180.101.49.11
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="dns信息收集-dig">DNS信息收集-DIG</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># dig [参数] 要查询的域名</span>
+<span class="c1"># @&lt;DNS服务器地址&gt;	：	指定进行域名解析的域名服务器</span>
+<span class="c1"># any		显示所有类型的域名记录。默认只显示A记录</span>
+
+$ dig www.baidu.com
+<span class="p">;</span> &lt;&lt;&gt;&gt; DiG 9.18.6-2-Debian &lt;&lt;&gt;&gt; www.baidu.com
+<span class="p">;;</span> global options: +cmd
+<span class="p">;;</span> Got answer:
+<span class="p">;;</span> -&gt;&gt;HEADER<span class="s">&lt;&lt;- opcode: QUERY, status: NOERROR, id: 27865
+</span><span class="s">;; flags: qr rd ra; QUERY: 1, ANSWER: 3, AUTHORITY: 0, ADDITIONAL: 1
+</span><span class="s">
+</span><span class="s">;; OPT PSEUDOSECTION:
+</span><span class="s">; EDNS: version: 0, flags:; udp: 512
+</span><span class="s">;; QUESTION SECTION:
+</span><span class="s">;www.baidu.com.                 IN      A
+</span><span class="s">
+</span><span class="s">;; ANSWER SECTION:
+</span><span class="s">www.baidu.com.          519     IN      CNAME   www.a.shifen.com.
+</span><span class="s">www.a.shifen.com.       219     IN      A       180.101.49.11
+</span><span class="s">www.a.shifen.com.       219     IN      A       180.101.49.12
+</span><span class="s">
+</span><span class="s">;; Query time: 12 msec
+</span><span class="s">;; SERVER: 114.114.114.114#53(114.114.114.114) (UDP)
+</span><span class="s">;; WHEN: Sat Sep 24 15:56:38 UTC 2022
+</span><span class="s">;; MSG SIZE  rcvd: 101
+</span><span class="s">
+</span><span class="s">$ dig @8.8.8.8 www.baidu.com
+</span><span class="s">; &lt;&lt;&gt;&gt; DiG 9.18.6-2-Debian &lt;&lt;&gt;&gt; @8.8.8.8 www.baidu.com
+</span><span class="s">; (1 server found)
+</span><span class="s">;; global options: +cmd
+</span><span class="s">;; Got answer:
+</span><span class="s">;; -&gt;&gt;HEADER&lt;&lt;- opcode</span>: QUERY, status: NOERROR, id: <span class="m">2814</span>
+<span class="p">;;</span> flags: qr rd ra<span class="p">;</span> QUERY: 1, ANSWER: 3, AUTHORITY: 0, ADDITIONAL: <span class="m">1</span>
+
+<span class="p">;;</span> OPT PSEUDOSECTION:
+<span class="p">;</span> EDNS: version: 0, flags:<span class="p">;</span> udp: <span class="m">512</span>
+<span class="p">;;</span> QUESTION SECTION:
+<span class="p">;</span>www.baidu.com.                 IN      A
+
+<span class="p">;;</span> ANSWER SECTION:
+www.baidu.com.          <span class="m">941</span>     IN      CNAME   www.a.shifen.com.
+www.a.shifen.com.       <span class="m">116</span>     IN      A       180.101.49.11
+www.a.shifen.com.       <span class="m">116</span>     IN      A       180.101.49.12
+
+<span class="p">;;</span> Query time: <span class="m">72</span> msec
+<span class="p">;;</span> SERVER: 8.8.8.8#53<span class="o">(</span>8.8.8.8<span class="o">)</span> <span class="o">(</span>UDP<span class="o">)</span>
+<span class="p">;;</span> WHEN: Sat Sep <span class="m">24</span> 15:56:53 UTC <span class="m">2022</span>
+<span class="p">;;</span> MSG SIZE  rcvd: <span class="m">101</span>
+
+$ dig @8.8.8.8 www.baidu.com any
+</code></pre></td></tr></table>
+</div>
+</div><p>也可以通过ip来查询，需要在<code>dig</code>后加参数<code>-x</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig -x 114.114.114.114
+<span class="p">;</span> &lt;&lt;&gt;&gt; DiG 9.18.6-2-Debian &lt;&lt;&gt;&gt; -x 114.114.114.114
+<span class="p">;;</span> global options: +cmd
+<span class="p">;;</span> Got answer:
+<span class="p">;;</span> -&gt;&gt;HEADER<span class="s">&lt;&lt;- opco</span>de: QUERY, status: NOERROR, id: <span class="m">32637</span>
+<span class="p">;;</span> flags: qr rd ra<span class="p">;</span> QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: <span class="m">1</span>
+
+<span class="p">;;</span> OPT PSEUDOSECTION:
+<span class="p">;</span> EDNS: version: 0, flags:<span class="p">;</span> udp: <span class="m">512</span>
+<span class="p">;;</span> QUESTION SECTION:
+<span class="p">;</span>114.114.114.114.in-addr.arpa.  IN      PTR
+
+<span class="p">;;</span> ANSWER SECTION:
+114.114.114.114.in-addr.arpa. <span class="m">379</span> IN    PTR     public1.114dns.com.
+
+<span class="p">;;</span> Query time: <span class="m">12</span> msec
+<span class="p">;;</span> SERVER: 114.114.114.114#53<span class="o">(</span>114.114.114.114<span class="o">)</span> <span class="o">(</span>UDP<span class="o">)</span>
+<span class="p">;;</span> WHEN: Sat Sep <span class="m">24</span> 16:02:42 UTC <span class="m">2022</span>
+<span class="p">;;</span> MSG SIZE  rcvd: <span class="m">89</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>查询DNS服务器bind版本信息</p>
+<p>目的：可以通过版本信息来查找相关版本漏洞的利用方式</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ dig txt chaos VERSION.BIND @ns3.dnsv4.com	<span class="c1"># @后跟DNS服务器域名</span>
+<span class="p">;;</span> Warning: query response not <span class="nb">set</span>
+<span class="p">;;</span> Warning: Message parser reports malformed message packet.
+
+<span class="p">;</span> &lt;&lt;&gt;&gt; DiG 9.18.6-2-Debian &lt;&lt;&gt;&gt; txt chaos VERSION.BIND @ns3.dnsv4.com
+<span class="p">;;</span> global options: +cmd
+<span class="p">;;</span> Got answer:
+<span class="p">;;</span> -&gt;&gt;HEADER<span class="s">&lt;&lt;- opco</span>de: QUERY, status: NOERROR, id: <span class="m">48413</span>
+<span class="p">;;</span> flags: rd ad<span class="p">;</span> QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: <span class="m">1</span>
+<span class="p">;;</span> WARNING: recursion requested but not available
+
+<span class="p">;;</span> QUESTION SECTION:
+<span class="p">;</span>VERSION.BIND.                  CH      TXT
+
+<span class="p">;;</span> ANSWER SECTION:
+VERSION.BIND.           <span class="m">0</span>       CH      TXT     <span class="s2">&#34;DNSPod AUTHORITY DNS 7.2.2203.01&#34;</span>	<span class="c1"># 版本信息</span>
+
+<span class="p">;;</span> Query time: <span class="m">4</span> msec
+<span class="p">;;</span> SERVER: 61.151.180.49#53<span class="o">(</span>ns3.dnsv4.com<span class="o">)</span> <span class="o">(</span>UDP<span class="o">)</span>
+<span class="p">;;</span> WHEN: Sat Sep <span class="m">24</span> 16:10:08 UTC <span class="m">2022</span>
+<span class="p">;;</span> MSG SIZE  rcvd: <span class="m">75</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="查询网站的域名注册信息和备案信息">查询网站的域名注册信息和备案信息</h3>
+<ol>
+<li>
+<p>域名注册信息</p>
+<p>whois 域名   或   web接口查询</p>
+</li>
+</ol>
+<p>阿里云：www.whois.aliyun.com</p>
+<p>站长之家：http://whois.chinaz.com/</p>
+<ol start="2">
+<li>备案信息查询</li>
+</ol>
+<ul>
+<li>web接口查询
+<ul>
+<li><a href="https://website.informer.com/">https://website.informer.com/</a></li>
+<li><a href="http://icp.chinaz.com/">http://icp.chinaz.com/</a></li>
+<li><a href="https://beian.miit.gov.cn/">https://beian.miit.gov.cn/</a></li>
+<li><a href="https://tianyancha.com/">https://tianyancha.com/</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="使用maltego收集子域名信息">使用Maltego收集子域名信息</h2>
+<h3 id="子域名介绍">子域名介绍</h3>
+<p>顶级域名是域名的最后一个部分，即是域名最后一点之后的字母，例如在https://baidu.com这个域名中，顶级域是.com（或.COM），大小写视为相同</p>
+<p>常见的顶级域主要分两类：</p>
+<ol>
+<li>通用顶级<strong>类别域名</strong>共6个，包括用于科研机构的.ac；用于工商金融企业的.com；用于教育机构的.edu；用于政府部门的.gov；用于互联网络信息中心和运行中心的.net；用于非盈利组织的.org</li>
+<li>国家及地区顶级域，如中国.cn，英国.uk，地理顶级域名一般由各个国家或地区负责管理</li>
+</ol>
+<p>子域名（Subdomain Name），凡顶级域名前加前缀的都是该顶级域名的子域名，而子域名根据技术的多少分为二级子域名，三级子域名以及多级子域名</p>
+<h3 id="挖掘子域名的重要性">挖掘子域名的重要性</h3>
+<p>子域名是某个主域的二级域名或者多级域名，在防御措施严密的情况下无法直接拿下主域，那么就可以采用迂回战术拿下子域名，然后无限靠近主域</p>
+<ul>
+<li>子域名挖掘工具：Maltego子域名挖掘机</li>
+<li>搜索引擎挖掘 如：在Google中输入 site:qq.com</li>
+<li>第三方网站查询：https://tool.chinaz.com/subdomain、https://dnsdumpster.com/</li>
+<li>证书透明度公开日志枚举：https://crt.sh/、https://censys.io/</li>
+<li>其他途径：https://phpinfo.me/domain、https://dns.aizhan.com</li>
+</ul>
+<h3 id="使用maltego-ce进行子域名挖掘">使用Maltego CE进行子域名挖掘</h3>
+<p>注册账号地址：https://www.maltego.com/ce-registration/</p>
+<h2 id="shodan信息收集">Shodan信息收集</h2>
+<h3 id="shodan介绍">Shodan介绍</h3>
+<p>Shodan直接进入互联网背后的通道搜索信息，一刻不停的寻找着所有和互联网关联的服务器、摄像头、打印机、路由器等。还可以直接显示出目标的具体地理位置信息</p>
+<p><a href="https://www.shodan.io">https://www.shodan.io</a></p>
+<h1 id="主动信息收集">主动信息收集</h1>
+<h2 id="主动信息收集的原理">主动信息收集的原理</h2>
+<h3 id="主动信息收集的特点">主动信息收集的特点</h3>
+<ol>
+<li>直接与目标系统交互通信</li>
+<li>无法避免留下访问痕迹</li>
+<li>使用受控的第三方电脑进行探测，使用代理或已经被控制的机器，做好被封杀的准备</li>
+<li>扫描发送不同的探测，根据返回的结果判断目标状态</li>
+</ol>
+<h3 id="发现目标主机的过程">发现目标主机的过程</h3>
+<ol>
+<li>识别存活主机，发现潜在的被攻击目标</li>
+<li>输出一个ip地址列表比如ip地址段  ip地址范围</li>
+<li>使用二、三、四层进行探测发现</li>
+</ol>
+<h3 id="osi七层模型和tcpip五层模型">OSI七层模型和TCP/IP五层模型</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://tva4.sinaimg.cn/large/007Z9xVHgy1h6i7pfmq8rj30ra0esgu4.jpg"
+        data-srcset="https://tva4.sinaimg.cn/large/007Z9xVHgy1h6i7pfmq8rj30ra0esgu4.jpg, https://tva4.sinaimg.cn/large/007Z9xVHgy1h6i7pfmq8rj30ra0esgu4.jpg 1.5x, https://tva4.sinaimg.cn/large/007Z9xVHgy1h6i7pfmq8rj30ra0esgu4.jpg 2x"
+        data-sizes="auto"
+        alt="https://tva4.sinaimg.cn/large/007Z9xVHgy1h6i7pfmq8rj30ra0esgu4.jpg"
+        title="osi" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://tva1.sinaimg.cn/large/007Z9xVHgy1h6i7vxjszqj30ku0dr77q.jpg"
+        data-srcset="https://tva1.sinaimg.cn/large/007Z9xVHgy1h6i7vxjszqj30ku0dr77q.jpg, https://tva1.sinaimg.cn/large/007Z9xVHgy1h6i7vxjszqj30ku0dr77q.jpg 1.5x, https://tva1.sinaimg.cn/large/007Z9xVHgy1h6i7vxjszqj30ku0dr77q.jpg 2x"
+        data-sizes="auto"
+        alt="https://tva1.sinaimg.cn/large/007Z9xVHgy1h6i7vxjszqj30ku0dr77q.jpg"
+        title="tcp_ip" /></p>
+<h3 id="基于osi模型进行扫描的优缺点">基于OSI模型进行扫描的优缺点</h3>
+<ol>
+<li>
+<p>二层扫描的优缺点</p>
+<p>优点：扫描速度快、可靠</p>
+<p>缺点：不可路由</p>
+</li>
+<li>
+<p>三层扫描的优缺点</p>
+<p>优点：可路由，速度较快</p>
+<p>缺点：速度比二层慢，经常被边界防火墙过滤</p>
+<p>使用ip、icmp协议</p>
+</li>
+<li>
+<p>四层扫描的优缺点</p>
+</li>
+</ol>
+<p>​	优点：可路由且结果可靠，不太可能被防火墙过滤，可以发现所有端口都被过滤的主机</p>
+<p>​	缺点：基于状态过滤的防火墙可能过滤扫描，全端口扫描速度慢</p>
+<h2 id="基于ping命令的探测">基于ping命令的探测</h2>
+<h3 id="ping">ping</h3>
+<p>ping命令是常用的判断主机之间网络是否畅通，同样也是能判断我们的目标主机是否存活</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ ping 172.17.0.3 -c <span class="m">1</span>
+PING 172.17.0.3 <span class="o">(</span>172.17.0.3<span class="o">)</span> 56<span class="o">(</span>84<span class="o">)</span> bytes of data.
+<span class="m">64</span> bytes from 172.17.0.3: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">1</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span>0.018 ms
+
+--- 172.17.0.3 ping statistics ---
+<span class="m">1</span> packets transmitted, <span class="m">1</span> received, 0% packet loss, <span class="nb">time</span> 0ms
+rtt min/avg/max/mdev <span class="o">=</span> 0.018/0.018/0.018/0.000 ms
+</code></pre></td></tr></table>
+</div>
+</div><p>traceroute命令可以对路由进行跟踪</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ traceroute wnqinm.cn
+traceroute to wnqinm.cn <span class="o">(</span>43.143.70.118<span class="o">)</span>, <span class="m">30</span> hops max, <span class="m">60</span> byte packets
+ <span class="m">1</span>  172.17.0.1 <span class="o">(</span>172.17.0.1<span class="o">)</span>  0.025 ms  0.009 ms  0.008 ms
+ <span class="m">2</span>  11.73.8.225 <span class="o">(</span>11.73.8.225<span class="o">)</span>  1.134 ms 11.73.8.193 <span class="o">(</span>11.73.8.193<span class="o">)</span>  1.389 ms  1.224 ms
+ <span class="m">3</span>  * * *
+ <span class="m">4</span>  * * *
+ <span class="m">5</span>  * * *
+ <span class="m">6</span>  * * *
+ <span class="m">7</span>  * * *
+</code></pre></td></tr></table>
+</div>
+</div><p>ping命令也有很多延伸命令</p>
+<h3 id="arping">ARPING</h3>
+<ol>
+<li>ARP协议概述：ARP协议是“Address Resolution Protocol”（地址解析协议）的缩写。计算机通过ARP协议将ip地址转换成MAC地址</li>
+<li>原理：向目标计算机询问物理地址，保存在本地</li>
+<li>使用arping命令查看局域网中的IP是否有冲突</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://tva2.sinaimg.cn/large/007Z9xVHgy1h6iw518r6wj31i40e8dtr.jpg"
+        data-srcset="https://tva2.sinaimg.cn/large/007Z9xVHgy1h6iw518r6wj31i40e8dtr.jpg, https://tva2.sinaimg.cn/large/007Z9xVHgy1h6iw518r6wj31i40e8dtr.jpg 1.5x, https://tva2.sinaimg.cn/large/007Z9xVHgy1h6iw518r6wj31i40e8dtr.jpg 2x"
+        data-sizes="auto"
+        alt="https://tva2.sinaimg.cn/large/007Z9xVHgy1h6iw518r6wj31i40e8dtr.jpg"
+        title="arping" /></p>
+<ol start="4">
+<li>使用Netdiscover进行被动方式探测局域网中存活的机器</li>
+</ol>
+<p>Netdiscover是一个主动/被动的ARP侦查工具。使用Netdiscover工具可以在网络上扫描IP地址，检查在线主机或搜索为它们发送的ARP请求</p>
+<p><strong>主动模式</strong>：顾名思义就是主动探测发现网络内的主机，但是这种方式往往会引起网络管理员的注意</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># -i 指定网卡 -r 指定网段</span>
+$ netdiscover -i eth0 -r 192.168.1.0/24
+Currently scanning: Finished!   <span class="p">|</span>   Screen View: Unique Hosts
+
+ <span class="m">12</span> Captured ARP Req/Rep packets, from <span class="m">3</span> hosts.   Total size: <span class="m">720</span>
+ _____________________________________________________________________________
+   IP            At MAC Address     Count     Len  MAC Vendor / Hostname
+ -----------------------------------------------------------------------------
+ 192.168.1.1   00:50:56:c0:00:08     <span class="m">10</span>     <span class="m">600</span>  VMware, Inc.
+ 192.168.1.2   00:50:56:e2:d2:17      <span class="m">1</span>      <span class="m">60</span>  VMware, Inc.
+ 192.168.1.254 00:50:56:ea:83:5f      <span class="m">1</span>      <span class="m">60</span>  VMware, Inc.
+</code></pre></td></tr></table>
+</div>
+</div><p>被动模式：更加隐秘，但是速度会比较慢，网卡被设置为混杂模式来侦听网络内的arp数据表进行被动式探测，这种方式就需要网络内设备发送arp包才能被探测到</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ netdiscover -p
+...
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="hping3">hping3</h3>
+<p>hping3是一个命令行下使用的TCP/IP数据包组装/分析工具，通常web服务会用来做压力测试使用，也可以进行DOS攻击的实验。同样hping只能每次扫描一个目标</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># -c 1000	发送的数据包的数量</span>
+<span class="c1"># -d 120	发送到目标机器的每个数据包的大小，单位是字节</span>
+<span class="c1"># -S		只发送SYN数据包</span>
+<span class="c1"># -w 64		TCP窗口的大小</span>
+<span class="c1"># -p 80		指定端口</span>
+<span class="c1"># --flood	尽可能快地发送数据包，不需要考虑显示入站回复。洪水攻击模式</span>
+<span class="c1"># --rand-source		使用随机的ip地址，这里伪造的ip地址只是在局域中伪造。通过路由器后，还会还原成真实的ip地址</span>
+hping3 -c <span class="m">1000</span> -d <span class="m">120</span> -S -w <span class="m">64</span> -p <span class="m">80</span> --flood --rand-source xxx.xxx
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="fping查看局域网中运行了那些机器">fping查看局域网中运行了那些机器</h3>
+<p>fping就是ping命令的加强版，它可以对一个ip段进行ping扫描，而ping命令本身是不可以对网段进行扫描的</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># -g 表示对地址段进行扫描，如果不加可以对某个ip进行扫描</span>
+<span class="c1"># -c 表示ping的次数</span>
+$ fping -g 192.168.1.0/24 -c <span class="m">1</span> &gt; fping.txt
+</code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
@@ -235,7 +774,8 @@ NS记录时域名服务器记录，也成为授权服务器，用来指定该域
         </section>
     </div>
 
-    <div class="post-nav"><a href="/2022/09/ssh_help/" class="prev" rel="prev" title="ssh基础配置"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>ssh基础配置</a></div>
+    <div class="post-nav"><a href="/2022/09/ssh_help/" class="prev" rel="prev" title="ssh基础配置"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>ssh基础配置</a>
+            <a href="/2022/09/ghpage/" class="next" rel="next" title="Github page域名解析设置">Github page域名解析设置<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">

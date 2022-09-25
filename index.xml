@@ -6,6 +6,22 @@
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 02 Aug 2019 11:04:49 &#43;0800</lastBuildDate>
             <atom:link href="https://WnQinm.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>vmware直接接入物理机所在网络</title>
+    <link>https://WnQinm.github.io/2022/09/vmware_net/</link>
+    <pubDate>Sun, 25 Sep 2022 21:20:24 &#43;0800</pubDate>
+    <author>清梦</author>
+    <guid>https://WnQinm.github.io/2022/09/vmware_net/</guid>
+    <description><![CDATA[此篇旨在解决vmware虚拟机桥接ping通外网的方法 1 $ vim /etc/network/interfaces 注意ip地址是自定义的，和物理机在同一网段的ip地址，网关是物理机的网关！ 1 2]]></description>
+</item>
+<item>
+    <title>Github page域名解析设置</title>
+    <link>https://WnQinm.github.io/2022/09/ghpage/</link>
+    <pubDate>Sun, 25 Sep 2022 21:15:46 &#43;0800</pubDate>
+    <author>清梦</author>
+    <guid>https://WnQinm.github.io/2022/09/ghpage/</guid>
+    <description><![CDATA[打开github相应的仓库，我博客仓库结构为master储存页面代码，gh-page分支储存blog的public代码 在本地的master分]]></description>
+</item>
+<item>
     <title>Kali(docker)</title>
     <link>https://WnQinm.github.io/2022/09/kali_docker/</link>
     <pubDate>Sat, 24 Sep 2022 13:26:40 &#43;0800</pubDate>
@@ -68,22 +84,6 @@
     <author>清梦</author>
     <guid>https://WnQinm.github.io/2022/08/google_search/</guid>
     <description><![CDATA[类似于百度搜索，Google搜索引擎同样有高级搜索语法来提高搜素效率！ 完全匹配搜索 将搜索短语包在引号中，且支持完全不完全匹配混搭： can have me &ldquo;must have]]></description>
-</item>
-<item>
-    <title>Git 简单入门</title>
-    <link>https://WnQinm.github.io/2022/08/git_help/</link>
-    <pubDate>Mon, 22 Aug 2022 21:14:53 &#43;0800</pubDate>
-    <author>清梦</author>
-    <guid>https://WnQinm.github.io/2022/08/git_help/</guid>
-    <description><![CDATA[基本技术 git config --global user.name （user name) git config --global user.email (email) 设置本地仓库用户名和邮箱 git init初始化本地仓库 git status查看：当前所处分支，准备commit的c]]></description>
-</item>
-<item>
-    <title>Markdown语法简介</title>
-    <link>https://WnQinm.github.io/2022/08/markdown_help/</link>
-    <pubDate>Mon, 22 Aug 2022 20:52:53 &#43;0800</pubDate>
-    <author>清梦</author>
-    <guid>https://WnQinm.github.io/2022/08/markdown_help/</guid>
-    <description><![CDATA[==目录== 一级标题 （# 空格） 二级标题 三级标题 四级标题 五级标题 六级标题 ctrl +1/2/3/4/5/6 快速设置六级标题 CTRL +/- 提升标题等级 倾斜 或者ctrl+i 加粗 或者ctr]]></description>
 </item>
 </channel>
 </rss>
