@@ -2,7 +2,7 @@ baseURL = "https://WnQinm.github.io"
 
 # theme
 # 主题
-theme = "loveit"
+theme = ["hugo-search-fuse-js", "loveit"]
 
 # website title
 # 网站标题
@@ -51,6 +51,10 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
   name = "清梦"
   email = ""
 
+[[module]]
+  [[module.imports]]
+    path = "github.com/kaushalmodi/hugo-search-fuse-js"
+
 # Menu config
 # 菜单配置
 [menu]
@@ -76,6 +80,12 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     name = "Tags"
     url = "/tags/"
     title = ""
+  [[menu.main]]
+    pre = "<i class='fas fa-fw fa-search'></i>"
+    name = "搜索"
+    weight = 7
+    identifier = "search"
+    url = "/search/"
 
 [params]
   # site default theme ["auto", "light", "dark"]
@@ -739,6 +749,12 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
         name = "标签"
         url = "/tags/"
         title = ""
+      [[languages.zh-cn.menu.main]]
+        pre = "<i class='fas fa-fw fa-search'></i>"
+	      name = "Search"
+	      weight = 7
+	      identifier = "search"
+	      url = "/search/"
       #[[languages.zh-cn.menu.main]]
       #  weight = 5
       #  identifier = "about"

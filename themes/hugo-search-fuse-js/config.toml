@@ -1,0 +1,15 @@
+[module]
+  [module.hugoVersion]
+    min = "0.81.0"
+
+  [[module.imports]]
+    path = "/Fuse"
+  [[module.imports.mounts]]
+    source = 'dist/fuse.min.js'
+    target = 'assets/js/libs/fuse.min.js'
+
+  [[module.imports]]
+    path = "/mark.js"
+  [[module.imports.mounts]]
+    source = 'dist/mark.min.js'
+    target = 'assets/js/libs/mark.min.js'
