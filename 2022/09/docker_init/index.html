@@ -35,7 +35,7 @@
                             "url": "https:\/\/WnQinm.github.io\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "net, docker","wordcount":  11841 ,
+                        }],"genre": "posts","keywords": "net, docker","wordcount":  11942 ,
         "url": "https:\/\/WnQinm.github.io\/2022\/09\/docker_init\/","datePublished": "2022-09-18T01:32:42+08:00","dateModified": "2022-09-18T01:32:42+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/WnQinm.github.io\/images\/avatar.png"},"author": {
@@ -52,7 +52,7 @@
             <a href="/" title="Qinm&#39;s blog"><span class="header-title-pre"><i class='fa-solid fa-cloud' aria-hidden='true'></i></span>Qinm&#39;s Blog</a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/search/"><i class='fas fa-fw fa-search'></i> Search </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
                     <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
                 </a></div>
         </div>
@@ -67,17 +67,18 @@
                 <span></span><span></span><span></span>
             </div>
         </div>
-        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/search/" title=""><i class='fas fa-fw fa-search'></i>Search</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
                 <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
             </a></div>
     </div>
 </header><main class="main">
-                <div class="container"><div class="toc" id="toc-auto">
+                <div class="container">
+                    <div class="toc" id="toc-auto">
             <h2 class="toc-title">目录</h2>
             <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Docker</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>清梦</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-09-18">2022-09-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 11841 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-09-18">2022-09-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 11942 字&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 24 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -286,10 +287,6 @@ sudo apt-get remove docker docker-engine docker.io containerd runc
 </span><span class="lnt">14
 </span><span class="lnt">15
 </span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># set up the repository</span>
@@ -301,31 +298,32 @@ sudo apt-get install <span class="se">\
 </span><span class="se"></span>        curl <span class="se">\
 </span><span class="se"></span>            gnupg <span class="se">\
 </span><span class="se"></span>                lsb-release
-                <span class="c1"># add Docker&#39;s official GPG key</span>
-                sudo mkdir -p /etc/apt/keyrings
-                curl -fsSL https://download.docker.com/linux/ubuntu/gpg <span class="p">|</span> sudo
-                gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-                <span class="c1"># set up the repository</span>
-                <span class="nb">echo</span> <span class="se">\
-</span><span class="se"></span>                  <span class="s2">&#34;deb [arch=</span><span class="k">$(</span>dpkg --print-architecture<span class="k">)</span><span class="s2">
-</span><span class="s2">                  signed-by=/etc/apt/keyrings/docker.gpg]
-</span><span class="s2">                  https://download.docker.com/linux/ubuntu \
-</span><span class="s2">                    </span><span class="k">$(</span>lsb_release -cs<span class="k">)</span><span class="s2"> stable&#34;</span> <span class="p">|</span> sudo tee
-                    /etc/apt/sources.list.d/docker.list &gt; /dev/null
+<span class="c1"># add Docker&#39;s official GPG key</span>
+sudo mkdir -p /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg <span class="p">|</span> sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+<span class="c1"># set up the repository</span>
+<span class="nb">echo</span> <span class="se">\
+</span><span class="se"></span>  <span class="s2">&#34;deb [arch=</span><span class="k">$(</span>dpkg --print-architecture<span class="k">)</span><span class="s2"> signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+</span><span class="s2">  </span><span class="k">$(</span>lsb_release -cs<span class="k">)</span><span class="s2"> stable&#34;</span> <span class="p">|</span> sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null
 </code></pre></td></tr></table>
 </div>
 </div><p>只要没有报错就成功</p>
 <h2 id="设置阿里云镜像软件源">设置阿里云镜像软件源</h2>
+<p><strong>这里的设置和上面紧挨着的&rsquo;# set up the repository'冲突，选择其一即可</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">sudo add-apt-repository <span class="s2">&#34;deb [arch=amd64]
-</span><span class="s2">http://mirrors.aliyun.com/docker-ce/linux/ubuntu
-</span><span class="s2"></span><span class="k">$(</span>lsb_release -cs<span class="k">)</span><span class="s2"> stable&#34;</span>
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 安装add-apt-repository</span>
+sudo apt update
+sudo apt install software-properties-common
+<span class="c1"># 设置镜像软件源</span>
+sudo add-apt-repository <span class="s2">&#34;deb [arch=amd64] http://mirrors.aliyun.com/docker-ce/linux/ubuntu </span><span class="k">$(</span>lsb_release -cs<span class="k">)</span><span class="s2"> stable&#34;</span>
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="install-docker-engine">install Docker Engine</h2>
@@ -341,6 +339,7 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 </code></pre></td></tr></table>
 </div>
 </div><p>(如果网络不好，下载超级慢)</p>
+<p>(第二遍跟着这个路径走，就算设置了镜像也很慢~)</p>
 <h2 id="启动docker">启动docker</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -3178,7 +3177,8 @@ Options:
             </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">River flies, sky lies.</div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">清梦</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
-    </footer></div>
+    </footer>
+        </div>
 
         <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
                 <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
