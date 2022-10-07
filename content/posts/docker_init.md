@@ -102,27 +102,27 @@ sudo apt-get install \
         curl \
             gnupg \
                 lsb-release
-                # add Docker's official GPG key
-                sudo mkdir -p /etc/apt/keyrings
-                curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo
-                gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-                # set up the repository
-                echo \
-                  "deb [arch=$(dpkg --print-architecture)
-                  signed-by=/etc/apt/keyrings/docker.gpg]
-                  https://download.docker.com/linux/ubuntu \
-                    $(lsb_release -cs) stable" | sudo tee
-                    /etc/apt/sources.list.d/docker.list > /dev/null
+# add Docker's official GPG key
+sudo mkdir -p /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+# set up the repository
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 ```
 
 只要没有报错就成功
 
 ## 设置阿里云镜像软件源
 
+**这里的设置和上面紧挨着的'# set up the repository'冲突，选择其一即可**
+
 ```shell
-sudo add-apt-repository "deb [arch=amd64]
-http://mirrors.aliyun.com/docker-ce/linux/ubuntu
-$(lsb_release -cs) stable"
+# 安装add-apt-repository
+sudo apt update
+sudo apt install software-properties-common
+# 设置镜像软件源
+sudo add-apt-repository "deb [arch=amd64] http://mirrors.aliyun.com/docker-ce/linux/ubuntu $(lsb_release -cs) stable"
 ```
 
 ## install Docker Engine
@@ -135,6 +135,8 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 ```
 
 (如果网络不好，下载超级慢)
+
+(第二遍跟着这个路径走，就算设置了镜像也很慢~)
 
 ## 启动docker
 
