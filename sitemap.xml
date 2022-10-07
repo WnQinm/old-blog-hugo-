@@ -2,13 +2,16 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://WnQinm.github.io/posts/</loc><lastmod>2022-09-25T21:20:24&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>https://WnQinm.github.io/tags/</loc><lastmod>2022-09-25T21:20:24&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
+            <loc>https://WnQinm.github.io/tags/net/</loc><lastmod>2022-10-08T00:46:09&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://WnQinm.github.io/2022/10/php_docker/</loc><lastmod>2022-10-08T00:46:09&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://WnQinm.github.io/posts/</loc><lastmod>2022-10-08T00:46:09&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://WnQinm.github.io/tags/</loc><lastmod>2022-10-08T00:46:09&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://WnQinm.github.io/2022/10/nginx_docker/</loc><lastmod>2022-10-08T00:43:07&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://WnQinm.github.io/2022/10/meta_html/</loc><lastmod>2022-10-08T00:39:16&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://WnQinm.github.io/tags/vmware/</loc><lastmod>2022-09-25T21:20:24&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
             <loc>https://WnQinm.github.io/2022/09/vmware_net/</loc><lastmod>2022-09-25T21:20:24&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
             <loc>https://WnQinm.github.io/tags/git/</loc><lastmod>2022-09-25T21:15:46&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
             <loc>https://WnQinm.github.io/2022/09/ghpage/</loc><lastmod>2022-09-25T21:15:46&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>https://WnQinm.github.io/tags/net/</loc><lastmod>2022-09-25T21:15:46&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
             <loc>https://WnQinm.github.io/tags/docker/</loc><lastmod>2022-09-24T13:26:40&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
             <loc>https://WnQinm.github.io/tags/hack/</loc><lastmod>2022-09-24T13:26:40&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
             <loc>https://WnQinm.github.io/2022/09/kali_docker/</loc><lastmod>2022-09-24T13:26:40&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>

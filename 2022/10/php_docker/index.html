@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>php(docker)联动nginx(docker)基础配置 - Qinm&#39;s blog</title><meta name="Description" content="Qinm&#39;s blog"><meta property="og:title" content="php(docker)联动nginx(docker)基础配置" />
+<meta property="og:description" content="主页需要用到php文件，所以研究了一下nginx配置php 我这里使用docker安装php 这里必须要吐槽一下，百度ubuntu安装php，9" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://WnQinm.github.io/2022/10/php_docker/" />
+<meta property="og:image" content="https://WnQinm.github.io/logo.png"/>
+<meta property="article:published_time" content="2022-10-08T00:46:09+08:00" />
+<meta property="article:modified_time" content="2022-10-08T00:46:09+08:00" /><meta property="og:site_name" content="blog" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://WnQinm.github.io/logo.png"/>
+
+<meta name="twitter:title" content="php(docker)联动nginx(docker)基础配置"/>
+<meta name="twitter:description" content="主页需要用到php文件，所以研究了一下nginx配置php 我这里使用docker安装php 这里必须要吐槽一下，百度ubuntu安装php，9"/>
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://WnQinm.github.io/2022/10/php_docker/" /><link rel="prev" href="https://WnQinm.github.io/2022/10/nginx_docker/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "php(docker)联动nginx(docker)基础配置",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/WnQinm.github.io\/2022\/10\/php_docker\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/WnQinm.github.io\/images\/Apple-Devices-Preview.png",
+                            "width":  3200 ,
+                            "height":  2048 
+                        }],"genre": "posts","keywords": "net","wordcount":  1178 ,
+        "url": "https:\/\/WnQinm.github.io\/2022\/10\/php_docker\/","datePublished": "2022-10-08T00:46:09+08:00","dateModified": "2022-10-08T00:46:09+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": "https:\/\/WnQinm.github.io\/images\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "清梦"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Qinm&#39;s blog"><span class="header-title-pre"><i class='fa-solid fa-cloud' aria-hidden='true'></i></span>Qinm&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/search/"><i class='fas fa-fw fa-search'></i> Search </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Qinm&#39;s blog"><span class="header-title-pre"><i class='fa-solid fa-cloud' aria-hidden='true'></i></span>Qinm&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/search/" title=""><i class='fas fa-fw fa-search'></i>Search</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container">
+                    <div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">php(docker)联动nginx(docker)基础配置</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>清梦</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-08">2022-10-08</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 1178 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
+            </div><div class="content" id="content"><p>主页需要用到php文件，所以研究了一下nginx配置php</p>
+<p>我这里使用docker安装php</p>
+<blockquote>
+<p>这里必须要<strong>吐槽一下</strong>，百度ubuntu安装php，99%都是要yum install php，我搞了半天怎么安装yum（apt install yum提示找不到package，更换了源还是一样），安装yum行不通。</p>
+<p>发现似乎可以直接apt install php，就直接莽了apt install php php-fpm，最后不知道为什么php-fpm找不到，运行不起来，回头看安装提示爆了一堆错，只好卸载php。安装的时候装了不知道多少兆，最后删的时候只删了目测一兆两兆！只好whereis php查询出来一个一个删。。。</p>
+<p>肯定删不干净qwq，<strong>气死我了气死我了气死我了</strong></p>
+</blockquote>
+<p>正文开始：</p>
+<p><code>docker pull php:7.4-fpm</code>拉取镜像，至于为啥不拉取最新的我也不知道，我翻了好几篇文章都是安装指定版本，这里选了一个他们之中最新的</p>
+<p><code>sudo docker run --name php -v /home/nginx/html:/www -d -p 9000:9000 php:7.4-fpm</code><strong>这里是重点</strong></p>
+<p>首先记得防火墙开9000端口，其次我将<code>/home/nginx/html</code>映射到了php容器中的<code>/www</code>文件，其中<code>/home/nginx</code>是我nginx在宿主机的文件映射地址，详情见我的nginx文章，这里的html文件夹用来放置网站的html文件，其在nginx容器中对应地址是<code>/usr/share/nginx/html</code>。</p>
+<p>找到nginx容器的<code>default.conf</code>文件，添加以下东东</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">location ~ <span class="se">\.</span>php$ <span class="o">{</span>
+       root           /www<span class="p">;</span>
+       fastcgi_pass   服务器公网ip:9000<span class="p">;</span>
+       fastcgi_index  index.php<span class="p">;</span>
+       fastcgi_param  SCRIPT_FILENAME  /www/<span class="nv">$fastcgi_script_name</span><span class="p">;</span>
+       include        fastcgi_params<span class="p">;</span>
+    <span class="o">}</span>
+<span class="c1"># 第二行根目录存放的是php文件，这里与nginx存放html文件的文件夹映射到了宿主机同一文件夹下</span>
+<span class="c1"># 第三行填服务器或者你的电脑的公网ip地址，这里注意需要把nginx和php放到同一docker network下，不然可能会发生不好的事情</span>
+<span class="c1"># 第五行/www/这里也是存php文件的那个目录，具体啥意思我也不没看懂，详情见菜鸟教程相关说明</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>现在，如果你在宿主机的html目录下放置了php文件，就能通过:服务器ip/file.php访问了！</p>
+<p>随文附上我的nginx配置文件default.conf:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># code-server二级域名配置</span>
+server <span class="o">{</span>
+    listen       80<span class="p">;</span>
+    server_name  xxx<span class="p">;</span>
+
+    location / <span class="o">{</span>
+        proxy_pass http://ip:xxxx/<span class="p">;</span>
+	proxy_set_header Host <span class="nv">$host</span><span class="p">;</span>
+	proxy_set_header Upgrade <span class="nv">$http_upgrade</span><span class="p">;</span>
+	proxy_set_header Connection upgrade<span class="p">;</span>
+	proxy_set_header Accept-Encoding gzip<span class="p">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="c1"># http转https</span>
+server<span class="o">{</span>
+    listen 80<span class="p">;</span>
+    listen <span class="o">[</span>::<span class="o">]</span>:80<span class="p">;</span>
+    server_name xxx<span class="p">;</span>
+
+    <span class="k">return</span> <span class="m">301</span> https://<span class="nv">$host$request_uri</span><span class="p">;</span>
+<span class="o">}</span>
+
+<span class="c1"># https配置</span>
+server <span class="o">{</span>
+    listen       <span class="m">443</span> ssl<span class="p">;</span>
+    server_name  xxx<span class="p">;</span>
+
+    <span class="c1">#access_log  /var/log/nginx/host.access.log  main;</span>
+    
+    ssl_certificate /etc/nginx/conf.d/cert/xxx_bundle.pem<span class="p">;</span>
+    
+    ssl_certificate_key /etc/nginx/conf.d/cert/xxx.key<span class="p">;</span>
+    ssl_session_timeout 5m<span class="p">;</span>
+
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2<span class="p">;</span>
+
+    ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4<span class="p">;</span>
+    ssl_prefer_server_ciphers on<span class="p">;</span>
+<span class="c1"># 此处便是域名根目录地址，即前文所说的html文件储存地址</span>
+    location / <span class="o">{</span>
+        root   /usr/share/nginx/html<span class="p">;</span>
+        index  index.html index.htm<span class="p">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">#error_page  404              /404.html;</span>
+
+    <span class="c1"># redirect server error pages to the static page /50x.html</span>
+    #
+    error_page   <span class="m">500</span> <span class="m">502</span> <span class="m">503</span> <span class="m">504</span>  /50x.html<span class="p">;</span>
+    <span class="nv">location</span> <span class="o">=</span> /50x.html <span class="o">{</span>
+        root   /usr/share/nginx/html<span class="p">;</span>
+    <span class="o">}</span>
+
+    <span class="c1"># proxy the PHP scripts to Apache listening on 127.0.0.1:80</span>
+    #
+    <span class="c1">#location ~ \.php$ {</span>
+    <span class="c1">#    proxy_pass   http://127.0.0.1;</span>
+    <span class="c1">#}</span>
+<span class="c1"># php相关配置</span>
+    <span class="c1"># pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000</span>
+    #
+    location ~ <span class="se">\.</span>php$ <span class="o">{</span>
+       root           /www<span class="p">;</span>
+       fastcgi_pass   ip:9000<span class="p">;</span>
+       fastcgi_index  index.php<span class="p">;</span>
+       fastcgi_param  SCRIPT_FILENAME  /www/<span class="nv">$fastcgi_script_name</span><span class="p">;</span>
+       include        fastcgi_params<span class="p">;</span>
+    <span class="o">}</span>
+
+    <span class="c1"># deny access to .htaccess files, if Apache&#39;s document root</span>
+    <span class="c1"># concurs with nginx&#39;s one</span>
+    #
+    <span class="c1">#location ~ /\.ht {</span>
+    <span class="c1">#    deny  all;</span>
+    <span class="c1">#}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-10-08</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/2022/10/php_docker/index.md" target="_blank">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://WnQinm.github.io/2022/10/php_docker/" data-title="php(docker)联动nginx(docker)基础配置" data-hashtags="net"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Reddit" data-sharer="reddit" data-url="https://WnQinm.github.io/2022/10/php_docker/"><i class="fab fa-reddit fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://WnQinm.github.io/2022/10/php_docker/" data-title="php(docker)联动nginx(docker)基础配置"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://WnQinm.github.io/2022/10/php_docker/" data-title="php(docker)联动nginx(docker)基础配置"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/baidu.svg" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/net/">net</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2022/10/nginx_docker/" class="prev" rel="prev" title="Nginx(docker)基础配置"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Nginx(docker)基础配置</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">River flies, sky lies.</div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">清梦</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer>
+        </div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

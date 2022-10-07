@@ -3,7 +3,31 @@
         <title>net - 标签 - Qinm&#39;s blog</title>
         <link>https://WnQinm.github.io/tags/net/</link>
         <description>net - 标签 - Qinm&#39;s blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 25 Sep 2022 21:15:46 &#43;0800</lastBuildDate><atom:link href="https://WnQinm.github.io/tags/net/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 08 Oct 2022 00:46:09 &#43;0800</lastBuildDate><atom:link href="https://WnQinm.github.io/tags/net/" rel="self" type="application/rss+xml" /><item>
+    <title>php(docker)联动nginx(docker)基础配置</title>
+    <link>https://WnQinm.github.io/2022/10/php_docker/</link>
+    <pubDate>Sat, 08 Oct 2022 00:46:09 &#43;0800</pubDate>
+    <author>清梦</author>
+    <guid>https://WnQinm.github.io/2022/10/php_docker/</guid>
+    <description><![CDATA[主页需要用到php文件，所以研究了一下nginx配置php 我这里使用docker安装php 这里必须要吐槽一下，百度ubuntu安装php，9]]></description>
+</item>
+<item>
+    <title>Nginx(docker)基础配置</title>
+    <link>https://WnQinm.github.io/2022/10/nginx_docker/</link>
+    <pubDate>Sat, 08 Oct 2022 00:43:07 &#43;0800</pubDate>
+    <author>清梦</author>
+    <guid>https://WnQinm.github.io/2022/10/nginx_docker/</guid>
+    <description><![CDATA[本篇在于利用nginx开启https访问以及设置主页 初始化 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 # 拷贝容器内配置文件到本地 $ docker run -d -p 80:80 --name nginx]]></description>
+</item>
+<item>
+    <title>html meta标签简介</title>
+    <link>https://WnQinm.github.io/2022/10/meta_html/</link>
+    <pubDate>Sat, 08 Oct 2022 00:39:16 &#43;0800</pubDate>
+    <author>清梦</author>
+    <guid>https://WnQinm.github.io/2022/10/meta_html/</guid>
+    <description><![CDATA[meta标签特性 meta标签是单标签，格式如下 &lt;meta 属性=&quot;值&quot;/&gt; meta标签永远位于head元素内部 meta标签分]]></description>
+</item>
+<item>
     <title>Github page域名解析设置</title>
     <link>https://WnQinm.github.io/2022/09/ghpage/</link>
     <pubDate>Sun, 25 Sep 2022 21:15:46 &#43;0800</pubDate>
