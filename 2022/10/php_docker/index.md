@@ -10,6 +10,8 @@
 > 发现似乎可以直接apt install php，就直接莽了apt install php php-fpm，最后不知道为什么php-fpm找不到，运行不起来，回头看安装提示爆了一堆错，只好卸载php。安装的时候装了不知道多少兆，最后删的时候只删了目测一兆两兆！只好whereis php查询出来一个一个删。。。
 >
 > 肯定删不干净qwq，**气死我了气死我了气死我了**
+>
+> 新学了一招 **sudo apt-get autoremove php**卸载很干净，能卸载依赖
 
 正文开始：
 

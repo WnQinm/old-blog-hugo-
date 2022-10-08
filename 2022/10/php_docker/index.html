@@ -35,7 +35,7 @@
                             "url": "https:\/\/WnQinm.github.io\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "net","wordcount":  1178 ,
+                        }],"genre": "posts","keywords": "net","wordcount":  1200 ,
         "url": "https:\/\/WnQinm.github.io\/2022\/10\/php_docker\/","datePublished": "2022-10-08T00:46:09+08:00","dateModified": "2022-10-08T00:46:09+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/WnQinm.github.io\/images\/avatar.png"},"author": {
@@ -78,7 +78,7 @@
             <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">php(docker)联动nginx(docker)基础配置</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>清梦</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-08">2022-10-08</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 1178 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-08">2022-10-08</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 1200 字&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -92,6 +92,7 @@
 <p>这里必须要<strong>吐槽一下</strong>，百度ubuntu安装php，99%都是要yum install php，我搞了半天怎么安装yum（apt install yum提示找不到package，更换了源还是一样），安装yum行不通。</p>
 <p>发现似乎可以直接apt install php，就直接莽了apt install php php-fpm，最后不知道为什么php-fpm找不到，运行不起来，回头看安装提示爆了一堆错，只好卸载php。安装的时候装了不知道多少兆，最后删的时候只删了目测一兆两兆！只好whereis php查询出来一个一个删。。。</p>
 <p>肯定删不干净qwq，<strong>气死我了气死我了气死我了</strong></p>
+<p>新学了一招 <strong>sudo apt-get autoremove php</strong>卸载很干净，能卸载依赖</p>
 </blockquote>
 <p>正文开始：</p>
 <p><code>docker pull php:7.4-fpm</code>拉取镜像，至于为啥不拉取最新的我也不知道，我翻了好几篇文章都是安装指定版本，这里选了一个他们之中最新的</p>
