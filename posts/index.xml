@@ -3,7 +3,15 @@
         <title>所有文章 - Qinm&#39;s blog</title>
         <link>https://WnQinm.github.io/posts/</link>
         <description>所有文章 | Qinm&#39;s blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 08 Oct 2022 00:46:09 &#43;0800</lastBuildDate><atom:link href="https://WnQinm.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 10 Oct 2022 09:43:25 &#43;0800</lastBuildDate><atom:link href="https://WnQinm.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>处理linux病毒&#39;kinsing&#39;&#39;kdevtmpfsi&#39;</title>
+    <link>https://WnQinm.github.io/2022/10/kdevtmpfsi/</link>
+    <pubDate>Mon, 10 Oct 2022 09:43:25 &#43;0800</pubDate>
+    <author>清梦</author>
+    <guid>https://WnQinm.github.io/2022/10/kdevtmpfsi/</guid>
+    <description><![CDATA[简要描述 连续两天出现阿里云和腾讯云提示恶意脚本运行和挖矿软件，都是在开启php的docker容器之后发生的，不过网上大部分同时关于docke]]></description>
+</item>
+<item>
     <title>php(docker)联动nginx(docker)基础配置</title>
     <link>https://WnQinm.github.io/2022/10/php_docker/</link>
     <pubDate>Sat, 08 Oct 2022 00:46:09 &#43;0800</pubDate>
@@ -74,14 +82,6 @@
     <author>清梦</author>
     <guid>https://WnQinm.github.io/2022/09/docker_init/</guid>
     <description><![CDATA[intro Docker是基于Go语言开发的开源项目 官网：https://www.docker.com/ 文档：https://docs.docker.]]></description>
-</item>
-<item>
-    <title>Clash for linux</title>
-    <link>https://WnQinm.github.io/2022/09/clash_linux/</link>
-    <pubDate>Fri, 16 Sep 2022 13:27:13 &#43;0800</pubDate>
-    <author>清梦</author>
-    <guid>https://WnQinm.github.io/2022/09/clash_linux/</guid>
-    <description><![CDATA[第一次租云服务器，结果git clone时发现无法正常使用GitHub，无奈学习了在服务器部署clash 安装 首先在本地下载clash本体：ht]]></description>
 </item>
 </channel>
 </rss>
