@@ -87,11 +87,23 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     url = "/tags/"
     title = ""
   [[menu.main]]
-    pre = "<i class='fas fa-fw fa-search'></i>"
-    name = "搜索"
-    weight = 7
-    identifier = "search"
-    url = "/search/"
+    weight = 3
+    identifier = "categories"
+    pre = ""
+    post = ""
+    name = "分类"
+    url = "/categories/"
+    title = ""
+  # [[menu.main]]
+  #   pre = "<i class='fas fa-fw fa-search'></i>"
+  #   name = "搜索"
+  #   weight = 7
+  #   identifier = "search"
+  #   url = "/search/"
+
+[taxonomies]
+   tag = "tags"
+   category = "categories"
 
 [params]
   # site default theme ["auto", "light", "dark"]
@@ -756,11 +768,19 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
         url = "/tags/"
         title = ""
       [[languages.zh-cn.menu.main]]
-        pre = "<i class='fas fa-fw fa-search'></i>"
-	      name = "Search"
-	      weight = 7
-	      identifier = "search"
-	      url = "/search/"
+        weight = 3
+        identifier = "categories"
+        pre = ""
+        post = ""
+        name = "分类"
+        url = "/categories/"
+        title = ""
+      # [[languages.zh-cn.menu.main]]
+      #   pre = "<i class='fas fa-fw fa-search'></i>"
+	    #   name = "Search"
+	    #   weight = 7
+	    #   identifier = "search"
+	    #   url = "/search/"
       #[[languages.zh-cn.menu.main]]
       #  weight = 5
       #  identifier = "about"

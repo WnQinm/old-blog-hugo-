@@ -3,6 +3,8 @@ title: "Docker"
 date: 2022-09-18T01:32:42+08:00
 draft: false
 tags: ["net","docker"]
+categories:
+- Docker
 ---
 
 docker基础知识学习笔记，来源于bilibili up主 '遇见狂神说'

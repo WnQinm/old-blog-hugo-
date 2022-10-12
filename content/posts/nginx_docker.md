@@ -3,6 +3,8 @@ title: "Nginx(docker)基础配置"
 date: 2022-10-08T00:43:07+08:00
 draft: false
 tags: ["net"]
+categories:
+- Docker
 ---
 
 本篇在于利用nginx开启https访问以及设置主页

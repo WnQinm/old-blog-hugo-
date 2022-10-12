@@ -3,6 +3,8 @@ title: "Kali(docker)"
 date: 2022-09-24T13:26:40+08:00
 draft: false
 tags: ["net","docker","hack"]
+categories:
+- Hack
 ---
 
 本篇是kali基础的学习笔记

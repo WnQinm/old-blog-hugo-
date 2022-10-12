@@ -3,6 +3,8 @@ title: "php(docker)联动nginx(docker)基础配置"
 date: 2022-10-08T00:46:09+08:00
 draft: false
 tags: ["net"]
+categories:
+- Docker
 ---
 
 主页需要用到php文件，所以研究了一下nginx配置php

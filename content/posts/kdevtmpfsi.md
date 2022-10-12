@@ -3,6 +3,8 @@ title: "处理linux病毒'kinsing''kdevtmpfsi'"
 date: 2022-10-10T09:43:25+08:00
 draft: false
 tags: ["virus","net"]
+categories:
+- Hack
 ---
 
 docker安装php并对外开放9000端口极易被攻击！

@@ -3,6 +3,8 @@ title: "Git 简单入门"
 date: 2022-08-22T21:14:53+08:00
 draft: false
 tags: ["git"]
+categories: 
+- Git
 ---
 
 本文旨在帮助学习和回忆git相关命令

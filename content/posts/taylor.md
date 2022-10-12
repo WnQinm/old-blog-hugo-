@@ -3,7 +3,10 @@ title: "Taylor"
 date: 2022-09-09T09:02:37+08:00
 draft: false
 tags: ["math"]
+categories: 
+- Math
 ---
+
 记录大一所学的泰勒助记:
 
 {{< raw >}}
