@@ -5,6 +5,9 @@ draft: false
 tags: ["git","net"]
 ---
 
+github上修改博客地址为个人购买的域名
+<!--more-->
+
 打开github相应的仓库，我博客仓库结构为master储存页面代码，gh-page分支储存blog的public代码
 
 在本地的master分支新建一个CNAME文件，写入注册好的域名（不带前缀），然后重新生成public文件，并将两个分支push到仓库

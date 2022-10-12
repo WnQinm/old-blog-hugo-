@@ -5,9 +5,13 @@ draft: false
 tags: ["latex", "math"]
 ---
 
-+ 由于本人技术原因，latex在html界面的渲染做的很差，有的可以正常显示有的则不行，本篇主要是帮助回忆latex数学公式相关语法，故而就此作罢
+由于本人技术原因，latex在html界面的渲染做的很差，有的可以正常显示有的则不行，本篇主要是帮助回忆latex数学公式相关语法，故而就此作罢
+
+<!--more-->
 
 ==双反斜杠换行==
+
+{{< raw >}}
 
 # 希腊字母
 
@@ -20,10 +24,12 @@ $$
 \partial
 $$
 
+{{< /raw >}}
+
 ![屏幕截图 2021-10-14 165750](https://tvax3.sinaimg.cn/large/007Z9xVHly1h5dgckyz86j317l0w00we.jpg)
 
 
-
+{{< raw >}}
 
 
 # 上下标
@@ -66,13 +72,14 @@ $$
 +-\\
 \times,\cdot,\div\\
 \pm,\mp\\
-\>,\<,\ge,\le,\gg,\ll,\ne,\approx,\equiv\\
+>,<,\ge,\le,\gg,\ll,\ne,\approx,\equiv\\
 \cap,\cup,\in,\notin,\subseteq,\subseteqq,\varnothing\\
 \forall,\exists,\nexists\\
 \because,\therefore\\
 \mathbb R,\R,\Q,\N,\Z_+\\
 \mathcal F,\mathscr F
 $$
+
 $$
 \cdots,\vdots,\ddots
 $$
@@ -123,17 +130,23 @@ $$
 \bar x,\overline{AB}
 $$
 
-
+{{< /raw >}}
 
 ![屏幕截图 2021-10-14 175108](https://tva1.sinaimg.cn/large/007Z9xVHly1h5dgdftytfj31cu0fpjt5.jpg)
+
+{{< raw >}}
 
 # 箭头
 
 $$
 \leftarrow,\rightarrow,\leftrightarrow,\longleftarrow
 $$
+
+{{< /raw >}}
+
 ![屏幕截图 2021-10-14 175451](https://tvax1.sinaimg.cn/large/007Z9xVHly1h5dgdo0a7mj30qu0spju1.jpg)
 
+{{< raw >}}
 
 # 括号与定界符
 $$
@@ -230,3 +243,5 @@ $$
 =&{\rm e}^\frac 2 \pi 
 \end{align}
 $$
+
+{{< /raw >}}

@@ -6,6 +6,7 @@ tags: ["net"]
 ---
 
 第一次租云服务器，结果git clone时发现无法正常使用GitHub，无奈学习了在服务器部署clash
+<!--more-->
 
 # 安装
 

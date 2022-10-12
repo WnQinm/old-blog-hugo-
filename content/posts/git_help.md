@@ -5,6 +5,9 @@ draft: false
 tags: ["git"]
 ---
 
+本文旨在帮助学习和回忆git相关命令
+<!--more-->
+
 ## 基本技术
 
 ![image-20220820004659891](https://img-blog.csdnimg.cn/fe7554cf09cd482dada374feec7ac3b1.png)

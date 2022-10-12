@@ -5,6 +5,9 @@ draft: false
 tags: ["net","docker","hack"]
 ---
 
+本篇是kali基础的学习笔记
+<!--more-->
+
 # 配置kali的apt在线安装包源
 
 `vim /etc/apt/sources.list`

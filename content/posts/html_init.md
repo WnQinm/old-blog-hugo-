@@ -5,6 +5,9 @@ draft: false
 tags: ["net"]
 ---
 
+本篇是关于html基础标签的介绍
+<!--more-->
+
 # 网页基本信息
 + DOCTYPE
   + 告诉浏览器我们要使用什么规范

@@ -38,6 +38,11 @@ enableRobotsTXT = true
 # whether to use git commit log
 # 是否使用 git 信息
 enableGitInfo = false
+
+# 自动更新文档更改时间，':git'来通过git提交记录获取，'lastmod'通过文档里定义的关键字获取，':fileModTime'通过文档修改时间获取
+[frontmatter]
+  lastmod = ['lastmod', ':fileModTime']
+
 # whether to use emoji code
 # 是否使用 emoji 代码
 enableEmoji = true

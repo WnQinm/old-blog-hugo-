@@ -6,6 +6,7 @@ tags: ["vmware"]
 ---
 
 此篇旨在解决vmware虚拟机桥接ping通外网的方法
+<!--more-->
 
 ```shell
 $ vim /etc/network/interfaces
