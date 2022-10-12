@@ -1,6 +1,9 @@
 # ssh基础配置
 
 
+本篇旨在帮助利用ssh实现无需输入密码链接远程服务器或本地虚拟机
+<!--more-->
+
 `systemctl status sshd`查看ssh服务是否启动
 
 `systemctl start sshd`启动ssh服务

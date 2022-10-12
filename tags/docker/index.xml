@@ -9,7 +9,7 @@
     <pubDate>Sat, 24 Sep 2022 13:26:40 &#43;0800</pubDate>
     <author>清梦</author>
     <guid>https://WnQinm.github.io/2022/09/kali_docker/</guid>
-    <description><![CDATA[配置kali的apt在线安装包源 vim /etc/apt/sources.list 把原先的deb注释掉，然后添加： 1 2 deb http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib deb-src http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib 然后apt update 其次通过下面的代码安装必要的工具]]></description>
+    <description><![CDATA[<p>本篇是kali基础的学习笔记</p>]]></description>
 </item>
 <item>
     <title>Docker</title>
@@ -17,7 +17,7 @@
     <pubDate>Sun, 18 Sep 2022 01:32:42 &#43;0800</pubDate>
     <author>清梦</author>
     <guid>https://WnQinm.github.io/2022/09/docker_init/</guid>
-    <description><![CDATA[intro Docker是基于Go语言开发的开源项目 官网：https://www.docker.com/ 文档：https://docs.docker.]]></description>
+    <description><![CDATA[<p>docker基础知识学习笔记，来源于bilibili up主 &lsquo;遇见狂神说&rsquo;</p>]]></description>
 </item>
 </channel>
 </rss>

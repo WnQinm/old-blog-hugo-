@@ -9,7 +9,7 @@
     <pubDate>Fri, 09 Sep 2022 09:02:37 &#43;0800</pubDate>
     <author>清梦</author>
     <guid>https://WnQinm.github.io/2022/09/taylor/</guid>
-    <description><![CDATA[记录大一所学的泰勒助记: $$ \begin{align*} 四个泰勒：\\ &amp;e^x=1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\cdots\\ &amp;\sin x=x-\frac{x^3}{3!}+\frac{x^5}{5!}-\cdots\\ &amp;\cos x=1-\frac{x^2}{2!}+\frac{x^4}{4!}-\cdots\\ &amp;\frac 1{1-x}=1+x+x^2+x^3+\cdots\qquad①\\ \end{align*}\\ \begin{align*} then：\\]]></description>
+    <description><![CDATA[记录大一所学的泰勒助记:]]></description>
 </item>
 <item>
     <title>Latex数学公式</title>
@@ -17,7 +17,7 @@
     <pubDate>Mon, 22 Aug 2022 20:16:49 &#43;0800</pubDate>
     <author>清梦</author>
     <guid>https://WnQinm.github.io/2022/08/latex%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/</guid>
-    <description><![CDATA[由于本人技术原因，latex在html界面的渲染做的很差，有的可以正常显示有的则不行，本篇主要是帮助回忆latex数学公式相关语法，故而就此]]></description>
+    <description><![CDATA[<p>由于本人技术原因，latex在html界面的渲染做的很差，有的可以正常显示有的则不行，本篇主要是帮助回忆latex数学公式相关语法，故而就此作罢</p>]]></description>
 </item>
 </channel>
 </rss>

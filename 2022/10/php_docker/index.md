@@ -2,6 +2,7 @@
 
 
 主页需要用到php文件，所以研究了一下nginx配置php
+<!--more-->
 
 我这里使用docker安装php
 

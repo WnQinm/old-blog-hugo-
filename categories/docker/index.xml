@@ -1,0 +1,31 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Docker - 分类 - Qinm&#39;s blog</title>
+        <link>https://WnQinm.github.io/categories/docker/</link>
+        <description>Docker - 分类 - Qinm&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 08 Oct 2022 00:46:09 &#43;0800</lastBuildDate><atom:link href="https://WnQinm.github.io/categories/docker/" rel="self" type="application/rss+xml" /><item>
+    <title>php(docker)联动nginx(docker)基础配置</title>
+    <link>https://WnQinm.github.io/2022/10/php_docker/</link>
+    <pubDate>Sat, 08 Oct 2022 00:46:09 &#43;0800</pubDate>
+    <author>清梦</author>
+    <guid>https://WnQinm.github.io/2022/10/php_docker/</guid>
+    <description><![CDATA[<p>主页需要用到php文件，所以研究了一下nginx配置php</p>]]></description>
+</item>
+<item>
+    <title>Nginx(docker)基础配置</title>
+    <link>https://WnQinm.github.io/2022/10/nginx_docker/</link>
+    <pubDate>Sat, 08 Oct 2022 00:43:07 &#43;0800</pubDate>
+    <author>清梦</author>
+    <guid>https://WnQinm.github.io/2022/10/nginx_docker/</guid>
+    <description><![CDATA[<p>本篇在于利用nginx开启https访问以及设置主页</p>]]></description>
+</item>
+<item>
+    <title>Docker</title>
+    <link>https://WnQinm.github.io/2022/09/docker_init/</link>
+    <pubDate>Sun, 18 Sep 2022 01:32:42 &#43;0800</pubDate>
+    <author>清梦</author>
+    <guid>https://WnQinm.github.io/2022/09/docker_init/</guid>
+    <description><![CDATA[<p>docker基础知识学习笔记，来源于bilibili up主 &lsquo;遇见狂神说&rsquo;</p>]]></description>
+</item>
+</channel>
+</rss>

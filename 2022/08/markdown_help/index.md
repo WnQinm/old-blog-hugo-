@@ -1,6 +1,10 @@
 # Markdown语法简介
 
 
+此文适配软件 typora 的 markdown 语法
+
+<!--more-->
+
 ==目录==
 
 

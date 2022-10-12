@@ -9,7 +9,7 @@
     <pubDate>Mon, 10 Oct 2022 09:43:25 &#43;0800</pubDate>
     <author>清梦</author>
     <guid>https://WnQinm.github.io/2022/10/kdevtmpfsi/</guid>
-    <description><![CDATA[简要描述 连续两天出现阿里云和腾讯云提示恶意脚本运行和挖矿软件，都是在开启php的docker容器之后发生的，不过网上大部分同时关于docke]]></description>
+    <description><![CDATA[<p>docker安装php并对外开放9000端口极易被攻击！</p>]]></description>
 </item>
 <item>
     <title>php(docker)联动nginx(docker)基础配置</title>
@@ -17,7 +17,7 @@
     <pubDate>Sat, 08 Oct 2022 00:46:09 &#43;0800</pubDate>
     <author>清梦</author>
     <guid>https://WnQinm.github.io/2022/10/php_docker/</guid>
-    <description><![CDATA[主页需要用到php文件，所以研究了一下nginx配置php 我这里使用docker安装php 这里必须要吐槽一下，百度ubuntu安装php，9]]></description>
+    <description><![CDATA[<p>主页需要用到php文件，所以研究了一下nginx配置php</p>]]></description>
 </item>
 <item>
     <title>Nginx(docker)基础配置</title>
@@ -25,7 +25,7 @@
     <pubDate>Sat, 08 Oct 2022 00:43:07 &#43;0800</pubDate>
     <author>清梦</author>
     <guid>https://WnQinm.github.io/2022/10/nginx_docker/</guid>
-    <description><![CDATA[本篇在于利用nginx开启https访问以及设置主页 初始化 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 # 拷贝容器内配置文件到本地 $ docker run -d -p 80:80 --name nginx]]></description>
+    <description><![CDATA[<p>本篇在于利用nginx开启https访问以及设置主页</p>]]></description>
 </item>
 <item>
     <title>html meta标签简介</title>
@@ -33,7 +33,7 @@
     <pubDate>Sat, 08 Oct 2022 00:39:16 &#43;0800</pubDate>
     <author>清梦</author>
     <guid>https://WnQinm.github.io/2022/10/meta_html/</guid>
-    <description><![CDATA[meta标签特性 meta标签是单标签，格式如下 &lt;meta 属性=&quot;值&quot;/&gt; meta标签永远位于head元素内部 meta标签分]]></description>
+    <description><![CDATA[<p>meta标签简介</p>]]></description>
 </item>
 <item>
     <title>Github page域名解析设置</title>
@@ -41,7 +41,7 @@
     <pubDate>Sun, 25 Sep 2022 21:15:46 &#43;0800</pubDate>
     <author>清梦</author>
     <guid>https://WnQinm.github.io/2022/09/ghpage/</guid>
-    <description><![CDATA[打开github相应的仓库，我博客仓库结构为master储存页面代码，gh-page分支储存blog的public代码 在本地的master分]]></description>
+    <description><![CDATA[<p>github上修改博客地址为个人购买的域名</p>]]></description>
 </item>
 <item>
     <title>Kali(docker)</title>
@@ -49,7 +49,7 @@
     <pubDate>Sat, 24 Sep 2022 13:26:40 &#43;0800</pubDate>
     <author>清梦</author>
     <guid>https://WnQinm.github.io/2022/09/kali_docker/</guid>
-    <description><![CDATA[配置kali的apt在线安装包源 vim /etc/apt/sources.list 把原先的deb注释掉，然后添加： 1 2 deb http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib deb-src http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib 然后apt update 其次通过下面的代码安装必要的工具]]></description>
+    <description><![CDATA[<p>本篇是kali基础的学习笔记</p>]]></description>
 </item>
 <item>
     <title>ssh基础配置</title>
@@ -57,7 +57,7 @@
     <pubDate>Sat, 24 Sep 2022 13:24:23 &#43;0800</pubDate>
     <author>清梦</author>
     <guid>https://WnQinm.github.io/2022/09/ssh_help/</guid>
-    <description><![CDATA[systemctl status sshd查看ssh服务是否启动 systemctl start sshd启动ssh服务 通过ssh 用户名@ip地址登录服务器 首次登录时需要确认密钥，必须输入完整的yes]]></description>
+    <description><![CDATA[<p>本篇旨在帮助利用ssh实现无需输入密码链接远程服务器或本地虚拟机</p>]]></description>
 </item>
 <item>
     <title>html初识</title>
@@ -65,7 +65,7 @@
     <pubDate>Sat, 24 Sep 2022 13:15:46 &#43;0800</pubDate>
     <author>清梦</author>
     <guid>https://WnQinm.github.io/2022/09/html_init/</guid>
-    <description><![CDATA[网页基本信息 DOCTYPE 告诉浏览器我们要使用什么规范 html 所有内容必须包含在html这个总标签里 head 代表网页头部 body 代表网页主体 title 表示网页标题，显示在标签选项]]></description>
+    <description><![CDATA[<p>本篇是关于html基础标签的介绍</p>]]></description>
 </item>
 <item>
     <title>Docker</title>
@@ -73,7 +73,7 @@
     <pubDate>Sun, 18 Sep 2022 01:32:42 &#43;0800</pubDate>
     <author>清梦</author>
     <guid>https://WnQinm.github.io/2022/09/docker_init/</guid>
-    <description><![CDATA[intro Docker是基于Go语言开发的开源项目 官网：https://www.docker.com/ 文档：https://docs.docker.]]></description>
+    <description><![CDATA[<p>docker基础知识学习笔记，来源于bilibili up主 &lsquo;遇见狂神说&rsquo;</p>]]></description>
 </item>
 <item>
     <title>Clash for linux</title>
@@ -81,7 +81,7 @@
     <pubDate>Fri, 16 Sep 2022 13:27:13 &#43;0800</pubDate>
     <author>清梦</author>
     <guid>https://WnQinm.github.io/2022/09/clash_linux/</guid>
-    <description><![CDATA[第一次租云服务器，结果git clone时发现无法正常使用GitHub，无奈学习了在服务器部署clash 安装 首先在本地下载clash本体：ht]]></description>
+    <description><![CDATA[<p>第一次租云服务器，结果git clone时发现无法正常使用GitHub，无奈学习了在服务器部署clash</p>]]></description>
 </item>
 </channel>
 </rss>

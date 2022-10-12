@@ -5,17 +5,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <title>Kali(docker) - Qinm&#39;s blog</title><meta name="Description" content="Qinm&#39;s blog"><meta property="og:title" content="Kali(docker)" />
-<meta property="og:description" content="配置kali的apt在线安装包源 vim /etc/apt/sources.list 把原先的deb注释掉，然后添加： 1 2 deb http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib deb-src http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib 然后apt update 其次通过下面的代码安装必要的工具" />
+<meta property="og:description" content="本篇是kali基础的学习笔记" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://WnQinm.github.io/2022/09/kali_docker/" />
 <meta property="og:image" content="https://WnQinm.github.io/logo.png"/>
 <meta property="article:published_time" content="2022-09-24T13:26:40+08:00" />
-<meta property="article:modified_time" content="2022-09-24T13:26:40+08:00" /><meta property="og:site_name" content="blog" />
+<meta property="article:modified_time" content="2022-10-12T18:11:45+08:00" /><meta property="og:site_name" content="blog" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://WnQinm.github.io/logo.png"/>
 
 <meta name="twitter:title" content="Kali(docker)"/>
-<meta name="twitter:description" content="配置kali的apt在线安装包源 vim /etc/apt/sources.list 把原先的deb注释掉，然后添加： 1 2 deb http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib deb-src http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib 然后apt update 其次通过下面的代码安装必要的工具"/>
+<meta name="twitter:description" content="本篇是kali基础的学习笔记"/>
 <meta name="application-name" content="Qinm&#39;s blog">
 <meta name="apple-mobile-web-app-title" content="Qinm&#39;s blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -35,8 +35,8 @@
                             "url": "https:\/\/WnQinm.github.io\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "net, docker, hack","wordcount":  4215 ,
-        "url": "https:\/\/WnQinm.github.io\/2022\/09\/kali_docker\/","datePublished": "2022-09-24T13:26:40+08:00","dateModified": "2022-09-24T13:26:40+08:00","publisher": {
+                        }],"genre": "posts","keywords": "net, docker, hack","wordcount":  4229 ,
+        "url": "https:\/\/WnQinm.github.io\/2022\/09\/kali_docker\/","datePublished": "2022-09-24T13:26:40+08:00","dateModified": "2022-10-12T18:11:45+08:00","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/WnQinm.github.io\/images\/avatar.png"},"author": {
                 "@type": "Person",
@@ -52,7 +52,7 @@
             <a href="/" title="Qinm&#39;s blog"><span class="header-title-pre"><i class='fa-solid fa-cloud' aria-hidden='true'></i></span>Qinm&#39;s Blog</a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/search/"><i class='fas fa-fw fa-search'></i> Search </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
                     <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
                 </a></div>
         </div>
@@ -67,7 +67,7 @@
                 <span></span><span></span><span></span>
             </div>
         </div>
-        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/search/" title=""><i class='fas fa-fw fa-search'></i>Search</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
                 <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
             </a></div>
     </div>
@@ -77,8 +77,8 @@
             <h2 class="toc-title">目录</h2>
             <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Kali(docker)</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>清梦</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-09-24">2022-09-24</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 4215 字&nbsp;
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>清梦</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/hack/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Hack</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-09-24">2022-09-24</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 4229 字&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 9 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -141,7 +141,8 @@
     </li>
   </ol>
 </nav></div>
-            </div><div class="content" id="content"><h1 id="配置kali的apt在线安装包源">配置kali的apt在线安装包源</h1>
+            </div><div class="content" id="content"><p>本篇是kali基础的学习笔记</p>
+<h1 id="配置kali的apt在线安装包源">配置kali的apt在线安装包源</h1>
 <p><code>vim /etc/apt/sources.list</code></p>
 <p>把原先的deb注释掉，然后添加：</p>
 <div class="highlight"><div class="chroma">
@@ -756,7 +757,7 @@ $ fping -g 192.168.1.0/24 -c <span class="m">1</span> &gt; fping.txt
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-09-24</span>
+                <span>更新于 2022-10-12</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>

@@ -1,7 +1,9 @@
 # Taylor
 
+
 记录大一所学的泰勒助记:
 
+{{< raw >}}
 $$
 \begin{align*}
 四个泰勒：\\\\
@@ -22,3 +24,4 @@ then：\\\\
 &\arctan x=x-\frac{x^3}3+\frac{x^5}5-\frac{x^7}7+\cdots\qquad\\\\
 \end{align*}
 $$
+{{< /raw >}}

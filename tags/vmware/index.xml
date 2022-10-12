@@ -9,7 +9,7 @@
     <pubDate>Sun, 25 Sep 2022 21:20:24 &#43;0800</pubDate>
     <author>清梦</author>
     <guid>https://WnQinm.github.io/2022/09/vmware_net/</guid>
-    <description><![CDATA[此篇旨在解决vmware虚拟机桥接ping通外网的方法 1 $ vim /etc/network/interfaces 注意ip地址是自定义的，和物理机在同一网段的ip地址，网关是物理机的网关！ 1 2]]></description>
+    <description><![CDATA[<p>此篇旨在解决vmware虚拟机桥接ping通外网的方法</p>]]></description>
 </item>
 </channel>
 </rss>

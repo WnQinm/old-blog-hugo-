@@ -1,0 +1,23 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Git - 分类 - Qinm&#39;s blog</title>
+        <link>https://WnQinm.github.io/categories/git/</link>
+        <description>Git - 分类 - Qinm&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 25 Sep 2022 21:15:46 &#43;0800</lastBuildDate><atom:link href="https://WnQinm.github.io/categories/git/" rel="self" type="application/rss+xml" /><item>
+    <title>Github page域名解析设置</title>
+    <link>https://WnQinm.github.io/2022/09/ghpage/</link>
+    <pubDate>Sun, 25 Sep 2022 21:15:46 &#43;0800</pubDate>
+    <author>清梦</author>
+    <guid>https://WnQinm.github.io/2022/09/ghpage/</guid>
+    <description><![CDATA[<p>github上修改博客地址为个人购买的域名</p>]]></description>
+</item>
+<item>
+    <title>Git 简单入门</title>
+    <link>https://WnQinm.github.io/2022/08/git_help/</link>
+    <pubDate>Mon, 22 Aug 2022 21:14:53 &#43;0800</pubDate>
+    <author>清梦</author>
+    <guid>https://WnQinm.github.io/2022/08/git_help/</guid>
+    <description><![CDATA[<p>本文旨在帮助学习和回忆git相关命令</p>]]></description>
+</item>
+</channel>
+</rss>

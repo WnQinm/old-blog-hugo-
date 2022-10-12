@@ -9,7 +9,7 @@
     <pubDate>Sun, 25 Sep 2022 21:15:46 &#43;0800</pubDate>
     <author>清梦</author>
     <guid>https://WnQinm.github.io/2022/09/ghpage/</guid>
-    <description><![CDATA[打开github相应的仓库，我博客仓库结构为master储存页面代码，gh-page分支储存blog的public代码 在本地的master分]]></description>
+    <description><![CDATA[<p>github上修改博客地址为个人购买的域名</p>]]></description>
 </item>
 <item>
     <title>Git 简单入门</title>
@@ -17,7 +17,7 @@
     <pubDate>Mon, 22 Aug 2022 21:14:53 &#43;0800</pubDate>
     <author>清梦</author>
     <guid>https://WnQinm.github.io/2022/08/git_help/</guid>
-    <description><![CDATA[基本技术 git config --global user.name （user name) git config --global user.email (email) 设置本地仓库用户名和邮箱 git init初始化本地仓库 git status查看：当前所处分支，准备commit的c]]></description>
+    <description><![CDATA[<p>本文旨在帮助学习和回忆git相关命令</p>]]></description>
 </item>
 </channel>
 </rss>

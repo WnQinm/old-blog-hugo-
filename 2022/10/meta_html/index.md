@@ -1,6 +1,9 @@
 # html meta标签简介
 
 
+meta标签简介
+<!--more-->
+
 # meta标签特性
 + meta标签是单标签，格式如下
 	`<meta 属性="值"/>`
