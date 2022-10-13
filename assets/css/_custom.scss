@@ -2,3 +2,17 @@
 // Custom style
 // 自定义样式
 // ==============================
+
+/* 目录 */
+nav#TableOfContents ol {
+    padding-inline-start: 30px;
+
+    & ol {
+        padding-inline-start: 25px;
+        display: none;
+    }
+
+    & li.has-active ol {
+        display: block;
+    }
+}
