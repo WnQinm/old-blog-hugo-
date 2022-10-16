@@ -3,7 +3,15 @@
         <title>net - 标签 - Qinm&#39;s blog</title>
         <link>https://WnQinm.github.io/tags/net/</link>
         <description>net - 标签 - Qinm&#39;s blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 10 Oct 2022 09:43:25 &#43;0800</lastBuildDate><atom:link href="https://WnQinm.github.io/tags/net/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 13 Oct 2022 13:58:47 &#43;0800</lastBuildDate><atom:link href="https://WnQinm.github.io/tags/net/" rel="self" type="application/rss+xml" /><item>
+    <title>计算机网络</title>
+    <link>https://WnQinm.github.io/2022/10/computer_net/</link>
+    <pubDate>Thu, 13 Oct 2022 13:58:47 &#43;0800</pubDate>
+    <author>清梦</author>
+    <guid>https://WnQinm.github.io/2022/10/computer_net/</guid>
+    <description><![CDATA[<p>计算机网络基础知识总结:)</p>]]></description>
+</item>
+<item>
     <title>处理linux病毒&#39;kinsing&#39;&#39;kdevtmpfsi&#39;</title>
     <link>https://WnQinm.github.io/2022/10/kdevtmpfsi/</link>
     <pubDate>Mon, 10 Oct 2022 09:43:25 &#43;0800</pubDate>
@@ -74,14 +82,6 @@
     <author>清梦</author>
     <guid>https://WnQinm.github.io/2022/09/docker_init/</guid>
     <description><![CDATA[<p>docker基础知识学习笔记，来源于bilibili up主 &lsquo;遇见狂神说&rsquo;</p>]]></description>
-</item>
-<item>
-    <title>Clash for linux</title>
-    <link>https://WnQinm.github.io/2022/09/clash_linux/</link>
-    <pubDate>Fri, 16 Sep 2022 13:27:13 &#43;0800</pubDate>
-    <author>清梦</author>
-    <guid>https://WnQinm.github.io/2022/09/clash_linux/</guid>
-    <description><![CDATA[<p>第一次租云服务器，结果git clone时发现无法正常使用GitHub，无奈学习了在服务器部署clash</p>]]></description>
 </item>
 </channel>
 </rss>

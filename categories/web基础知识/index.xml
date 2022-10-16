@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>web基础知识 - 分类 - Qinm&#39;s blog</title>
+        <link>https://WnQinm.github.io/categories/web%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
+        <description>web基础知识 - 分类 - Qinm&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 13 Oct 2022 13:58:47 &#43;0800</lastBuildDate><atom:link href="https://WnQinm.github.io/categories/web%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="self" type="application/rss+xml" /><item>
+    <title>计算机网络</title>
+    <link>https://WnQinm.github.io/2022/10/computer_net/</link>
+    <pubDate>Thu, 13 Oct 2022 13:58:47 &#43;0800</pubDate>
+    <author>清梦</author>
+    <guid>https://WnQinm.github.io/2022/10/computer_net/</guid>
+    <description><![CDATA[<p>计算机网络基础知识总结:)</p>]]></description>
+</item>
+</channel>
+</rss>
