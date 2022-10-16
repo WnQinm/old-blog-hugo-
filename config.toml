@@ -437,7 +437,13 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     # Comment config
     # 评论系统设置
     [params.page.comment]
-      enable = false
+      enable = true
+      ## 配置 utteranc评论,教程参考 https://utteranc.es/
+      [params.page.comment.utteranc]
+        enable = true
+        repo = "WnQinm/WnQinm.github.io"
+        issueTerm = "title"
+        theme = "github-light"
       # Disqus comment config (https://disqus.com/)
       # Disqus 评论系统设置 (https://disqus.com/)
       [params.page.comment.disqus]
