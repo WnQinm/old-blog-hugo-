@@ -9,10 +9,10 @@
     <div id="comments">
         {{- $utteranc := $comment.utteranc | default dict -}}
         {{- if $utteranc.enable -}}
-            <script src="https://utteranc.es/client.js" repo="{{ .Site.Params.utteranc.repo }}"
-                issue-term="{{ .Site.Params.utteranc.issueTerm }}" theme="{{ .Site.Params.utteranc.theme }}" crossorigin="anonymous"
+            <script src="https://utteranc.es/client.js" repo="{{ $utteranc.repo }}"
+                issue-term="{{ $utteranc.issueTerm }}" theme="{{ $utteranc.theme }}" crossorigin="anonymous"
                 async>
-                </script>
+            </script>
         {{- end -}}
 
         {{- /* Disqus Comment System */ -}}
