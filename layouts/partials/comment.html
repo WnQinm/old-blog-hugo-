@@ -8,12 +8,12 @@
 
     <div id="comments">
         {{- $utteranc := $comment.utteranc | default dict -}}
-        {{ if $utteranc.enable }}
+        {{- if $utteranc.enable -}}
             <script src="https://utteranc.es/client.js" repo="{{ .Site.Params.utteranc.repo }}"
                 issue-term="{{ .Site.Params.utteranc.issueTerm }}" theme="{{ .Site.Params.utteranc.theme }}" crossorigin="anonymous"
                 async>
                 </script>
-        {{ end }}
+        {{- end -}}
 
         {{- /* Disqus Comment System */ -}}
         {{- $disqus := $comment.disqus | default dict -}}
