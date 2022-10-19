@@ -179,7 +179,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     since = 2022
     # ICP info only in China (HTML format is supported)
     # ICP 备案信息，仅在中国使用 (支持 HTML 格式)
-    icp = '<a href="https://beian.miit.gov.cn/" target="_blank">晋ICP备2022008210号-1</a>'
+    icp = ''
     # license info (HTML format is supported)
     # 许可协议信息 (支持 HTML 格式)
     license= ''
