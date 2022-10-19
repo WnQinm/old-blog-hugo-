@@ -1,9 +1,17 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>CTF - 分类 - Qinm&#39;s blog</title>
+        <title>ctf - 分类 - Qinm&#39;s blog</title>
         <link>https://WnQinm.github.io/categories/ctf/</link>
-        <description>CTF - 分类 - Qinm&#39;s blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 19 Oct 2022 17:03:19 &#43;0800</lastBuildDate><atom:link href="https://WnQinm.github.io/categories/ctf/" rel="self" type="application/rss+xml" /><item>
+        <description>ctf - 分类 - Qinm&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 20 Oct 2022 00:26:26 &#43;0800</lastBuildDate><atom:link href="https://WnQinm.github.io/categories/ctf/" rel="self" type="application/rss+xml" /><item>
+    <title>信息泄露</title>
+    <link>https://WnQinm.github.io/2022/10/data_expose/</link>
+    <pubDate>Thu, 20 Oct 2022 00:26:26 &#43;0800</pubDate>
+    <author>清梦</author>
+    <guid>https://WnQinm.github.io/2022/10/data_expose/</guid>
+    <description><![CDATA[备份文件下载 网站源码 题目 当开发人员在线上环境中对源代码进行了备份操作，并且将备份文件放在了 web 目录下，就会引起网站源码泄露。 日常url 解题过程]]></description>
+</item>
+<item>
     <title>ctf入门-http基础</title>
     <link>https://WnQinm.github.io/2022/10/http_base/</link>
     <pubDate>Wed, 19 Oct 2022 17:03:19 &#43;0800</pubDate>

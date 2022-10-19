@@ -6,6 +6,14 @@
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 02 Aug 2019 11:04:49 &#43;0800</lastBuildDate>
             <atom:link href="https://WnQinm.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>信息泄露</title>
+    <link>https://WnQinm.github.io/2022/10/data_expose/</link>
+    <pubDate>Thu, 20 Oct 2022 00:26:26 &#43;0800</pubDate>
+    <author>清梦</author>
+    <guid>https://WnQinm.github.io/2022/10/data_expose/</guid>
+    <description><![CDATA[备份文件下载 网站源码 题目 当开发人员在线上环境中对源代码进行了备份操作，并且将备份文件放在了 web 目录下，就会引起网站源码泄露。 日常url 解题过程]]></description>
+</item>
+<item>
     <title>ctf入门-http基础</title>
     <link>https://WnQinm.github.io/2022/10/http_base/</link>
     <pubDate>Wed, 19 Oct 2022 17:03:19 &#43;0800</pubDate>
@@ -77,14 +85,6 @@ web-web前置技能-http协议</p>]]></description>
     <author>清梦</author>
     <guid>https://WnQinm.github.io/2022/09/kali_docker/</guid>
     <description><![CDATA[<p>本篇是kali基础的学习笔记</p>]]></description>
-</item>
-<item>
-    <title>ssh基础配置</title>
-    <link>https://WnQinm.github.io/2022/09/ssh_help/</link>
-    <pubDate>Sat, 24 Sep 2022 13:24:23 &#43;0800</pubDate>
-    <author>清梦</author>
-    <guid>https://WnQinm.github.io/2022/09/ssh_help/</guid>
-    <description><![CDATA[<p>本篇旨在帮助利用ssh实现无需输入密码链接远程服务器或本地虚拟机</p>]]></description>
 </item>
 </channel>
 </rss>
