@@ -3,7 +3,16 @@
         <title>net - 标签 - Qinm&#39;s blog</title>
         <link>https://WnQinm.github.io/tags/net/</link>
         <description>net - 标签 - Qinm&#39;s blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 13 Oct 2022 13:58:47 &#43;0800</lastBuildDate><atom:link href="https://WnQinm.github.io/tags/net/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 19 Oct 2022 17:03:19 &#43;0800</lastBuildDate><atom:link href="https://WnQinm.github.io/tags/net/" rel="self" type="application/rss+xml" /><item>
+    <title>ctf入门-http基础</title>
+    <link>https://WnQinm.github.io/2022/10/http_base/</link>
+    <pubDate>Wed, 19 Oct 2022 17:03:19 &#43;0800</pubDate>
+    <author>清梦</author>
+    <guid>https://WnQinm.github.io/2022/10/http_base/</guid>
+    <description><![CDATA[<p>CTFHUB技能树的题目<br>
+web-web前置技能-http协议</p>]]></description>
+</item>
+<item>
     <title>计算机网络</title>
     <link>https://WnQinm.github.io/2022/10/computer_net/</link>
     <pubDate>Thu, 13 Oct 2022 13:58:47 &#43;0800</pubDate>
@@ -74,14 +83,6 @@
     <author>清梦</author>
     <guid>https://WnQinm.github.io/2022/09/html_init/</guid>
     <description><![CDATA[<p>本篇是关于html基础标签的介绍</p>]]></description>
-</item>
-<item>
-    <title>Docker</title>
-    <link>https://WnQinm.github.io/2022/09/docker_init/</link>
-    <pubDate>Sun, 18 Sep 2022 01:32:42 &#43;0800</pubDate>
-    <author>清梦</author>
-    <guid>https://WnQinm.github.io/2022/09/docker_init/</guid>
-    <description><![CDATA[<p>docker基础知识学习笔记，来源于bilibili up主 &lsquo;遇见狂神说&rsquo;</p>]]></description>
 </item>
 </channel>
 </rss>
