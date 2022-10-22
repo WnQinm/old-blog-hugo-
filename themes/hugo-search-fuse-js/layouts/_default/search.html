@@ -1,13 +1,11 @@
 {{ define "main" }} <!-- https://gist.github.com/eddiewebb/735feb48f50f0ddd65ae5606a1cb41ae -->
 
 <div class="search">
-    <header>
-        <h1>{{ .Title }}</h1>
-        {{/* partial "debugprint.html" (site.GetPage "/search") */}}
-    </header>
-
     <form action="{{ .Permalink }}">
         <input id="search-query" name="q" placeholder="search phrase"/>
+        <a class="search-btn" href="#">
+            <i class="fas fa-search"></i>
+        </a>
     </form>
 
     <div id="search-results"></div>
