@@ -1,14 +1,5 @@
-{{- $.Scratch.Add "index" slice -}
+{{- $.Scratch.Add "index" slice -}}
 {{- range site.RegularPages -}}
-    {{- $.Scratch.Add "index" (dict "title" .Title
-                                    "tags" .Params.tags
-                                    "categories" .Params.categories
-                                    "contents" ((partial "get-content-minus-toc.html" .) | plainify | replaceRE "\n" " ")
-                                    "permalink" .Permalink)
-      -}}
+    {{- $.Scratch.Add "index" (dict "title" .Title "tags" .Params.tags "categories" .Params.categories "contents" ((partial "get-content-minus-toc.html" .) | plainify | replaceRE "\n" " ") "permalink" .Permalink) -}}
 {{- end -}}
 {{- $.Scratch.Get "index" | jsonify -}}
-
-// $().()疑似jQuery公式
-// the dash after/before {{/}} is to remove all whitespaces before/after the sentence in {{ }}
-// details in : https://stackoverflow.com/questions/67293728/what-is-the-difference-between-helm-syntax-something-and-something
