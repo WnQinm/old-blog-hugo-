@@ -2,6 +2,7 @@
 title: "part 0: Web 应用的基础设施"
 date: 2022-10-21T00:21:30+08:00
 draft: false
+password: test
 tags: ["net"]
 categories: 
 - 深入浅出现代Web编程 全栈公开课 2022
