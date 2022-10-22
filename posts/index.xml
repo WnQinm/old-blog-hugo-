@@ -3,7 +3,15 @@
         <title>所有文章 - Qinm&#39;s blog</title>
         <link>https://WnQinm.github.io/posts/</link>
         <description>所有文章 | Qinm&#39;s blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 20 Oct 2022 00:26:26 &#43;0800</lastBuildDate><atom:link href="https://WnQinm.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 21 Oct 2022 00:21:30 &#43;0800</lastBuildDate><atom:link href="https://WnQinm.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>part 0: Web 应用的基础设施</title>
+    <link>https://WnQinm.github.io/2022/10/fullstackp0/</link>
+    <pubDate>Fri, 21 Oct 2022 00:21:30 &#43;0800</pubDate>
+    <author>清梦</author>
+    <guid>https://WnQinm.github.io/2022/10/fullstackp0/</guid>
+    <description><![CDATA[<p>课程相关 &amp; part 0 notes</p>]]></description>
+</item>
+<item>
     <title>信息泄露</title>
     <link>https://WnQinm.github.io/2022/10/data_expose/</link>
     <pubDate>Thu, 20 Oct 2022 00:26:26 &#43;0800</pubDate>
@@ -75,14 +83,6 @@ web-web前置技能-http协议</p>]]></description>
     <author>清梦</author>
     <guid>https://WnQinm.github.io/2022/09/ghpage/</guid>
     <description><![CDATA[<p>github上修改博客地址为个人购买的域名</p>]]></description>
-</item>
-<item>
-    <title>Kali(docker)</title>
-    <link>https://WnQinm.github.io/2022/09/kali_docker/</link>
-    <pubDate>Sat, 24 Sep 2022 13:26:40 &#43;0800</pubDate>
-    <author>清梦</author>
-    <guid>https://WnQinm.github.io/2022/09/kali_docker/</guid>
-    <description><![CDATA[<p>本篇是kali基础的学习笔记</p>]]></description>
 </item>
 </channel>
 </rss>

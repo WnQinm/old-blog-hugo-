@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>part 0: Web 应用的基础设施 - Qinm&#39;s blog</title><meta name="Description" content="Qinm&#39;s blog"><meta property="og:title" content="part 0: Web 应用的基础设施" />
+<meta property="og:description" content="课程相关 &amp; part 0 notes" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://WnQinm.github.io/2022/10/fullstackp0/" />
+<meta property="og:image" content="https://WnQinm.github.io/logo.png"/>
+<meta property="article:published_time" content="2022-10-21T00:21:30+08:00" />
+<meta property="article:modified_time" content="2022-10-23T00:30:24+08:00" /><meta property="og:site_name" content="blog" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://WnQinm.github.io/logo.png"/>
+
+<meta name="twitter:title" content="part 0: Web 应用的基础设施"/>
+<meta name="twitter:description" content="课程相关 &amp; part 0 notes"/>
+<meta name="application-name" content="Qinm&#39;s blog">
+<meta name="apple-mobile-web-app-title" content="Qinm&#39;s blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://WnQinm.github.io/2022/10/fullstackp0/" /><link rel="prev" href="https://WnQinm.github.io/2022/10/data_expose/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "part 0: Web 应用的基础设施",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/WnQinm.github.io\/2022\/10\/fullstackp0\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/WnQinm.github.io\/images\/Apple-Devices-Preview.png",
+                            "width":  3200 ,
+                            "height":  2048 
+                        }],"genre": "posts","keywords": "net","wordcount":  2930 ,
+        "url": "https:\/\/WnQinm.github.io\/2022\/10\/fullstackp0\/","datePublished": "2022-10-21T00:21:30+08:00","dateModified": "2022-10-23T00:30:24+08:00","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": "https:\/\/WnQinm.github.io\/images\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "清梦"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Qinm&#39;s blog"><span class="header-title-pre"><i class='fa-solid fa-cloud' aria-hidden='true'></i></span>Qinm&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Qinm&#39;s blog"><span class="header-title-pre"><i class='fa-solid fa-cloud' aria-hidden='true'></i></span>Qinm&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container">
+                    <div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">part 0: Web 应用的基础设施</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>清梦</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA%E7%8E%B0%E4%BB%A3web%E7%BC%96%E7%A8%8B-%E5%85%A8%E6%A0%88%E5%85%AC%E5%BC%80%E8%AF%BE-2022/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>深入浅出现代Web编程 全栈公开课 2022</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-21">2022-10-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 2930 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 6 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ol>
+    <li><a href="#必要的说明">必要的说明</a></li>
+    <li><a href="#a-基础知识">a 基础知识</a>
+      <ol>
+        <li><a href="#先决条件-prerequisites">先决条件 Prerequisites</a></li>
+        <li><a href="#taking-the-course">Taking the course</a></li>
+        <li><a href="#before-you-start">Before you start</a></li>
+      </ol>
+    </li>
+    <li><a href="#b-web-应用的基础设施">b Web 应用的基础设施</a>
+      <ol>
+        <li><a href="#传统的web应用">传统的web应用</a></li>
+        <li><a href="#document-object-model-or-dom">Document Object Model or DOM</a></li>
+        <li><a href="#利用控制台操作文档对象">利用控制台操作文档对象</a></li>
+        <li><a href="#表单和http-post方法">表单和HTTP POST方法</a></li>
+        <li><a href="#ajax">AJAX</a></li>
+        <li><a href="#单页应用">单页应用</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav></div>
+            </div><div class="content" id="content"><p>课程相关 &amp; part 0 notes</p>
+<h1 id="必要的说明">必要的说明</h1>
+<p>此笔记仅记录个人在学习过程中认为重要的内容，以及一些总结或心得，不代表课程实际内容，若要查看课程实际的全部内容，参见<a href="https://fullstackopen.com/zh/" target="_blank" rel="noopener noreffer ">赫尔辛基大学推出的全栈公开课：深入浅出现代Web编程 全栈公开课 2022</a></p>
+<p>  本系列笔记是根据<a href="https://fullstackopen.com/zh/" target="_blank" rel="noopener noreffer ">赫尔辛基大学推出的全栈公开课：深入浅出现代Web编程 全栈公开课 2022</a> 所记，包括本笔记在内的所有收录于<code>深入浅出现代Web编程 全栈公开课 2022</code>的笔记的著作权及版权全归属于此课程官网所提及的人员或组织，具体内容如下，也可进入课程官网查看：</p>
+<p>  课程材料的0-8章节和第13章节是<a href="https://github.com/mluukkai">Matti Luukkainen</a> 所写的。第9章节的内容是由来自<a href="https://www.terveystalo.com/fi/Yritystietoa/Terveystalo-tyontantajana/Digital-Health/">Terveystalo</a>的开发者所著。第10部分是由<a href="https://github.com/Kaltsoon">Kalle Ilves</a>编写的。第11部分的内容由来自<a href="https://www.smartly.io/">Smartly</a> 的开发人员编写，第12部分由<a href="https://github.com/jakousa">Jami Kousa</a> 编写。很多<a href="https://github.com/fullstack-hy2020/misc/blob/master/contributors.md">开发者</a>为了改进和修订课程材料做出了贡献，无论是课程内容还是拼写问题^_^。你也可以为这门课程的材料做出自己的贡献。这门课程的网站是由<a target="_blank" href="https://www.houston-inc.com/">Houston inc</a>设计和创建的，它们同样审阅了这门课程的内容。英文版是由Ava Heinonen, Ilkka Kuisma, Harri Mehtälä and Jesper Pettersson 翻译的。中文版是由<a target="_blank" href="https://zhangwei.online/blog">ZhangWei(微信wechat:richardzhangv)</a>翻译的。西班牙语是由<a target="_blank" href="https://github.com/sebastiantorres86">Sebastian Torres</a> 和 <a target="_blank" href="https://github.com/cynthiamv">Cynthia Vico Vacca</a>翻译的.</p>
+<p>  这门课程内容的版权在<a href="https://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons BY-NC-SA 3.0 license</a>框架下执行。也就是说你可以自由的使用和分发课程材料，但要保留原作者信息，不能删除他们。如果你想要修改并分发修改后的版本，同样需要遵循这套协议。未经许可，禁止将该材料用于商业目的。</p>
+<hr>
+<h1 id="a-基础知识">a 基础知识</h1>
+<h2 id="先决条件-prerequisites">先决条件 Prerequisites</h2>
+<p>说人话就是要求会基础编程，了解网络编程，了解数据库基本概念和操作语法，会git基本操作，能坚持下来<br>不需要对 JavaScript 或其他课程的主题有了解</p>
+<h2 id="taking-the-course">Taking the course</h2>
+<p>最好学熟前一章在学下一章，记得做课后所有没有标记星号的练习题</p>
+<h2 id="before-you-start">Before you start</h2>
+<p>推荐使用Chrome或者火狐浏览器，网络开发工具很好。</p>
+<p>记得安装Git，<a href="https://product.hubspot.com/blog/git-and-github-tutorial-for-beginners" target="_blank" rel="noopener noreffer ">这里是网站推荐的git教程</a>，我是在<a href="https://www.runoob.com/" target="_blank" rel="noopener noreffer ">菜鸟教程</a>和b站学习的。</p>
+<p>安装支持Web开发的文本编辑器，推荐<a href="https://code.visualstudio.com/" target="_blank" rel="noopener noreffer ">Visual Studio Code</a>。</p>
+<p>同时安装<a href="https://nodejs.org/en/" target="_blank" rel="noopener noreffer ">Node.js</a>。教材使用的16.13.2版本，不要安装比这更早的版本。参见<a href="https://nodejs.org/en/download/package-manager/" target="_blank" rel="noopener noreffer ">Node.js安装说明</a></p>
+<h1 id="b-web-应用的基础设施">b Web 应用的基础设施</h1>
+<h2 id="传统的web应用">传统的web应用</h2>
+<p>进入该页面时，浏览器从服务器上获取描述页面结构的HTML文档，以及文本内容。</p>
+<p>服务器以某种方式生成了这个文档。该文档可以是一个保存在服务器目录中的静态文本文件。服务器也可以根据应用代码，例如使用数据库中的数据，动态地形成HTML文档。</p>
+<p>类似如下示例代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kr">const</span> <span class="nx">getFrontPageHtml</span> <span class="o">=</span> <span class="p">(</span><span class="nx">noteCount</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span><span class="p">(</span><span class="sb">`
+</span><span class="sb">    &lt;!DOCTYPE html&gt;
+</span><span class="sb">    &lt;html&gt;
+</span><span class="sb">      &lt;head&gt;
+</span><span class="sb">      &lt;/head&gt;
+</span><span class="sb">      &lt;body&gt;
+</span><span class="sb">        &lt;div class=&#39;container&#39;&gt;
+</span><span class="sb">          &lt;h1&gt;Full stack example app&lt;/h1&gt;
+</span><span class="sb">          &lt;p&gt;number of notes created </span><span class="si">${</span><span class="nx">noteCount</span><span class="si">}</span><span class="sb">&lt;/p&gt;
+</span><span class="sb">          &lt;a href=&#39;/notes&#39;&gt;notes&lt;/a&gt;
+</span><span class="sb">          &lt;img src=&#39;kuva.png&#39; width=&#39;200&#39; /&gt;
+</span><span class="sb">        &lt;/div&gt;
+</span><span class="sb">      &lt;/body&gt;
+</span><span class="sb">    &lt;/html&gt;
+</span><span class="sb">`</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="kr">const</span> <span class="nx">page</span> <span class="o">=</span> <span class="nx">getFrontPageHtml</span><span class="p">(</span><span class="nx">notes</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">page</span><span class="p">)</span>
+<span class="p">})</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>在传统的 web 应用中，浏览器是个“憨憨”。它只从服务器上获取HTML数据，而所有的应用逻辑都在服务器上。</p>
+<p>这个例子使用了Node.js的<a href="https://expressjs.com/" target="_blank" rel="noopener noreffer ">Express</a>。</p>
+<h2 id="document-object-model-or-dom">Document Object Model or DOM</h2>
+<p>我们可以将 html 页面看作隐式树结构。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">html
+  head
+    link
+    script
+  body
+    div
+      h1
+      div
+        ul
+          li
+          li
+          li
+      form
+        input
+        input
+</code></pre></td></tr></table>
+</div>
+</div><p>浏览器的工作，就是基于将HTML元素描绘成一棵树。</p>
+<p>文档对象模型Document Object Model，或<a href="https://en.wikipedia.org/wiki/Document_Object_Model" target="_blank" rel="noopener noreffer ">DOM</a>，是一个应用编程接口(API)，它能够对与网页相对应的元素树进行程序化修改。</p>
+<p>下面的代码为变量ul创建了一个新节点，并为其添加了一些子节点。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">ul</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;ul&#39;</span><span class="p">)</span>
+
+<span class="nx">data</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">note</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">li</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;li&#39;</span><span class="p">)</span>
+
+  <span class="nx">ul</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">li</span><span class="p">)</span>
+  <span class="nx">li</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">createTextNode</span><span class="p">(</span><span class="nx">note</span><span class="p">.</span><span class="nx">content</span><span class="p">))</span>
+<span class="p">})</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>最后，变量ul的树枝被连接到整个页面的HTML树中的适当位置。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;notes&#39;</span><span class="p">).</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">ul</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="利用控制台操作文档对象">利用控制台操作文档对象</h2>
+<p>一个HTML文档的DOM树的最顶端节点被称为<code>document</code>对象。我们可以使用DOM-API在网页上执行各种操作。你可以通过在控制台标签中输入<code>document</code>来访问<code>document</code>对象。</p>
+<p>从控制台向页面添加一个新的笔记</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="c1">// 首先，我们要从页面上获得笔记的列表。列表在页面的第一个ul-元素中。
+</span><span class="c1"></span><span class="nx">list</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;ul&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1">// 然后创建一个新的li-元素，并在其中添加一些文本内容。
+</span><span class="c1"></span><span class="nx">newElement</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;li&#39;</span><span class="p">)</span>
+<span class="nx">newElement</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">=</span> <span class="s1">&#39;Page manipulation from console is easy&#39;</span>
+
+<span class="c1">// 然后将新的li-元素加入到列表中。
+</span><span class="c1"></span><span class="nx">list</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">newElement</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="表单和http-post方法">表单和HTTP POST方法</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-html" data-lang="html"><span class="c">&lt;!--form表单--&gt;</span>
+<span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">&#34;/exampleapp/new_note&#34;</span> <span class="na">method</span><span class="o">=</span><span class="s">&#34;POST&#34;</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text&#34;</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;note&#34;</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;submit&#34;</span> <span class="na">value</span><span class="o">=</span><span class="s">&#34;Save&#34;</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>点击按钮提交表单后，提交了一个对new_note的post请求，然后被302重定向到了notes页面，重新加载notes页面使得我们又向浏览器要来了css、js、json文件</p>
+<p>服务器上负责POST请求的代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/new_note&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">notes</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+    <span class="nx">content</span><span class="o">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">note</span><span class="p">,</span>
+    <span class="nx">date</span><span class="o">:</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(),</span>
+  <span class="p">})</span>
+
+  <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span class="s1">&#39;/notes&#39;</span><span class="p">)</span>
+<span class="p">})</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>数据被作为POST请求的body发送。</p>
+<p>服务器可以通过访问请求对象<code>req</code>的<code>req.body</code>字段来访问这些数据。</p>
+<p>服务器创建一个新的Note对象，并将其添加到一个名为<code>notes</code>的数组中。</p>
+<h2 id="ajax">AJAX</h2>
+<p>AJAX(Asynchronous JavaScript and XML)是2005年2月在浏览器技术进步的背景下引入的一个术语，用来描述一种新的革命性的方法，它能够使用包含在HTML中的JavaScript来获取网页内容，而不需要重新渲染网页。</p>
+<h2 id="单页应用">单页应用</h2>
+<p>近年来，出现了创建网络应用的单页应用 (SPA)风格。SPA风格的网站并不像我们的样例应用那样从服务器上单独获取所有的页面，而是只由<strong>一个</strong>从服务器上获取的HTML页面组成，其内容由在浏览器中执行的JavaScript来操作。</p>
+<p>我们应用的笔记页面与SPA风格的应用有一些相似之处，但还没有完全达到目的。尽管渲染笔记的逻辑是在浏览器上运行的，但该页面仍然使用传统的方式来添加新的笔记。数据通过表单提交被发送到服务器，服务器通过redirect指示浏览器重新加载笔记页面。</p>
+<p>我们的例子应用的单页应用版本可以在<a href="https://studies.cs.helsinki.fi/exampleapp/spa" target="_blank" rel="noopener noreffer ">https://studies.cs.helsinki.fi/exampleapp/spa</a>找到。</p>
+<p>乍看之下，这个应用与之前的应用完全一样。</p>
+<p>HTML代码几乎相同，但JavaScript文件不同（spa.js），而且在定义form-tag的方式上有一点变化。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">form</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;notes_form&#34;</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text&#34;</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;note&#34;</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;submit&#34;</span> <span class="na">value</span><span class="o">=</span><span class="s">&#34;Save&#34;</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这个表单没有action或method属性来定义如何和往哪里发送输入数据。</p>
+<p>当按下按钮提交时可以发现浏览器只发送了一个请求</p>
+<p>服务器以状态代码201创建进行响应。这一次服务器没有要求重定向，浏览器停留在同一个页面上，并且没有再发送HTTP请求。</p>
+<p>应用的SPA版本没有以传统方式发送表单数据，而是使用了它从服务器上获取的JavaScript代码。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">form</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;notes_form&#39;</span><span class="p">)</span>
+<span class="nx">form</span><span class="p">.</span><span class="nx">onsubmit</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">()</span>
+
+  <span class="kd">var</span> <span class="nx">note</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">content</span><span class="o">:</span> <span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">elements</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">value</span><span class="p">,</span>
+    <span class="nx">date</span><span class="o">:</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(),</span>
+  <span class="p">}</span>
+
+  <span class="nx">notes</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">note</span><span class="p">)</span>
+  <span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">elements</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">value</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+  <span class="nx">redrawNotes</span><span class="p">()</span>
+  <span class="nx">sendToServer</span><span class="p">(</span><span class="nx">note</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>命令<code>document.getElementById('notes_form')</code>指示代码从页面上获取表单元素，并注册一个事件处理程序来处理表单提交事件。该事件处理程序立即调用方法<code>e.preventDefault()</code>来阻止表单提交的默认处理。默认方法会将数据发送到服务器并导致一个新的GET请求，这是我们不希望发生的。</p>
+<p>然后事件处理函数创建了一个新的笔记，用<code>notes.push(note)</code>命令将其添加到笔记列表中，重新渲染页面上的笔记列表，并将新笔记发送到服务器。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">sendToServer</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">note</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">xhttpForPost</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">()</span>
+  <span class="c1">// ...
+</span><span class="c1"></span>
+  <span class="nx">xhttpForPost</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">&#39;POST&#39;</span><span class="p">,</span> <span class="s1">&#39;/new_note_spa&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+  <span class="nx">xhttpForPost</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span>
+    <span class="s1">&#39;Content-type&#39;</span><span class="p">,</span> <span class="s1">&#39;application/json&#39;</span>
+  <span class="p">)</span>
+  <span class="nx">xhttpForPost</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">note</span><span class="p">))</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>该代码确定数据将以HTTP POST请求发送，数据类型为JSON。数据类型由Content-type头决定。然后，数据被作为JSON-字符串发送。</p></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-10-23</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/2022/10/fullstackp0/index.md" target="_blank">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://WnQinm.github.io/2022/10/fullstackp0/" data-title="part 0: Web 应用的基础设施" data-hashtags="net"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Reddit" data-sharer="reddit" data-url="https://WnQinm.github.io/2022/10/fullstackp0/"><i class="fab fa-reddit fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://WnQinm.github.io/2022/10/fullstackp0/" data-title="part 0: Web 应用的基础设施"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://WnQinm.github.io/2022/10/fullstackp0/" data-title="part 0: Web 应用的基础设施"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/baidu.svg" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/net/">net</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2022/10/data_expose/" class="prev" rel="prev" title="信息泄露"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>信息泄露</a></div>
+</div>
+<div id="comments"><script src="https://utteranc.es/client.js" repo="WnQinm/WnQinm.github.io"
+                issue-term="title" theme="github-light" crossorigin="anonymous"
+                async>
+            </script></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">River flies, sky lies.</div><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.68.3">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">清梦</a></span></div>
+        </div>
+    </footer>
+        </div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
