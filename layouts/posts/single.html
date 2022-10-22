@@ -5,7 +5,7 @@
 {{- define "content" -}}
     {{- $params := .Scratch.Get "params" -}}
 
-        <!-- {{- $password := $params.password | default "" -}}
+        {{- $password := $params.password | default "" -}}
         {{- if ne $password "" -}}
         <script>
             (function () {
@@ -24,7 +24,7 @@
         	    }
             }) ();
         </script>
-        {{- end -}} -->
+        {{- end -}}
 
     {{- $toc := $params.toc -}}
     {{- if eq $toc true -}}
