@@ -1,14 +1,15 @@
 {{ define "main" }} <!-- https://gist.github.com/eddiewebb/735feb48f50f0ddd65ae5606a1cb41ae -->
-
-<div class="search">
-    <form action="{{ .Permalink }}">
-        <input id="search-query" name="q" placeholder="search phrase"/>
-        <a class="search-btn" href="{{ .Permalink }}">
-            <i class="fas fa-search"></i>
-        </a>
-    </form>
-
-    <div id="search-results"></div>
+<div class="search-container">
+    <div class="search">
+        <form action="{{ .Permalink }}" autocomplete="off">
+            <input id="search-query" name="q" placeholder="" />
+            <a class="search-btn" href="{{ .Permalink }}">
+                <i class="fas fa-search"></i>
+            </a>
+        </form>
+    
+        <div id="search-results"></div>
+    </div>
 </div>
 
 <template id="search-result-template"><div class="search_summary">

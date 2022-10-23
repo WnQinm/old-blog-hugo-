@@ -18,31 +18,20 @@ nav#TableOfContents ol {
 }
 
 /* 搜索页面 */
-.container {
+.search-container {
     position: absolute;
     left: 50%;
-    top: 50%;
+    top: 20%;
     transform: translate(-50%, -50%);
 }
+
+[theme=dark] .search,
 .search {
     position: relative;
-    background: #2c3e50;
+    background: #2b6098;
     height: 40px;
     border-radius: 40px;
     padding: 10px;
-}
-
-[theme=dark] .search {
-    position: relative;
-    background: #2c3e50;
-    height: 40px;
-    border-radius: 40px;
-    padding: 10px;
-}
-
-[theme=dark] .search:hover input,
-.search:hover input {
-    width: 240px;
 }
 
 [theme=dark] .search:hover .search-btn,
@@ -60,9 +49,9 @@ nav#TableOfContents ol {
     font-size: 22px;
     line-height: 40px;
     height: 40px;
-    width: 0px;
+    width: 400px;
     transition: .5s;
-    padding: 0px 40px 0 0;
+    padding: 0px 40px 4px 12px;
 }
 
 .search .search-btn {
@@ -74,7 +63,7 @@ nav#TableOfContents ol {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: #2c3e50;
+    background: #2b6098;
     transition: .5s;
 }
 
