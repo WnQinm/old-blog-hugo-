@@ -2,7 +2,7 @@
 title: "Markdown语法简介"
 date: 2022-08-22T20:52:53+08:00
 draft: false
-tags: ["markdown"]
+tags: ["markdown", "blog建设相关"]
 ---
 
 此文适配软件 typora 的 markdown 语法

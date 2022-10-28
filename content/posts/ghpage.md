@@ -2,7 +2,7 @@
 title: "Github page域名解析设置"
 date: 2022-09-25T21:15:46+08:00
 draft: false
-tags: ["git","net"]
+tags: ["git","net", "blog建设相关"]
 categories: 
 - Git
 ---
