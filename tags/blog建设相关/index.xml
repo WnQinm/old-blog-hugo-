@@ -1,0 +1,31 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>blog建设相关 - 标签 - Qinm&#39;s blog</title>
+        <link>https://WnQinm.github.io/tags/blog%E5%BB%BA%E8%AE%BE%E7%9B%B8%E5%85%B3/</link>
+        <description>blog建设相关 - 标签 - Qinm&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 25 Sep 2022 21:15:46 &#43;0800</lastBuildDate><atom:link href="https://WnQinm.github.io/tags/blog%E5%BB%BA%E8%AE%BE%E7%9B%B8%E5%85%B3/" rel="self" type="application/rss+xml" /><item>
+    <title>Github page域名解析设置</title>
+    <link>https://WnQinm.github.io/2022/09/ghpage/</link>
+    <pubDate>Sun, 25 Sep 2022 21:15:46 &#43;0800</pubDate>
+    <author>清梦</author>
+    <guid>https://WnQinm.github.io/2022/09/ghpage/</guid>
+    <description><![CDATA[<p>github上修改博客地址为个人购买的域名</p>]]></description>
+</item>
+<item>
+    <title>Markdown语法简介</title>
+    <link>https://WnQinm.github.io/2022/08/markdown_help/</link>
+    <pubDate>Mon, 22 Aug 2022 20:52:53 &#43;0800</pubDate>
+    <author>清梦</author>
+    <guid>https://WnQinm.github.io/2022/08/markdown_help/</guid>
+    <description><![CDATA[<p>此文适配软件 typora 的 markdown 语法</p>]]></description>
+</item>
+<item>
+    <title>Latex数学公式</title>
+    <link>https://WnQinm.github.io/2022/08/latex%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/</link>
+    <pubDate>Mon, 22 Aug 2022 20:16:49 &#43;0800</pubDate>
+    <author>清梦</author>
+    <guid>https://WnQinm.github.io/2022/08/latex%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/</guid>
+    <description><![CDATA[<p>由于本人技术原因，latex在html界面的渲染做的很差，有的可以正常显示有的则不行，本篇主要是帮助回忆latex数学公式相关语法，故而就此作罢</p>]]></description>
+</item>
+</channel>
+</rss>

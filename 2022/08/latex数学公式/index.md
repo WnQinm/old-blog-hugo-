@@ -5,12 +5,10 @@
 
 <!--more-->
 
-==双反斜杠换行==
-
-{{< raw >}}
+双反斜杠换行
 
 # 希腊字母
-
+{{< raw >}}
 $$
 \delta,\lambda\\
 \Delta,\Lambda\\
@@ -19,16 +17,14 @@ $$
 \epsilon,\varepsilon\\
 \partial
 $$
-
 {{< /raw >}}
 
 ![屏幕截图 2021-10-14 165750](https://tvax3.sinaimg.cn/large/007Z9xVHly1h5dgckyz86j317l0w00we.jpg)
 
+# 上下标
 
 {{< raw >}}
 
-
-# 上下标
 $$
 a^2,a_1\\
 x^{y+z},p_{ij}\\
@@ -43,13 +39,17 @@ x_i,x_{\rm i},x_{\text i}\\
 {\rm A} B\\
 自然对数{\text e},虚数单位{\text i}
 $$
+{{< /raw >}}
+
 text支持空格，rm不支持但其后所有都会变成罗马体，line4是解决方法
 rm : roman
-英文字母==只有在表示变量（或单一字符的函数名称，如f(x))时才可使用斜体==，其余情况都应使用罗马体
-
+英文字母只有在表示变量（或单一字符的函数名称，如f(x))时才可使用斜体，其余情况都应使用罗马体
 
 # 分式与根式
-==分式==
+
+{{< raw >}}
+
+分式
 $$
 \frac {1}{2},\frac 1 2\\
 \frac 1 {x+y}\\
@@ -57,13 +57,18 @@ $$
 分子x分之1改大一些：\frac {\dfrac 1 x + 1}{y+1}
 $$
 
-==根式==
+根式
 $$
 \sqrt 2,\sqrt {x+y}\\
 \sqrt[3]x
 $$
 
+{{< /raw >}}
+
 # 普通运算符
+
+{{< raw >}}
+
 $$
 +-\\
 \times,\cdot,\div\\
@@ -72,7 +77,7 @@ $$
 \cap,\cup,\in,\notin,\subseteq,\subseteqq,\varnothing\\
 \forall,\exists,\nexists\\
 \because,\therefore\\
-\mathbb R,\R,\Q,\N,\Z_+\\
+\mathbb R,\R,\N,\Z_+\\
 \mathcal F,\mathscr F
 $$
 
@@ -92,17 +97,21 @@ $$
 \max x
 $$
 
-lim限制条件如果不在下面而在右边，可加==\limits==强行改到下方
-==注意下划线==
-==运算符英文字母要用直体==
+lim限制条件如果不在下面而在右边，可加\limits强行改到下方
+注意下划线
+运算符英文字母要用直体
+
+{{< /raw >}}
 
 # 大型运算符
+
+{{< raw >}}
 $$
 \sum,\prod\\
 \sum_i,\sum_{i=0}^N\\
 \frac{\sum\limits_{i=1}^n x_i}{\prod\limits_{i=1}^n x_i}
 $$
-==注意下划线==
+注意下划线
 
 $$
 \int,\iint,\iiint,\oint,\oiint\\
@@ -119,7 +128,11 @@ a\quad a\\
 a\qquad a
 $$
 
+{{< /raw >}}
+
 # 标注符号
+
+{{< raw >}}
 
 $$
 \vec x,\overrightarrow AB\\
@@ -130,9 +143,9 @@ $$
 
 ![屏幕截图 2021-10-14 175108](https://tva1.sinaimg.cn/large/007Z9xVHly1h5dgdftytfj31cu0fpjt5.jpg)
 
-{{< raw >}}
-
 # 箭头
+
+{{< raw >}}
 
 $$
 \leftarrow,\rightarrow,\leftrightarrow,\longleftarrow
@@ -142,9 +155,10 @@ $$
 
 ![屏幕截图 2021-10-14 175451](https://tvax1.sinaimg.cn/large/007Z9xVHly1h5dgdo0a7mj30qu0spju1.jpg)
 
+# 括号与定界符
+
 {{< raw >}}
 
-# 括号与定界符
 $$
 ([]),\{ \}\\
 \lceil,\rceil,\lfloor,\rfloor,||\\
@@ -153,9 +167,11 @@ $$
 $$
 括号前加\left\right实现括号大小自适应
 像是最后一行左边没括号，可以加一个句点弄一个虚拟括号
+{{< /raw >}}
 
 # 多行公式
 
+{{< raw >}}
 $$
 \begin{align}
 
@@ -165,8 +181,11 @@ a&=b+c+d\\
 \end{align}
 $$
 两处&将自动对齐
+{{</ raw >}}
 
 # 大括号
+
+{{< raw >}}
 
 $$
 f(x)=
@@ -177,9 +196,11 @@ f(x)=
 0,&\text{其他}
 \end{cases}
 $$
+{{< /raw >}}
 
 # 矩阵
 
+{{< raw >}}
 $$
 \begin{matrix}
 
@@ -220,8 +241,11 @@ $$
 $$
 \bf A,\bf B^{\rm T}
 $$
+{{< /raw >}}
 
 # 练习
+
+{{< raw >}}
 $$
 f(x) = \frac 1 {\sqrt{2\pi} \sigma} {\rm e}^{-\frac {(x-\mu)^2}{2\sigma^2}}\\\\
 f(x) = \frac 1 {\sqrt{2\pi} \sigma} \exp \left[{-\frac {(x-\mu)^2}{2\sigma^2}}\right]

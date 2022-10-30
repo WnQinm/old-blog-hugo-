@@ -3,7 +3,15 @@
         <title>所有文章 - Qinm&#39;s blog</title>
         <link>https://WnQinm.github.io/posts/</link>
         <description>所有文章 | Qinm&#39;s blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 23 Oct 2022 23:52:31 &#43;0800</lastBuildDate><atom:link href="https://WnQinm.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 26 Oct 2022 15:36:02 &#43;0800</lastBuildDate><atom:link href="https://WnQinm.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>运筹学基础</title>
+    <link>https://WnQinm.github.io/2022/10/yyizxt/</link>
+    <pubDate>Wed, 26 Oct 2022 15:36:02 &#43;0800</pubDate>
+    <author>清梦</author>
+    <guid>https://WnQinm.github.io/2022/10/yyizxt/</guid>
+    <description><![CDATA[<p>运筹学基础</p>]]></description>
+</item>
+<item>
     <title>part 1: React 入门</title>
     <link>https://WnQinm.github.io/2022/10/fullstackp1/</link>
     <pubDate>Sun, 23 Oct 2022 23:52:31 &#43;0800</pubDate>
@@ -75,14 +83,6 @@ web-web前置技能-http协议</p>]]></description>
     <author>清梦</author>
     <guid>https://WnQinm.github.io/2022/10/meta_html/</guid>
     <description><![CDATA[<p>meta标签简介</p>]]></description>
-</item>
-<item>
-    <title>vmware直接接入物理机所在网络</title>
-    <link>https://WnQinm.github.io/2022/09/vmware_net/</link>
-    <pubDate>Sun, 25 Sep 2022 21:20:24 &#43;0800</pubDate>
-    <author>清梦</author>
-    <guid>https://WnQinm.github.io/2022/09/vmware_net/</guid>
-    <description><![CDATA[<p>此篇旨在解决vmware虚拟机桥接ping通外网的方法</p>]]></description>
 </item>
 </channel>
 </rss>
