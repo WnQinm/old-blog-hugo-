@@ -1,7 +1,7 @@
 ---
 title: "运筹学基础"
 date: 2022-10-26T15:36:02+08:00
-draft: false
+draft: true
 tag: ["math"]
 categories: 
 - 课程笔记
@@ -47,6 +47,7 @@ g_2:6x^2+y-z^2&=0
 $$
 {{< /raw >}}
 1. 几个约束条件，就引入几个拉格朗日乘子 $\lambda_i$ 
+
 2. 构造一个新函数(拉格朗日函数)：$F(x,y,z,\lambda_i)=f(x,y,z)+\lambda_i g_i$ <br>
    在本题中：<br>
     {{< raw >}}
@@ -57,11 +58,18 @@ $$
     \end{align*}
     $$
     {{< /raw >}}
+
 3. 对每个自变量求偏导，令其为0，得到方程组
    {{< raw >}}
    $$
    \begin{cases}
-    \frac{\partial F}{\partial x}=0
+    \dfrac{\partial F}{\partial x}=0\\\\
+    \dfrac{\partial F}{\partial y}=0\\\\
+    \dfrac{\partial F}{\partial z}=0\\\\
+    \dfrac{\partial F}{\partial \lambda_1}=0\\\\
+    \dfrac{\partial F}{\partial \lambda_2}=0
    \end{cases}
    $$
    {{< /raw >}}
+
+4. [例]：在抛物面$z=(x+2)^2+\frac 1 4 y^2$上求到点（3,0,-1)的最近距离
