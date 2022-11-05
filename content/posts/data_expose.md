@@ -85,3 +85,32 @@ for suffix in suffix_list:
 得到：$ 9 5 8 b 9 9 e f 0 6 0 6 4 f 9 1 c 0 8 d c e c 5 6 d 8 1 3 c c a . t x tnoteustr    f l a g   h e r e ! 
 
 访问：`[url]/958...cca.txt`得到flag
+
+# Git泄露
+
+## log
+
+### 题目
+
+当前大量开发人员使用git进行版本控制，对站点自动部署。如果配置不当,可能会将.git文件夹直接部署到线上环境。这就引起了git泄露漏洞。请尝试使用BugScanTeam的GitHack完成本题
+
+### 解题过程
+
+根据题目指引去下载了GitHack工具：`git clone https://github.com/BugScanTeam/GitHack.git`，工具也可以在ctfhub的工具页面中搜索到。
+
+然后我使用python3运行工具，发现报了一堆错，在改bug的时候意识到这是用python2写的，，，
+
+运行`python2 GitHack.py [url]`获取了.git目录，`git log`发现上一条记录是删除flag，`git diff HEAD^`查看一下删除内容，获取flag
+
+## Stash
+
+### 题目
+
+当前大量开发人员使用git进行版本控制，对站点自动部署。如果配置不当,可能会将.git文件夹直接部署到线上环境。这就引起了git泄露漏洞。请尝试使用BugScanTeam的GitHack完成本题
+
+### 解题过程
+
+没用过git的这个功能，搜索资料知道可以通过`git stash pop`撤销上一次修改（大概似乎是这个意思）
+
+依然`python2 GitHack.py [url]`获取.git目录，`git stash pop`获得一个txt文档，里面便有flag
+
