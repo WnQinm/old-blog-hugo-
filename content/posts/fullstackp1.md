@@ -428,3 +428,104 @@ const App = () => {
 
 # JavaScript
 
+&emsp;&emsp;这个课程使用了较新的JS版本的功能。JavaScript标准的官方名称是[ECMAScript](https://en.wikipedia.org/wiki/ECMAScript)。
+
+&emsp;&emsp;浏览器还不支持JS的所有最新功能。由于这个事实，很多浏览器中运行的代码都是从较新版本的JS转写成较旧的、更兼容的版本。
+
+&emsp;&emsp;如今最流行的方式是通过使用[Babel](https://babeljs.io/)进行转码。在用create-react-app创建的React应用中，转移是自动配置的。
+
+&emsp;&emsp;[Node.js](https://nodejs.org/en/)是一个基于Google's [Chrome V8](https://developers.google.com/v8/) JavaScript引擎的JS运行环境，几乎可以在任何地方工作（从服务器到手机应用）。如果机器上安装的Node.js版本>=16.13.2，那么Node可以理解最新版本的JS代码，代码不需要转码。**（2022.11.5）**
+
+&emsp;&emsp;代码被写入以`.js`结尾的文件中，通过键入`node name_of_file.js`命令来运行。
+
+&emsp;&emsp;也可以将JS代码写入Node.js控制台，该控制台可以通过在命令行输入node打开，也可以写入浏览器的开发者工具控制台（比如Chrome、Firefox）。
+
+## 变量-Variables
+
+&emsp;&emsp;在JS中，有几种方法来定义变量。
+
+```js
+const x = 1
+let y = 5
+
+console.log(x,y)
+y += 10
+console.log(x,y)
+y = 'sometext'
+consolek.log(x,y)
+x = 4                 // cause an error
+```
+
+&emsp;&emsp;const定义一个常量，let定义了一个普通变量。而且分配给变量的数据类型可以改变。
+
+&emsp;&emsp;还有一种使用var来定义变量的方法，在之前的很长一段时间内，var是定义变量的位移方法。详情参见[JavaScript变量--你应该使用let、var还是const? on Medium](https://medium.com/craft-academy/javascript-variables-should-you-use-let-var-or-const-394f7645c88f)或[关键词：var vs. let on JS Tips](http://www.jstips.co/en/javascript/keyword-var-vs-let/)，YouTube上也有相关视频：[var, let and const - ES6 JavaScript Features](https://youtu.be/sjyJBL5fkp8)。此课程建议全程使用const和let。
+
+## 数组Arrays
+
+```js
+const t = [1,-1,3]
+
+t.push(5)
+
+console.log(t.length)
+console.log(t[1])
+
+t.forEach(value => {
+  console.log(value)
+})
+```
+
+&emsp;&emsp;注意数组的内容可以修改，原因是数组是一个对象，这个变量总是指向同一个对象。然而，数组的内容随着新项目的加入而改变。
+
+&emsp;&emsp;遍历数组项目的一种方法是使用forEach ，如图所示。forEach接收一个用箭头语法定义的**函数**作为参数。
+
+```js
+value => {
+  console.log(value)
+}
+```
+
+&emsp;&emsp;forEach为数组中的每个项调用函数，总是传递单个项作为参数。作为forEach参数的函数也可以接收其他参数。
+
+&emsp;&emsp;在前面的例子中，使用方法push将一个新项添加到数组中。在使用React时，经常使用函数式编程的技术。函数式编程范式的一个特点是使用不可变的数据结构。在React代码中，最好使用concat方法，该方法不会将项目添加到数组中，而是创建一个新的数组，其中同时包含旧数组和新项目的内容。
+
+```js
+const t = [1,-1,3]
+
+const t2 = t.concat(5)
+
+console.log(t)
+console.log(t2)
+```
+
+&emsp;&emsp;下面是一个使用map方法进行数组定义的例子。
+
+···js
+const t = [1,2,3]
+
+const m1 = t.map(value => value * 2)
+console.log(m1)
+```
+
+&emsp;&emsp;Map也可以将数组转化为完全不同的东西。
+
+```js
+const m2 = t.map(value => '<li>' + value + '</li>')
+console.log(m2)
+// ['<li>1</li>','<li>2</li>','<li>3</li>']
+```
+
+&emsp;&emsp;在这里，一个充满整数值的数组通过map方法被转化为一个包含HTML字符串的数组。在本课程的第二章节中，我们将看到map在React中使用的相当频繁。
+
+&emsp;&emsp;在解构赋值（类似python）的帮助下，数组中的单个项目很容易被赋值给变量。
+
+```js
+const t = [1,2,3,4,5]
+
+const [first,second,...rest] = t
+
+console.log(first,second)
+console.log(rest)
+```
+
+&emsp;&emsp;变量first和second以数组前两个整数作为它们的值。其余的整数作为一个数组传入给rest变量。
